@@ -1,19 +1,15 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import { BrowserRouter, RouterProvider } from "react-router-dom";
+import router from "./routes/Routes";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
-  return (
-    <>
-      <div>
-        <h1 className='text-blue-500 text-[60px] font-bold align-centet self-center  ' >PNC</h1>
-      </div>
-     </>
-  )
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;
