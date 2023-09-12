@@ -3,7 +3,7 @@ import { Colors } from "../../constants/colors";
 const BioInfoButton = () => {
   return (
     <div
-      style={{ backgroundColor: Colors.secondary700 }}
+      style={{ backgroundColor: Colors.secondary7u00 }}
       className="grid grid-cols-[40%,60%] gap-2"
     >
       <div className="p-4">
