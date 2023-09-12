@@ -7,44 +7,48 @@ const ExpectedPartner = () => {
       <table className="table-auto w-full">
         <thead>
           <tr className="border-b border-t">
-            <td className="px-4 py-2 w-1/2">বয়স</td>
-            <td className="px-4 py-2 w-1/2 border-l">25-32</td>
+            <td className="px-4 py-2 text-left  w-1/2">বয়স</td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">25-32</td>
           </tr>
         </thead>
         <tbody>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">গাত্রবর্ণ</td>
-            <td className="px-4 py-2 w-1/2 border-l">শ্যামলা, উজ্জল শ্যামলা</td>
+            <td className="px-4 py-2 text-left  w-1/2">গাত্রবর্ণ</td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">
+              শ্যামলা, উজ্জল শ্যামলা
+            </td>
           </tr>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">উচ্চতা</td>
-            <td className="px-4 py-2 w-1/2 border-l">৫.৭-৬.৩</td>
+            <td className="px-4 py-2 text-left  w-1/2">উচ্চতা</td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">৫.৭-৬.৩</td>
           </tr>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">শিক্ষাগত যোগ্যতা</td>
-            <td className="px-4 py-2 w-1/2 border-l">মাস্টার্স</td>
+            <td className="px-4 py-2 text-left  w-1/2">শিক্ষাগত যোগ্যতা</td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">মাস্টার্স</td>
           </tr>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">জেলা</td>
-            <td className="px-4 py-2 w-1/2 border-l">যেকোনো</td>
+            <td className="px-4 py-2 text-left  w-1/2">জেলা</td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">যেকোনো</td>
           </tr>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">বৈবাহিক অবস্থা</td>
-            <td className="px-4 py-2 w-1/2 border-l">অবিবাহিত</td>
+            <td className="px-4 py-2 text-left  w-1/2">বৈবাহিক অবস্থা</td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">অবিবাহিত</td>
           </tr>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">পেশা</td>
-            <td className="px-4 py-2 w-1/2 border-l">যেকোনো হালাল পেশা</td>
+            <td className="px-4 py-2 text-left  w-1/2">পেশা</td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">
+              যেকোনো হালাল পেশা
+            </td>
           </tr>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">অর্থনৈতিক অবস্থা</td>
-            <td className="px-4 py-2 w-1/2 border-l">স্বচ্ছল</td>
+            <td className="px-4 py-2 text-left  w-1/2">অর্থনৈতিক অবস্থা</td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">স্বচ্ছল</td>
           </tr>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">
+            <td className="px-4 py-2 text-left  w-1/2">
               জীবনসঙ্গীর যেসব বৈশিষ্ট্য বা গুণাবলী প্রত্যাশা করেন
             </td>
-            <td className="px-4 py-2 w-1/2 border-l">
+            <td className="px-4 py-2 text-left  w-1/2 border-l">
               যিনি হবেন হিকমাহ সম্পন্ন আবদুল্লাহ। আমার প্রতি শ্রদ্ধাবোধ সম্পন্ন
               এবং আমার অধিকার ও মর্যাদার বিষয়ে যত্নবান হতে হবে। ভ্রমণ প্রেমিক
               মানুষ হতে হবে। আমি চাই তিনি পড়ুয়া হােক, প্রচুর বইপ্রেমিক হতে
@@ -69,40 +73,48 @@ const ExpectedPartner = () => {
             </td>
           </tr>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">
+            <td className="px-4 py-2 text-left  w-1/2">
               আকিদা ও মাজহাব কিরকম প্রত্যাশা করেন?{" "}
             </td>
-            <td className="px-4 py-2 w-1/2 border-l">
+            <td className="px-4 py-2 text-left  w-1/2 border-l">
               আশআরি-মাতুরিদি , হানাফি{" "}
             </td>
           </tr>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">
+            <td className="px-4 py-2 text-left  w-1/2">
               তালাক-প্রাপ্তা বিয়ে করতে আগ্রহী?{" "}
             </td>
-            <td className="px-4 py-2 w-1/2 border-l">জি </td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">জি </td>
           </tr>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">ছাত্র বিয়ে করতে আগ্রহী? </td>
-            <td className="px-4 py-2 w-1/2 border-l">জি </td>
+            <td className="px-4 py-2 text-left  w-1/2">
+              ছাত্র বিয়ে করতে আগ্রহী?{" "}
+            </td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">জি </td>
           </tr>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">সন্তানসহ বিয়ে করতে আগ্রহী? </td>
-            <td className="px-4 py-2 w-1/2 border-l">জি </td>
+            <td className="px-4 py-2 text-left  w-1/2">
+              সন্তানসহ বিয়ে করতে আগ্রহী?{" "}
+            </td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">জি </td>
           </tr>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">মাসনা/সুলাসা/রুবায়ায় আগ্রহী? </td>
-            <td className="px-4 py-2 w-1/2 border-l">জি </td>
+            <td className="px-4 py-2 text-left  w-1/2">
+              মাসনা/সুলাসা/রুবায়ায় আগ্রহী?{" "}
+            </td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">জি </td>
           </tr>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">
+            <td className="px-4 py-2 text-left  w-1/2">
               কমপক্ষে কত মাসিক ইনকাম চান (ইংরেজীতে শুধু সংখ্যা লিখুন)?{" "}
             </td>
-            <td className="px-4 py-2 w-1/2 border-l">৯০০০ </td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">৯০০০ </td>
           </tr>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">মাসনা/সুলাসা/রুবায়ায় আগ্রহী? </td>
-            <td className="px-4 py-2 w-1/2 border-l">জি </td>
+            <td className="px-4 py-2 text-left  w-1/2">
+              মাসনা/সুলাসা/রুবায়ায় আগ্রহী?{" "}
+            </td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">জি </td>
           </tr>
         </tbody>
       </table>

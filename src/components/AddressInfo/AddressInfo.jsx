@@ -5,8 +5,8 @@ function AddressInfo() {
       <table className="table-auto w-full">
         <thead>
           <tr className="border-b border-t">
-            <td className="px-4 py-2 w-1/2">স্থায়ী ঠিকানা</td>
-            <td className="px-4 py-2 w-1/2 border-l">
+            <td className="px-4 py-2 text-left  w-1/2">স্থায়ী ঠিকানা</td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">
               <span>সিরাজগঞ্জ সদর, সিরাজগঞ্জ, রাজশাহী, বাংলাদেশ</span>
               <br />
               <span>
@@ -18,8 +18,8 @@ function AddressInfo() {
         </thead>
         <tbody>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">বর্তমান ঠিকানা</td>
-            <td className="px-4 py-2 w-1/2 border-l">
+            <td className="px-4 py-2 text-left  w-1/2">বর্তমান ঠিকানা</td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">
               <span>সিরাজগঞ্জ সদর, সিরাজগঞ্জ, রাজশাহী, বাংলাদেশ</span>
               <br />
               <span>
@@ -29,8 +29,8 @@ function AddressInfo() {
             </td>
           </tr>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">কোথায় বড় হয়েছেন?</td>
-            <td className="px-4 py-2 border-l">সিরাজগঞ্জ</td>
+            <td className="px-4 py-2 text-left  w-1/2">কোথায় বড় হয়েছেন?</td>
+            <td className="px-4 py-2 text-left  border-l">সিরাজগঞ্জ</td>
           </tr>
         </tbody>
       </table>

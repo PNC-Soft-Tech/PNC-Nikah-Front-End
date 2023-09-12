@@ -5,18 +5,20 @@ const ProfessionalInfo = () => {
       <table className="table-auto w-full">
         <thead>
           <tr className="border-b border-t">
-            <td className="px-4 py-2 w-1/2">পেশা</td>
-            <td className="px-4 py-2 w-1/2 border-l">শিক্ষার্থী</td>
+            <td className="px-4 py-2 text-left  w-1/2">পেশা</td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">শিক্ষার্থী</td>
           </tr>
         </thead>
         <tbody>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">পেশার বিস্তারিত বিবরণ</td>
-            <td className="px-4 py-2 w-1/2 border-l">student</td>
+            <td className="px-4 py-2 text-left  w-1/2">
+              পেশার বিস্তারিত বিবরণ
+            </td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">student</td>
           </tr>
           <tr className="border-b">
-            <td className="px-4 py-2 w-1/2">মাসিক আয়</td>
-            <td className="px-4 py-2 border-l">00</td>
+            <td className="px-4 py-2 text-left  w-1/2">মাসিক আয়</td>
+            <td className="px-4 py-2 text-left  border-l">00</td>
           </tr>
         </tbody>
       </table>

@@ -6,18 +6,26 @@ const ContactInfo = () => {
         <table className="table-auto w-full">
           <thead>
             <tr className="border-b border-t">
-              <td className="px-4 py-2 w-1/2">পাত্রীর নাম</td>
-              <td className="px-4 py-2 w-1/2 border-l">Md. Anis Molla</td>
+              <td className="px-4 py-2 text-left  w-1/2">পাত্রীর নাম</td>
+              <td className="px-4 py-2 text-left  w-1/2 border-l">
+                Md. Anis Molla
+              </td>
             </tr>
           </thead>
           <tbody>
             <tr className="border-b">
-              <td className="px-4 py-2 w-1/2">অভিভাবকের মোবাইল নাম্বার</td>
-              <td className="px-4 py-2 w-1/2 border-l">01328816000</td>
+              <td className="px-4 py-2 text-left  w-1/2">
+                অভিভাবকের মোবাইল নাম্বার
+              </td>
+              <td className="px-4 py-2 text-left  w-1/2 border-l">
+                01328816000
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="px-4 py-2 w-1/2">অভিভাবকের সাথে সম্পর্ক</td>
-              <td className="px-4 py-2 border-l">মা</td>
+              <td className="px-4 py-2 text-left  w-1/2">
+                অভিভাবকের সাথে সম্পর্ক
+              </td>
+              <td className="px-4 py-2 text-left  border-l">মা</td>
             </tr>
           </tbody>
         </table>
