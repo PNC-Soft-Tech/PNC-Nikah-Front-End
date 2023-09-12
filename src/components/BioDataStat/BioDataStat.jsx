@@ -1,8 +1,10 @@
+import { Colors } from "../../constants/colors";
+
 const BioDataStat = () => {
   return (
     <div
-      className="single-bio-left-sidebar-stats card-left rounded-md shadow-md"
-      style={{ width: "20rem" }}
+      className="single-bio-left-sidebar-stats card-left rounded-md text-white shadow-md"
+      style={{ width: "20rem", backgroundColor: Colors.primary900 }}
     >
       <h5 className="card-titlee text-lg text-center my-4 pt-5">STATS:</h5>
       <table className="table-auto mx-auto py-10">
