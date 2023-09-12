@@ -1,8 +1,12 @@
 import female from "../../assets/icons/female.svg";
+import { Colors } from "../../constants/colors";
 
 function BioInfo() {
   return (
-    <div className="bg-blue-600 text-white p-4 rounded-lg shadow-lg">
+    <div
+      style={{ backgroundColor: Colors.primary800 }}
+      className=" text-white p-4 rounded-lg shadow-lg"
+    >
       <img
         className="rounded-full h-24 w-24 mx-auto"
         src={female}
