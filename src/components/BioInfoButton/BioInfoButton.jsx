@@ -1,6 +1,11 @@
+import { Colors } from "../../constants/colors";
+
 const BioInfoButton = () => {
   return (
-    <div style={{}} className="grid grid-cols-[40%,60%] gap-2">
+    <div
+      style={{ backgroundColor: Colors.secondary700 }}
+      className="grid grid-cols-[40%,60%] gap-2"
+    >
       <div className="p-4">
         <button className="shortlist text-green-800 border-2 hover:bg-green-800 transition-all duration-500 ease-out first-letter:  hover:bg-custom-blue-dark border-green-800 hover:text-white py-2 px-7 rounded-full">
           Shortlist

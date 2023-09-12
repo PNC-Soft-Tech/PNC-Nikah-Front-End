@@ -23,12 +23,6 @@ const BioData = () => {
           <div className="h-5"></div>
           <BioDataStat />
           {/*<!-- End of Single Bio STATS Section  -->*/}
-          <div className="h-4"></div>
-          <div className="flex justify-center">
-            <button className="copy-biodata-link mx-auto text-white hover:bg-custom-blue-dark hover:text-white py-3 px-10 rounded-full">
-              Copy Biodata Link
-            </button>
-          </div>
         </div>
         <div className="col single-bio-right-sidebar">
           <AddressInfo />
