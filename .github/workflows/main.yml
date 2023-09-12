@@ -34,4 +34,4 @@ jobs:
           dangerous-clean-slate: true
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
-          local-dir: ./build/
+          local-dir: ./dist/
