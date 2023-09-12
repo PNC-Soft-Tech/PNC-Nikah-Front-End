@@ -581,39 +581,323 @@ const BioDataFilter = () => {
           </div>
         </AccordionBody>
       </Accordion>
-      <ListItem>
-        <ListItemPrefix>
-          <InboxIcon className="h-5 w-5" />
-        </ListItemPrefix>
-        Inbox
-        <ListItemSuffix>
-          <Chip
-            value="14"
-            size="sm"
-            variant="ghost"
-            color="blue-gray"
-            className="rounded-full"
+
+      <Accordion
+        open={open === 4}
+        icon={
+          <ChevronDownIcon
+            strokeWidth={2.5}
+            className={`mx-auto h-4 w-4 transition-transform ${
+              open === 4 ? "rotate-180" : ""
+            }`}
           />
-        </ListItemSuffix>
-      </ListItem>
-      <ListItem>
-        <ListItemPrefix>
-          <UserCircleIcon className="h-5 w-5" />
-        </ListItemPrefix>
-        Profile
-      </ListItem>
-      <ListItem>
-        <ListItemPrefix>
-          <Cog6ToothIcon className="h-5 w-5" />
-        </ListItemPrefix>
-        Settings
-      </ListItem>
-      <ListItem>
-        <ListItemPrefix>
-          <PowerIcon className="h-5 w-5" />
-        </ListItemPrefix>
-        Log Out
-      </ListItem>
+        }
+      >
+        <ListItem className="p-0" selected={open === 4}>
+          <AccordionHeader
+            onClick={() => handleOpen(4)}
+            className="border-b-0 p-3"
+          >
+            <ListItemPrefix>
+              <ShoppingBagIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            <Typography color="blue-gray" className="mr-auto font-normal">
+              ব্যক্তিগত তথ্য
+            </Typography>
+          </AccordionHeader>
+        </ListItem>
+        <AccordionBody className="py-1">
+          <div>
+            <h3>গাত্র বর্ন </h3>
+            <div className="inline-flex items-center">
+              <label
+                className="relative flex cursor-pointer items-center rounded-full p-3"
+                htmlFor="login"
+                data-ripple-dark="true"
+              >
+                <input
+                  id="login"
+                  type="checkbox"
+                  className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-pink-500 checked:bg-pink-500 checked:before:bg-pink-500 hover:before:opacity-10"
+                />
+                <div className="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3.5 w-3.5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+              </label>
+              <label
+                className="mt-px cursor-pointer select-none font-light text-gray-700"
+                htmlFor="login"
+              >
+                কালো
+              </label>
+            </div>
+            <div className="inline-flex items-center">
+              <label
+                className="relative flex cursor-pointer items-center rounded-full p-3"
+                htmlFor="login"
+                data-ripple-dark="true"
+              >
+                <input
+                  id="login"
+                  type="checkbox"
+                  className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-pink-500 checked:bg-pink-500 checked:before:bg-pink-500 hover:before:opacity-10"
+                />
+                <div className="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3.5 w-3.5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+              </label>
+              <label
+                className="mt-px cursor-pointer select-none font-light text-gray-700"
+                htmlFor="login"
+              >
+                কওমী
+              </label>
+            </div>
+            <div className="inline-flex items-center">
+              <label
+                className="relative flex cursor-pointer items-center rounded-full p-3"
+                htmlFor="login"
+                data-ripple-dark="true"
+              >
+                <input
+                  id="login"
+                  type="checkbox"
+                  className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-pink-500 checked:bg-pink-500 checked:before:bg-pink-500 hover:before:opacity-10"
+                />
+                <div className="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3.5 w-3.5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+              </label>
+              <label
+                className="mt-px cursor-pointer select-none font-light text-gray-700"
+                htmlFor="login"
+              >
+                আলিয়া
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <h3>দ্বীনি শিক্ষার যোগ্যতা </h3>
+            <div className="inline-flex items-center">
+              <label
+                className="relative flex cursor-pointer items-center rounded-full p-3"
+                htmlFor="login"
+                data-ripple-dark="true"
+              >
+                <input
+                  id="login"
+                  type="checkbox"
+                  className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-pink-500 checked:bg-pink-500 checked:before:bg-pink-500 hover:before:opacity-10"
+                />
+                <div className="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3.5 w-3.5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+              </label>
+              <label
+                className="mt-px cursor-pointer select-none font-light text-gray-700"
+                htmlFor="login"
+              >
+                হাফেজ
+              </label>
+            </div>
+            <div className="inline-flex items-center">
+              <label
+                className="relative flex cursor-pointer items-center rounded-full p-3"
+                htmlFor="login"
+                data-ripple-dark="true"
+              >
+                <input
+                  id="login"
+                  type="checkbox"
+                  className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-pink-500 checked:bg-pink-500 checked:before:bg-pink-500 hover:before:opacity-10"
+                />
+                <div className="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3.5 w-3.5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+              </label>
+              <label
+                className="mt-px cursor-pointer select-none font-light text-gray-700"
+                htmlFor="login"
+              >
+                মাওলানা
+              </label>
+            </div>
+            <div className="inline-flex items-center">
+              <label
+                className="relative flex cursor-pointer items-center rounded-full p-3"
+                htmlFor="login"
+                data-ripple-dark="true"
+              >
+                <input
+                  id="login"
+                  type="checkbox"
+                  className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-pink-500 checked:bg-pink-500 checked:before:bg-pink-500 hover:before:opacity-10"
+                />
+                <div className="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3.5 w-3.5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+              </label>
+              <label
+                className="mt-px cursor-pointer select-none font-light text-gray-700"
+                htmlFor="login"
+              >
+                মুফতি
+              </label>
+            </div>
+
+            <div className="inline-flex items-center">
+              <label
+                className="relative flex cursor-pointer items-center rounded-full p-3"
+                htmlFor="login"
+                data-ripple-dark="true"
+              >
+                <input
+                  id="login"
+                  type="checkbox"
+                  className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-pink-500 checked:bg-pink-500 checked:before:bg-pink-500 hover:before:opacity-10"
+                />
+                <div className="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3.5 w-3.5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+              </label>
+              <label
+                className="mt-px cursor-pointer select-none font-light text-gray-700"
+                htmlFor="login"
+              >
+                মুফাসসির
+              </label>
+            </div>
+
+            <div className="inline-flex items-center">
+              <label
+                className="relative flex cursor-pointer items-center rounded-full p-3"
+                htmlFor="login"
+                data-ripple-dark="true"
+              >
+                <input
+                  id="login"
+                  type="checkbox"
+                  className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-pink-500 checked:bg-pink-500 checked:before:bg-pink-500 hover:before:opacity-10"
+                />
+                <div className="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3.5 w-3.5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+              </label>
+              <label
+                className="mt-px cursor-pointer select-none font-light text-gray-700"
+                htmlFor="login"
+              >
+                আদিব
+              </label>
+            </div>
+          </div>
+        </AccordionBody>
+      </Accordion>
     </List>
   );
 };

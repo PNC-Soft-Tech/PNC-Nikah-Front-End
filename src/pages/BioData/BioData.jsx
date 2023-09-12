@@ -14,9 +14,9 @@ import ContactInfo from "../../components/ContactInfo/ContactInfo";
 
 const BioData = () => {
   return (
-    <div className="container py-12 mx-auto w-[84%]">
-      <div className="grid grid-cols-[30%,70%] gap-4">
-        <div className="col single-bio-left-sidebar">
+    <div className="container py-12 mx-auto ">
+      <div className="grid grid-cols-[30%,70%] ">
+        <div className="col px-2 single-bio-left-sidebar">
           <BioInfo />
           <div className="h-5"></div>
           <BioInfoButton />
@@ -24,7 +24,7 @@ const BioData = () => {
           <BioDataStat />
           {/*<!-- End of Single Bio STATS Section  -->*/}
         </div>
-        <div className="col single-bio-right-sidebar">
+        <div className="col px-2  single-bio-right-sidebar">
           <AddressInfo />
           <hr />
           <div className="h-5"></div>
