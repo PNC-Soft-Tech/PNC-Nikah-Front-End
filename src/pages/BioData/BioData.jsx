@@ -14,7 +14,7 @@ import ContactInfo from "../../components/ContactInfo/ContactInfo";
 
 const BioData = () => {
   return (
-    <div className="container py-12 mx-auto w-[84%]">
+    <div className="container py-12 mx-auto w-[90%]">
       <div className="grid grid-cols-[30%,70%] gap-4">
         <div className="col single-bio-left-sidebar">
           <BioInfo />
