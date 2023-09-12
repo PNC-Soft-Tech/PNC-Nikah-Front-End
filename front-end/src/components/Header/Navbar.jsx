@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Navbar,
-  MobileNav,
+  Collapse,
   Typography,
   IconButton,
 } from "@material-tailwind/react";
@@ -92,7 +92,7 @@ export default function NavBar() {
         )}
       </IconButton>
       {/* </div> */}
-      <MobileNav
+      <Collapse
         open={openNav}
         className={`mobile-nav ${openNav ? "mobile-nav-open" : ""}`}
       >
@@ -100,7 +100,7 @@ export default function NavBar() {
         {/* <Button variant="gradient" size="sm" fullWidth className="mb-2">
           <span>Buy Now</span>
         </Button> */}
-      </MobileNav>
+      </Collapse>
     </Navbar>
   );
 }

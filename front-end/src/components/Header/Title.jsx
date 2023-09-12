@@ -8,13 +8,14 @@ import {
   BiLogoSkype,
   BiLogoWhatsapp,
 } from "react-icons/bi";
+import { Colors } from "../../constants/colors";
 
 //bg-gradient-to-r from-teal-200 to-teal-500
 export default function Tittle() {
   return (
     <nav
-      className="title-container h-[80px] bg-gradient-to-r from-slate-900 to-slate-700   "
-      style={{ padding: "10px 0" }}
+      className={`title-container h-[80px] bg-gradient-to-r bg- from-slate-900 to-slate-700  bg-[${Colors.primary}] `}
+      style={{ padding: "10px 0", backgroundColor: Colors.primary }}
     >
       <div className=" flex flex-row justify-between pt-[5px]  px-[40px] ">
         {/* Image part  */}
