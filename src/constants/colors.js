@@ -1,5 +1,6 @@
 export const Colors = {
-    primary900: "#1a237e",
+    // primary900: "#1a237e",
+    primary900: "#1d5b79",
     primary800: "#283593",
     primary700: "#303f9f",
     primary600:"#3949ab",
@@ -24,6 +25,7 @@ export const Colors = {
     info500:"#f82a87",
     info400:"#f83095",
     info100:"#cfd8dc",
-    text:"#ffff"    
+    text:"#ffff"    ,
+    siteGlobal: "#1d5b79"
 
 }

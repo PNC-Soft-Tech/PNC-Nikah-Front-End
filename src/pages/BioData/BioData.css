@@ -1,21 +1,37 @@
 .single-bio-left-sidebar .card {
-  background-color: #1d5b79;
-}
-.single-bio-person-img {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  /* align-items: center; */
-  margin: auto;
-}
-.single-bio-left-sidebar-content {
-  font-size: 13px;
-  color: white;
-}
-.single-bio-right-sidebar {
-  font-size: 13px;
-}
-.single-bio-right-sidebar .card {
-  border-top-color: #1d5b79;
-  border-top-width: 2px;
-}
+    background-color: #1d5b79;
+  }
+  .single-bio-person-img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    /* align-items: center; */
+    margin: auto;
+  }
+  .single-bio-left-sidebar-content {
+    font-size: 13px;
+    color: white;
+  }
+  .single-bio-right-sidebar {
+    font-size: 13px;
+  }
+  .single-bio-right-sidebar .card {
+    border-top-color: #1d5b79;
+    border-top-width: 2px;
+  }
+            .card-title {
+              color: #1d5b79;
+            }
+      
+            .single-bio-address,
+            .single-bio-educational-qualification,
+            .single-bio-family-info,
+            .single-bio-personal-info,
+            .single-bio-ocupational-info,
+            .single-bio-marital-info,
+            .single-bio-expected-lifepartner-info,
+            .single-bio-ongikar-info,
+            .single-bio-contact-info {
+              border-top-color: #1d5b79;
+              border-top-width: 2px;
+            }

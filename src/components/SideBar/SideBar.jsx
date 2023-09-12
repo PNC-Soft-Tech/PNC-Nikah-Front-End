@@ -1,7 +1,6 @@
 import { Card } from "@material-tailwind/react";
 
 import { BioDataTab } from "../BioDataTab/BioDataTab";
-import { Colors } from "../../constants/colors";
 
 export function SideBar() {
   return (

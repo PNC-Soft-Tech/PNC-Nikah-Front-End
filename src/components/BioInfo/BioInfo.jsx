@@ -4,7 +4,7 @@ import { Colors } from "../../constants/colors";
 function BioInfo() {
   return (
     <div
-      style={{ backgroundColor: Colors.primary800 }}
+      style={{ backgroundColor: Colors.primary900 }}
       className=" text-white p-4 rounded-lg shadow-lg"
     >
       <img
@@ -18,8 +18,8 @@ function BioInfo() {
         <table className="table-auto mx-auto">
           <thead>
             <tr>
-              <th className="px-4 py-2">বায়োডাটার ধরন</th>
-              <th className="px-4 py-2">পাত্রীর বায়োডাটা</th>
+              <td className="px-4 py-2">বায়োডাটার ধরন</td>
+              <td className="px-4 py-2">পাত্রীর বায়োডাটা</td>
             </tr>
           </thead>
           <tbody>
