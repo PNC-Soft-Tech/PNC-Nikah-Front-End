@@ -1,0 +1,21 @@
+.single-bio-left-sidebar .card {
+    background-color: #1d5b79;
+  }
+  .single-bio-person-img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    /* align-items: center; */
+    margin: auto;
+  }
+  .single-bio-left-sidebar-content {
+    font-size: 13px;
+    color: white;
+  }
+  .single-bio-right-sidebar {
+    font-size: 13px;
+  }
+  .single-bio-right-sidebar .card {
+    border-top-color: #1d5b79;
+    border-top-width: 2px;
+  }
