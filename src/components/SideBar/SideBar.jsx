@@ -4,7 +4,7 @@ import { BioDataTab } from "../BioDataTab/BioDataTab";
 
 export function SideBar() {
   return (
-    <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] py-5   mt-5 shadow-xl shadow-blue-gray-900/5">
+    <Card className="h-[calc(100vh - 2rem)] w-[20rem]  py-5 shadow-xl shadow-blue-gray-900/5">
       <BioDataTab />
     </Card>
   );

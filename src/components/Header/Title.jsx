@@ -14,10 +14,10 @@ import { Colors } from "../../constants/colors";
 export default function Tittle() {
   return (
     <nav
-      className={`title-container h-[80px] bg-gradient-to-r bg- from-slate-900 to-slate-700  bg-[${Colors.primary}] `}
-      style={{ padding: "10px 0", backgroundColor: Colors.primary600 }}
+      className={`title-container h-[80px] bg-gradient-to-r p-0 m-0 bg-from-slate-900 to-slate-700  bg-[${Colors.primary}] `}
+      style={{ backgroundColor: Colors.primary600 }}
     >
-      <div className=" flex flex-row justify-between pt-[5px]  px-[40px] ">
+      <div className=" flex flex-row justify-between  px-[40px] pt-5  ">
         {/* Image part  */}
         <div className="h-[50px]  w-[50px] ">
           <Link to="/">
