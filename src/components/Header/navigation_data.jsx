@@ -1,45 +1,49 @@
 export const navData = [
   {
-    title: "Home",
+    title: "হোম",
     path: "/",
   },
   {
-    title: "Services",
-    path: "/services",
+    title: "বায়োডাটা",
+    path: "/biodata",
+  },
+  // {
+  //   title: "Projects",
+  //   subLinks: [
+  //     {
+  //       title: "Projects1",
+  //       path: "/projects",
+  //     },
+  //     {
+  //       title: "Projects2",
+  //       path: "/projects",
+  //     },
+  //     {
+  //       title: "Projects3",
+  //       path: "/projects",
+  //     },
+  //   ],
+  // },
+  {
+    title: "নির্দেশনা",
+    path: "/instructions",
   },
   {
-    title: "Projects",
-    subLinks: [
-      {
-        title: "Projects1",
-        path: "/projects",
-      },
-      {
-        title: "Projects2",
-        path: "/projects",
-      },
-      {
-        title: "Projects3",
-        path: "/projects",
-      },
-    ],
+    title: "সচরাচর জিজ্ঞাসা",
+    path: "/faq",
+  },
+
+  {
+    title: "আমাদের সম্পর্কে",
+    path: "/about-us",
   },
   {
     title: "Edit Biodata",
     path: "/edit-biodata",
   },
-  {
-    title: "FAQ",
-    path: "/faq",
-  },
 
   {
-    title: "About Us",
-    path: "/about",
-  },
-
-  {
-    title: "Contact Us",
+    title: "যোগাযোগ করুন",
     path: "/contact",
   },
 ];

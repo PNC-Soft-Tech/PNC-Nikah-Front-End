@@ -1,0 +1,96 @@
+.home-container {
+  background-color: #ebccfd;
+  padding: 0 20px 100px;
+}
+.home-container .home-title {
+  padding: 40px 0;
+}
+.home-container .home-title h1 {
+  font-size: 100px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.home-container .home-title h1:first-child {
+  color: #522b79;
+}
+
+.home-container .home-title h1:last-child {
+  color: #e92f83;
+}
+
+.home-container .home-subtitle {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.home-container .home-desc {
+  border: 1px solid #522b79;
+  width: 900px;
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: 15px;
+  padding: 30px 10px;
+  font-size: 25px;
+  background-color: #ffffff7d;
+}
+
+.home-container .home-desc .ref {
+  color: #e92f83;
+}
+
+.home-container .search-container {
+  background-color: #FFF;
+  border-radius: 20px;
+  margin: 20px 0;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 4fr 4fr 4fr 100px;
+  text-align: left;
+  font-size: 22px;
+  min-height: 150px;
+  gap: 20px;
+}
+
+.home-container .search-container p {
+  padding: 0 20px;
+}
+.home-container .search-container p:not(.title-value) {
+  font-size: 16px;
+  padding: 4px 20px;
+  /* background-color: #e92f83; */
+}
+.home-container .search-container p:not(.title-value):hover,
+.home-container .search-container p:not(.title-value).active {
+  background-color: #0000002b;
+}
+
+.home-container .custom-select {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+.home-container .custom-select.search-button {
+  text-align: center;
+}
+
+.home-container .custom-select.search-button .custom-select-body {
+  background: linear-gradient(to left, #522b79, #e92f83);
+  border: none;
+  color: #FFF;
+}
+
+.home-container .custom-select label {
+  margin-bottom: 10px;
+}
+.home-container .custom-select-body {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 40px;
+  background-color: #FFF;
+  border-radius: 10px;
+  padding: 10px 0;
+  border: 1px solid #522b7965;
+}
