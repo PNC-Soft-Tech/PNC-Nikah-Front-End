@@ -5,3 +5,11 @@
 * {
   font-family: 'Bangla','segoe ui', sans-serif;
 }
+#root{
+    padding:0;
+    margin:0 auto;
+}
+html{
+    padding:0;
+    margin: 0 auto;
+}

@@ -19,3 +19,19 @@
     border-top-color: #1d5b79;
     border-top-width: 2px;
   }
+            .card-title {
+              color: #1d5b79;
+            }
+      
+            .single-bio-address,
+            .single-bio-educational-qualification,
+            .single-bio-family-info,
+            .single-bio-personal-info,
+            .single-bio-ocupational-info,
+            .single-bio-marital-info,
+            .single-bio-expected-lifepartner-info,
+            .single-bio-ongikar-info,
+            .single-bio-contact-info {
+              border-top-color: #1d5b79;
+              border-top-width: 2px;
+            }
