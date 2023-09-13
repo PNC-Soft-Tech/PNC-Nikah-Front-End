@@ -29,7 +29,7 @@ export default function Tittle() {
           </Link>
         </div>
         <div className=" text-[20px] font-bold leading-[40px] self-center md:text-[30px] text-[#fff] ">
-          <h1>Welcome To PNC Nikah</h1>
+          <h1>PNC-নিকাহতে আপনাকে স্বাগতম!</h1>
         </div>
 
         <div className=" hidden md:flex flex-row cursor-pointer justify-evenly px-[20px] self-center  h-[35px] gap-6 ">
