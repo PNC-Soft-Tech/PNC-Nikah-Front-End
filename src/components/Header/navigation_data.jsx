@@ -4,8 +4,8 @@ export const navData = [
     path: "/",
   },
   {
-    title: "Services",
-    path: "/services",
+    title: "Biodata",
+    path: "/biodata",
   },
   {
     title: "Projects",
