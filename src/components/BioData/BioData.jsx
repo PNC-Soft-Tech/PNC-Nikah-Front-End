@@ -20,14 +20,14 @@ const BioData = ({ biodata }) => {
         <h4 className="my-2"> বায়োডাটা নং </h4>
         <h3>{biodata.biodataid}</h3>
       </div>
-      <div className="mx-2">
+      <div className="mx-2 mt-4">
         <table className="min-w-full divide-y divide-gray-200 border-0 border-gray-300">
           <tbody className="bg-white divide-y divide-gray-200">
             <tr>
-              <td className="px-6 py-4 whitespace-nowrap border-r border-b">
+              <td className="px-6 py-4 whitespace-nowrap border-r border-t border-b">
                 জন্মসন
               </td>
-              <td className="px-6 py-4 whitespace-nowrap border-b">
+              <td className="px-6 py-4 whitespace-nowrap border-b border-t">
                 {biodata.birthday}
               </td>
             </tr>
