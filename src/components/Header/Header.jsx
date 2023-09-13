@@ -11,7 +11,7 @@ const Header = () => {
   };
   return (
     <>
-      <Tittle />
+      {/* <Tittle /> */}
       <NavBar />
     </>
   );

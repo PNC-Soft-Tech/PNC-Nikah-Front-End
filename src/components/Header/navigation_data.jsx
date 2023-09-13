@@ -25,8 +25,8 @@ export const navData = [
     ],
   },
   {
-    title: "Team",
-    path: "/team",
+    title: "Edit Biodata",
+    path: "/edit-biodata",
   },
   {
     title: "FAQ",

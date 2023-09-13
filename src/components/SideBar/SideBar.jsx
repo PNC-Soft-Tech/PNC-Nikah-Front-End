@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Card } from "@material-tailwind/react";
 
 import { BioDataTab } from "../BioDataTab/BioDataTab";

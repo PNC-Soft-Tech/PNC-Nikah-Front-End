@@ -3,6 +3,7 @@ import Home from "../pages/Home/Home";
 import BioDatas from "../pages/BioDatas/BioDatas";
 import MainLaout from "../Layout/mainLayout";
 import BioData from "../pages/BioData/BioData";
+import EditBiodata from "../pages/EditBiodata/Sidebar";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/biodatas",
         element: <BioDatas />,
+      },
+      {
+        path: "/edit-biodata",
+        element: <EditBiodata />,
       },
     ],
   },
