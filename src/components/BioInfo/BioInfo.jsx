@@ -4,7 +4,7 @@ import { Colors } from "../../constants/colors";
 function BioInfo() {
   return (
     <div
-      style={{ backgroundColor: Colors.primary900 }}
+      style={{ backgroundColor: Colors.pncPrimaryColor }}
       className=" text-white p-4 rounded-lg shadow-lg w-full "
     >
       <img
@@ -12,7 +12,7 @@ function BioInfo() {
         src={female}
         alt="Person"
       />
-      <i className="bi bi-person"></i>
+   
       <div className="text-center">
         <h5 className="text-lg font-semibold">Biodata No. 10872</h5>
         <table className="table-auto w-full  mx-auto">

@@ -1,5 +1,8 @@
+
 .single-bio-left-sidebar .card {
-    background-color: #1d5b79;
+    /* background-color: #1d5b79; */
+    background-color: #071952;
+   
   }
   .single-bio-person-img {
     height: 100px;
@@ -16,14 +19,16 @@
     font-size: 18px;
   }
   .single-bio-right-sidebar .card {
-    border-top-color: #1d5b79;
+    /* border-top-color: #1d5b79; */
+    border-top-color: #071952;
     border-top-width: 2px;
   }
-            .card-title {
-              color: #1d5b79;
+   .card-title {
+              /* color: #1d5b79; */
+              color: #071952;
             }
       
-            .single-bio-address,
+ .single-bio-address,
             .single-bio-educational-qualification,
             .single-bio-family-info,
             .single-bio-personal-info,
@@ -32,6 +37,7 @@
             .single-bio-expected-lifepartner-info,
             .single-bio-ongikar-info,
             .single-bio-contact-info {
-              border-top-color: #1d5b79;
+              /* border-top-color: #1d5b79; */
+              border-top-color: #071952;
               border-top-width: 2px;
             }

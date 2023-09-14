@@ -54,7 +54,7 @@ const DropdownForm = () => {
 
   return (
     <div className="container mx-auto mt-5">
-      <h1 className="text-2xl font-semibold mb-3">সাধারণ তথ্য</h1>
+      <h1 className="text-2xl font-semibold mb-3 biodata-submit-form-title">সাধারণ তথ্য</h1>
       <div className='w-[100%] border-t-[1.8px] border-solid border-gray-300 mb-6 '></div>
       <form onSubmit={handleSubmit}>
 

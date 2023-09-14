@@ -26,6 +26,7 @@ export const Colors = {
     info400:"#f83095",
     info100:"#cfd8dc",
     text:"#ffff"    ,
-    siteGlobal: "#1d5b79"
+    siteGlobal: "#1d5b79",
+    pncPrimaryColor:'#071952'
 
 }
