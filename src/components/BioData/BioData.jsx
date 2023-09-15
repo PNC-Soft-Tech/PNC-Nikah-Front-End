@@ -3,11 +3,13 @@ import { Button } from "@material-tailwind/react";
 import female from "../../assets/icons/female.svg";
 import male from "../../assets/icons/male.svg";
 import { Colors } from "../../constants/colors";
+import { ScrollToTop } from "../../constants/ScrolltoTop";
 
 const BioData = ({ biodata }) => {
   console.log(biodata);
   return (
     <div className="my-5 hover:shadow-2xl transition-all  duration-300 ease-in rounded-md border-2">
+      <ScrollToTop />
       <div
         style={{ backgroundColor: Colors.primary900 }}
         className="h-[200px] flex  flex-col justify-center rounded-t-md text-white"

@@ -17,22 +17,25 @@ const Numbering = () => {
         'যোগাযোগ '
     ];
   return (
+    
     <VerticalTimeline layout="1-column-right">
        {titles.map((title, index) => (
         <VerticalTimelineElement
           key={index}
-          contentStyle={{  color: 'black' }}
+          contentStyle={{  color: 'black'  }}
           contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
           iconStyle={{ background: 'black', color: '#fff', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
           icon={<span style={{ fontSize: '16px', fontWeight: 'bold' }}>{index +1}</span>}
         >
-          <div className=' h-4 w-[170px] px-2 pt-2 flex content-center self-center  ' >
+          <div className=' h-1 w-[170px] px-2  flex content-center self-center  ' >
 
-            <h3 className="  " style={{ fontSize: '17px' }}>{title}</h3>
+            <h3 className="  " style={{ fontSize: '18px' }}>{title}</h3>
           </div>
         </VerticalTimelineElement>
+        
       ))}
     </VerticalTimeline>
+    
   );
 };
 

@@ -10,7 +10,7 @@ const Cart = ({data,handleOptionChange, options , title }) => {
     {options?(<select
       value={data}
       onChange={handleOptionChange}
-      className="mt-1 block w-[500px] h-[45px] p-2   border border-gray-300 rounded-md shadow-sm  text-[16px]" // Set input width to 300px
+      className="mt-1 block w-[100%] h-[45px] p-2   border border-gray-300 rounded-md shadow-sm  text-[16px]" // Set input width to 300px
       required // Mark the input as required
     >
       <option value="">নির্বাচন করুন </option>
@@ -25,7 +25,7 @@ const Cart = ({data,handleOptionChange, options , title }) => {
             placeholder={data}
             onChange={handleOptionChange}
             type={title == 'জন্মসন '?'date':'number'}
-            className="mt-1 block w-[500px] h-[45px] p-2   border border-gray-300 rounded-md shadow-sm  text-[13px]" // Set input width to 300px
+            className="mt-1 block w-[100%] h-[45px] p-2   border border-gray-300 rounded-md shadow-sm  text-[13px]" // Set input width to 300px
             required // Mark the inp
          />
     )}

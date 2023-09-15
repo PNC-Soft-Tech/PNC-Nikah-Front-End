@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import Cart from './Cart';
+import { ScrollToTop } from '../../constants/ScrolltoTop';
+import { Colors } from '../../constants/colors';
 
 const DropdownForm = () => {
   // const [selectedOption, setSelectedOption] = useState('');
@@ -54,7 +56,8 @@ const DropdownForm = () => {
 
   return (
     <div className="container mx-auto mt-5">
-      <h1 className="text-2xl font-semibold mb-3">সাধারণ তথ্য</h1>
+      <ScrollToTop />
+      <h1 className="text-2xl text-start font-semibold mb-3">সাধারণ তথ্য</h1>
       <div className='w-[100%] border-t-[1.8px] border-solid border-gray-300 mb-6 '></div>
       <form onSubmit={handleSubmit}>
 
@@ -78,14 +81,14 @@ const DropdownForm = () => {
         <div className="mt-6 flex flex-row justify-evenly gap-8 ">
           <button
             type="submit"
-            className='h-10 w-36 text-[20px] rounded-full p-1 text-[#ffff] self-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-3 '
+            className={`h-10 w-36 text-[20px] rounded-full p-1 text-[#ffff] self-center bg-[${Colors.pncPrimaryColor}] mt-3 `}
           >
             Back
           </button>
 
           <button
             type="submit"
-            className='h-10 w-36 text-[20px] rounded-full p-1 text-[#ffff] self-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-3 '
+            className={`h-10 w-36 text-[20px] rounded-full p-1 text-[#ffff] self-center bg-[${Colors.pncPrimaryColor}] mt-3 `}
           >
             Submit
           </button>

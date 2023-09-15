@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react'
+import {Colors} from '../../constants/colors'
 
 const OptionCart = ({icon, title}) => {
   return (
@@ -8,7 +9,7 @@ const OptionCart = ({icon, title}) => {
         <p className='  '>
            {icon}
         </p>
-        <h2 className='text-[15px] p-1 font-normal leading-7    '> {title} </h2>
+        <h2 className={`text-[15px] text-[${Colors.pncPrimaryColor}] p-1 font-normal leading-7    `}> {title} </h2>
     </div>
   )
 }

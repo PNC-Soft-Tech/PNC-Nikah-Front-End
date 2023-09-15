@@ -11,10 +11,12 @@ import MaritalInfo from "../../components/MaritalInfo/MaritalInfo";
 import ExpectedPartner from "../../components/ExpectedPartner/ExpectedPartner";
 import OngikarNama from "../../components/OngikarNama/OngikarNama";
 import ContactInfo from "../../components/ContactInfo/ContactInfo";
+import { ScrollToTop } from "../../constants/ScrolltoTop";
 
 const BioData = () => {
   return (
     <div className=" py-12 w-full  ">
+      <ScrollToTop />
       <div className="grid lg:grid-cols-[30%,70%] md:grid-cols-[50%,50%] grid-cols-1 ">
         <div className="col px-2 single-bio-left-sidebar">
           <BioInfo />
