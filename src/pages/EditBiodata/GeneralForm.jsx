@@ -56,8 +56,12 @@ const DropdownForm = () => {
 
   return (
     <div className="container mx-auto mt-5">
+<<<<<<< HEAD
       <ScrollToTop />
       <h1 className="text-2xl text-start font-semibold mb-3">সাধারণ তথ্য</h1>
+=======
+      <h1 className="text-2xl font-semibold mb-3 biodata-submit-form-title">সাধারণ তথ্য</h1>
+>>>>>>> 8faa674c2745922d2bf48fa5b24c6e004d5f6a31
       <div className='w-[100%] border-t-[1.8px] border-solid border-gray-300 mb-6 '></div>
       <form onSubmit={handleSubmit}>
 
