@@ -4,54 +4,82 @@ import BioContext from "../../contexts/BioContext";
 const PersonalInfo = () => {
   const { bio } = useContext(BioContext);
   const personalInfo = bio?.personalInfo || null;
+  const generalInfo = bio?.generalInfo || null;
 
   return (
     <div className="single-bio-personal-info border-t-2 w-auto rounded shadow">
       <h5 className="card-title text-center text-2xl my-3">ব্যক্তিগত তথ্য</h5>
       <table className="table-auto w-full">
-        <thead>
-          <tr className="border-b border-t">
-            <td className="px-4 py-2 text-left  w-1/2">
-              ঘরের বাহিরে সাধারণত কি ধরণের পোষাক পরেন?
-            </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
-              {personalInfo?.outside_clothings}
-            </td>
-          </tr>
-        </thead>
         <tbody>
-          <tr className="border-b">
-            <td className="px-4 py-2 text-left  w-1/2">
-              কবে থেকে নিকাব সহ পর্দা করছেন?
-            </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
-              {personalInfo?.porda_with_niqab_from}
-            </td>
-          </tr>
-          <tr className="border-b">
-            <td className="px-4 py-2 text-left  w-1/2">
-              সুন্নতি দাঁড়ি আছে (১ মুষ্টি)?
-            </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
-              {personalInfo?.isBeard === true ? "হ্যা" : "না"}
-            </td>
-          </tr>
-          <tr className="border-b">
-            <td className="px-4 py-2 text-left  w-1/2">
-              সুন্নতি দাঁড়ি কত বছর যাবত?
-            </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
-              {personalInfo?.from_beard}
-            </td>
-          </tr>
-          <tr className="border-b">
-            <td className="px-4 py-2 text-left  w-1/2">
-              টাখ্নুর উপর পোশাক পড়া হয় কবে থেকে?
-            </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
-              {personalInfo?.takhnu_from}
-            </td>
-          </tr>
+          {generalInfo?.gender === "মহিলা" ||
+          generalInfo?.bio_type === "পাত্রীর বায়োডাটা" ? (
+            <>
+              <tr className="border-b border-t">
+                <td className="px-4 py-2 text-left  w-1/2">
+                  ঘরের বাহিরে সাধারণত কি ধরণের পোষাক পরেন?
+                </td>
+                <td className="px-4 py-2 text-left  w-1/2 border-l">
+                  {personalInfo?.outside_clothings}
+                </td>
+              </tr>
+              <tr className="border-b">
+                <td className="px-4 py-2 text-left  w-1/2">
+                  কবে থেকে নিকাব সহ পর্দা করছেন?
+                </td>
+                <td className="px-4 py-2 text-left  w-1/2 border-l">
+                  {personalInfo?.porda_with_niqab_from}
+                </td>
+              </tr>
+            </>
+          ) : (
+            <>
+              <tr className="border-b">
+                <td className="px-4 py-2 text-left  w-1/2">
+                  সুন্নতি দাঁড়ি আছে (১ মুষ্টি)?
+                </td>
+                <td className="px-4 py-2 text-left  w-1/2 border-l">
+                  {personalInfo?.isBeard === true ? "হ্যা" : "না"}
+                </td>
+              </tr>
+              <tr className="border-b">
+                <td className="px-4 py-2 text-left  w-1/2">
+                  সুন্নতি দাঁড়ি কত বছর যাবত?
+                </td>
+                <td className="px-4 py-2 text-left  w-1/2 border-l">
+                  {personalInfo?.from_beard}
+                </td>
+              </tr>
+              <tr className="border-b">
+                <td className="px-4 py-2 text-left  w-1/2">
+                  টাখ্নুর উপর পোশাক পড়া হয় কবে থেকে?
+                </td>
+                <td className="px-4 py-2 text-left  w-1/2 border-l">
+                  {personalInfo?.takhnu_from}
+                </td>
+              </tr>
+
+              <tr className="border-b">
+                <td className="px-4 py-2 text-left  w-1/2">
+                  প্রতিদিন পাঁচ ওয়াক্ত নামাজ জামায়াতে পড়েন কি?
+                </td>
+                <td className="px-4 py-2 text-left  w-1/2 border-l">
+                  {personalInfo?.isDailyFiveJamaat === true
+                    ? "জি আলহামদুলিল্লাহ"
+                    : "না"}
+                </td>
+              </tr>
+
+              <tr className="border-b">
+                <td className="px-4 py-2 text-left  w-1/2">
+                  প্রতিদিন পাঁচ ওয়াক্ত কবে থেকে নিয়মিত জামায়াতে পড়ছেন?
+                </td>
+                <td className="px-4 py-2 text-left  w-1/2 border-l">
+                  {personalInfo?.daily_five_jamaat_from}
+                </td>
+              </tr>
+            </>
+          )}
+
           <tr className="border-b">
             <td className="px-4 py-2 text-left  w-1/2">
               প্রতিদিন পাঁচ ওয়াক্ত নামাজ পড়েন কি? কবে থেকে পড়ছেন?
@@ -61,24 +89,7 @@ const PersonalInfo = () => {
               {personalInfo?.daily_five_from}
             </td>
           </tr>
-          <tr className="border-b">
-            <td className="px-4 py-2 text-left  w-1/2">
-              প্রতিদিন পাঁচ ওয়াক্ত নামাজ জামায়াতে পড়েন কি?
-            </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
-              {personalInfo?.isDailyFiveJamaat === true
-                ? "জি আলহামদুলিল্লাহ"
-                : "না"}
-            </td>
-          </tr>
-          <tr className="border-b">
-            <td className="px-4 py-2 text-left  w-1/2">
-              প্রতিদিন পাঁচ ওয়াক্ত কবে থেকে নিয়মিত জামায়াতে পড়ছেন?
-            </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
-              {personalInfo?.daily_five_jamaat_from}
-            </td>
-          </tr>
+
           <tr className="border-b">
             <td className="px-4 py-2 text-left  w-1/2">
               সাধারণত সপ্তাহে কত ওয়াক্ত নামায আপনার কাযা হয়?

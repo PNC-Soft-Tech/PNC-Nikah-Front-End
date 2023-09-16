@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import BioData from "../BioData/BioData";
 import BioContext from "../../contexts/BioContext";
+import { Colors } from "../../constants/colors";
 
 const BioDatasGrid = () => {
   const { bioDatas } = useContext(BioContext);
@@ -8,7 +9,10 @@ const BioDatasGrid = () => {
 
   return (
     <div className="w-full mx-5  mt-5">
-      <h1 className="text-3xl font-semibold text-gray-700 mb-2">
+      <h1
+        style={{ color: Colors.titleText }}
+        className="text-3xl font-semibold text-gray-700 mb-2"
+      >
         বায়োডাটা সমূহ
       </h1>
       <p className="text-gray-500">

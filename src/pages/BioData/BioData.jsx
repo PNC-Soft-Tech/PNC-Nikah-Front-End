@@ -45,7 +45,7 @@ const BioData = () => {
   return (
     <div className=" py-12 w-full  ">
       <ScrollToTop />
-      <div className="grid lg:grid-cols-[30%,70%] md:grid-cols-[50%,50%] grid-cols-1 ">
+      <div className="grid text-[16px] lg:grid-cols-[30%,70%] md:grid-cols-[50%,50%] grid-cols-1 ">
         <div className="col px-2 single-bio-left-sidebar">
           <BioInfo />
           <div className="h-5"></div>

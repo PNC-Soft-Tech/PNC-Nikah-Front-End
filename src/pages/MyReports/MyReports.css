@@ -13,11 +13,11 @@
 }
 .single-bio-left-sidebar-content,
 .single-bio-left-sidebar-stats {
-  font-size: 13px;
+  font-size: 16px;
   color: white;
 }
 .single-bio-right-sidebar {
-  font-size: 13px;
+  font-size: 16px;
 }
 .card-title {
   color: #1d5b79;
@@ -25,5 +25,5 @@
 .my-reports-info {
   border-top-color: #1d5b79;
   border-top-width: 2px;
-  font-size: 14px;
+  font-size: 16px;
 }

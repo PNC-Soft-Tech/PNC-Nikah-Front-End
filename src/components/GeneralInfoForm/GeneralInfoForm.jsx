@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";
+import { Colors } from "../../constants/colors";
 
 const GeneralInfoForm = ({ userForm, setUserForm }) => {
   // const [selectedOption, setSelectedOption] = useState('');
@@ -117,7 +118,12 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 
   return (
     <div className="container mx-auto mt-5">
-      <h1 className="text-2xl font-semibold mb-3">সাধারণ তথ্য</h1>
+      <h1
+        style={{ color: Colors.titleText }}
+        className="text-2xl font-semibold mb-3"
+      >
+        সাধারণ তথ্য
+      </h1>
       <div className="w-[100%] border-t-[1.8px] border-solid border-gray-300 mb-6 "></div>
       <form onSubmit={handleSubmit}>
         <Select
@@ -193,7 +199,10 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
           </button>
           <button
             type="submit"
-            className="bg-gradient-to-r text-xl  px-5 text-white py-2 from-indigo-900 to-blue-800 rounded-3xl"
+            className="text-xl  px-5 text-white py-2 rounded-3xl"
+            style={{
+              background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight})`,
+            }}
           >
             Save & Next
           </button>

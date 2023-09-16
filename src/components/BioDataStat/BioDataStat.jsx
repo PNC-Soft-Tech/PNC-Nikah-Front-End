@@ -4,7 +4,7 @@ const BioDataStat = () => {
   return (
     <>
       <div
-        className="single-bio-left-sidebar-stats card-left px-2 rounded-md text-white shadow-md"
+        className="single-bio-left-sidebar-stats card-left px-2 mx-[2px] rounded-md text-white shadow-md"
         style={{ backgroundColor: Colors.pncPrimaryColor }}
       >
         <h5 className="card-titlee text-lg text-center my-4 pt-5">STATS:</h5>

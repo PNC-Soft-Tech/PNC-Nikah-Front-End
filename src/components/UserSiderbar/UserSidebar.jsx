@@ -4,6 +4,7 @@ import OptionCart from "../../pages/EditBiodata/OptionCart";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
+import { Colors } from "../../constants/colors";
 
 const UserSidebar = () => {
   const navigate = useNavigate();
@@ -25,7 +26,10 @@ const UserSidebar = () => {
         </p>
         <button
           onClick={myBioDataHandler}
-          className="h-10 w-36 text-[20px] rounded-full p-1 text-[#ffff] self-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-3 "
+          style={{
+            background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
+          }}
+          className="h-10 w-36 text-[20px] rounded-full p-1 text-[#ffff] self-center  mt-3 "
         >
           My Biodata
         </button>

@@ -10,7 +10,7 @@ function AddressInfo() {
       <h5 className="card-title text-center text-2xl my-3">ঠিকানা</h5>
       <table className="table-auto w-full">
         <thead>
-          <tr className="border-b border-t">
+          <tr className="border-b text-[16px] border-t">
             <td className="px-4 py-2 text-left  w-1/2">স্থায়ী ঠিকানা</td>
             <td className="px-4 py-2 text-left  w-1/2 border-l">
               <span>{addressInfo?.permanent_address}</span>

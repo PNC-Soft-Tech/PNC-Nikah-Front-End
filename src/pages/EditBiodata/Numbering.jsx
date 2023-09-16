@@ -7,6 +7,7 @@ import {
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css"; // Import the CSS for styling
 import { FaCheck } from "react-icons/fa";
+import { Colors } from "../../constants/colors";
 
 const Numbering = ({ setUserForm, userForm }) => {
   const titles = [
@@ -30,7 +31,7 @@ const Numbering = ({ setUserForm, userForm }) => {
         <VerticalTimelineElement
           lineColor="#000"
           key={index}
-          contentStyle={{ color: "green" }}
+          contentStyle={{ color: Colors.titleText }}
           contentArrowStyle={{ borderRight: "7px solid  rgb(33, 150, 243)" }}
           iconOnClick={() => clickableICon(index + 1)}
           iconStyle={{
@@ -40,14 +41,16 @@ const Numbering = ({ setUserForm, userForm }) => {
             justifyContent: "center",
             alignItems: "center",
             cursor: "pointer",
+            marginTop: "16px",
+            marginBottom: "16px",
           }}
           icon={
             index + 1 <= userForm ? (
               <div className="flex  justify-center  items-center">
-                <FaCheck className="w-6 h-6 " style={{ marginTop: "5px" }} />
+                <FaCheck className="w-5 h-5 " style={{ marginTop: "5px" }} />
               </div>
             ) : (
-              <span style={{ fontSize: "16px", fontWeight: "bold" }}>
+              <span style={{ fontSize: "14px", fontWeight: "bold" }}>
                 {index + 1}
               </span>
             )

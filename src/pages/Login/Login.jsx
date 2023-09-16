@@ -38,7 +38,7 @@ export function Login() {
       console.log(response2);
       // console.log(response2);
       if (response2?.data?.success === true) {
-        navigate("/");
+        navigate("/user/account/dashboard");
       }
     } catch (error) {
       console.log(error);
@@ -53,7 +53,7 @@ export function Login() {
     }
     try {
       const result = await signIn(email, password);
-      navigate("/");
+      navigate("/user/account/dashboard");
       console.log(result);
     } catch (error) {
       console.log(error);

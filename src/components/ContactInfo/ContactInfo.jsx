@@ -3,6 +3,8 @@ import { useContext } from "react";
 const ContactInfo = () => {
   const { bio } = useContext(BioContext);
   const contact = bio?.contact || null;
+  const generalInfo = bio?.generalInfo || null;
+
   return (
     <div className="single-bio-contact-info rounded shadow">
       <h5 className="card-title text-center text-2xl my-3">যোগাযোগ</h5>
@@ -10,7 +12,13 @@ const ContactInfo = () => {
         <table className="table-auto w-full">
           <thead>
             <tr className="border-b border-t">
-              <td className="px-4 py-2 text-left  w-1/2">পাত্রীর নাম</td>
+              <td className="px-4 py-2 text-left  w-1/2">
+                {" "}
+                {generalInfo?.gender === "মহিলা" ||
+                generalInfo?.bio_type === "পাত্রীর বায়োডাটা"
+                  ? "পাত্রীর নাম"
+                  : "পাত্রের নাম"}{" "}
+              </td>
               <td className="px-4 py-2 text-left  w-1/2 border-l">
                 {contact?.full_name}
               </td>

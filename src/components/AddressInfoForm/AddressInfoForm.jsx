@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { BioDataServices } from "../../services/bioData";
 import Input from "../Input/Input";
 import { Checkbox } from "@material-tailwind/react";
+import { Colors } from "../../constants/colors";
 
 const AddressInfoForm = ({ userForm, setUserForm }) => {
   const [division, setDivision] = useState("");
@@ -73,7 +74,12 @@ const AddressInfoForm = ({ userForm, setUserForm }) => {
 
   return (
     <div className="mt-5">
-      <h3 className="text-2xl font-semibold mb-3">ঠিকানা</h3>
+      <h3
+        style={{ color: Colors.titleText }}
+        className="text-2xl font-semibold mb-3"
+      >
+        ঠিকানা
+      </h3>
       <hr />
       <form action="" className="w-full mt-5">
         <div>
@@ -193,7 +199,10 @@ const AddressInfoForm = ({ userForm, setUserForm }) => {
           </button>
           <button
             type="submit"
-            className="bg-gradient-to-r text-xl  px-5 text-white py-2 from-purple-600 to-blue-500 rounded-3xl"
+            className=" text-xl rounded-3xl  px-5 text-white py-2 "
+            style={{
+              background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight})`,
+            }}
           >
             Save & Next
           </button>

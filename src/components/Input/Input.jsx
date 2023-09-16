@@ -10,7 +10,7 @@ const Input = ({
 }) => {
   return (
     <div>
-      {!placeholder && (
+      {title && (
         <label className="text-left text-gray-500 font-bold block">
           {title}
         </label>

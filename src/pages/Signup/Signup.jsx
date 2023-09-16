@@ -52,7 +52,7 @@ export function Signup() {
       );
       // console.log(response2);
       if (response2?.data?.success === true) {
-        navigate("/");
+        navigate("/user/account/dashboard");
       }
     } catch (error) {
       console.log(error);
@@ -101,7 +101,7 @@ export function Signup() {
         setPassword("");
         setUsername("");
         setGender("");
-        navigate("/");
+        navigate("/user/account/dashboard");
       }
     } catch (error) {
       alert(error?.response?.data?.message || error.message);

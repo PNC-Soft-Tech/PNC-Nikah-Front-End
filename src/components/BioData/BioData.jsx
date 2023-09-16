@@ -17,7 +17,9 @@ const BioData = ({ biodata }) => {
     <div className="my-5 hover:shadow-2xl transition-all  duration-300 ease-in rounded-md border-2">
       <ScrollToTop />
       <div
-        style={{ backgroundColor: Colors.primary900 }}
+        style={{
+          backgroundColor: Colors.pncPrimaryColor,
+        }}
         className="h-[200px] flex  flex-col justify-center rounded-t-md text-white"
       >
         <img
@@ -61,7 +63,10 @@ const BioData = ({ biodata }) => {
       <div className="my-4">
         <Button
           onClick={bioDataHandler}
-          className="bg-gradient-to-r from-purple-900 to-blue-900 rounded-3xl"
+          className=" rounded-3xl"
+          style={{
+            background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
+          }}
         >
           {" "}
           সম্পূর্ন বায়োডাটা{" "}
