@@ -3,7 +3,15 @@ import Home from "../pages/Home/Home";
 import BioDatas from "../pages/BioDatas/BioDatas";
 import MainLaout from "../Layout/mainLayout";
 import BioData from "../pages/BioData/BioData";
-import EditBiodata from "../pages/EditBiodata/Sidebar";
+import { Signup } from "../pages/Signup/Signup";
+import { Login } from "../pages/Login/Login";
+import UserLayout from "../Layout/userLayout";
+import EditBiodata from "../pages/EditBiodata/Editbiodata";
+import DashBoard from "../pages/DashBoard/DashBoard";
+import BioDisLikes from "../pages/BioDisLIkes/BioDisLikes";
+import BioLikes from "../pages/BioLikes/BioLikes";
+import Favorite from "../pages/Favorite/Favorite";
+import MyReports from "../pages/MyReports/MyReports";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +23,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/biodata",
+        path: "/biodata/:id",
         element: <BioData />,
       },
       {
@@ -23,8 +31,39 @@ const router = createBrowserRouter([
         element: <BioDatas />,
       },
       {
-        path: "/edit-biodata",
-        element: <EditBiodata />,
+        path: "/signup",
+        element: <Signup />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/user/account",
+        element: <UserLayout />,
+        children: [
+          {
+            path: "/user/account/edit-biodata",
+            element: <EditBiodata />,
+          },
+          {
+            path: "/user/account/preview-biodata/:id",
+            element: <BioData />,
+          },
+          { path: "/user/account/dashboard", element: <DashBoard /> },
+          {
+            path: "/user/account/dislikes",
+            element: <BioLikes />,
+          },
+          {
+            path: "/user/account/likes",
+            element: <BioLikes />,
+          },
+          {
+            path: "/user/account/myreports",
+            element: <MyReports />,
+          },
+        ],
       },
     ],
   },

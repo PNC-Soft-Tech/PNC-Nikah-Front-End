@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import BioContext from "../../contexts/BioContext";
+
 const MaritalInfo = () => {
+  const { bio } = useContext(BioContext);
+  const maritalInfo = bio?.maritalInfo || null;
   return (
     <div className="single-bio-marital-info border-t-2 w-auto rounded shadow">
       <h5 className="card-title text-center text-2xl my-3">
@@ -11,7 +16,9 @@ const MaritalInfo = () => {
               অভিভাবক আপনার বিয়েতে রাজি কি না?
             </td>
             <td className="px-4 py-2 text-left  w-1/2 border-l">
-              জি আলহামদুলিল্লাহ
+              {maritalInfo?.isFamilyAgree === true
+                ? " জি আলহামদুলিল্লাহ"
+                : "না"}
             </td>
           </tr>
         </thead>
@@ -21,6 +28,9 @@ const MaritalInfo = () => {
               বিয়ের পুরো আয়োজন সুন্নতি নিয়মে করতে চান?
             </td>
             <td className="px-4 py-2 text-left  w-1/2 border-l">
+              {maritalInfo?.isSunnotiBiya === true
+                ? " জি আলহামদুলিল্লাহ"
+                : "না"}
               হ্যাঁ, আলহামদুলিল্লাহ
             </td>
           </tr>
@@ -47,7 +57,9 @@ const MaritalInfo = () => {
               বিয়ের পর পড়াশোনা চালিয়ে যেতে চান?
             </td>
             <td className="px-4 py-2 text-left  w-1/2 border-l">
-              জি ইনশাআল্লাহ
+              {maritalInfo?.permission_for_study === true
+                ? " জি আলহামদুলিল্লাহ"
+                : "না"}
             </td>
           </tr>
           <tr className="border-b">
@@ -62,14 +74,19 @@ const MaritalInfo = () => {
             <td className="px-4 py-2 text-left  w-1/2">
               বিয়ের পর থাকবেন কোথায়?
             </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">একক পরিবারে</td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">
+              {maritalInfo?.after_marriage_where}
+            </td>
           </tr>
 
           <tr className="border-b">
             <td className="px-4 py-2 text-left  w-1/2">
               বিয়েতে যৌতুক নিবেন বা দিবেন?
             </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">কখনই না</td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">
+              {" "}
+              {maritalInfo?.isJoutuk === true ? " জি " : "কখনই না"}
+            </td>
           </tr>
 
           <tr className="border-b">
@@ -77,7 +94,9 @@ const MaritalInfo = () => {
               তালাক হয়ে থাকলে কারণ উল্লেখ করুন
             </td>
             <td className="px-4 py-2 text-left  w-1/2 border-l">
-              না, আলহামদুলিল্লাহ
+              {maritalInfo?.devorced_reason === true
+                ? " জি "
+                : "না আলহামদুলিল্লাহ"}
             </td>
           </tr>
           <tr className="border-b">
@@ -85,15 +104,16 @@ const MaritalInfo = () => {
               তালাক হয়ে থাকলে এবং সন্তান থাকলে সন্তান সম্পর্কে বিস্তারিত উল্লেখ
               করুন
             </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">নাই</td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">
+              {maritalInfo?.children_details}
+            </td>
           </tr>
           <tr className="border-b">
             <td className="px-4 py-2 text-left  w-1/2">
               কেন বিয়ে করছেন? বিয়ে সম্পর্কে আপনার ধারণা কি?
             </td>
             <td className="px-4 py-2 text-left  w-1/2 border-l">
-              নিজের দ্বীনকে পরিপূর্ণ করার জন্য। নিজের চরিত্র হেফাজতের জন্য।
-              ফেতনা থেকে বাঁচাতে, জান্নাতের পথ সহজ করতে।
+              {maritalInfo?.why_marriage}
             </td>
           </tr>
         </tbody>

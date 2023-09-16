@@ -1,4 +1,8 @@
+import BioContext from "../../contexts/BioContext";
+import { useContext } from "react";
 const OngikarNama = () => {
+  const { bio } = useContext(BioContext);
+  const ongikarNama = bio?.ongikarNama || null;
   return (
     <div className="single-bio-ongikar-info rounded shadow">
       <h5 className="card-title text-center text-2xl my-3">অঙ্গীকারনামা</h5>
@@ -9,7 +13,9 @@ const OngikarNama = () => {
               PNC-Nikah.com ওয়েবসাইটে বায়োডাটা জমা দিচ্ছেন, তা আপনার অভিভাবক
               জানেন?
             </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">হ্যাঁ</td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">
+              {ongikarNama?.isFamilyAware === 1 ? "জি" : "না"}{" "}
+            </td>
           </tr>
         </thead>
         <tbody>
@@ -17,14 +23,18 @@ const OngikarNama = () => {
             <td className="px-4 py-2 text-left  w-1/2">
               আল্লাহ`&lsquo;`র শপথ করে সাক্ষ্য দিন, যে তথ্যগুলো দিয়েছেন সব সত্য?
             </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">হ্যাঁ</td>
+            <td className="px-4 py-2 text-left  w-1/2 border-l">
+              {ongikarNama?.isTrueData === 1 ? "জি" : "না"}{" "}
+            </td>
           </tr>
           <tr className="border-b">
             <td className="px-4 py-2 text-left  w-1/2">
               কোনো মিথ্যা তথ্য প্রদান করলে দুনিয়াবী আইনগত এবং আখিরাতের দায়ভার
               PNC-Nikah.com কর্তৃপক্ষ নিবে না। আপনি কি সম্মত?
             </td>
-            <td className="px-4 py-2 text-left  border-l">হ্যাঁ</td>
+            <td className="px-4 py-2 text-left  border-l">
+              {ongikarNama?.isFamilyAgree === 1 ? "জি" : "না"}{" "}
+            </td>
           </tr>
         </tbody>
       </table>

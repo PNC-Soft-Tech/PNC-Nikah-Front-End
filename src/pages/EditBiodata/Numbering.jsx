@@ -1,34 +1,62 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import 'react-vertical-timeline-component/style.min.css'; // Import the CSS for styling
+import React from "react";
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css"; // Import the CSS for styling
+import { FaCheck } from "react-icons/fa";
 
-const Numbering = () => {
-    const titles = [
-        'সাধারণ তথ্য',
-        'ঠিকানা',
-        ' শিক্ষাগত যোগ্যতা ',
-        ' পারিবারিক তথ্য', 
-        'ব্যাক্তিগত তথ্য ', 
-        'পেশাগত তথ্য', 
-        'বিবাহ সম্পর্কিত তথ্য ', 
-        'প্রত্যাশিত জীবনসঙ্গী', 
-        'অঙ্গীকারনামা', 
-        'যোগাযোগ '
-    ];
+const Numbering = ({ setUserForm, userForm }) => {
+  const titles = [
+    "সাধারণ তথ্য",
+    "ঠিকানা",
+    "শিক্ষাগত যোগ্যতা",
+    "পারিবারিক তথ্য",
+    "ব্যাক্তিগত তথ্য ",
+    "পেশাগত তথ্য",
+    "বিবাহ সম্পর্কিত তথ্য ",
+    "প্রত্যাশিত জীবনসঙ্গী",
+    "অঙ্গীকারনামা",
+    "যোগাযোগ ",
+  ];
+  const clickableICon = (index) => {
+    setUserForm(index);
+  };
   return (
-    <VerticalTimeline layout="1-column-right">
-       {titles.map((title, index) => (
+    <VerticalTimeline lineColor="green" layout="1-column-right">
+      {titles.map((title, index) => (
         <VerticalTimelineElement
+          lineColor="#000"
           key={index}
-          contentStyle={{  color: 'black' }}
-          contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-          iconStyle={{ background: 'black', color: '#fff', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-          icon={<span style={{ fontSize: '16px', fontWeight: 'bold' }}>{index +1}</span>}
+          contentStyle={{ color: "green" }}
+          contentArrowStyle={{ borderRight: "7px solid  rgb(33, 150, 243)" }}
+          iconOnClick={() => clickableICon(index + 1)}
+          iconStyle={{
+            background: index + 1 <= userForm ? "green" : "purple",
+            color: "#fff",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+          }}
+          icon={
+            index + 1 <= userForm ? (
+              <div className="flex  justify-center  items-center">
+                <FaCheck className="w-6 h-6 " style={{ marginTop: "5px" }} />
+              </div>
+            ) : (
+              <span style={{ fontSize: "16px", fontWeight: "bold" }}>
+                {index + 1}
+              </span>
+            )
+          }
         >
-          <div className=' h-4 w-[170px] px-2 pt-2 flex content-center self-center  ' >
-
-            <h3 className="  " style={{ fontSize: '17px' }}>{title}</h3>
+          <div className=" h-4 w-[170px] px-2 pt-2 flex content-center self-center  ">
+            <h3 className="  " style={{ fontSize: "17px" }}>
+              {title}
+            </h3>
           </div>
         </VerticalTimelineElement>
       ))}
@@ -36,4 +64,4 @@ const Numbering = () => {
   );
 };
 
-export default Numbering ;
+export default Numbering;

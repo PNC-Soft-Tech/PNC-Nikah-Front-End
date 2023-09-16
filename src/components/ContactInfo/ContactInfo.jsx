@@ -1,4 +1,8 @@
+import BioContext from "../../contexts/BioContext";
+import { useContext } from "react";
 const ContactInfo = () => {
+  const { bio } = useContext(BioContext);
+  const contact = bio?.contact || null;
   return (
     <div className="single-bio-contact-info rounded shadow">
       <h5 className="card-title text-center text-2xl my-3">যোগাযোগ</h5>
@@ -8,7 +12,7 @@ const ContactInfo = () => {
             <tr className="border-b border-t">
               <td className="px-4 py-2 text-left  w-1/2">পাত্রীর নাম</td>
               <td className="px-4 py-2 text-left  w-1/2 border-l">
-                Md. Anis Molla
+                {contact?.full_name}
               </td>
             </tr>
           </thead>
@@ -18,14 +22,16 @@ const ContactInfo = () => {
                 অভিভাবকের মোবাইল নাম্বার
               </td>
               <td className="px-4 py-2 text-left  w-1/2 border-l">
-                01328816000
+                {contact?.family_number}
               </td>
             </tr>
             <tr className="border-b">
               <td className="px-4 py-2 text-left  w-1/2">
                 অভিভাবকের সাথে সম্পর্ক
               </td>
-              <td className="px-4 py-2 text-left  border-l">মা</td>
+              <td className="px-4 py-2 text-left  border-l">
+                {contact?.relation}
+              </td>
             </tr>
           </tbody>
         </table>
