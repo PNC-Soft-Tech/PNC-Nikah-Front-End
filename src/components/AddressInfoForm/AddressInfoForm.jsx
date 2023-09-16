@@ -142,7 +142,7 @@ const AddressInfoForm = ({ userForm, setUserForm }) => {
               <div>Loading</div>
             ) : (
               pDivision &&
-              districtsOptions?.length > 0 && (
+              pDistrictsOptions?.length > 0 && (
                 <Select
                   title="আপনার জেলা  নির্বাচন করুন"
                   value={pDistrict}
@@ -161,7 +161,7 @@ const AddressInfoForm = ({ userForm, setUserForm }) => {
                   title="আপনার উপজেলা  নির্বাচন করুন"
                   value={pUpZilla}
                   setValue={setPUpZilla}
-                  options={upZillaOptions}
+                  options={pUpZillaOptions}
                   required={true}
                 />
               )
