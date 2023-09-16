@@ -5,6 +5,7 @@ import male from "../../assets/icons/male.svg";
 import { Colors } from "../../constants/colors";
 import { getDateMonthYear } from "../../utils/date";
 import { useNavigate } from "react-router-dom";
+import { ScrollToTop } from "../../constants/ScrolltoTop";
 
 const BioData = ({ biodata }) => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const BioData = ({ biodata }) => {
   };
   return (
     <div className="my-5 hover:shadow-2xl transition-all  duration-300 ease-in rounded-md border-2">
+      <ScrollToTop />
       <div
         style={{ backgroundColor: Colors.primary900 }}
         className="h-[200px] flex  flex-col justify-center rounded-t-md text-white"

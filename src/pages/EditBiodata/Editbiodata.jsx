@@ -4,6 +4,7 @@ import { BiSidebar } from "react-icons/bi";
 import Numbering from "./Numbering";
 import DropdownForm from "./GeneralForm";
 import Form from "../../components/Form/Form";
+import { ScrollToTop } from "../../constants/ScrolltoTop";
 
 const EditBiodata = () => {
   const [userForm, setUserForm] = useState(1);
@@ -15,6 +16,8 @@ const EditBiodata = () => {
       <div className="w-[70%]">
         <Form setUserForm={setUserForm} userForm={userForm} />
       </div>
+      <ScrollToTop />
+      <BiSidebar />
     </div>
   );
 };

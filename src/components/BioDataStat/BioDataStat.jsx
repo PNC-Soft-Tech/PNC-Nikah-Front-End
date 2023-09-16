@@ -5,7 +5,7 @@ const BioDataStat = () => {
     <>
       <div
         className="single-bio-left-sidebar-stats card-left px-2 rounded-md text-white shadow-md"
-        style={{ backgroundColor: Colors.primary900 }}
+        style={{ backgroundColor: Colors.pncPrimaryColor }}
       >
         <h5 className="card-titlee text-lg text-center my-4 pt-5">STATS:</h5>
         <table className="w-full  mx-auto py-10">
@@ -44,7 +44,7 @@ const BioDataStat = () => {
       <div className="h-4"></div>
       <div className="flex justify-center md:mb-0 mb-5">
         <button
-          style={{ backgroundColor: Colors.primary800 }}
+          style={{ backgroundColor: Colors.pncPrimaryColor }}
           className="copy-biodata-link mx-auto text-white py-3 px-10 rounded-full"
         >
           Copy Biodata Link
