@@ -1,0 +1,7 @@
+.range-slider .range-slider__thumb:nth-child(1)::after {
+  content: "anis";
+  display: inline-block;
+  width: 100px !important;
+  height: 100px !important;
+  /* Add any other desired styles */
+}

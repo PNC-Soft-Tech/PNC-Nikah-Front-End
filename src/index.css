@@ -14,6 +14,8 @@ html {
   margin: 0 auto;
 }
 
+/* for vertical timeline */
+
 .vertical-timeline-element {
   margin: 16px 0 !important;
 }
@@ -21,7 +23,6 @@ html {
   content: "";
   position: absolute;
   top: 8% !important; /* Adjust this value as needed to achieve the desired vertical centering */
-
   height: 80% !important;
   width: 2px !important;
   color: blue !important;
@@ -31,4 +32,21 @@ html {
 vertical-timeline-element-icon {
   width: 30px !important;
   height: 30px !important;
+}
+
+/* for input react range */
+.input-range__slider {
+  background-color: #071952 !important; /* Customize the slider handle color */
+  border: none !important;
+}
+
+.input-range__slider:hover {
+  background-color: purple !important;
+  border: none !important;
+}
+
+/* Update the CSS rule for the active track with higher specificity */
+
+.input-range .input-range__track--active {
+  background-color: #071952; /* Customize the active track color */
 }
