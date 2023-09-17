@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 const Textarea = ({ placeholder, title, value, setValue, required }) => {
   return (
-    <div>
+    <div className="my-2">
       {!placeholder && (
         <label
           htmlFor="message"

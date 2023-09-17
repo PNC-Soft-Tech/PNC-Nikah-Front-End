@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";
 import { Colors } from "../../constants/colors";
+import FormTitle from "../FormTitle/FormTitle";
 
 const GeneralInfoForm = ({ userForm, setUserForm }) => {
   // const [selectedOption, setSelectedOption] = useState('');
@@ -118,13 +119,7 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 
   return (
     <div className="container mx-auto mt-5">
-      <h1
-        style={{ color: Colors.titleText }}
-        className="text-2xl font-semibold mb-3"
-      >
-        সাধারণ তথ্য
-      </h1>
-      <div className="w-[100%] border-t-[1.8px] border-solid border-gray-300 mb-6 "></div>
+      <FormTitle title="সাধারন তথ্য" />
       <form onSubmit={handleSubmit}>
         <Select
           title="বায়োডাটার ধরণ"

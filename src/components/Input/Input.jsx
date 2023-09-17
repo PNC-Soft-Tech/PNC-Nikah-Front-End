@@ -9,7 +9,7 @@ const Input = ({
   placeholder = "",
 }) => {
   return (
-    <div>
+    <div className="my-2">
       {title && (
         <label className="text-left text-gray-500 font-bold block">
           {title}

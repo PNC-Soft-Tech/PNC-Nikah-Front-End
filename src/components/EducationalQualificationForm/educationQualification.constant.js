@@ -86,3 +86,20 @@ export const afterSscOptions = [
     value: "ডিপ্লোমা",
   },
 ];
+
+export const qawmiEducationOptions = [
+  { value: "প্রাথমিক দ্বীনি শিক্ষা" },
+  { value: "ইবতিদাইয়্যাহ" },
+  { value: "মুতাওয়াসসিতাহ" },
+  { value: "সানাবিয়া উলইয়া" },
+  { value: "ফযীলত" },
+  { value: "তাকমীল" },
+  { value: "তাখাসসুস" },
+];
+
+export const qawmiResult = [
+  { value: "মুমতায" },
+  { value: "জায়্যিদ জিদ্দান" },
+  { value: "জায়্যিদ" },
+  { value: "মাকবুল" },
+];

@@ -3,13 +3,32 @@
 @tailwind utilities;
 
 * {
-  font-family: 'Bangla','segoe ui', sans-serif;
+  font-family: "Bangla", "segoe ui", sans-serif;
 }
-#root{
-    padding:0;
-    margin:0 auto;
+#root {
+  padding: 0;
+  margin: 0 auto;
 }
-html{
-    padding:0;
-    margin: 0 auto;
+html {
+  padding: 0;
+  margin: 0 auto;
+}
+
+.vertical-timeline-element {
+  margin: 16px 0 !important;
+}
+.vertical-timeline::before {
+  content: "";
+  position: absolute;
+  top: 10% !important; /* Adjust this value as needed to achieve the desired vertical centering */
+  right: 14px !important ;
+  height: 80% !important;
+  width: 2px !important;
+  color: blue !important;
+  background-color: blue !important;
+}
+
+vertical-timeline-element-icon {
+  width: 30px !important;
+  height: 30px !important;
 }

@@ -26,28 +26,27 @@ const Numbering = ({ setUserForm, userForm }) => {
     setUserForm(index);
   };
   return (
-    <VerticalTimeline lineColor="green" layout="1-column-right">
+    <VerticalTimeline lineColor="green" className="" layout="1-column-right">
       {titles.map((title, index) => (
         <VerticalTimelineElement
           lineColor="#000"
           key={index}
           contentStyle={{ color: Colors.titleText }}
-          contentArrowStyle={{ borderRight: "7px solid  rgb(33, 150, 243)" }}
+          contentArrowStyle={{}}
           iconOnClick={() => clickableICon(index + 1)}
           iconStyle={{
-            background: index + 1 <= userForm ? "green" : "purple",
+            background:
+              index + 1 <= userForm ? "green" : Colors.pncPrimaryColor,
             color: "#fff",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             cursor: "pointer",
-            marginTop: "16px",
-            marginBottom: "16px",
           }}
           icon={
             index + 1 <= userForm ? (
-              <div className="flex  justify-center  items-center">
-                <FaCheck className="w-5 h-5 " style={{ marginTop: "5px" }} />
+              <div className="flex p-1 justify-center  items-center">
+                <FaCheck className="w-3 h-3 " style={{ marginTop: "2px" }} />
               </div>
             ) : (
               <span style={{ fontSize: "14px", fontWeight: "bold" }}>
@@ -56,7 +55,7 @@ const Numbering = ({ setUserForm, userForm }) => {
             )
           }
         >
-          <div className=" h-4 w-[170px] px-2 pt-2 flex content-center self-center  ">
+          <div className=" h-2 w-[170px] mb-2  px-2 pt-2 flex content-center self-center  ">
             <h3 className="  " style={{ fontSize: "17px" }}>
               {title}
             </h3>
