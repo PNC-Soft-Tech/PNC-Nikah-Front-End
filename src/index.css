@@ -20,7 +20,7 @@ html {
 .vertical-timeline::before {
   content: "";
   position: absolute;
-  top: 10% !important; /* Adjust this value as needed to achieve the desired vertical centering */
+  top: 8% !important; /* Adjust this value as needed to achieve the desired vertical centering */
   right: 14px !important ;
   height: 80% !important;
   width: 2px !important;
