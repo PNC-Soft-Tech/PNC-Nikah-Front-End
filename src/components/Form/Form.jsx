@@ -1,9 +1,11 @@
 import AddressInfoForm from "../AddressInfoForm/AddressInfoForm";
+import ContactInfoForm from "../ContactInfoForm/ContactInfoForm";
 import EducationalQualificationForm from "../EducationalQualificationForm/EducationalQualificationForm";
 import ExpectedPartnerForm from "../ExpectedPartnerForm/ExpectedPartnerForm";
 import FamilyInfoForm from "../FamilyInfoForm/FamilyInfoForm";
 import GeneralInfoForm from "../GeneralInfoForm/GeneralInfoForm";
 import MaritalInfoForm from "../MaritalInfoForm/MaritalInfoForm";
+import OngikarNamaForm from "../OngikarNamaForm/OngikarNamaForm";
 import PersonalInfoForm from "../PersonalInfoForm/PersonalInfoForm";
 import ProfessionInfoForm from "../ProfessionInfoForm/ProfessionInfoForm";
 
@@ -30,8 +32,14 @@ const Form = ({ userForm, setUserForm }) => {
         <ProfessionInfoForm setUserForm={setUserForm} userForm={userForm} />
       ) : userForm === 7 ? (
         <MaritalInfoForm setUserForm={setUserForm} userForm={userForm} />
+      ) : userForm === 8 ? (
+        <ExpectedPartnerForm setUserForm={setUserForm} userForm={userForm} />
+      ) : userForm === 9 ? (
+        <OngikarNamaForm setUserForm={setUserForm} userForm={userForm} />
       ) : (
-        <ExpectedPartnerForm />
+        userForm === 10 && (
+          <ContactInfoForm setUserForm={setUserForm} userForm={userForm} />
+        )
       )}
     </>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import FormTitle from "../FormTitle/FormTitle";
 import Input from "../Input/Input";
@@ -8,8 +9,9 @@ import {
   isFatherAliveOptions,
   quantityOptions,
 } from "./familyInfoForm.constant";
+import { Colors } from "../../constants/colors";
 
-const FamilyInfoForm = () => {
+const FamilyInfoForm = ({ setUserForm, userForm }) => {
   const [fatherName, setFatherName] = useState("");
   const [motherName, setMotherName] = useState("");
   const [isFatherAlive, setIsFatherAlive] = useState("");
@@ -24,6 +26,11 @@ const FamilyInfoForm = () => {
   const [economicStatus, setEconomicStatus] = useState("");
   const [uncleInfo, setUncleInfo] = useState("");
   const [familyDeen, setFamilyDeen] = useState("");
+  const backButtonHandler = () => {
+    if (userForm > 1) {
+      setUserForm((prev) => prev - 1);
+    }
+  };
 
   return (
     <div>
@@ -131,6 +138,24 @@ const FamilyInfoForm = () => {
           setValue={setFamilyDeen}
           required
         />
+        <div className="flex items-center my-5 justify-between">
+          <button
+            type="button"
+            onClick={backButtonHandler}
+            className="bg-gray-700 text-xl  px-5 text-white py-2  rounded-3xl"
+          >
+            Back
+          </button>
+          <button
+            type="submit"
+            className="text-xl  px-5 text-white py-2 rounded-3xl"
+            style={{
+              background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight})`,
+            }}
+          >
+            Save & Next
+          </button>
+        </div>
       </form>
     </div>
   );

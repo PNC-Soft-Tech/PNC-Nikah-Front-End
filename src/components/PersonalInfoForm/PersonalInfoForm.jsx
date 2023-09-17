@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import FormTitle from "../FormTitle/FormTitle";
 import Input from "../Input/Input";
@@ -7,8 +8,9 @@ import {
   personalCategoryOptions,
 } from "./personalInfoForm.constant";
 import Textarea from "../Textarea/Textarea";
+import { Colors } from "../../constants/colors";
 
-const PersonalInfoForm = () => {
+const PersonalInfoForm = ({ setUserForm, userForm }) => {
   const [cloth, setCloth] = useState("");
   const [isDeenContribution, setIsDeenContribution] = useState("");
   const [mazar, setMazar] = useState("");
@@ -28,6 +30,12 @@ const PersonalInfoForm = () => {
   const [aboutMe, setAboutMe] = useState("");
   const [acceptIslam, setAcceptIslam] = useState("");
   const [phone, setPnoe] = useState("");
+
+  const backButtonHandler = () => {
+    if (userForm > 1) {
+      setUserForm((prev) => prev - 1);
+    }
+  };
 
   return (
     <div className="mt-5">
@@ -152,6 +160,24 @@ const PersonalInfoForm = () => {
           setValue={setPnoe}
           required
         />
+        <div className="flex items-center my-5 justify-between">
+          <button
+            type="button"
+            onClick={backButtonHandler}
+            className="bg-gray-700 text-xl  px-5 text-white py-2  rounded-3xl"
+          >
+            Back
+          </button>
+          <button
+            type="submit"
+            className="text-xl  px-5 text-white py-2 rounded-3xl"
+            style={{
+              background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight})`,
+            }}
+          >
+            Save & Next
+          </button>
+        </div>
       </form>
     </div>
   );

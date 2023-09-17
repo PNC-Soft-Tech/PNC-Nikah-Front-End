@@ -1,5 +1,14 @@
+import { Colors } from "../../constants/colors";
+
 /* eslint-disable react/prop-types */
-const Textarea = ({ placeholder, title, value, setValue, required }) => {
+const Textarea = ({
+  placeholder,
+  title,
+  subtitle,
+  value,
+  setValue,
+  required,
+}) => {
   return (
     <div className="my-2">
       {!placeholder && (
@@ -22,6 +31,14 @@ const Textarea = ({ placeholder, title, value, setValue, required }) => {
       >
         {placeholder}
       </textarea>
+      {subtitle && (
+        <p
+          style={{ color: Colors.pncPrimaryColor }}
+          className="text-left text-gray-500 font-bold my-2 block"
+        >
+          {subtitle}
+        </p>
+      )}
     </div>
   );
 };

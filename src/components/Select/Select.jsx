@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
 
+import { Colors } from "../../constants/colors";
+
 const Select = ({
   title = "title",
   value,
   setValue,
   required = false,
   options = [],
+  subtitle,
 }) => {
   return (
     <div className="text-left my-3">
@@ -25,6 +28,15 @@ const Select = ({
           </option>
         ))}
       </select>
+
+      {subtitle && (
+        <p
+          style={{ color: Colors.pncPrimaryColor }}
+          className="text-left text-gray-500 font-bold my-2 block"
+        >
+          {subtitle}
+        </p>
+      )}
     </div>
   );
 };

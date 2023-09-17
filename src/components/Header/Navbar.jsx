@@ -141,7 +141,7 @@ export default function NavBar() {
 
                 <Link
                   className=" w-full flex items-center rounded-md transition-all duration-300 ease-in-out"
-                  to="/edit-biodata"
+                  to={`/user/account/dashboard`}
                 >
                   <BiSolidDashboard className="mr-2" />
                   <span>ড্যাসবোর্ড</span>
@@ -149,7 +149,7 @@ export default function NavBar() {
 
                 <Link
                   className=" w-full flex items-center rounded-md transition-all duration-300 ease-in-out"
-                  to="/edit-biodata"
+                  to={`/user/account/likes`}
                 >
                   <FcLike className="mr-2" />
                   <span>পছন্দের তালিকা </span>
@@ -157,21 +157,21 @@ export default function NavBar() {
 
                 <Link
                   className=" w-full flex items-center rounded-md transition-all duration-300 ease-in-out"
-                  to="/edit-biodata"
+                  to={`/user/account/dislikes`}
                 >
                   <FcDislike className="mr-2" />
                   <span>অপছন্দের তালিকা </span>
                 </Link>
                 <Link
                   className=" w-full flex items-center rounded-md transition-all duration-300 ease-in-out"
-                  to="/edit-biodata"
+                  to={`/user/account/settings`}
                 >
                   <FcSettings className="mr-2" />
                   <span>সেটিংস </span>
                 </Link>
                 <Link
                   className=" w-full flex items-center rounded-md transition-all duration-300 ease-in-out"
-                  to="/edit-biodata"
+                  to={`/user/account/reports`}
                 >
                   <FcSupport className="mr-2" />
                   <span>সাপোর্ট এবং রিপোর্ট </span>

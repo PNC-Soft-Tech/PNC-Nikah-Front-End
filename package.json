@@ -26,6 +26,7 @@
     "react-loader-spinner": "^5.4.5",
     "react-range-slider-input": "^3.0.7",
     "react-router-dom": "^6.15.0",
+    "react-select": "^5.7.4",
     "react-vertical-timeline-component": "^3.6.0"
   },
   "devDependencies": {
