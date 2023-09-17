@@ -12,6 +12,16 @@ import BioDisLikes from "../pages/BioDisLIkes/BioDisLikes";
 import BioLikes from "../pages/BioLikes/BioLikes";
 import Favorite from "../pages/Favorite/Favorite";
 import MyReports from "../pages/MyReports/MyReports";
+import SendForm from "../pages/SendForm/SendForm";
+import AboutUs from "../pages/AboutUs/AboutUs";
+import Reports from "../pages/Reports/Reports";
+import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
+import TermsAndConditions from "../pages/TermsAndConditions/TermsAndConditions";
+import Instructions from "../pages/Instructions/Instructions";
+import Payments from "../pages/Payments/Payments";
+import RefundPolicy from "../pages/RefundPolicy/RefundPolicy";
+import Faq from "../pages/Faq/Faq";
+import ContactUs from "../pages/ContactUs/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +47,50 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/send-form",
+        element: <SendForm />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
+      },
+      {
+        path: "/reports",
+        element: <Reports />,
+      },
+      {
+        path: "/send-form",
+        element: <SendForm />,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "/terms-and-condition",
+        element: <TermsAndConditions />,
+      },
+      {
+        path: "/instructions",
+        element: <Instructions />,
+      },
+      {
+        path: "/payments",
+        element: <Payments />,
+      },
+      {
+        path: "/refund-policy",
+        element: <RefundPolicy />,
+      },
+      {
+        path: "/faq",
+        element: <Faq />,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs />,
       },
       {
         path: "/user/account",

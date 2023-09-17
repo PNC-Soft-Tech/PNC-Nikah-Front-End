@@ -22,6 +22,6 @@ export const navData = [
   },
   {
     title: "যোগাযোগ করুন",
-    path: "/contact",
+    path: "/contact-us",
   },
 ];
