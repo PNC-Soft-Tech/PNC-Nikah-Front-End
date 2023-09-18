@@ -22,21 +22,23 @@ const DashBoard = () => {
       পয়েন্ট রিচার্জ করুন
     </button>
   </div>
-
   <div className="rounded-lg bg-white shadow-md border p-4" style={{borderColor:Colors.titleText}}>
-    <div className="flex items-center justify-center mb-2">
-      <div className="rounded-full bg-green-500 h-8 w-8 flex items-center justify-center text-white mr-2">
+    <div className="flex items-center justify-center mb-2" >
+      <div className="rounded-full  h-8 w-8 flex items-center justify-center text-white mr-2" >
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
           <path
             d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-2a6 6 0 100-12 6 6 0 000 12zm-1-7h2v4h-2v-4z"
           />
         </svg>
       </div>
-      <h2 className="text-lg font-semibold text-center"  style={{color:Colors.titleText}}>বায়োডাটা ভিজিট সংখ্যা: ৩৪৫</h2>
+      <h2 className="text-lg font-semibold"  style={{color:Colors.titleText}}>আমার পেন্ডিং প্রস্তাবঃ ২ টি</h2>
     </div>
-    <p className="text-gray-700">আপনার বায়োডাটা যতবার ভিজিট করা হয়েছে।</p>
-
+    <p className="text-gray-700">আপনার কাছে এই মুহূর্তে এতগুলো প্রস্তাব আছে যা আপনি আপ্রভ কিংবা রিজেক্ট করেন নি </p>
+    <button className="mt-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full" style={{backgroundColor:Colors.pncPrimaryColor}}>
+      পেন্ডিংগুলো দেখুন
+    </button>
   </div>
+
   <div className="rounded-lg bg-white shadow-md border p-4" style={{borderColor:Colors.titleText}}>
     <div className="flex items-center justify-center mb-2" >
       <div className="rounded-full  h-8 w-8 flex items-center justify-center text-white mr-2" >
@@ -103,7 +105,20 @@ const DashBoard = () => {
     </button>
   </div>
 
+  <div className="rounded-lg bg-white shadow-md border p-4" style={{borderColor:Colors.titleText}}>
+    <div className="flex items-center justify-center mb-2">
+      <div className="rounded-full bg-green-500 h-8 w-8 flex items-center justify-center text-white mr-2">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-2a6 6 0 100-12 6 6 0 000 12zm-1-7h2v4h-2v-4z"
+          />
+        </svg>
+      </div>
+      <h2 className="text-lg font-semibold text-center"  style={{color:Colors.titleText}}>বায়োডাটা ভিজিট সংখ্যা: ৩৪৫</h2>
+    </div>
+    <p className="text-gray-700">আপনার বায়োডাটা যতবার ভিজিট করা হয়েছে।</p>
 
+  </div>
   <div className="rounded-lg bg-white shadow-md border  p-4" style={{borderColor:Colors.titleText}}>
     <div className="flex items-center justify-center mb-2">
       <div className="rounded-full bg-green-500 h-8 w-8 flex items-center justify-center text-white mr-2">
@@ -131,22 +146,7 @@ const DashBoard = () => {
     <p className="text-gray-700">আপনি মোট যতগুলো বায়োডাটা রিজেক্ট করেছেন / মোট যতগুলো বায়োডাটার প্রস্তাব পেয়েছেন</p>
    
   </div>
-  <div className="rounded-lg bg-white shadow-md border p-4" style={{borderColor:Colors.titleText}}>
-    <div className="flex items-center justify-center mb-2" >
-      <div className="rounded-full  h-8 w-8 flex items-center justify-center text-white mr-2" >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-          <path
-            d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-2a6 6 0 100-12 6 6 0 000 12zm-1-7h2v4h-2v-4z"
-          />
-        </svg>
-      </div>
-      <h2 className="text-lg font-semibold"  style={{color:Colors.titleText}}>আমার পেন্ডিং প্রস্তাবঃ ২ টি</h2>
-    </div>
-    <p className="text-gray-700">আপনার কাছে এই মুহূর্তে এতগুলো প্রস্তাব আছে যা আপনি আপ্রভ কিংবা রিজেক্ট করেন নি </p>
-    <button className="mt-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full" style={{backgroundColor:Colors.pncPrimaryColor}}>
-      পেন্ডিংগুলো দেখুন
-    </button>
-  </div>
+
 
 
 
