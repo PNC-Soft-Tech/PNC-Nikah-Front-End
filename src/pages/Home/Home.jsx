@@ -2,7 +2,39 @@ import { useState } from "react";
 import "../../assets/styles/home.css";
 import { useNavigate } from "react-router-dom";
 
+// Biodata Grid  import Starts 
+import { useQuery } from "@tanstack/react-query";
+
+import FeaturedBioDataGrid from "../../components/FeaturedBioDataGrid/FeaturedBioDataGrid";
+
+import { BioDataServices } from "../../services/bioData";
+import LoadingBioData from "../../components/LoadingBioData/LoadingBioData";
+import { useContext, useEffect } from "react";
+import BioContext from "../../contexts/BioContext";
+
+//End Bio grid Import
+
 const Home = () => {
+
+  // biogrid starts 
+  
+  const { setBioDatas } = useContext(BioContext);
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["bioData", "generalInfo"],
+    queryFn: async () => {
+      return await BioDataServices.getALLGeneralInfo();
+    },
+  });
+
+  useEffect(() => {
+    if (data && data?.data) {
+      setBioDatas(data?.data?.data);
+    }
+  }, [data, setBioDatas]);
+   if (error) {
+    console.log(error);
+  }
+// biogrid ends 
   const [personTypeClicked, setPersonTypeClicked] = useState(true);
   const [selectedPersonType, setSelectedPersonType] = useState("সকল");
   const [marriageTypeClicked, setMarriageTypeClicked] = useState(true);
@@ -160,6 +192,9 @@ const Home = () => {
           <span className="pink">অর্ধেকদ্বীনে</span>
           <span className="d-purple">অর্ধেকদ্বীনে</span>
         </h2>
+      </div>
+      <div className="featured-biodata">
+          {isLoading ? <LoadingBioData /> : <FeaturedBioDataGrid />}
       </div>
     </div>
   );

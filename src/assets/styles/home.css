@@ -1,5 +1,6 @@
 .home-container {
   background-color: #ebccfd;
+  /* background-color: #2C6382; */
   padding: 0 20px 100px;
 }
 .home-container .home-title {
@@ -12,11 +13,14 @@
 }
 
 .home-container .home-title h1:first-child {
-  color: #522b79;
+  /* color: #522b79; */
+  color: #2C6382;
 }
 
 .home-container .home-title h1:last-child {
-  color: #e92f83;
+  /* color: #e92f83; */
+  color: #071951;
+ 
 }
 
 .home-container .home-subtitle {
@@ -26,7 +30,8 @@
 }
 
 .home-container .home-desc {
-  border: 1px solid #522b79;
+  /* border: 1px solid #522b79; */
+  border: 1px solid #2C6382;
   width: 900px;
   max-width: 100%;
   margin: 0 auto;
@@ -37,7 +42,8 @@
 }
 
 .home-container .home-desc .ref {
-  color: #e92f83;
+  /* color: #e92f83; */
+  color: #2C6382;
 }
 
 .home-container .search-container {
