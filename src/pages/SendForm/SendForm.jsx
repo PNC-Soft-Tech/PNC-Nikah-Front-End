@@ -51,7 +51,9 @@ function SendForm() {
         <div className="mb-4">
           <button
             type="submit"
-            className="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" style={{backgroundColor:Colors.pncPrimaryColor}}
+            className="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"    style={{
+            background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
+          }}
           >
             আমার বায়োডাটা শেয়ার করুন
           </button>

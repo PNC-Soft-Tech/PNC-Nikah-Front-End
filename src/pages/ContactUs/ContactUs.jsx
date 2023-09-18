@@ -6,8 +6,8 @@ const ContactUs = () => {
       <div className="container mx-auto p-4">
         <h1 className="text-3xl font-semibold mb-4 text-center" style={{color:Colors.titleText}}>যোগাযোগ করুন</h1>
         <div className="text-center">
-           <p>আপনার যে কোন জিজ্ঞাসা, নিম্নোক্ত ফর্মে পূরণ করে আমাদের কাছে পাঠিয়ে দিন। </p>
-            <p>আমরা শীঘ্রই আপনার সাথে যোগাযোগ করবো ইন শা আল্লাহ। </p>
+           <p className="text-gray-700 text-lg">আপনার যে কোন জিজ্ঞাসা, নিম্নোক্ত ফর্মে পূরণ করে আমাদের কাছে পাঠিয়ে দিন। </p>
+            <p className="text-gray-700 text-lg">আমরা শীঘ্রই আপনার সাথে যোগাযোগ করবো ইন শা আল্লাহ। </p>
         </div>
         <div className="max-w-lg mx-auto shadow px-8 py-8 rounded">
           <form>
@@ -68,7 +68,9 @@ const ContactUs = () => {
               <button
                 type="submit"
                 className="bg-blue-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-600 transition duration-300"
-              style={{backgroundColor:Colors.pncPrimaryColor}}>
+                 style={{
+            background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
+          }}>
                মেসেজ পাঠান
               </button>
             </div>

@@ -63,7 +63,9 @@ function Payments() {
                 </li>
               ))}
             </ul>
-            <button className=" hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" style={{backgroundColor:Colors.pncPrimaryColor}}>
+            <button className=" hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"    style={{
+            background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
+          }}>
               Buy Now
             </button>
           </div>

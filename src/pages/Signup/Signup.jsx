@@ -173,7 +173,9 @@ export function Signup() {
             containerProps={{ className: "-ml-2.5" }}
           />
           <Button
-            type="submit"
+            type="submit"    style={{
+            background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
+          }}
             onClick={signInWithEmailAndPassword}
             className="mt-6 py-4"
             fullWidth

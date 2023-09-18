@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../../assets/styles/home.css";
 import { useNavigate } from "react-router-dom";
-
+import {  Colors } from '../../constants/colors'; 
 // Biodata Grid  import Starts 
 import { useQuery } from "@tanstack/react-query";
 
@@ -181,8 +181,10 @@ const Home = () => {
         </div>
         <div className="search-button custom-select">
           <label htmlFor=""></label>
-          <div className="custom-select-body">
-            <button onClick={searchButtonHandler}>খুঁজুন</button>
+          <div className="custom-select-body" style={{
+            background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
+          }}>
+            <button     onClick={searchButtonHandler}>খুঁজুন</button>
           </div>
         </div>
       </div>
