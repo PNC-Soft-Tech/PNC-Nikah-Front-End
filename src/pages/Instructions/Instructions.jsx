@@ -40,7 +40,7 @@ const Instructions = () => {
       <h1 className="text-3xl font-semibold mb-4" style={{color:Colors.titleText}}>নির্দেশনা সমুহ</h1>
       <ul>
         {instructionItems.map((item, index) => (
-          <li key={index} className="border-b py-4 bg-gray-300 px-8 py-4 mb-4 rounded" style={{borderBottomColor:`rgba(${Colors.titleText}, 0.7)`}}  >
+          <li key={index}  onClick={() => toggleItem(index)} className="border-b py-4 bg-gray-300 px-8 py-4 mb-4 rounded cursor-pointer" style={{borderBottomColor:`rgba(${Colors.titleText}, 0.7)`}}  >
             <div className="flex justify-between items-center">
               <h2 onClick={() => toggleItem(index)} className="text-lg font-medium">{item.question}</h2>
               <button
