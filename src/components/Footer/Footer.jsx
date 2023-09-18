@@ -37,7 +37,7 @@ const Footer = () => {
                     <BiLogoGmail />
                   </p>
                 </h3>
-                <p className="text-[18px] text-[#fff] font-normal " >pncsofttech@gmail.com</p>
+                <p className="text-[18px] text-[#fff] font-normal " >pnc.nikah@gmail.com</p>
               </div>
 
               <div className="flex flex-row gap-3">
@@ -58,7 +58,20 @@ const Footer = () => {
                   <div className=" text-[18px] ">
                     <BiSolidAddToQueue />
                   </div>
-                  <Link to = '/services' className=" text-[18px] ">Services</Link>
+                  <Link to = '/refund-policy' className=" text-[18px] ">Refund Policy</Link>
+              </div>
+
+              <div className="flex flex-row gap-3 ">
+                  <div className=" text-[18px] ">
+                    <BiSolidAddToQueue />
+                  </div>
+                  <Link to = '/privacy-policy' className=" text-[18px] ">Privacy Policy</Link>
+              </div>
+              <div className="flex flex-row gap-3 ">
+                  <div className=" text-[18px] ">
+                    <BiSolidAddToQueue />
+                  </div>
+                  <Link to = '/terms-and-condition' className=" text-[18px] ">Terms And Conditions</Link>
               </div>
 
               <div className="flex flex-row gap-3 ">
@@ -66,13 +79,6 @@ const Footer = () => {
                     <BiSolidAddToQueue />
                   </div>
                   <Link to = '/faq' className=" text-[18px] ">FAQ</Link>
-              </div>
-
-              <div className="flex flex-row gap-3 ">
-                  <div className=" text-[18px] ">
-                    <BiSolidAddToQueue />
-                  </div>
-                  <Link to = '/team' className=" text-[18px] ">Team</Link>
               </div>
 
             </div>

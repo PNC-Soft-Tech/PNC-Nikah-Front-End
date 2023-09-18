@@ -8,6 +8,10 @@ export const navData = [
     path: "/biodatas",
   },
   {
+    title: "পেমেন্ট প্যাকেজ",
+    path: "/payments",
+  },
+  {
     title: "নির্দেশনা",
     path: "/instructions",
   },

@@ -15,11 +15,11 @@ const DashBoard = () => {
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5l-2 2m0 0l2-2m-2 2h14m0 0H5m8 10h2a2 2 0 002-2v-6a2 2 0 00-2-2h-2a2 2 0 00-2 2v6a2 2 0 002 2z" />
     </svg>
       </div>
-      <h2 className="text-lg font-semibold text-center" style={{color:Colors.titleText}}>My Points: 200.23</h2>
+      <h2 className="text-lg font-semibold text-center" style={{color:Colors.titleText}}>আমার বর্তমান পয়েন্টঃ ২০৩</h2>
     </div>
-    <p className="text-gray-700">Your Current Points.Your Current PointsYour Current PointsYour Current PointsYour Current Points</p>
+    <p className="text-gray-700">আপনার একাউন্টে এখন যত্‌পরিমাণ পয়েন্ট জমা রয়েছে</p>
     <button className="mt-2 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full" style={{backgroundColor:Colors.pncPrimaryColor}} >
-      Recharge Points
+      পয়েন্ট রিচার্জ করুন
     </button>
   </div>
 
@@ -32,12 +32,10 @@ const DashBoard = () => {
           />
         </svg>
       </div>
-      <h2 className="text-lg font-semibold text-center">Card Title 2</h2>
+      <h2 className="text-lg font-semibold text-center"  style={{color:Colors.titleText}}>বায়োডাটা ভিজিট সংখ্যা: ৩৪৫</h2>
     </div>
-    <p className="text-gray-700">Subtitle text goes here.</p>
-    <button className="mt-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full">
-      Button
-    </button>
+    <p className="text-gray-700">আপনার বায়োডাটা যতবার ভিজিট করা হয়েছে।</p>
+
   </div>
   <div className="rounded-lg bg-white shadow-md border p-4" style={{borderColor:Colors.titleText}}>
     <div className="flex items-center justify-center mb-2" >
@@ -48,11 +46,11 @@ const DashBoard = () => {
           />
         </svg>
       </div>
-      <h2 className="text-lg font-semibold">Card Title 3</h2>
+      <h2 className="text-lg font-semibold"  style={{color:Colors.titleText}}>আপনার বায়োডাটা পছন্দের তালিকাভুক্ত হয়েছে: 9</h2>
     </div>
-    <p className="text-gray-700">Subtitle text goes here.</p>
-    <button className="mt-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full">
-      Button
+    <p className="text-gray-700">এত জন আপনার বায়োডাটা পছন্দের তালিকায় রেখেছেন।</p>
+    <button className="mt-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full" style={{backgroundColor:Colors.pncPrimaryColor}}>
+      তালিকা দেখুন (৫০ পয়েন্ট)
     </button>
   </div>
 
@@ -64,11 +62,11 @@ const DashBoard = () => {
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5l-2 2m0 0l2-2m-2 2h14m0 0H5m8 10h2a2 2 0 002-2v-6a2 2 0 00-2-2h-2a2 2 0 00-2 2v6a2 2 0 002 2z" />
     </svg>
       </div>
-      <h2 className="text-lg font-semibold text-center" style={{color:Colors.titleText}}>My Points: 200.23</h2>
+      <h2 className="text-lg font-semibold text-center" style={{color:Colors.titleText}} >আমার পছন্দের তালিকায়ঃ ৩৪</h2>
     </div>
-    <p className="text-gray-700">Your Current Points.Your Current PointsYour Current PointsYour Current PointsYour Current Points</p>
-    <button className="mt-2 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full" style={{backgroundColor:Colors.pncPrimaryColor}} >
-      Recharge Points
+    <p className="text-gray-700">আপনার পছন্দের তালিকাভুক্ত বায়োডাটা সমূহ।</p>
+     <button className="mt-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full" style={{backgroundColor:Colors.pncPrimaryColor}}>
+     লিস্ট দেখুন
     </button>
   </div>
 
@@ -81,11 +79,11 @@ const DashBoard = () => {
           />
         </svg>
       </div>
-      <h2 className="text-lg font-semibold text-center">Card Title 2</h2>
+      <h2 className="text-lg font-semibold text-center" style={{color:Colors.titleText}}>আমার অপছন্দের তালিকায়ঃ ২</h2>
     </div>
-    <p className="text-gray-700">Subtitle text goes here.</p>
-    <button className="mt-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full">
-      Button
+    <p className="text-gray-700">আপনার অপছন্দের তালিকাভুক্ত বায়োডাটা সমূহ।</p>
+    <button className="mt-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full" style={{backgroundColor:Colors.pncPrimaryColor}}>
+      লিস্ট দেখুন
     </button>
   </div>
   <div className="rounded-lg bg-white shadow-md border p-4" style={{borderColor:Colors.titleText}}>
@@ -97,11 +95,11 @@ const DashBoard = () => {
           />
         </svg>
       </div>
-      <h2 className="text-lg font-semibold">Card Title 3</h2>
+      <h2 className="text-lg font-semibold"  style={{color:Colors.titleText}}>আমার ক্রয়সমূহ: ৯</h2>
     </div>
-    <p className="text-gray-700">Subtitle text goes here.</p>
-    <button className="mt-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full">
-      Button
+    <p className="text-gray-700">আপনার ক্রয় সংক্রান্ত সমস্ত তথ্য।</p>
+    <button className="mt-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full" style={{backgroundColor:Colors.pncPrimaryColor}}>
+       বিস্তারিত দেখুন
     </button>
   </div>
 
@@ -113,12 +111,10 @@ const DashBoard = () => {
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5l-2 2m0 0l2-2m-2 2h14m0 0H5m8 10h2a2 2 0 002-2v-6a2 2 0 00-2-2h-2a2 2 0 00-2 2v6a2 2 0 002 2z" />
     </svg>
       </div>
-      <h2 className="text-lg font-semibold text-center" style={{color:Colors.titleText}}>My Points: 200.23</h2>
+      <h2 className="text-lg font-semibold text-center" style={{color:Colors.titleText}}>আমার আপ্রুভাল রেটঃ ৩৭%</h2>
     </div>
-    <p className="text-gray-700">Your Current Points.Your Current PointsYour Current PointsYour Current PointsYour Current Points</p>
-    <button className="mt-2 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full" style={{backgroundColor:Colors.pncPrimaryColor}} >
-      Recharge Points
-    </button>
+    <p className="text-gray-700">আপনি মোট যতগুলো বায়োডাটা আপ্রুভ করেছেন / মোট যতগুলো বায়োডাটার প্রস্তাব পেয়েছেন</p>
+  
   </div>
 
   <div className="rounded-lg bg-white shadow-md border p-4" style={{borderColor:Colors.titleText}}>
@@ -130,12 +126,10 @@ const DashBoard = () => {
           />
         </svg>
       </div>
-      <h2 className="text-lg font-semibold text-center">Card Title 2</h2>
+      <h2 className="text-lg font-semibold text-center"  style={{color:Colors.titleText}}>আমার রিজেকশন রেটঃ ৬৩%</h2>
     </div>
-    <p className="text-gray-700">Subtitle text goes here.</p>
-    <button className="mt-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full">
-      Button
-    </button>
+    <p className="text-gray-700">আপনি মোট যতগুলো বায়োডাটা রিজেক্ট করেছেন / মোট যতগুলো বায়োডাটার প্রস্তাব পেয়েছেন</p>
+   
   </div>
   <div className="rounded-lg bg-white shadow-md border p-4" style={{borderColor:Colors.titleText}}>
     <div className="flex items-center justify-center mb-2" >
@@ -146,11 +140,11 @@ const DashBoard = () => {
           />
         </svg>
       </div>
-      <h2 className="text-lg font-semibold">Card Title 3</h2>
+      <h2 className="text-lg font-semibold"  style={{color:Colors.titleText}}>আমার পেন্ডিং প্রস্তাবঃ ২ টি</h2>
     </div>
-    <p className="text-gray-700">Subtitle text goes here.</p>
-    <button className="mt-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full">
-      Button
+    <p className="text-gray-700">আপনার কাছে এই মুহূর্তে এতগুলো প্রস্তাব আছে যা আপনি আপ্রভ কিংবা রিজেক্ট করেন নি </p>
+    <button className="mt-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full" style={{backgroundColor:Colors.pncPrimaryColor}}>
+      পেন্ডিংগুলো দেখুন
     </button>
   </div>
 

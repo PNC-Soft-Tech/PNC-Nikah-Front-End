@@ -2,33 +2,33 @@
 import {  Colors } from '../../constants/colors'; 
 const packages = [
   {
-    name: 'Basic Package',
-    price: '$19/month',
-    features: ['Feature 1', 'Feature 2', 'Feature 3'],
+    name: "বেসিক প্যাকেজ",
+    price: "৩০ টাকা",
+    features: ["৩০ পয়েন্ট", "সর্বোচ্চ ১টি বায়োডাটায় ১ বার বায়োডাটা শেয়ার", ""],
   },
   {
-    name: 'Standard Package',
-    price: '$49/month',
-    features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4'],
+    name: "স্ট্যান্ডার্ড প্যাকেজ",
+    price: "১০০ টাকা",
+    features: ["১০০ পয়েন্ট", "", "", ""],
   },
   {
-    name: 'Premium Package',
-    price: '$99/month',
-    features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5'],
+    name:"প্রিমিয়াম প্যাকেজ",
+    price: "২০০ টাকা",
+    features: ["২০০ পয়েন্ট", "", "", "", ""],
   },
   {
-    name: 'Pro Package',
-    price: '$149/month',
+    name: "প্রো প্যাকেজ",
+    price: "৩০০ টাকা",
     features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5', 'Feature 6'],
   },
   {
-    name: 'Enterprise Package',
-    price: '$299/month',
+    name: "এন্টারপ্রাইজ প্যাকেজ",
+    price: "৫০০ টাকা",
     features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5', 'Feature 6', 'Feature 7'],
   },
   {
-    name: 'Custom Package',
-    price: 'Contact us for pricing',
+    name: "কাস্টম প্যাকেজ",
+    price: 'ইনপুট দিন',
     features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5', 'Feature 6', 'Feature 7', 'Custom Features'],
   },
 ];
@@ -41,8 +41,8 @@ function Payments() {
       <h4  className="text-sm text-gray-500 font-bold text-center mb-8" >[বিকাশ , নগদ , রকেট দিয়ে পেমেন্ট করতে পারবেন]</h4>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {packages.map((packageItem, index) => (
-          <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold mb-4">{packageItem.name}</h2>
+          <div key={index} className="bg-white p-6 rounded-lg shadow-md border" style={{borderColor:Colors.titleText}}>
+            <h2 className="text-xl font-semibold mb-4" style={{color:Colors.titleText}}>{packageItem.name}</h2>
             <p className="text-gray-600 mb-4">{packageItem.price}</p>
             <ul className="text-gray-700 mb-4">
               {packageItem.features.map((feature, featureIndex) => (
