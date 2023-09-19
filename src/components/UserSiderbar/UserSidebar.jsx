@@ -1,10 +1,10 @@
 import { FcBusinessman } from "react-icons/fc";
 import { sidebarDetails } from "../../constants/Sidebardata";
-import OptionCart from "../../pages/EditBiodata/OptionCart";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 import { Colors } from "../../constants/colors";
+import OptionCart from "../OptionCart/OptionCart";
 
 const UserSidebar = () => {
   const navigate = useNavigate();

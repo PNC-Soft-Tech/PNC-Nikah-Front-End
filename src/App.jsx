@@ -5,11 +5,17 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import { RouterProvider } from "react-router-dom";
 import router from "./routes/Routes";
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
   const [count, setCount] = useState(0);
 
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <Toaster />
+    </>
+  );
 }
 
 export default App;

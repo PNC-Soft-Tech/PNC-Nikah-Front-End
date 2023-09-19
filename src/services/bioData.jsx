@@ -1,5 +1,8 @@
 import axios from "axios";
-const baseUrl = "https://nikkahbackend.mclabbu.xyz/api/v1";
+const baseUrl =
+  import.meta.env.VITE_REACT_APP_NODE_ENV === "development"
+    ? "http://localhost:3000/api/v1"
+    : "https://nikkahbackend.mclabbu.xyz/api/v1";
 
 const getAllDivisions = async () => {
   const response = await axios.get("/divisions.json");
@@ -55,10 +58,21 @@ const getBioData = async (id) => {
   return bioData;
 };
 
+const createGeneralInfo = async (data, token) => {
+  const generalInfo = await axios.post(baseUrl + "/general-info", data, {
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json",
+    },
+  });
+  return generalInfo.data;
+};
+
 export const BioDataServices = {
   getALLGeneralInfo,
   getBioData,
   getAllDivisions,
   getAllDistricts,
   getAllUpzilla,
+  createGeneralInfo,
 };

@@ -10,17 +10,15 @@ const ExpectedPartner = () => {
         প্রত্যাশিত জীবনসঙ্গী
       </h5>
       <table className="table-auto w-full">
-        <thead>
+        <tbody>
           <tr className="border-b border-t">
             <td className="px-4 py-2 text-left  w-1/2">বয়স</td>
             <td className="px-4 py-2 text-left  w-1/2 border-l">
               {expectedLifePartner?.age}
             </td>
           </tr>
-        </thead>
-        <tbody>
           <tr className="border-b">
-            <td className="px-4 py-2 text-left  w-1/2">গাত্রবর্ণ</td>
+            <td className="px-4 py-2 text-left  w-1/2"> গাত্রবর্ণ </td>
             <td className="px-4 py-2 text-left  w-1/2 border-l">
               {expectedLifePartner?.color}
             </td>

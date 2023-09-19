@@ -1,131 +1,132 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";
 import { Colors } from "../../constants/colors";
 import FormTitle from "../FormTitle/FormTitle";
+import {
+  bioDataTypes,
+  bloodGroup,
+  genderOptions,
+  heights,
+  maritalStatus,
+  nationalities,
+  screenColors,
+} from "./generalInfoForm.constant";
+import { userServices } from "../../services/user";
+import { BioDataServices } from "../../services/bioData";
+import UserContext from "../../contexts/UserContext";
+import toast from "react-hot-toast";
 
 const GeneralInfoForm = ({ userForm, setUserForm }) => {
+  const { tokenInfo, userInfo } = useContext(UserContext);
   // const [selectedOption, setSelectedOption] = useState('');
   const [bioType, setBioType] = useState("");
   const [status, setStatus] = useState("");
   const [dob, setDob] = useState("");
   const [height, setHeight] = useState("");
   const [color, setColor] = useState("");
-  const [weight, setWeight] = useState("40 kg");
+  const [weight, setWeight] = useState("৫০");
   const [blood, setBlood] = useState("");
-  const [nationality, setNationality] = useState("");
-
-  const bioDataTypes = [
-    { value: "পাত্রের বায়োডাটা " },
-    { value: "পাত্রীর বায়োডাটা " },
-  ];
-  const maritalStatus = [
-    { value: "অবিবাহিত" },
-    { value: "বিবাহিত" },
-    { value: "ডিভোর্সড" },
-    { value: "বিধবা" },
-    { value: "বিপত্নীক" },
-  ];
-
-  const screenColors = [
-    { value: "কালো" },
-    { value: "শ্যমলা" },
-    { value: "উজ্জ্বল শ্যামলা" },
-    { value: "ফর্সা" },
-    { value: "উজ্জ্বল ফর্সা" },
-  ];
-
-  const bloodGroup = [
-    { value: "A+" },
-    { value: "A-" },
-    { value: "AB+" },
-    { value: "AB-" },
-    { value: "B+" },
-    { value: "B-" },
-    { value: "O+" },
-    { value: "O-" },
-  ];
-  const nationalities = [
-    { value: "বাংলাদেশী" },
-    { value: "পাকিস্তানী" },
-    { value: "ভারতীয়" },
-    { value: "অন্যান্য " },
-  ];
-
-  const heights = [
-    { value: "৪ ফুটের কম " },
-    { value: "৪'" },
-    { value: "৪'১'" },
-    { value: "৪'২'" },
-    { value: "৪'৩'" },
-    { value: "৪'৪'" },
-    { value: "৪'৫'" },
-    { value: "৪'৬'" },
-    { value: "৪'৭'" },
-    { value: "৪'৮'" },
-    { value: "৪'৯'" },
-    { value: "৫'" },
-    { value: "৫'১'" },
-    { value: "৫'২'" },
-    { value: "৫'৩'" },
-    { value: "৫'৪'" },
-    { value: "৫'৫'" },
-    { value: "৫'৬'" },
-    { value: "৫'৭'" },
-    { value: "৫'৮'" },
-    { value: "৫'৯'" },
-    { value: "৬'" },
-    { value: "৬'২'" },
-    { value: "৬'৩'" },
-    { value: "৬'৪'" },
-    { value: "৬'৫'" },
-    { value: "৬'৫' ফুটের বেশি " },
-  ];
-
-  const handleOptionChange1 = (e) => {};
-
-  const handleOptionChange2 = (e) => {};
-  const handleOptionChange3 = (e) => {
-    setDob(e.target.value);
-  };
-  const handleOptionChange4 = (e) => {
-    setHeight(e.target.value);
-  };
-  const handleOptionChange5 = (e) => {
-    setColor(e.target.value);
-  };
-  const handleOptionChange6 = (e) => {
-    setWeight(e.target.value);
-  };
-  const handleOptionChange7 = (e) => {
-    setBlood(e.target.value);
-  };
-  const handleOptionChange8 = (e) => {
-    setNationality(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent the form from submitting (you can handle form submission here)
-  };
-
+  const [nationality, setNationality] = useState("বাংলাদেশী");
+  const [gender, setGender] = useState("");
+  const [filteredMaritalStatus, setFilteredMaritalStatus] =
+    useState(maritalStatus);
   const backButtonHandler = () => {
     if (userForm > 1) {
       setUserForm((prev) => prev - 1);
     }
   };
 
+  useEffect(() => {
+    if (bioType === "পাত্রের বায়োডাটা") {
+      setGender("পুরুষ");
+    } else if (bioType === "পাত্রীর বায়োডাটা") {
+      setGender("মহিলা");
+    }
+
+    if (gender === "পুরুষ") {
+      setFilteredMaritalStatus([
+        { value: "অবিবাহিত" },
+        { value: "বিবাহিত" },
+        { value: "ডিভোর্সড" },
+        { value: "বিপত্নীক" },
+      ]);
+    } else if (gender === "মহিলা") {
+      setFilteredMaritalStatus([
+        { value: "অবিবাহিত" },
+        { value: "বিবাহিত" },
+        { value: "ডিভোর্সড" },
+        { value: "বিধবা" },
+      ]);
+    }
+  }, [bioType, gender]);
+
+  const submitGeneralFormHandler = async (event) => {
+    event.preventDefault();
+    const formData = {
+      bio_type: bioType,
+      status: status,
+      date_of_birth: dob,
+      height: height,
+      screen_color: color,
+      weight: weight,
+      blood_group: blood,
+      nationality: nationality,
+      gender: gender,
+      user_id: userInfo?.data?.data[0]?.id,
+      isMarriageDone: false,
+      isFeatured: false,
+      isFbPosted: false,
+      user_form: userForm,
+      views_count: 0,
+      purchases_count: 0,
+    };
+
+    if (!tokenInfo?.token) {
+      alert("Please logout and try again");
+      return;
+    }
+
+    if (!userInfo?.data?.data[0].id) {
+      alert("Please login and try again");
+      return;
+    }
+
+    try {
+      const data = await BioDataServices.createGeneralInfo(
+        formData,
+        tokenInfo?.token
+      );
+
+      if(data?.success===true){
+        toast.success("আপনার tth")
+      }
+
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="container mx-auto mt-5">
       <FormTitle title="সাধারন তথ্য" />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={submitGeneralFormHandler}>
         <Select
           title="বায়োডাটার ধরণ"
           options={bioDataTypes}
           value={bioType}
           setValue={setBioType}
+          required
+        />
+        <Select
+          title="লিঙ্গ"
+          options={genderOptions}
+          value={gender}
+          setValue={setGender}
           required
         />
 
@@ -134,7 +135,7 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
           required
           value={status}
           setValue={setStatus}
-          options={maritalStatus}
+          options={filteredMaritalStatus}
         />
 
         <Input
@@ -167,6 +168,8 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
           setValue={setWeight}
           required
           type="text"
+          placeholder="৫০"
+          subtitle="বাংলা অংকে লিখুন,যেমনঃ ৫০,৫৫,৪২...।"
         />
 
         <Select
@@ -177,7 +180,7 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
           options={bloodGroup}
         />
         <Select
-          title="জাতীয়তা "
+          title="জাতীয়তা"
           required
           value={nationality}
           setValue={setNationality}

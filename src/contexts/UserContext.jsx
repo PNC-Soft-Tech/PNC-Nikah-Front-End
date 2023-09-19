@@ -35,6 +35,13 @@ export const UserProvider = ({ children }) => {
     },
   });
 
+  const { data: tokenInfo } = useQuery({
+    queryKey: ["user-info", "use-token", userInfo?.data?.data[0]?.token_id],
+    queryFn: async () => {
+      return await userServices.getUserToken(userInfo.data?.data[0]?.token_id);
+    },
+  });
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setLoading(false);
@@ -78,7 +85,8 @@ export const UserProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  console.log({ userInfo });
+  // console.log({ userInfo });
+  // console.log({ tokenInfo });
 
   return (
     <UserContext.Provider
@@ -95,6 +103,7 @@ export const UserProvider = ({ children }) => {
         setLoading,
         setUser,
         userInfo,
+        tokenInfo,
       }}
     >
       {children}

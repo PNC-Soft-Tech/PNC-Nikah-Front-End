@@ -24,7 +24,7 @@ const Select = ({
         <option value="">নির্বাচন করুন</option>
         {options.map((option, index) => (
           <option className="text-black" key={index} value={option?.value}>
-            {option?.value}
+            {option?.label ? option?.label : option?.value}
           </option>
         ))}
       </select>

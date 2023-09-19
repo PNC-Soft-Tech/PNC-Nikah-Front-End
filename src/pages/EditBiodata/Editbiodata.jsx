@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { BiSidebar } from "react-icons/bi";
-import Numbering from "./Numbering";
-import DropdownForm from "./GeneralForm";
+
 import Form from "../../components/Form/Form";
 import { ScrollToTop } from "../../constants/ScrolltoTop";
+import Numbering from "../../components/Numbering/Numbering";
 
 const EditBiodata = () => {
   const [userForm, setUserForm] = useState(1);

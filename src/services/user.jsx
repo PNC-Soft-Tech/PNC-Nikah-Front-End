@@ -1,5 +1,10 @@
 import axios from "axios";
-const baseUrl = "https://nikkahbackend.mclabbu.xyz/api/v1";
+const baseUrl =
+  import.meta.env.VITE_REACT_APP_NODE_ENV === "development"
+    ? "http://localhost:3000/api/v1"
+    : "https://nikkahbackend.mclabbu.xyz/api/v1";
+
+console.log(baseUrl);
 
 const createUserInfo = async (data) => {
   const generalInfo = await axios.post(baseUrl + "/user-info", data);
@@ -14,6 +19,14 @@ const createUserInfoForGoogleSignin = async (data) => {
   return generalInfo;
 };
 
+const getUserToken = async (tokenId) => {
+  if (!tokenId) {
+    return null;
+  }
+  const { data } = await axios.get(baseUrl + "/token/create-token/" + tokenId);
+  return data;
+};
+
 const getUserInfoByEmail = async (email) => {
   if (!email) {
     return null;
@@ -26,4 +39,5 @@ export const userServices = {
   createUserInfo,
   createUserInfoForGoogleSignin,
   getUserInfoByEmail,
+  getUserToken,
 };

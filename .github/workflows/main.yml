@@ -1,6 +1,6 @@
 #dangerous-clean-slate: true
 
-name: 🚀 Deploy one-by-zero website on push
+name: 🚀 Deploy PNC-Nikah-Front-End website on push
 on:
   push:
     branches:
@@ -16,6 +16,7 @@ jobs:
       VITE_REACT_APP_storageBucket: ${{ secrets.REACT_APP_STORAGEBUCKET }}
       VITE_REACT_APP_messagingSenderId: ${{ secrets.REACT_APP_MESSAGINGSENDERID }}
       VITE_REACT_APP_appId: ${{ secrets.REACT_APP_APPID }}
+      VITE_REACT_APP_NODE_ENV: ${{secrets.REACT_APP_NODE_ENV}}
     steps:
       - name: environment variable
         run: echo Hello world $REACT_APP_IMGBB_KEY
