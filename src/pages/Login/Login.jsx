@@ -90,7 +90,9 @@ export function Login() {
             type="submit"
             onClick={handleSignIn}
             className="mt-6 py-4"
-            fullWidth
+            fullWidth    style={{
+            background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
+          }}
           >
             Login
           </Button>

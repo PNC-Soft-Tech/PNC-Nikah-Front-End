@@ -45,7 +45,7 @@ const sidebarDetails = [
       <BiSolidAddToQueue className="h-8 w-8 text-[12px] p-1 bg-gray-100 rounded-md " />
     ),
     title: "আমার ক্রয়সমূহ ",
-    path: "/user/account/mybuy",
+    path: "/user/account/purchases",
   },
   {
     icon: (
@@ -59,6 +59,7 @@ const sidebarDetails = [
       <FiSettings className="h-8 w-8 text-[12px] p-1 bg-gray-100 rounded-md " />
     ),
     title: "সেটিংস ",
+     path: "/user/account/settings",
   },
   {
     icon: (

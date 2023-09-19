@@ -1,29 +1,8 @@
-.single-bio-left-sidebar .card-left,
-.single-bio-left-sidebar-stats,
-.shortlist,
-.copy-biodata-link {
-  background-color: #1d5b79;
-}
-.single-bio-person-img {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  /* align-items: center; */
-  margin: auto;
-}
-.single-bio-left-sidebar-content,
-.single-bio-left-sidebar-stats {
-  font-size: 13px;
-  color: white;
-}
-.single-bio-right-sidebar {
-  font-size: 13px;
-}
 .card-title {
-  color: #1d5b79;
+	color: #1d5b79;
 }
 .my-favs-info {
-  border-top-color: #1d5b79;
-  border-top-width: 2px;
-  font-size: 14px;
+	border-top-color: #1d5b79;
+	border-top-width: 2px;
+	font-size: 14px;
 }
