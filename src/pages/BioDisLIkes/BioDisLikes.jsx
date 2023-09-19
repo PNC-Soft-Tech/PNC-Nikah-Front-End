@@ -1,5 +1,6 @@
-const BioDisLikes = () => {
-  return <div>BioDisLikes</div>;
-};
+import UnFavorite from "../UnFavorite/UnFavorite";
 
+const BioDisLikes = () => {
+  return <UnFavorite />;
+};
 export default BioDisLikes;

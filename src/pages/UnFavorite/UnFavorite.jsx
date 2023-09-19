@@ -1,13 +1,13 @@
-import "./favorite.css";
-const Favorite = () => {
+import "./UnFavorite.css";
+const UnFavorite = () => {
   return (
     <div className="py-12 mx-auto ">
       <div className="">
         {/*<!-- End of Left Sidebar -->*/}
         <div className="col right-sidebar-main my-favs">
-          <div className="my-favs-info border-t-2 w-auto rounded shadow">
+          <div className="my-unfavs-info border-t-2 w-auto rounded shadow">
             <h5 className="card-title text-center text-2xl my-3">
-              আমার পছন্দসমুহ
+              আমার অপছন্দসমুহ
             </h5>
             <table className="table-auto w-full">
               <thead>
@@ -16,7 +16,7 @@ const Favorite = () => {
                   <th className="px-4 py-2 text-center w-1/9">বায়োডাটা নং</th>
                   <th className="px-4 py-2 text-center w-1/9">জন্ম তারিখ</th>
                   <th className="px-4 py-2 text-center w-1/9">ঠিকানা</th>
-                  <th className="px-4 py-2 text-center w-1/9">টোটাল পেয়েছে</th>
+                  <th className="px-4 py-2 text-center w-1/9">টোটাল প্রস্তাব পেয়েছে</th>
                   <th className="px-4 py-2 text-center w-1/9">
                     অ্যাপ্রুভাল রেট
                   </th>
@@ -205,4 +205,4 @@ const Favorite = () => {
   );
 };
 
-export default Favorite;
+export default UnFavorite;

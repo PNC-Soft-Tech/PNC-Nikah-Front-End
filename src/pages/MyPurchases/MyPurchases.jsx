@@ -1,5 +1,5 @@
-import "./favorite.css";
-const Favorite = () => {
+import "./MyPurchases.css";
+const MyPurchases = () => {
   return (
     <div className="py-12 mx-auto ">
       <div className="">
@@ -7,7 +7,7 @@ const Favorite = () => {
         <div className="col right-sidebar-main my-favs">
           <div className="my-favs-info border-t-2 w-auto rounded shadow">
             <h5 className="card-title text-center text-2xl my-3">
-              আমার পছন্দসমুহ
+              আমার Purchases
             </h5>
             <table className="table-auto w-full">
               <thead>
@@ -205,4 +205,4 @@ const Favorite = () => {
   );
 };
 
-export default Favorite;
+export default MyPurchases;

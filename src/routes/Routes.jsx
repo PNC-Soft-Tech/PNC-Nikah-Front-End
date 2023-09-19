@@ -9,10 +9,13 @@ import UserLayout from "../Layout/userLayout";
 import EditBiodata from "../pages/EditBiodata/Editbiodata";
 import DashBoard from "../pages/DashBoard/DashBoard";
 import BioLikes from "../pages/BioLikes/BioLikes";
+import BioDisLikes from "../pages/BioDisLikes/BioDisLikes";
 import MyReports from "../pages/MyReports/MyReports";
+import MyPurchases from "../pages/MyPurchases/MyPurchases";
 import SendForm from "../pages/SendForm/SendForm";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import Reports from "../pages/Reports/Reports";
+import Settings from "../pages/Settings/Settings";
 import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
 import TermsAndConditions from "../pages/TermsAndConditions/TermsAndConditions";
 import Instructions from "../pages/Instructions/Instructions";
@@ -105,15 +108,23 @@ const router = createBrowserRouter([
           { path: "/user/account/dashboard", element: <DashBoard /> },
           {
             path: "/user/account/dislikes",
-            element: <BioLikes />,
+            element: <BioDisLikes />,
           },
           {
             path: "/user/account/likes",
             element: <BioLikes />,
           },
           {
+            path: "/user/account/purchases",
+            element: <MyPurchases />,
+          },
+          {
             path: "/user/account/myreports",
             element: <MyReports />,
+          },
+          {
+            path: "/user/account/settings",
+            element: <Settings />,
           },
         ],
       },
