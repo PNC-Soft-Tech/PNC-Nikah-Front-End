@@ -47,7 +47,6 @@ function Settings() {
               </label>
             </div>
           </div>
-
           {/* Delete Account Button */}
           <div>
             <h2 className="text-xl font-semibold" style={{color:Colors.titleText}}>Delete Account</h2>
