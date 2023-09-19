@@ -9,7 +9,6 @@ import UserLayout from "../Layout/userLayout";
 import EditBiodata from "../pages/EditBiodata/Editbiodata";
 import DashBoard from "../pages/DashBoard/DashBoard";
 import BioLikes from "../pages/BioLikes/BioLikes";
-import BioDisLikes from "../pages/BioDisLikes/BioDisLikes";
 import MyReports from "../pages/MyReports/MyReports";
 import MyPurchases from "../pages/MyPurchases/MyPurchases";
 import SendForm from "../pages/SendForm/SendForm";
@@ -23,6 +22,7 @@ import Payments from "../pages/Payments/Payments";
 import RefundPolicy from "../pages/RefundPolicy/RefundPolicy";
 import Faq from "../pages/Faq/Faq";
 import ContactUs from "../pages/ContactUs/ContactUs";
+import BioDisLikes from "../pages/BioDisLIkes/BioDisLikes";
 
 const router = createBrowserRouter([
 	{
