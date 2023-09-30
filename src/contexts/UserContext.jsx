@@ -8,16 +8,13 @@ import {
 	sendPasswordResetEmail,
 	updateProfile,
 	updatePassword,
-	getAuth,
 	GoogleAuthProvider,
 	onAuthStateChanged,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-import app from "../firebase/app";
 import { useQuery } from "@tanstack/react-query";
 import { userServices } from "../services/user";
-const auth = getAuth(app);
-
+import { auth } from "../firebase/app.jsx";
 // Create a new context instance
 const UserContext = createContext();
 

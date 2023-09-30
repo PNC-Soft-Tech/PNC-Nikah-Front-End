@@ -6,11 +6,17 @@ import { useContext, useState } from "react";
 import UserContext from "../../contexts/UserContext";
 import { userServices } from "../../services/user";
 import { setToken } from "../../utils/cookies";
+import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
+import toast from "react-hot-toast";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { auth } from "../../firebase/app.jsx";
+
 export function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-
 	const { handleGoogleSignIn, signIn } = useContext(UserContext);
+	const [loading, setLoading] = useState(false);
+
 	const navigate = useNavigate();
 
 	const googleSignin = async () => {
@@ -68,10 +74,16 @@ export function Login() {
 	const handleSignIn = async (event) => {
 		event.preventDefault();
 		if (!email && !password) {
-			alert("Fill all the blank fields");
+			//alert("Fill all the blank fields");
+			toast.error("Fill all the blank fields", {
+				duration: 5000,
+				position: "bottom-right",
+				style: { backgroundColor: "red", color: "#fff" },
+			});
 			return;
 		}
 		try {
+			setLoading(true);
 			const response1 = await signIn(email, password);
 			console.log(
 				"🚀 ~ file: Login.jsx:56 ~ handleSignIn ~ response1:",
@@ -96,11 +108,40 @@ export function Login() {
 				});
 				navigate("/user/account/dashboard");
 			}
+			setLoading(false);
 		} catch (error) {
 			console.log(error);
-			alert(error?.message);
+			//	alert(error?.message);
+			toast.error("Invalid login credentials", {
+				duration: 5000,
+				position: "bottom-right",
+				style: { backgroundColor: "red", color: "#fff" },
+			});
+			setLoading(false);
 		}
 	};
+
+	sendPasswordResetEmail(auth, email)
+		.then(() => {
+			// Password reset email sent!
+			toast.success("Password reset email sent!", {
+				duration: 5000,
+				position: "bottom-right",
+				style: { backgroundColor: "red", color: "#fff" },
+			});
+			// ..
+		})
+		.catch((error) => {
+			const errorCode = error.code;
+			console.log("🚀 ~ file: Login.jsx:131 ~ Login ~ errorCode:", errorCode);
+			const errorMessage = error.message;
+			toast.error(errorMessage, {
+				duration: 5000,
+				position: "bottom-right",
+				style: { backgroundColor: "red", color: "#fff" },
+			});
+			// ..
+		});
 	return (
 		<div className="flex justify-center my-5">
 			<Card
@@ -132,13 +173,14 @@ export function Login() {
 						onClick={handleSignIn}
 						className="mt-6 py-4"
 						fullWidth
+						disabled={loading}
 						style={{
 							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
 						}}
 					>
-						Login
+						{loading ? <LoadingCircle /> : "Login"}
 					</Button>
-
+					<p className="mt-5 text-right">Forgot Password</p>
 					<div className="flex items-center my-4">
 						<p className="h-[1px] bg-gray-600 w-full"></p>
 						<span className="mx-2">OR</span>{" "}

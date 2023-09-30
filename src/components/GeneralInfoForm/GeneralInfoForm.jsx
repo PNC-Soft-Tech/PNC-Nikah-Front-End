@@ -122,6 +122,7 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 			isFbPosted: false,
 			views_count: 0,
 			purchases_count: 0,
+			user_form: userForm,
 		};
 
 		if (!getToken()?.token) {

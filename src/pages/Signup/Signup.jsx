@@ -13,6 +13,9 @@ import { useContext, useState } from "react";
 import UserContext from "../../contexts/UserContext";
 import { userServices } from "../../services/user";
 import { setToken } from "../../utils/cookies";
+import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
+import { sendFirebaseError } from "../../utils/fiirebaseError";
+import toast from "react-hot-toast";
 export function Signup() {
 	const { handleGoogleSignIn, createUser } = useContext(UserContext);
 	const navigate = useNavigate();
@@ -20,6 +23,7 @@ export function Signup() {
 	const [password, setPassword] = useState("");
 	const [username, setUsername] = useState("");
 	const [gender, setGender] = useState("");
+	const [loading, setLoading] = useState("");
 
 	const validateEmail = (email) => {
 		return String(email)
@@ -68,25 +72,47 @@ export function Signup() {
 	const signInWithEmailAndPassword = async (event) => {
 		event.preventDefault();
 		if (!validateEmail(email)) {
-			alert("Invalid Email");
+			//	alert("Invalid Email");
+			toast.error("Invalid Email", {
+				duration: 5000,
+				position: "bottom-right",
+				style: { backgroundColor: "red", color: "#fff" },
+			});
 			return;
 		}
 		if (!email || !password || !username || !gender) {
-			alert("Fill all the input fields");
+			//alert("Fill all the input fields");
+			toast.error("Fill all the input fields", {
+				duration: 5000,
+				position: "bottom-right",
+				style: { backgroundColor: "red", color: "#fff" },
+			});
 			return;
 		}
 
 		if (password.length < 5) {
-			alert("Password should be at least six characters");
+			//	alert("Password should be at least six characters");
+			toast.error("Password should be at least six characters", {
+				duration: 5000,
+				position: "bottom-right",
+				style: { backgroundColor: "red", color: "#fff" },
+			});
 			return;
 		}
 
 		try {
 			//! create user in firebase
+			setLoading(true);
+
 			const response1 = await createUser(email, password);
 
 			if (!response1?.user?.uid) {
-				alert("Something went wrong,please try again");
+				//	alert("Something went wrong,please try again");
+				toast.error("Something went wrong,please try again", {
+					duration: 5000,
+					position: "bottom-right",
+					style: { backgroundColor: "red", color: "#fff" },
+				});
 				return;
 			}
 
@@ -113,8 +139,18 @@ export function Signup() {
 				});
 				navigate("/user/account/dashboard");
 			}
+			setLoading(false);
 		} catch (error) {
-			alert(error?.response?.data?.message || error.message);
+			//alert(error?.response?.data?.message || error.message);
+			toast.error(
+				sendFirebaseError(error?.response?.data?.message || error.message),
+				{
+					duration: 5000,
+					position: "bottom-right",
+					style: { backgroundColor: "red", color: "#fff" },
+				}
+			);
+			setLoading(false);
 		}
 	};
 
@@ -190,8 +226,9 @@ export function Signup() {
 						onClick={signInWithEmailAndPassword}
 						className="mt-6 py-4"
 						fullWidth
+						disabled={loading}
 					>
-						Register
+						{loading ? <LoadingCircle /> : "Register"}
 					</Button>
 
 					<div className="flex items-center my-4">
