@@ -237,7 +237,9 @@ export function Signup() {
 						<p className="h-[1px] bg-gray-600 w-full"></p>
 					</div>
 					<Button
-						style={{ backgroundColor: Colors.primary900 }}
+						style={{
+							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
+						}}
 						className=" w-full"
 					>
 						<div

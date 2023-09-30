@@ -23,6 +23,7 @@ import RefundPolicy from "../pages/RefundPolicy/RefundPolicy";
 import Faq from "../pages/Faq/Faq";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import BioDisLikes from "../pages/BioDisLIkes/BioDisLikes";
+import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 
 const router = createBrowserRouter([
 	{
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
 			{
 				path: "/contact-us",
 				element: <ContactUs />,
+			},
+			{
+				path: "/forgot-password",
+				element: <ForgotPassword />,
 			},
 			{
 				path: "/user/account",
