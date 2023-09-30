@@ -7,207 +7,271 @@ import Input from "../../components/Input/Input";
 import { Colors } from "../../constants/colors";
 import FormTitle from "../FormTitle/FormTitle";
 import {
-  bioDataTypes,
-  bloodGroup,
-  genderOptions,
-  heights,
-  maritalStatus,
-  nationalities,
-  screenColors,
+	bioDataTypes,
+	bloodGroup,
+	genderOptions,
+	heights,
+	maritalStatus,
+	nationalities,
+	screenColors,
 } from "./generalInfoForm.constant";
 import { userServices } from "../../services/user";
 import { BioDataServices } from "../../services/bioData";
 import UserContext from "../../contexts/UserContext";
 import toast from "react-hot-toast";
+import { useQuery } from "@tanstack/react-query";
+import { getDateMonthYear, getYearMonthDate } from "../../utils/date";
+import { getToken } from "../../utils/cookies";
 
 const GeneralInfoForm = ({ userForm, setUserForm }) => {
-  const { tokenInfo, userInfo } = useContext(UserContext);
-  // const [selectedOption, setSelectedOption] = useState('');
-  const [bioType, setBioType] = useState("");
-  const [status, setStatus] = useState("");
-  const [dob, setDob] = useState("");
-  const [height, setHeight] = useState("");
-  const [color, setColor] = useState("");
-  const [weight, setWeight] = useState("৫০");
-  const [blood, setBlood] = useState("");
-  const [nationality, setNationality] = useState("বাংলাদেশী");
-  const [gender, setGender] = useState("");
-  const [filteredMaritalStatus, setFilteredMaritalStatus] =
-    useState(maritalStatus);
-  const backButtonHandler = () => {
-    if (userForm > 1) {
-      setUserForm((prev) => prev - 1);
-    }
-  };
+	const { userInfo } = useContext(UserContext);
+	const [bioType, setBioType] = useState("");
+	const [status, setStatus] = useState("");
+	const [dob, setDob] = useState("");
+	const [height, setHeight] = useState("");
+	const [color, setColor] = useState("");
+	const [weight, setWeight] = useState("৫০");
+	const [blood, setBlood] = useState("");
+	const [nationality, setNationality] = useState("বাংলাদেশী");
+	const [gender, setGender] = useState("");
+	const [filteredMaritalStatus, setFilteredMaritalStatus] =
+		useState(maritalStatus);
 
-  useEffect(() => {
-    if (bioType === "পাত্রের বায়োডাটা") {
-      setGender("পুরুষ");
-    } else if (bioType === "পাত্রীর বায়োডাটা") {
-      setGender("মহিলা");
-    }
+	const { data: generalInfo = null } = useQuery({
+		queryKey: ["general-info", userInfo?.data[0]?.id],
+		queryFn: async () => {
+			return await userServices.getGeneralInfoByUserId(userInfo?.data[0]?.id);
+		},
+	});
 
-    if (gender === "পুরুষ") {
-      setFilteredMaritalStatus([
-        { value: "অবিবাহিত" },
-        { value: "বিবাহিত" },
-        { value: "ডিভোর্সড" },
-        { value: "বিপত্নীক" },
-      ]);
-    } else if (gender === "মহিলা") {
-      setFilteredMaritalStatus([
-        { value: "অবিবাহিত" },
-        { value: "বিবাহিত" },
-        { value: "ডিভোর্সড" },
-        { value: "বিধবা" },
-      ]);
-    }
-  }, [bioType, gender]);
+	useEffect(() => {
+		console.log(generalInfo?.data);
+		if (generalInfo?.data) {
+			const {
+				gender,
+				bio_type,
+				date_of_birth,
+				height,
+				nationality,
+				screen_color,
+				status,
+				weight,
+				blood_group,
+			} = generalInfo.data;
 
-  const submitGeneralFormHandler = async (event) => {
-    event.preventDefault();
-    const formData = {
-      bio_type: bioType,
-      status: status,
-      date_of_birth: dob,
-      height: height,
-      screen_color: color,
-      weight: weight,
-      blood_group: blood,
-      nationality: nationality,
-      gender: gender,
-      user_id: userInfo?.data?.data[0]?.id,
-      isMarriageDone: false,
-      isFeatured: false,
-      isFbPosted: false,
-      user_form: userForm,
-      views_count: 0,
-      purchases_count: 0,
-    };
+			setGender(gender);
+			setBioType(bio_type);
+			setStatus(status);
+			setBlood(blood_group);
+			setDob(getYearMonthDate(date_of_birth));
+			setNationality(nationality);
+			setHeight(height);
+			setWeight(weight);
+			setColor(screen_color);
+		}
+	}, [generalInfo]);
 
-    if (!tokenInfo?.token) {
-      alert("Please logout and try again");
-      return;
-    }
+	// console.log(userInfo?.data[0]?.id);
 
-    if (!userInfo?.data?.data[0].id) {
-      alert("Please login and try again");
-      return;
-    }
+	const backButtonHandler = () => {
+		if (userForm > 1) {
+			setUserForm((prev) => prev - 1);
+		}
+	};
 
-    try {
-      const data = await BioDataServices.createGeneralInfo(
-        formData,
-        tokenInfo?.token
-      );
+	useEffect(() => {
+		if (bioType === "পাত্রের বায়োডাটা") {
+			setGender("পুরুষ");
+		} else if (bioType === "পাত্রীর বায়োডাটা") {
+			setGender("মহিলা");
+		}
 
-      if(data?.success===true){
-        toast.success("আপনার tth")
-      }
+		if (gender === "পুরুষ") {
+			setFilteredMaritalStatus([
+				{ value: "অবিবাহিত" },
+				{ value: "বিবাহিত" },
+				{ value: "ডিভোর্সড" },
+				{ value: "বিপত্নীক" },
+			]);
+		} else if (gender === "মহিলা") {
+			setFilteredMaritalStatus([
+				{ value: "অবিবাহিত" },
+				{ value: "বিবাহিত" },
+				{ value: "ডিভোর্সড" },
+				{ value: "বিধবা" },
+			]);
+		}
+	}, [bioType, gender]);
 
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+	const submitGeneralFormHandler = async (event) => {
+		event.preventDefault();
 
-  return (
-    <div className="container mx-auto mt-5">
-      <FormTitle title="সাধারন তথ্য" />
-      <form onSubmit={submitGeneralFormHandler}>
-        <Select
-          title="বায়োডাটার ধরণ"
-          options={bioDataTypes}
-          value={bioType}
-          setValue={setBioType}
-          required
-        />
-        <Select
-          title="লিঙ্গ"
-          options={genderOptions}
-          value={gender}
-          setValue={setGender}
-          required
-        />
+		const formData = {
+			bio_type: bioType,
+			status: status,
+			date_of_birth: dob,
+			height: height,
+			screen_color: color,
+			weight: weight,
+			blood_group: blood,
+			nationality: nationality,
+			gender: gender,
+			user_id: userInfo?.data[0]?.id,
+			isMarriageDone: false,
+			isFeatured: false,
+			isFbPosted: false,
+			views_count: 0,
+			purchases_count: 0,
+		};
 
-        <Select
-          title="বৈবাহিক অবস্থা "
-          required
-          value={status}
-          setValue={setStatus}
-          options={filteredMaritalStatus}
-        />
+		if (!getToken()?.token) {
+			alert("Please logout and try again");
+			return;
+		}
 
-        <Input
-          title={"জন্মসন "}
-          value={dob}
-          setValue={setDob}
-          required
-          type="date"
-        />
+		if (!userInfo?.data[0].id) {
+			alert("Please login and try again");
+			return;
+		}
 
-        <Select
-          title="উচ্চতা "
-          required
-          value={height}
-          setValue={setHeight}
-          options={heights}
-        />
+		try {
+			if (generalInfo?.success) {
+				const data = await userServices.updateGeneralInfo(
+					formData,
+					getToken().token
+				);
 
-        <Select
-          title="গাত্রবর্ণ"
-          required
-          value={color}
-          setValue={setColor}
-          options={screenColors}
-        />
+				console.log(getToken()?.token);
 
-        <Input
-          title={"ওজন (KG) "}
-          value={weight}
-          setValue={setWeight}
-          required
-          type="text"
-          placeholder="৫০"
-          subtitle="বাংলা অংকে লিখুন,যেমনঃ ৫০,৫৫,৪২...।"
-        />
+				if (data.success) {
+					toast.success("আপনার তথ্য আপডেট  করা হয়েছে ", {
+						position: "bottom-right",
+						duration: 3000,
+					});
+					setUserForm((prev) => prev + 1);
+				}
 
-        <Select
-          title="রক্তের গ্রুপ "
-          required
-          value={blood}
-          setValue={setBlood}
-          options={bloodGroup}
-        />
-        <Select
-          title="জাতীয়তা"
-          required
-          value={nationality}
-          setValue={setNationality}
-          options={nationalities}
-        />
+				// console.log(data);
+			} else {
+				const data = await BioDataServices.createGeneralInfo(
+					formData,
+					getToken().token
+				);
 
-        <div className="flex items-center my-5 justify-between">
-          <button
-            type="button"
-            onClick={backButtonHandler}
-            className="bg-gray-700 text-xl  px-5 text-white py-2  rounded-3xl"
-          >
-            Back
-          </button>
-          <button
-            type="submit"
-            className="text-xl  px-5 text-white py-2 rounded-3xl"
-            style={{
-              background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight})`,
-            }}
-          >
-            Save & Next
-          </button>
-        </div>
-      </form>
-    </div>
-  );
+				console.log(data);
+
+				if (data.success) {
+					toast.success("আপনার তথ্য সেভ করা হয়েছে ", {
+						position: "bottom-right",
+						duration: 3000,
+					});
+					setUserForm((prev) => prev + 1);
+				}
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	// console.log(tokenInfo);
+
+	return (
+		<div className="container mx-auto mt-5">
+			<FormTitle title="সাধারন তথ্য" />
+			<form onSubmit={submitGeneralFormHandler}>
+				<Select
+					title="বায়োডাটার ধরণ"
+					options={bioDataTypes}
+					value={bioType}
+					setValue={setBioType}
+					required
+				/>
+				<Select
+					title="লিঙ্গ"
+					options={genderOptions}
+					value={gender}
+					setValue={setGender}
+					required
+				/>
+
+				<Select
+					title="বৈবাহিক অবস্থা "
+					required
+					value={status}
+					setValue={setStatus}
+					options={filteredMaritalStatus}
+				/>
+
+				<Input
+					title={"জন্মসন "}
+					value={dob}
+					setValue={setDob}
+					required
+					type="date"
+				/>
+
+				<Select
+					title="উচ্চতা "
+					required
+					value={height}
+					setValue={setHeight}
+					options={heights}
+				/>
+
+				<Select
+					title="গাত্রবর্ণ"
+					required
+					value={color}
+					setValue={setColor}
+					options={screenColors}
+				/>
+
+				<Input
+					title={"ওজন (KG) "}
+					value={weight}
+					setValue={setWeight}
+					required
+					type="text"
+					placeholder="৫০"
+					subtitle="বাংলা অংকে লিখুন,যেমনঃ ৫০,৫৫,৪২...।"
+				/>
+
+				<Select
+					title="রক্তের গ্রুপ "
+					required
+					value={blood}
+					setValue={setBlood}
+					options={bloodGroup}
+				/>
+				<Select
+					title="জাতীয়তা"
+					required
+					value={nationality}
+					setValue={setNationality}
+					options={nationalities}
+				/>
+
+				<div className="flex items-center my-5 justify-between">
+					<button
+						type="button"
+						onClick={backButtonHandler}
+						className="bg-gray-700 text-xl  px-5 text-white py-2  rounded-3xl"
+					>
+						Back
+					</button>
+					<button
+						type="submit"
+						className="text-xl  px-5 text-white py-2 rounded-3xl"
+						style={{
+							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight})`,
+						}}
+					>
+						Save & Next
+					</button>
+				</div>
+			</form>
+		</div>
+	);
 };
 
 export default GeneralInfoForm;

@@ -8,14 +8,14 @@ import router from "./routes/Routes";
 import toast, { Toaster } from "react-hot-toast";
 
 function App() {
-  const [count, setCount] = useState(0);
+	const [count, setCount] = useState(0);
 
-  return (
-    <>
-      <RouterProvider router={router} />
-      <Toaster />
-    </>
-  );
+	return (
+		<>
+			<Toaster />
+			<RouterProvider router={router} />
+		</>
+	);
 }
 
 export default App;
