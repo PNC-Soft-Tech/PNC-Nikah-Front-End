@@ -148,6 +148,7 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 					toast.success("আপনার তথ্য আপডেট  করা হয়েছে ", {
 						position: "bottom-right",
 						duration: 3000,
+						style: { backgroundColor: "green", color: "#fff" },
 					});
 					setUserForm((prev) => prev + 1);
 				}
@@ -165,6 +166,7 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 					toast.success("আপনার তথ্য সেভ করা হয়েছে ", {
 						position: "bottom-right",
 						duration: 3000,
+						style: { backgroundColor: "green", color: "#fff" },
 					});
 					setUserForm((prev) => prev + 1);
 				}

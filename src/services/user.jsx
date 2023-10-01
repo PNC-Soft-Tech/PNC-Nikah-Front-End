@@ -97,6 +97,235 @@ const getAddressInfoByUserId = async (id) => {
 	return data;
 };
 
+const updateEducationalQualification = async (updatedData, token) => {
+	if (!updatedData || !token) {
+		return null;
+	}
+	const { data } = await axios.put(
+		baseUrl + `/educational-qualification`,
+		updatedData,
+		{
+			headers: {
+				Authorization: token,
+				"Content-Type": "application/json",
+			},
+		}
+	);
+	return data;
+};
+const updateFamilyInfo = async (updatedData, token) => {
+	if (!updatedData || !token) {
+		return null;
+	}
+	const { data } = await axios.put(baseUrl + `/family-status`, updatedData, {
+		headers: {
+			Authorization: token,
+			"Content-Type": "application/json",
+		},
+	});
+	return data;
+};
+const updatePersonalInfo = async (updatedData, token) => {
+	if (!updatedData || !token) {
+		return null;
+	}
+	const { data } = await axios.put(baseUrl + `/personal-info`, updatedData, {
+		headers: {
+			Authorization: token,
+			"Content-Type": "application/json",
+		},
+	});
+	return data;
+};
+const updateOccupation = async (updatedData, token) => {
+	if (!updatedData || !token) {
+		return null;
+	}
+	const { data } = await axios.put(baseUrl + `/personal-info`, updatedData, {
+		headers: {
+			Authorization: token,
+			"Content-Type": "application/json",
+		},
+	});
+	return data;
+};
+const updateOngikarNama = async (updatedData, token) => {
+	if (!updatedData || !token) {
+		return null;
+	}
+	const { data } = await axios.put(baseUrl + `/ongikar-nama`, updatedData, {
+		headers: {
+			Authorization: token,
+			"Content-Type": "application/json",
+		},
+	});
+	return data;
+};
+const updateContact = async (updatedData, token) => {
+	if (!updatedData || !token) {
+		return null;
+	}
+	const { data } = await axios.put(baseUrl + `/contact`, updatedData, {
+		headers: {
+			Authorization: token,
+			"Content-Type": "application/json",
+		},
+	});
+	return data;
+};
+const updateExpectedLifePartner = async (updatedData, token) => {
+	if (!updatedData || !token) {
+		return null;
+	}
+	const { data } = await axios.put(
+		baseUrl + `/expected-life-partner`,
+		updatedData,
+		{
+			headers: {
+				Authorization: token,
+				"Content-Type": "application/json",
+			},
+		}
+	);
+	return data;
+};
+
+const createEducationalQualification = async (data, token) => {
+	const educationalQualification = await axios.post(
+		baseUrl + "/educational-qualification",
+		data,
+		{
+			headers: {
+				Authorization: token,
+				"Content-Type": "application/json",
+			},
+		}
+	);
+	return educationalQualification.data;
+};
+const createFamilyInfo = async (data, token) => {
+	const familyInfo = await axios.post(baseUrl + "/family-status", data, {
+		headers: {
+			Authorization: token,
+			"Content-Type": "application/json",
+		},
+	});
+	return familyInfo.data;
+};
+const createPersonalInfo = async (data, token) => {
+	const response = await axios.post(baseUrl + "/personal-info", data, {
+		headers: {
+			Authorization: token,
+			"Content-Type": "application/json",
+		},
+	});
+	return response.data;
+};
+const createOccupation = async (data, token) => {
+	const response = await axios.post(baseUrl + "/occupation", data, {
+		headers: {
+			Authorization: token,
+			"Content-Type": "application/json",
+		},
+	});
+	return response.data;
+};
+const createOngikarNama = async (data, token) => {
+	const response = await axios.post(baseUrl + "/ongikar-nama", data, {
+		headers: {
+			Authorization: token,
+			"Content-Type": "application/json",
+		},
+	});
+	return response.data;
+};
+const createContact = async (data, token) => {
+	const response = await axios.post(baseUrl + "/contact", data, {
+		headers: {
+			Authorization: token,
+			"Content-Type": "application/json",
+		},
+	});
+	return response.data;
+};
+const createExpectedLifePartner = async (data, token) => {
+	const response = await axios.post(baseUrl + "/expected-life-partner", data, {
+		headers: {
+			Authorization: token,
+			"Content-Type": "application/json",
+		},
+	});
+	return response.data;
+};
+
+const getEducationalQualificationByUserId = async (id) => {
+	if (!id) {
+		return null;
+	}
+	console.log(id);
+	const { data } = await axios.get(
+		baseUrl + `/educational-qualification/${id}/user-id`
+	);
+	console.log(data);
+	return data;
+};
+const getFamilyInfoByUserId = async (id) => {
+	if (!id) {
+		return null;
+	}
+	console.log(id);
+	const { data } = await axios.get(baseUrl + `/family-status/${id}/user-id`);
+	console.log(data);
+	return data;
+};
+const getPersonalInfoByUserId = async (id) => {
+	if (!id) {
+		return null;
+	}
+	console.log(id);
+	const { data } = await axios.get(baseUrl + `/personal-info/${id}/user-id`);
+	console.log(data);
+	return data;
+};
+const getOccupationInfoByUserId = async (id) => {
+	if (!id) {
+		return null;
+	}
+	console.log(id);
+	const { data } = await axios.get(baseUrl + `/occupation/${id}/user-id`);
+	console.log(data);
+	return data;
+};
+const getOngikarNamaByUserId = async (id) => {
+	if (!id) {
+		return null;
+	}
+	console.log(id);
+	const { data } = await axios.get(baseUrl + `/ongikar-nama/${id}/user-id`);
+	console.log(data);
+	return data;
+};
+const getContactByUserId = async (id) => {
+	if (!id) {
+		return null;
+	}
+	console.log(id);
+	const { data } = await axios.get(baseUrl + `/contact/${id}/user-id`);
+	console.log(data);
+	return data;
+};
+const getExpectedLifePartnerByUserId = async (id) => {
+	if (!id) {
+		return null;
+	}
+	console.log(id);
+	const { data } = await axios.get(
+		baseUrl + `/expected-life-partner/${id}/user-id`
+	);
+	console.log(data);
+	return data;
+};
+
 export const userServices = {
 	createUserInfo,
 	createUserInfoForGoogleSignIn,
@@ -108,4 +337,25 @@ export const userServices = {
 	updateAddressInfo,
 	createAddressInfo,
 	verifyToken,
+	updateEducationalQualification,
+	createEducationalQualification,
+	getEducationalQualificationByUserId,
+	createFamilyInfo,
+	getFamilyInfoByUserId,
+	updateFamilyInfo,
+	getPersonalInfoByUserId,
+	createPersonalInfo,
+	updatePersonalInfo,
+	getOccupationInfoByUserId,
+	updateOccupation,
+	createOccupation,
+	getOngikarNamaByUserId,
+	updateOngikarNama,
+	createOngikarNama,
+	getContactByUserId,
+	createContact,
+	updateContact,
+	getExpectedLifePartnerByUserId,
+	updateExpectedLifePartner,
+	createExpectedLifePartner,
 };
