@@ -125,7 +125,7 @@ const ContactInfoForm = ({ userForm, setUserForm }) => {
 		<div>
 			<FormTitle title="যোগাযোগ" />
 			<form onSubmit={submitHandler} action="">
-				{gender === "মহিলা" && (
+				{gender === "মহিলা" ? (
 					<Input
 						title="পাত্রীর নাম"
 						required
@@ -133,14 +133,18 @@ const ContactInfoForm = ({ userForm, setUserForm }) => {
 						setValue={setFullName}
 						subtitle="পূর্ণ নাম লিখুন"
 					/>
+				) : (
+					gender === "পুরুষ" && (
+						<Input
+							title="পাত্রের নাম "
+							required
+							value={fullName}
+							setValue={setFullName}
+							subtitle="পূর্ণ নাম লিখুন"
+						/>
+					)
 				)}
-				<Input
-					title="পাত্রের নাম "
-					required
-					value={fullName}
-					setValue={setFullName}
-					subtitle="পূর্ণ নাম লিখুন"
-				/>
+
 				<Input
 					title="অভিভাবকের মোবাইল নাম্বার  "
 					required
