@@ -106,7 +106,7 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 	const submitGeneralFormHandler = async (event) => {
 		event.preventDefault();
 
-		const formData = {
+		let formData = {
 			bio_type: bioType,
 			status: status,
 			date_of_birth: dob,
@@ -122,7 +122,6 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 			isFbPosted: false,
 			views_count: 0,
 			purchases_count: 0,
-			user_form: userForm,
 		};
 
 		if (!getToken()?.token) {
@@ -156,7 +155,7 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 				// console.log(data);
 			} else {
 				const data = await BioDataServices.createGeneralInfo(
-					formData,
+					{ ...formData, user_form: userForm },
 					getToken().token
 				);
 
