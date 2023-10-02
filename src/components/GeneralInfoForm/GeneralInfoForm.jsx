@@ -22,6 +22,7 @@ import toast from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 import { getDateMonthYear, getYearMonthDate } from "../../utils/date";
 import { getToken } from "../../utils/cookies";
+import LoadingCircle from "../LoadingCircle/LoadingCircle";
 
 const GeneralInfoForm = ({ userForm, setUserForm }) => {
 	const { userInfo } = useContext(UserContext);
@@ -36,6 +37,8 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 	const [gender, setGender] = useState("");
 	const [filteredMaritalStatus, setFilteredMaritalStatus] =
 		useState(maritalStatus);
+
+	const [loading, setLoading] = useState(false);
 
 	const { data: generalInfo = null } = useQuery({
 		queryKey: ["general-info", userInfo?.data[0]?.id],
@@ -136,6 +139,7 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 
 		try {
 			if (generalInfo?.success) {
+				setLoading(true);
 				const data = await userServices.updateGeneralInfo(
 					formData,
 					getToken().token
@@ -151,9 +155,11 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 					});
 					setUserForm((prev) => prev + 1);
 				}
-
+				setLoading(false);
 				// console.log(data);
 			} else {
+				setLoading(true);
+
 				const data = await BioDataServices.createGeneralInfo(
 					{ ...formData, user_form: userForm },
 					getToken().token
@@ -169,8 +175,16 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 					});
 					setUserForm((prev) => prev + 1);
 				}
+				setLoading(false);
 			}
 		} catch (error) {
+			toast.success(error?.response?.data?.message || "Something Went wrong", {
+				position: "bottom-right",
+				duration: 3000,
+				style: { backgroundColor: "#FF0000", color: "#fff" },
+			});
+			setLoading(false);
+
 			console.log(error);
 		}
 	};
@@ -268,7 +282,7 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight})`,
 						}}
 					>
-						Save & Next
+						{loading ? <LoadingCircle /> : "Save & Next"}
 					</button>
 				</div>
 			</form>

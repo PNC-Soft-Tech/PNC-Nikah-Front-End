@@ -88,7 +88,7 @@ const FamilyInfoForm = ({ setUserForm, userForm }) => {
 
 	const submitHandler = async (e) => {
 		e.preventDefault();
-		
+
 		const familyInfoData = {
 			father_name: fatherName,
 			father_occupation: fatherJob,
@@ -161,8 +161,13 @@ const FamilyInfoForm = ({ setUserForm, userForm }) => {
 			}
 		} catch (error) {
 			setLoading(false);
-			await logOut();
-			navigate("/");
+			// await logOut();
+			// navigate("/");
+			toast.success(error?.response?.data?.message || "Something Went wrong", {
+				position: "bottom-right",
+				duration: 3000,
+				style: { backgroundColor: "#FF0000", color: "#fff" },
+			});
 			console.log(error);
 		}
 	};

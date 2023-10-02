@@ -115,6 +115,11 @@ const ContactInfoForm = ({ userForm, setUserForm }) => {
 			}
 		} catch (error) {
 			setLoading(false);
+			toast.success(error?.response?.data?.message || "Something Went wrong", {
+				position: "bottom-right",
+				duration: 3000,
+				style: { backgroundColor: "#FF0000", color: "#fff" },
+			});
 			// await logOut();
 			// navigate("/");
 			console.log(error);

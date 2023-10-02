@@ -189,6 +189,18 @@ const updateExpectedLifePartner = async (updatedData, token) => {
 	);
 	return data;
 };
+const updateMaritalInfo = async (updatedData, token) => {
+	if (!updatedData || !token) {
+		return null;
+	}
+	const { data } = await axios.put(baseUrl + `/marital-info`, updatedData, {
+		headers: {
+			Authorization: token,
+			"Content-Type": "application/json",
+		},
+	});
+	return data;
+};
 
 const createEducationalQualification = async (data, token) => {
 	const educationalQualification = await axios.post(
@@ -250,6 +262,15 @@ const createContact = async (data, token) => {
 };
 const createExpectedLifePartner = async (data, token) => {
 	const response = await axios.post(baseUrl + "/expected-life-partner", data, {
+		headers: {
+			Authorization: token,
+			"Content-Type": "application/json",
+		},
+	});
+	return response.data;
+};
+const createMaritalInfo = async (data, token) => {
+	const response = await axios.post(baseUrl + "/marital-info", data, {
 		headers: {
 			Authorization: token,
 			"Content-Type": "application/json",
@@ -325,6 +346,15 @@ const getExpectedLifePartnerByUserId = async (id) => {
 	console.log(data);
 	return data;
 };
+const getMaritalInfoByUserId = async (id) => {
+	if (!id) {
+		return null;
+	}
+	console.log(id);
+	const { data } = await axios.get(baseUrl + `/marital-info/${id}/user-id`);
+	console.log(data);
+	return data;
+};
 
 export const userServices = {
 	createUserInfo,
@@ -358,4 +388,7 @@ export const userServices = {
 	getExpectedLifePartnerByUserId,
 	updateExpectedLifePartner,
 	createExpectedLifePartner,
+	getMaritalInfoByUserId,
+	createMaritalInfo,
+	updateMaritalInfo,
 };
