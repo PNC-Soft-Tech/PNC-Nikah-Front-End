@@ -215,6 +215,8 @@ const PersonalInfoForm = ({ setUserForm, userForm }) => {
 		}
 	};
 
+	console.log(personalInfo);
+
 	return (
 		<div className="mt-5">
 			<FormTitle title="ব্যক্তিগত তথ্য" />

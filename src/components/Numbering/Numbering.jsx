@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import {
 	VerticalTimeline,
 	VerticalTimelineElement,
@@ -8,8 +8,15 @@ import {
 import "react-vertical-timeline-component/style.min.css"; // Import the CSS for styling
 import { FaCheck } from "react-icons/fa";
 import { Colors } from "../../constants/colors";
+import UserContext from "../../contexts/UserContext";
 
 const Numbering = ({ setUserForm, userForm }) => {
+	const { userInfo } = useContext(UserContext);
+
+	const lastEditedIndex = userInfo?.data[0]?.last_edited_timeline_index || 1;
+	const editedTimelineIndex = userInfo?.data[0]?.edited_timeline_index || 1;
+	console.log("Numbering", userInfo);
+
 	const titles = [
 		"সাধারণ তথ্য",
 		"ঠিকানা",
@@ -23,7 +30,9 @@ const Numbering = ({ setUserForm, userForm }) => {
 		"যোগাযোগ ",
 	];
 	const clickableICon = (index) => {
-		setUserForm(index);
+		if (index <= editedTimelineIndex + 1) {
+			setUserForm(index);
+		}
 	};
 	return (
 		<VerticalTimeline lineColor="green" className="" layout="1-column-right">
@@ -38,14 +47,16 @@ const Numbering = ({ setUserForm, userForm }) => {
 						background:
 							index + 1 === userForm
 								? "purple"
-								: index + 1 <= userForm
+								: index + 1 <= editedTimelineIndex
 								? "green"
 								: Colors.pncPrimaryColor,
 						color: "#fff",
 						display: "flex",
 						justifyContent: "center",
 						alignItems: "center",
-						cursor: "pointer",
+						cursor: `${
+							index <= editedTimelineIndex + 1 ? "pointer" : "not-allowed"
+						}`,
 					}}
 					icon={
 						index + 1 <= userForm ? (
