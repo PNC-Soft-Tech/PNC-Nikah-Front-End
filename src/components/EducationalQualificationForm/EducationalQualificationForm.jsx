@@ -108,6 +108,32 @@ const EducationalQualificationForm = ({ setUserForm, userForm }) => {
 				hons_year,
 				hons_sub,
 				after_ssc_medium,
+				hons_pass_year,
+				msc_sub,
+				msc_pass_year,
+				msc_inst,
+				phd_pass_year,
+				phd_inst,
+				phd_sub,
+				ibti_result,
+				ibti_pass_year,
+				ibti_inst,
+				mutawas_inst,
+				mutawas_pass_year,
+				mutawas_result,
+				sanabiya_inst,
+				sanabiya_result,
+				sanabiya_pass_year,
+				fozilat_inst,
+				fozilat_result,
+				fozilat_pass_year,
+				takmil_inst,
+				takmil_result,
+				takmil_pass_year,
+				takhassus_inst,
+				takhassus_result,
+				takhassus_sub,
+				takhassus_pass_year,
 			} = educationalQualification.data;
 			if (education_medium) {
 				setEduType(education_medium);
@@ -172,6 +198,85 @@ const EducationalQualificationForm = ({ setUserForm, userForm }) => {
 			}
 			if (after_ssc_medium) {
 				setAfterSsc(after_ssc_medium);
+			}
+			if (hons_pass_year) {
+				setBscPassYear(hons_pass_year);
+			}
+			if (msc_sub) {
+				setMscSub(msc_sub);
+			}
+			if (msc_inst) {
+				setMscInst(msc_inst);
+			}
+			if (msc_pass_year) {
+				setMscPassYear(msc_pass_year);
+			}
+			if (phd_pass_year) {
+				setPhdPassYear(phd_pass_year);
+			}
+			if (phd_inst) {
+				setPhdInst(phd_inst);
+			}
+			if (phd_sub) {
+				setPhdSub(phd_sub);
+			}
+			if (ibti_pass_year) {
+				setIbtiPassYear(ibti_pass_year);
+			}
+			if (ibti_inst) {
+				setIbtiInst(ibti_inst);
+			}
+			if (ibti_result) {
+				setIbtiResult(ibti_result);
+			}
+			if (mutawas_inst) {
+				setMutawasInst(mutawas_inst);
+			}
+			if (mutawas_pass_year) {
+				setMutawasPassYear(mutawas_pass_year);
+			}
+			if (mutawas_result) {
+				setMutawasResult(mutawas_result);
+			}
+			if (sanabiya_inst) {
+				setSanaInst(sanabiya_inst);
+			}
+			if (sanabiya_pass_year) {
+				setSanabiyaPassYear(sanabiya_pass_year);
+			}
+			if (sanabiya_result) {
+				setSanabiyaResult(sanabiya_result);
+			}
+			if (fozilat_inst) {
+				setFozilatInst(fozilat_inst);
+			}
+			if (fozilat_pass_year) {
+				setFozilatPassYear(fozilat_pass_year);
+			}
+			if (fozilat_result) {
+				setFozilatResult(fozilat_result);
+			}
+			if (takmil_inst) {
+				setTakmilInst(takmil_inst);
+			}
+			if (takmil_pass_year) {
+				setTakmilPassYear(takmil_pass_year);
+			}
+			if (takmil_result) {
+				setTakmilResult(takmil_result);
+			}
+
+			if (takhassus_inst) {
+				setTakhassusInst(takhassus_inst);
+			}
+			if (takhassus_pass_year) {
+				setTakhassusPassYear(takhassus_pass_year);
+			}
+			if (takhassus_result) {
+				setTakhassusResult(takhassus_result);
+			}
+			if (takhassus_sub) {
+				setTakhassusSub(takhassus_sub);
 			}
 		}
 	}, [educationalQualification?.data]);
@@ -265,6 +370,196 @@ const EducationalQualificationForm = ({ setUserForm, userForm }) => {
 				hons_sub: bscSub,
 				hons_year: bscYear,
 				after_ssc_medium: afterSsc,
+			};
+		} else if (
+			maxEdu === "স্নাতক চলমান" &&
+			afterSsc === "ডিপ্লোমা" &&
+			(eduType === "জেনারেল" || eduType === "আলিয়া")
+		) {
+			educationQualificationData = {
+				...educationQualificationData,
+				ssc_year: sscPassYear,
+				ssc_group: sscGroup,
+				ssc_result: sscResult,
+				diploma_pass_year: diplomaPassYear,
+				diploma_inst: diplomaInst,
+				diploma_sub: diplomaSub,
+				hons_inst: bscInst,
+				hons_sub: bscSub,
+				hons_year: bscYear,
+				after_ssc_medium: afterSsc,
+			};
+		} else if (
+			maxEdu === "স্নাতক" &&
+			afterSsc === "ডিপ্লোমা" &&
+			(eduType === "জেনারেল" || eduType === "আলিয়া")
+		) {
+			educationQualificationData = {
+				...educationQualificationData,
+				ssc_year: sscPassYear,
+				ssc_group: sscGroup,
+				ssc_result: sscResult,
+				after_ssc_medium: afterSsc,
+				diploma_pass_year: diplomaPassYear,
+				diploma_inst: diplomaInst,
+				diploma_sub: diplomaSub,
+				hons_inst: bscInst,
+				hons_sub: bscSub,
+				hons_pass_year: bscPassYear,
+			};
+		} else if (
+			maxEdu === "স্নাতক" &&
+			afterSsc === "HSC" &&
+			(eduType === "জেনারেল" || eduType === "আলিয়া")
+		) {
+			educationQualificationData = {
+				...educationQualificationData,
+				ssc_year: sscPassYear,
+				ssc_group: sscGroup,
+				ssc_result: sscResult,
+				after_ssc_medium: afterSsc,
+				after_ssc_result: hscResult,
+				after_ssc_year: hscPassYear,
+				after_ssc_group: hscGroup,
+				hons_inst: bscInst,
+				hons_sub: bscSub,
+				hons_pass_year: bscPassYear,
+			};
+		} else if (
+			maxEdu === "স্নাতকোত্তর" &&
+			afterSsc === "HSC" &&
+			(eduType === "জেনারেল" || eduType === "আলিয়া")
+		) {
+			educationQualificationData = {
+				...educationQualificationData,
+				ssc_year: sscPassYear,
+				ssc_group: sscGroup,
+				ssc_result: sscResult,
+				after_ssc_medium: afterSsc,
+				after_ssc_result: hscResult,
+				after_ssc_year: hscPassYear,
+				after_ssc_group: hscGroup,
+				hons_inst: bscInst,
+				hons_sub: bscSub,
+				hons_pass_year: bscPassYear,
+				msc_inst: mscInst,
+				msc_pass_year: mscPassYear,
+				msc_sub: mscSub,
+			};
+		} else if (
+			maxEdu === "স্নাতকোত্তর" &&
+			afterSsc === "ডিপ্লোমা" &&
+			(eduType === "জেনারেল" || eduType === "আলিয়া")
+		) {
+			educationQualificationData = {
+				...educationQualificationData,
+				ssc_year: sscPassYear,
+				ssc_group: sscGroup,
+				ssc_result: sscResult,
+				after_ssc_medium: afterSsc,
+				diploma_pass_year: diplomaPassYear,
+				diploma_inst: diplomaInst,
+				diploma_sub: diplomaSub,
+				hons_inst: bscInst,
+				hons_sub: bscSub,
+				hons_pass_year: bscPassYear,
+				msc_inst: mscInst,
+				msc_pass_year: mscPassYear,
+				msc_sub: mscSub,
+			};
+		} else if (
+			maxEdu === "ডক্টরেট" &&
+			afterSsc === "ডিপ্লোমা" &&
+			(eduType === "জেনারেল" || eduType === "আলিয়া")
+		) {
+			educationQualificationData = {
+				...educationQualificationData,
+				ssc_year: sscPassYear,
+				ssc_group: sscGroup,
+				ssc_result: sscResult,
+				after_ssc_medium: afterSsc,
+				diploma_pass_year: diplomaPassYear,
+				diploma_inst: diplomaInst,
+				diploma_sub: diplomaSub,
+				hons_inst: bscInst,
+				hons_sub: bscSub,
+				hons_pass_year: bscPassYear,
+				msc_inst: mscInst,
+				msc_pass_year: mscPassYear,
+				msc_sub: mscSub,
+				phd_pass_year: phdPassYear,
+				phd_inst: phdInst,
+				phd_sub: phdSub,
+			};
+		} else if (
+			maxEdu === "ডক্টরেট" &&
+			afterSsc === "HSC" &&
+			(eduType === "জেনারেল" || eduType === "আলিয়া")
+		) {
+			educationQualificationData = {
+				...educationQualificationData,
+				ssc_year: sscPassYear,
+				ssc_group: sscGroup,
+				ssc_result: sscResult,
+				after_ssc_medium: afterSsc,
+				after_ssc_result: hscResult,
+				after_ssc_year: hscPassYear,
+				after_ssc_group: hscGroup,
+				hons_inst: bscInst,
+				hons_sub: bscSub,
+				hons_pass_year: bscPassYear,
+				msc_inst: mscInst,
+				msc_pass_year: mscPassYear,
+				msc_sub: mscSub,
+				phd_pass_year: phdPassYear,
+				phd_inst: phdInst,
+				phd_sub: phdSub,
+			};
+		} else if (maxEdu === "ইবতিদাইয়্যাহ" && eduType === "কওমি") {
+			educationQualificationData = {
+				...educationQualificationData,
+				ibti_pass_year: ibtiPassYear,
+				ibti_inst: ibtiInst,
+				ibti_result: ibtiResult,
+			};
+		} else if (maxEdu === "মুতাওয়াসসিতাহ" && eduType === "কওমি") {
+			educationQualificationData = {
+				...educationQualificationData,
+				mutawas_pass_year: mutawasPassYear,
+				mutawas_inst: mutawasInst,
+				mutawas_result: mutawasResult,
+			};
+		} else if (maxEdu === "সানাবিয়া উলইয়া" && eduType === "কওমি") {
+			educationQualificationData = {
+				...educationQualificationData,
+				sanabiya_pass_year: sanabiyaPassYear,
+				sanabiya_inst: sanabiyaInst,
+				sanabiya_result: sanabiyaResult,
+			};
+		} else if (maxEdu === "ফযীলত" && eduType === "কওমি") {
+			educationQualificationData = {
+				...educationQualificationData,
+				fozilat_pass_year: fozilatPassYear,
+				fozilat_inst: fozilatInst,
+				fozilat_result: fozilatResult,
+			};
+		} else if (maxEdu === "তাকমীল" && eduType === "কওমি") {
+			educationQualificationData = {
+				...educationQualificationData,
+				takmil_pass_year: takmilPassYear,
+				takmil_inst: takmilInst,
+				takmil_result: takmilResult,
+			};
+		} else if (maxEdu === "তাখাসসুস" && eduType === "কওমি") {
+			educationQualificationData = {
+				...educationQualificationData,
+				takmil_pass_year: takmilPassYear,
+				takmil_inst: takmilInst,
+				takmil_result: takmilResult,
+				takhassus_pass_year: takhassusPassYear,
+				takhassus_inst: takhassusInst,
+				takhassus_result: takhassusResult,
+				takhassus_sub: takhassusResult,
 			};
 		}
 
