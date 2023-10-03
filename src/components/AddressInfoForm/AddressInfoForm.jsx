@@ -11,6 +11,8 @@ import { getToken } from "../../utils/cookies";
 import { userServices } from "../../services/user";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import LoadingCircle from "../LoadingCircle/LoadingCircle";
 
 const AddressInfoForm = ({ userForm, setUserForm }) => {
 	const [division, setDivision] = useState("");
@@ -23,7 +25,10 @@ const AddressInfoForm = ({ userForm, setUserForm }) => {
 	const [pUpZilla, setPUpZilla] = useState("");
 	const [isCheck, setIsCheck] = useState(false);
 	const [grownUp, setGrownUp] = useState("");
-	const { userInfo } = useContext(UserContext);
+	const { userInfo, logOut } = useContext(UserContext);
+	const navigate = useNavigate();
+	const [loading, setLoading] = useState(false);
+
 	const { data: addressInfo = null } = useQuery({
 		queryKey: ["address-info", userInfo?.data[0]?.id],
 		queryFn: async () => {
@@ -145,6 +150,7 @@ const AddressInfoForm = ({ userForm, setUserForm }) => {
 
 		try {
 			if (addressInfo?.success === true) {
+				setLoading(true);
 				const data = await userServices.updateAddressInfo(
 					addressData,
 					getToken().token
@@ -160,9 +166,11 @@ const AddressInfoForm = ({ userForm, setUserForm }) => {
 					});
 					setUserForm((prev) => prev + 1);
 				}
+				setLoading(false);
 
 				// console.log(data);
 			} else {
+				setLoading(true);
 				const data = await userServices.createAddressInfo(
 					{ ...addressData, user_form: userForm },
 					getToken().token
@@ -178,9 +186,23 @@ const AddressInfoForm = ({ userForm, setUserForm }) => {
 					});
 					setUserForm((prev) => prev + 1);
 				}
+				setLoading(false);
 			}
 		} catch (error) {
+			setLoading(false);
 			console.log(error);
+			const errorMsg = error?.response?.data?.message || "Something Went wrong";
+			toast.success(errorMsg, {
+				position: "bottom-right",
+				duration: 3000,
+				style: { backgroundColor: "#FF0000", color: "#fff" },
+			});
+
+			//! for token error redirect to logout
+			if (errorMsg.includes("You are not authorized")) {
+				await logOut();
+				navigate("/");
+			}
 		}
 	};
 
@@ -321,7 +343,7 @@ const AddressInfoForm = ({ userForm, setUserForm }) => {
 							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight})`,
 						}}
 					>
-						Save & Next
+						{loading ? <LoadingCircle /> : "Save & Next"}
 					</button>
 				</div>
 			</form>

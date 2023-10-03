@@ -23,9 +23,10 @@ import { useQuery } from "@tanstack/react-query";
 import { getDateMonthYear, getYearMonthDate } from "../../utils/date";
 import { getToken } from "../../utils/cookies";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
+import { useNavigate } from "react-router-dom";
 
 const GeneralInfoForm = ({ userForm, setUserForm }) => {
-	const { userInfo } = useContext(UserContext);
+	const { userInfo, logOut } = useContext(UserContext);
 	const [bioType, setBioType] = useState("");
 	const [status, setStatus] = useState("");
 	const [dob, setDob] = useState("");
@@ -39,6 +40,7 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 		useState(maritalStatus);
 
 	const [loading, setLoading] = useState(false);
+	const navigate = useNavigate();
 
 	const { data: generalInfo = null } = useQuery({
 		queryKey: ["general-info", userInfo?.data[0]?.id],
@@ -178,14 +180,20 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 				setLoading(false);
 			}
 		} catch (error) {
-			toast.success(error?.response?.data?.message || "Something Went wrong", {
+			setLoading(false);
+			console.log(error);
+			const errorMsg = error?.response?.data?.message || "Something Went wrong";
+			toast.success(errorMsg, {
 				position: "bottom-right",
 				duration: 3000,
 				style: { backgroundColor: "#FF0000", color: "#fff" },
 			});
-			setLoading(false);
 
-			console.log(error);
+			//! for token error redirect to logout
+			if (errorMsg.includes("You are not authorized")) {
+				await logOut();
+				navigate("/");
+			}
 		}
 	};
 

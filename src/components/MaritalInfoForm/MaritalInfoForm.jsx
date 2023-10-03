@@ -10,6 +10,7 @@ import { userServices } from "../../services/user";
 import { getToken } from "../../utils/cookies";
 import toast from "react-hot-toast";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
+import { useNavigate } from "react-router-dom";
 
 const MaritalInfoForm = ({ userForm, setUserForm }) => {
 	const [wifeDeadInfo, setWifeDeadInfo] = useState("");
@@ -30,6 +31,7 @@ const MaritalInfoForm = ({ userForm, setUserForm }) => {
 	const [loading, setLoading] = useState("");
 
 	const { userInfo, logOut } = useContext(UserContext);
+	const navigate = useNavigate();
 
 	const { data: generalInfo = null } = useQuery({
 		queryKey: ["general-info", userInfo?.data[0]?.id],
@@ -167,15 +169,20 @@ const MaritalInfoForm = ({ userForm, setUserForm }) => {
 				setLoading(false);
 			}
 		} catch (error) {
-			toast.success(error?.response?.data?.message || "Something Went wrong", {
+			setLoading(false);
+			console.log(error);
+			const errorMsg = error?.response?.data?.message || "Something Went wrong";
+			toast.success(errorMsg, {
 				position: "bottom-right",
 				duration: 3000,
 				style: { backgroundColor: "#FF0000", color: "#fff" },
 			});
-			setLoading(false);
-			// await logOut();
-			// navigate("/");
-			console.log(error);
+
+			//! for token error redirect to logout
+			if (errorMsg.includes("You are not authorized")) {
+				await logOut();
+				navigate("/");
+			}
 		}
 	};
 

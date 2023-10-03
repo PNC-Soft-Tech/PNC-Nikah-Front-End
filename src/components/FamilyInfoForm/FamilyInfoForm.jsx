@@ -161,14 +161,19 @@ const FamilyInfoForm = ({ setUserForm, userForm }) => {
 			}
 		} catch (error) {
 			setLoading(false);
-			// await logOut();
-			// navigate("/");
-			toast.success(error?.response?.data?.message || "Something Went wrong", {
+			console.log(error);
+			const errorMsg = error?.response?.data?.message || "Something Went wrong";
+			toast.success(errorMsg, {
 				position: "bottom-right",
 				duration: 3000,
 				style: { backgroundColor: "#FF0000", color: "#fff" },
 			});
-			console.log(error);
+
+			//! for token error redirect to logout
+			if (errorMsg.includes("You are not authorized")) {
+				await logOut();
+				navigate("/");
+			}
 		}
 	};
 

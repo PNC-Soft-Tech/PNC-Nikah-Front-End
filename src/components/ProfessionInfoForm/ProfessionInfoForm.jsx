@@ -12,6 +12,7 @@ import { userServices } from "../../services/user";
 import toast from "react-hot-toast";
 import { getToken } from "../../utils/cookies";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
+import { useNavigate } from "react-router-dom";
 
 const ProfessionInfoForm = ({ userForm, setUserForm }) => {
 	const [occupation, setOccupation] = useState();
@@ -19,6 +20,7 @@ const ProfessionInfoForm = ({ userForm, setUserForm }) => {
 	const [occupationInfo, setOccupationInfo] = useState();
 	const { userInfo, logOut } = useContext(UserContext);
 	const [loading, setLoading] = useState(false);
+	const navigate = useNavigate();
 
 	const backButtonHandler = () => {
 		if (userForm > 1) {
@@ -107,9 +109,19 @@ const ProfessionInfoForm = ({ userForm, setUserForm }) => {
 			}
 		} catch (error) {
 			setLoading(false);
-			// await logOut();
-			// navigate("/");
 			console.log(error);
+			const errorMsg = error?.response?.data?.message || "Something Went wrong";
+			toast.success(errorMsg, {
+				position: "bottom-right",
+				duration: 3000,
+				style: { backgroundColor: "#FF0000", color: "#fff" },
+			});
+
+			//! for token error redirect to logout
+			if (errorMsg.includes("You are not authorized")) {
+				await logOut();
+				navigate("/");
+			}
 		}
 	};
 	return (

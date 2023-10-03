@@ -24,6 +24,7 @@ import { useEffect } from "react";
 import { getToken } from "../../utils/cookies";
 import toast from "react-hot-toast";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
+import { useNavigate } from "react-router-dom";
 
 const EducationalQualificationForm = ({ setUserForm, userForm }) => {
 	const [eduType, setEduType] = useState("");
@@ -72,7 +73,9 @@ const EducationalQualificationForm = ({ setUserForm, userForm }) => {
 	const [takhassusResult, setTakhassusResult] = useState("");
 	const [takhassusPassYear, setTakhassusPassYear] = useState("");
 	const [takhassusSub, setTakhassusSub] = useState("");
-	const { userInfo } = useContext(UserContext);
+	const { userInfo, logOut } = useContext(UserContext);
+	const navigate = useNavigate();
+
 	const [loading, setLoading] = useState(false);
 	const { data: educationalQualification = null } = useQuery({
 		queryKey: ["educational-qualification", userInfo?.data[0]?.id],
@@ -603,13 +606,19 @@ const EducationalQualificationForm = ({ setUserForm, userForm }) => {
 			}
 		} catch (error) {
 			setLoading(false);
-			toast.success(error?.response?.data?.message || "Something Went wrong", {
+			console.log(error);
+			const errorMsg = error?.response?.data?.message || "Something Went wrong";
+			toast.success(errorMsg, {
 				position: "bottom-right",
 				duration: 3000,
 				style: { backgroundColor: "#FF0000", color: "#fff" },
 			});
 
-			console.log(error);
+			//! for token error redirect to logout
+			if (errorMsg.includes("You are not authorized")) {
+				await logOut();
+				navigate("/");
+			}
 		}
 	};
 

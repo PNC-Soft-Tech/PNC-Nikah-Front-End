@@ -30,6 +30,7 @@ import { useEffect } from "react";
 import { getToken } from "../../utils/cookies";
 import toast from "react-hot-toast";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
+import { useNavigate } from "react-router-dom";
 
 const ExpectedPartnerForm = ({ userForm, setUserForm }) => {
 	const [zilla, setZilla] = useState([]);
@@ -50,6 +51,7 @@ const ExpectedPartnerForm = ({ userForm, setUserForm }) => {
 	const [expected, setExpected] = useState("");
 	const { userInfo, logOut } = useContext(UserContext);
 	const [loading, setLoading] = useState(false);
+	const navigate = useNavigate();
 
 	console.log(dataToRange(getDataFromRange(height)), getDataFromRange(height));
 	console.log(
@@ -166,14 +168,19 @@ const ExpectedPartnerForm = ({ userForm, setUserForm }) => {
 			}
 		} catch (error) {
 			setLoading(false);
-			toast.success(error?.response?.data?.message || "Something Went wrong", {
+			console.log(error);
+			const errorMsg = error?.response?.data?.message || "Something Went wrong";
+			toast.success(errorMsg, {
 				position: "bottom-right",
 				duration: 3000,
 				style: { backgroundColor: "#FF0000", color: "#fff" },
 			});
-			// await logOut();
-			// navigate("/");
-			console.log(error);
+
+			//! for token error redirect to logout
+			if (errorMsg.includes("You are not authorized")) {
+				await logOut();
+				navigate("/");
+			}
 		}
 	};
 

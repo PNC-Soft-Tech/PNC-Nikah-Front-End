@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { getToken } from "../../utils/cookies";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
+import { useNavigate } from "react-router-dom";
 
 const OngikarNamaForm = ({ userForm, setUserForm }) => {
 	const [isAgree, setIsAgree] = useState("");
@@ -18,6 +19,7 @@ const OngikarNamaForm = ({ userForm, setUserForm }) => {
 	const [isFamilyKnow, setIsFamilyKnow] = useState("");
 	const { userInfo, logOut } = useContext(UserContext);
 	const [loading, setLoading] = useState(false);
+	const navigate = useNavigate();
 
 	const { data: ongikarNamaInfo = null } = useQuery({
 		queryKey: ["professional-info", userInfo?.data[0]?.id],
@@ -99,9 +101,19 @@ const OngikarNamaForm = ({ userForm, setUserForm }) => {
 			}
 		} catch (error) {
 			setLoading(false);
-			// await logOut();
-			// navigate("/");
 			console.log(error);
+			const errorMsg = error?.response?.data?.message || "Something Went wrong";
+			toast.success(errorMsg, {
+				position: "bottom-right",
+				duration: 3000,
+				style: { backgroundColor: "#FF0000", color: "#fff" },
+			});
+
+			// for token error redirect to logout
+			if (errorMsg.includes("You are not authorized")) {
+				await logOut();
+				navigate("/");
+			}
 		}
 	};
 
