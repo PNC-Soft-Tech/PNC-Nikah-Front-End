@@ -121,8 +121,6 @@ export function Login() {
 		}
 	};
 
-
-
 	const handleforgotPasswordButtonHandler = () => {
 		navigate("/forgot-password");
 	};
@@ -131,15 +129,15 @@ export function Login() {
 		<div className="flex justify-center my-5">
 			<Card
 				color="transparent"
-				className="mx-auto w-[50%] border-2 p-4"
+				className="mx-auto lg:w-[50%] w-[95%] border-2 p-4"
 				shadow={false}
 			>
 				<Typography variant="h4" color="blue-gray">
 					Log In
 				</Typography>
 
-				<form className="mt-8 mb-2 w-full">
-					<div className="mb-4 flex flex-col gap-6">
+				<form className="w-full mt-8 mb-2">
+					<div className="flex flex-col gap-6 mb-4">
 						<Input
 							size="lg"
 							label="Email"
@@ -156,7 +154,7 @@ export function Login() {
 					<Button
 						type="submit"
 						onClick={handleSignIn}
-						className="mt-6 py-4"
+						className="py-4 mt-6"
 						fullWidth
 						disabled={loading}
 						style={{
@@ -167,7 +165,7 @@ export function Login() {
 					</Button>
 					<p
 						onClick={handleforgotPasswordButtonHandler}
-						className="mt-5 cursor-pointer text-right"
+						className="mt-5 text-right cursor-pointer"
 						style={{ color: Colors.pncPrimaryColor }}
 					>
 						Forgot Password
@@ -181,15 +179,15 @@ export function Login() {
 						style={{
 							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
 						}}
-						className=" w-full"
+						className="w-full "
 						onClick={googleSignin}
 					>
-						<div className="flex justify-center items-center">
-							<FaGoogle className="mr-2 mb-1 w-5 h-5" />
+						<div className="flex items-center justify-center">
+							<FaGoogle className="w-5 h-5 mb-1 mr-2" />
 							Sign in with Google
 						</div>
 					</Button>
-					<Typography color="gray" className="mt-4 text-center font-normal">
+					<Typography color="gray" className="mt-4 font-normal text-center">
 						<span className="mr-2"> Not a Member ?</span>
 						<Link to="/signup" href="#" className="font-medium text-gray-900">
 							Sign Up

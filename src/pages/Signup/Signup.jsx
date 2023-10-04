@@ -158,7 +158,7 @@ export function Signup() {
 		<div className="flex justify-center my-5">
 			<Card
 				color="transparent"
-				className="mx-auto w-[50%] border-2 p-4"
+				className="mx-auto lg:w-[50%] w-[95%] border-2 p-4"
 				shadow={false}
 			>
 				<Typography variant="h4" color="blue-gray">
@@ -167,8 +167,8 @@ export function Signup() {
 				<Typography color="gray" className="mt-1 font-normal ">
 					Enter your details to register.
 				</Typography>
-				<form className="mt-8 mb-2 w-full">
-					<div className="mb-4 flex flex-col gap-6">
+				<form className="w-full mt-8 mb-2">
+					<div className="flex flex-col gap-6 mb-4">
 						<Input
 							size="lg"
 							onChange={(e) => setUsername(e.target.value)}
@@ -192,7 +192,7 @@ export function Signup() {
 						<div className="relative">
 							<select
 								onChange={(e) => setGender(e.target.value)}
-								className="block py-3 appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4  pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+								className="block w-full px-4 py-3 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline"
 							>
 								<option value="সিলেক্ট লিঙ্গ">সিলেক্ট লিঙ্গ</option>
 								<option value="পুরুষ">পুরুষ</option>
@@ -224,7 +224,7 @@ export function Signup() {
 							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
 						}}
 						onClick={signInWithEmailAndPassword}
-						className="mt-6 py-4"
+						className="py-4 mt-6"
 						fullWidth
 						disabled={loading}
 					>
@@ -240,17 +240,17 @@ export function Signup() {
 						style={{
 							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
 						}}
-						className=" w-full"
+						className="w-full "
 					>
 						<div
 							onClick={googleSignup}
-							className="flex justify-center items-center"
+							className="flex items-center justify-center"
 						>
-							<FaGoogle className="mr-2 mb-1 w-5 h-5" />
+							<FaGoogle className="w-5 h-5 mb-1 mr-2" />
 							Sign Up with Google
 						</div>
 					</Button>
-					<Typography color="gray" className="mt-4 text-center font-normal">
+					<Typography color="gray" className="mt-4 font-normal text-center">
 						Already have an account?{" "}
 						<Link to="/login" className="font-medium text-gray-900">
 							Log In
