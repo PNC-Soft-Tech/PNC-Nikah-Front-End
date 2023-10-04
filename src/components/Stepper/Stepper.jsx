@@ -22,7 +22,7 @@ export function StepperLine({ userForm, setUserForm }) {
 	return (
 		<div className="w-full mx-auto mb-5">
 			<Stepper
-				activeStep={userForm}
+				activeStep={userForm - 1}
 				activeLineClassName="bg-green-800"
 				lineClassName="bg-blue-900"
 				className="w-full"
