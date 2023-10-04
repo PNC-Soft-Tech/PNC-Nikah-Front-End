@@ -8,6 +8,7 @@ import Numbering from "../../components/Numbering/Numbering";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 import { useEffect } from "react";
+import { StepperLine } from "../../components/Stepper/Stepper";
 
 const EditBiodata = () => {
 	const [userForm, setUserForm] = useState(1);
@@ -18,15 +19,20 @@ const EditBiodata = () => {
 		}
 	}, [userInfo?.data]);
 	return (
-		<div className="flex flex-row ">
-			<div className="w-[30%] mx-5">
-				<Numbering setUserForm={setUserForm} userForm={userForm} />
+		<div className="flex flex-col lg:flex-row">
+			<div className="lg:w-[30%] w-full lg:mx-5 mx-0">
+				<div className="hidden lg:block">
+					<Numbering setUserForm={setUserForm} userForm={userForm} />
+				</div>
+
+				<div className="block mt-10 lg:hidden">
+					<StepperLine setUserForm={setUserForm} userForm={userForm} />
+				</div>
 			</div>
-			<div className="w-[70%]">
+			<div className="lg:w-[70%] w-full">
 				<Form setUserForm={setUserForm} userForm={userForm} />
 			</div>
 			<ScrollToTop />
-			<BiSidebar />
 		</div>
 	);
 };
