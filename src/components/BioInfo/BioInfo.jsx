@@ -5,15 +5,15 @@ import male from "../../assets/icons/male.svg";
 import { Colors } from "../../constants/colors";
 import BioContext from "../../contexts/BioContext";
 import { getDateMonthYear } from "../../utils/date";
-import { format,parse} from 'date-fns';
-function formatDate(dateStr) {
-  // Parse the input date string (assuming it's in the format "9-1-1998")
-  const parsedDate = parse(dateStr, 'd-M-yyyy', new Date());
+// import { format,parse} from 'date-fns';
+// function formatDate(dateStr) {
+//   // Parse the input date string (assuming it's in the format "9-1-1998")
+//   const parsedDate = parse(dateStr, 'd-M-yyyy', new Date());
 
 
-  // Format the parsed date as "9th Jan 1998"
-  return format(parsedDate, 'do MMM yyyy');
-}
+//   // Format the parsed date as "9th Jan 1998"
+//   return format(parsedDate, 'do MMM yyyy');
+// }
 function BioInfo() {
   const { bio } = useContext(BioContext);
   const generalInfo = bio?.generalInfo || null;
@@ -48,8 +48,8 @@ function BioInfo() {
             <tr>
               <td className="px-4 text-left py-2">জন্মসন</td>
               <td className="px-4 text-left py-2">
-                {formatDate(getDateMonthYear(generalInfo?.date_of_birth))}
-                {/* {getDateMonthYear(generalInfo?.date_of_birth)} */}
+                {/* {formatDate(getDateMonthYear(generalInfo?.date_of_birth))} */}
+                {getDateMonthYear(generalInfo?.date_of_birth)}
                
              
               </td>
