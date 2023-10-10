@@ -5,10 +5,11 @@ import male from "../../assets/icons/male.svg";
 import { Colors } from "../../constants/colors";
 import BioContext from "../../contexts/BioContext";
 import { getDateMonthYear } from "../../utils/date";
-import { format, parse} from 'date-fns';
+import { format,parse} from 'date-fns';
 function formatDate(dateStr) {
   // Parse the input date string (assuming it's in the format "9-1-1998")
   const parsedDate = parse(dateStr, 'd-M-yyyy', new Date());
+
 
   // Format the parsed date as "9th Jan 1998"
   return format(parsedDate, 'do MMM yyyy');
