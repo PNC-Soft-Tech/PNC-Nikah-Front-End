@@ -38,7 +38,7 @@ const BioData = ({ biodata }) => {
           alt=""
         />
         <h4 className="my-2"> বায়োডাটা নং </h4>
-        <h3>{biodata.user_id}</h3>
+        <h3>{biodata?.gender === "মহিলা" ? 'PNCF-' : 'PNCM-'}{biodata.user_id}</h3>
       </div>
       <div className="mx-2 mt-4">
         <table className="min-w-full divide-y divide-gray-200 border-0 border-gray-300">
@@ -47,7 +47,7 @@ const BioData = ({ biodata }) => {
               <td className="px-6 py-4 whitespace-nowrap border-r border-t border-b">
                 জন্মসন
               </td>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-t">
+              <td className="px-6 py-4 text-sm whitespace-nowrap border-b border-t">
                 {/* {getDateMonthYear(biodata.date_of_birth)} */}
                 {formatDate(getDateMonthYear(biodata.date_of_birth))}
               </td>
