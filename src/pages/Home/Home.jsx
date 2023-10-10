@@ -50,7 +50,9 @@ const Home = () => {
 		<div className="home-container">
 			<div className="home-titlee text-4xl md:text-6xl lg:text-7xl font-bold pt-6">
 				<h1>বাংলাদেশী ইসলামিক</h1>
-				<h1>ম্যাট্রিমনি</h1>
+				<h1 style={{
+					color: Colors.titleText,
+				}}>ম্যাট্রিমনি</h1>
 			</div>
 			<div className="home-subtitlee text-3xl md:text-4xl lg:text-5xl mt-4 mb-4">
 				<h3>নিজ উপজেলায় দ্বীনদার পাত্রপাত্রী খোঁজা এখন সহজ</h3>
@@ -65,10 +67,13 @@ const Home = () => {
   <div className="search-filter mt-4 rounded-2xl bg-white container mx-auto p-4 lg:p-8 lg:flex lg:items-center lg:justify-between">
       {/* Dropdown 1 */}
       <div className="mb-4 lg:mb-0">
-        <label className="block mb-2 lg:inline-block lg:mb-0 lg:mr-4">
+        <label className="block text-xl md:text-2xl lg:text-2xl mb-2 lg:inline-block lg:mb-0 lg:mr-4" 	style={{
+					color: Colors.titleText,
+				}}>
           আমি খুঁজছি:
         </label>
-        <select className="block w-full lg:w-auto p-2 border rounded-lg">
+				<div className="md:h-2"></div>
+        <select className="block w-full lg:w-auto p-2 border border-gray-300 rounded-xl md:px-8 md:py-4">
           <option value="all_bio" selected>সকল</option>
           <option value="male_bio">পাত্রের বায়োডাটা</option>
           <option value="female_bio">পাত্রীর বায়োডাটা</option>
@@ -77,10 +82,13 @@ const Home = () => {
 
       {/* Dropdown 2 */}
       <div className="mb-4 lg:mb-0">
-        <label className="block mb-2 lg:inline-block lg:mb-0 lg:mr-4">
+        <label className="block text-xl md:text-2xl lg:text-2xl mb-2 lg:inline-block lg:mb-0 lg:mr-4" 	style={{
+					color: Colors.titleText,
+				}}>
          বৈবাহিক অবস্থা:
         </label>
-        <select className="block w-full lg:w-auto p-2 border rounded-lg">
+					<div className="md:h-2"></div>
+        <select className="block w-full lg:w-auto p-2 border border-gray-300 rounded-xl md:px-8 md:py-4">
                 <option value="all_marital_status" selected>সকল</option>
           <option value="unmarried">অবিবাহিত</option>
           <option value="married">বিবাহিত</option>
@@ -92,10 +100,13 @@ const Home = () => {
 
       {/* Dropdown 3 */}
       <div className="mb-4 lg:mb-0">
-        <label className="block mb-2 lg:inline-block lg:mb-0 lg:mr-4">
+        <label className="block text-xl md:text-2xl lg:text-2xl mb-4 lg:inline-block lg:mb-0 lg:mr-4" 	style={{
+					color: Colors.titleText,
+				}}>
           স্থায়ী ঠিকানা:
         </label>
-        <select className="block w-full lg:w-auto p-2 border rounded-lg">
+					<div className="md:h-2"></div>
+        <select className="block w-full lg:w-auto p-2 border border-gray-300 rounded-xl md:px-8 md:py-4">
              <option value="all_permanent_address" selected>সকল</option>
           <option value="female">Barisal</option>
           <option value="others">Khulna</option>
@@ -107,7 +118,7 @@ const Home = () => {
       </div>
 
       {/* Filter Button */}
-      <button className="block w-full lg:w-auto px-4 py-2 bg-blue-500 text-white rounded-lg" 	style={{
+      <button className="block w-full lg:w-auto px-4 py-2 lg:px-8 lg:py-2 md:mt-8 bg-blue-500 text-white text-xl lg:text-2xl rounded-lg" 	style={{
 							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
 						}}>
         খুঁজুন
