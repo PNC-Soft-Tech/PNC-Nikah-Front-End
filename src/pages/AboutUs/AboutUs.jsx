@@ -4,7 +4,7 @@ const AboutUs = () => {
   return (
     <div className="bg-gray-100 py-16">
       <div className="container mx-auto p-4">
-        <h1 className="text-3xl font-semibold mb-8 text-center" style={{color:Colors.titleText}}>আমাদের সম্পর্কে</h1>
+        <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-8 text-center" style={{color:Colors.titleText}}>আমাদের সম্পর্কে</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="md:order-2">
             <img

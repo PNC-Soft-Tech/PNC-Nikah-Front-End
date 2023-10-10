@@ -61,7 +61,7 @@ function Payments() {
 	return (
 		<div className="min-h-screen bg-gray-100 p-8">
 			<h1
-				className="text-3xl font-semibold text-center mb-8"
+				className="text-xl md:text-2xl lg:text-3xl font-semibold text-center mb-8"
 				style={{ color: Colors.titleText }}
 			>
 				আপনার পছন্দের প্যাকেজ কিনুন

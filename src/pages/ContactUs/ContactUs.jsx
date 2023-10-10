@@ -11,11 +11,11 @@ const ContactUs = () => {
 					যোগাযোগ করুন
 				</h1>
 				<div className="text-center">
-					<p className="text-gray-700 text-lg">
+					<p className="text-gray-700 text-xl md:text-2xl lg:text-3xl">
 						আপনার যে কোন জিজ্ঞাসা, নিম্নোক্ত ফর্মে পূরণ করে আমাদের কাছে পাঠিয়ে
 						দিন।{" "}
 					</p>
-					<p className="text-gray-700 text-lg">
+					<p className="text-gray-700 text-xl md:text-2xl lg:text-3xl">
 						আমরা শীঘ্রই আপনার সাথে যোগাযোগ করবো ইন শা আল্লাহ।{" "}
 					</p>
 				</div>

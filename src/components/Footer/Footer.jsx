@@ -15,8 +15,8 @@ const Footer = () => {
       <div className="flex flex-col justify-between gap-8 px-10 py-10 lg:flex-row md:px-20 md:gap-12">
           
           <div className=" w-[100%] lg:w-[25%] flex flex-col gap-4 ">
-              <h1 className="text-[25px] mb-4 text-[#ffff] font-semibold tracking-widest" >PNC Soft Tech</h1>
-              <p className=" text-[18px] text-[#fff] font-normal leading-[25px] ">PNC Soft Tech is a mobile app and web development company that offers a wide range of services and features using various technologies
+              <h1 className="text-[25px] mb-4 text-[#ffff] font-semibold tracking-widest" >PNC Nikah</h1>
+              <p className=" text-[18px] text-[#fff] font-normal leading-[25px] ">PNC Nikah is a platform of PNC Soft Tech Company which helps only the practicing muslims who are searching for deeni-life-partner.
               </p>
           </div>
 
@@ -52,7 +52,7 @@ const Footer = () => {
 
           <div className=" flex flex-col  gap-4  sm:flex-row w-[100%] lg:w-[25%] ">
             <div className="box-border flex flex-col gap-4 w-84 ">
-              <h1 className="text-[25px] mb-4 text-[#ffff] font-semibold tracking-widest" >Other Page</h1>
+              <h1 className="text-[25px] mb-4 text-[#ffff] font-semibold tracking-widest" >Other Pages</h1>
 
               <div className="flex flex-row gap-3 ">
                   <div className=" text-[18px] ">
@@ -101,7 +101,7 @@ const Footer = () => {
                 <p className="text-[18px] hover:text-[#ff5e14] transition ease-in duration-700 text-[#fff] p-2 ">Linkedin</p>
             </a>
 
-            <a href=""  className="flex flex-row gap-3 cursor-pointer ">
+            <a href="https://wa.me/+8801793278360"  className="flex flex-row gap-3 cursor-pointer ">
                 <p  className='cursor-pointer bg-[#505e96]  p-2 border-solid border-[0px] border-[#fff]  hover:bg-[#fff] rounded-full transition ease-in duration-700 '>
                           <BiLogoWhatsapp className='text-[20px] text-[#fff] hover:text-[#ff5e14] ' />
                 </p>
@@ -113,7 +113,7 @@ const Footer = () => {
       </div>
 
       <div className="bg-[#081643] p-[20px]  text-[15px] text-[#f2f2f2] ">
-        <p className="text-center text-[#fff] text-[17px] leading-[30px] tracking-widest "> Copyright © 2023 by PNC Soft Tech </p>
+        <p className="text-center text-[#fff] text-[17px] leading-[30px] tracking-widest "> Copyright © 2023 by PNC Nikah | PNC Soft Tech </p>
       </div>
     </div>
   )
