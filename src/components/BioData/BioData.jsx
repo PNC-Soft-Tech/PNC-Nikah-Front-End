@@ -49,7 +49,7 @@ const BioData = ({ biodata }) => {
               </td>
               <td className="px-6 py-4 text-sm whitespace-nowrap border-b border-t">
                 {/* {getDateMonthYear(biodata.date_of_birth)} */}
-                {formatDate(getDateMonthYear(biodata.date_of_birth))}
+                {formatDate(getDateMonthYear(biodata.date_of_birth))} 
               </td>
             </tr>
             <tr>
