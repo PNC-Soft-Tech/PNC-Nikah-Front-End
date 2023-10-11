@@ -9,6 +9,7 @@ const MyReports = () => {
             <h5 className="card-title text-center text-2xl my-3">
               রিপোর্ট সমূহ
             </h5>
+                <div className="overflow-x-auto">
             <table className="table-auto w-full">
               <thead>
                 <tr className="border-b border-t">
@@ -145,6 +146,7 @@ const MyReports = () => {
                 </tr>
               </tbody>
             </table>
+            </div>
           </div>
         </div>
       </div>

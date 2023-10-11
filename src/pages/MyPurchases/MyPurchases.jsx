@@ -9,6 +9,7 @@ const MyPurchases = () => {
             <h5 className="card-title text-center text-2xl my-3">
               আমার Purchases
             </h5>
+            <div className="overflow-x-auto">
             <table className="table-auto w-full">
               <thead>
                 <tr className="border-b border-t">
@@ -198,6 +199,7 @@ const MyPurchases = () => {
                 </tr>
               </tbody>
             </table>
+            </div>
           </div>
         </div>
       </div>

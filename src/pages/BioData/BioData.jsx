@@ -41,6 +41,7 @@ const BioData = () => {
   }
 
   console.log(data);
+  console.log(error);
 
   return (
     <div className=" py-12 w-full  ">

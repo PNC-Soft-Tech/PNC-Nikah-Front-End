@@ -6,7 +6,7 @@ function TermsAndConditions() {
 		<div className="min-h-screen bg-gray-100 p-8">
 			<div className="max-w-screen-md mx-auto bg-white p-6 rounded-lg shadow-md">
 				<h1
-					className="text-3xl font-semibold text-center mb-8"
+					className="text-xl md:text-2xl lg:text-3xl font-semibold text-center mb-8"
 					style={{ color: Colors.titleText }}
 				>
 					Terms and Conditions

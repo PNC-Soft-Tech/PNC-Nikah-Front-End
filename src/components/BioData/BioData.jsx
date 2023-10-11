@@ -6,7 +6,17 @@ import { Colors } from "../../constants/colors";
 import { getDateMonthYear } from "../../utils/date";
 import { useNavigate } from "react-router-dom";
 import { ScrollToTop } from "../../constants/ScrolltoTop";
+import { format, parse} from 'date-fns';
 
+
+
+function formatDate(dateStr) {
+  // Parse the input date string (assuming it's in the format "9-1-1998")
+  const parsedDate = parse(dateStr, 'd-M-yyyy', new Date());
+
+  // Format the parsed date as "9th Jan 1998"
+  return format(parsedDate, 'do MMM yyyy');
+}
 const BioData = ({ biodata }) => {
   const navigate = useNavigate();
 
@@ -28,7 +38,7 @@ const BioData = ({ biodata }) => {
           alt=""
         />
         <h4 className="my-2"> বায়োডাটা নং </h4>
-        <h3>{biodata.user_id}</h3>
+        <h3>{biodata?.gender === "মহিলা" ? 'PNCF-' : 'PNCM-'}{biodata.user_id}</h3>
       </div>
       <div className="mx-2 mt-4">
         <table className="min-w-full divide-y divide-gray-200 border-0 border-gray-300">
@@ -37,8 +47,9 @@ const BioData = ({ biodata }) => {
               <td className="px-6 py-4 whitespace-nowrap border-r border-t border-b">
                 জন্মসন
               </td>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-t">
-                {getDateMonthYear(biodata.date_of_birth)}
+              <td className="px-6 py-4 text-sm whitespace-nowrap border-b border-t">
+                {/* {getDateMonthYear(biodata.date_of_birth)} */}
+                {formatDate(getDateMonthYear(biodata.date_of_birth))} 
               </td>
             </tr>
             <tr>

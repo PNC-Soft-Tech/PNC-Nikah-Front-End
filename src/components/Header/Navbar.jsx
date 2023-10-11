@@ -76,7 +76,7 @@ export default function NavBar() {
 	};
 
 	const NavList = () => (
-		<ul className="box-border border-none nav-list-ul py-3 pl-[10px] flex flex-col lg:flex-row  justify-between ">
+		<ul className="box-border border-none nav-list-ul py-3 pt-6 pl-[10px] flex flex-col lg:flex-row  justify-between ">
 			<div className="hidden lg:block">
 				<Link to="/">
 					<img src={navLogo} alt="" />
@@ -217,7 +217,7 @@ export default function NavBar() {
 	);
 
 	return (
-		<Navbar className=" w-full bg-gradient-to-r from-[#071952] to-[#071952]  rounded-none justify-between box-border styles.headerColor navigation-bar-custom sticky top-0 ">
+		<Navbar className="w-full bg-gradient-to-r from-[#071952] to-[#071952]  rounded-none justify-between box-border styles.headerColor navigation-bar-custom sticky top-0 ">
 			<div className="hidden lg:block">
 				<NavList />
 			</div>

@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 import UserSidebar from "../components/UserSiderbar/UserSidebar";
 import { useState } from "react";
-import { Colors } from "../constants/colors";
+// import { Colors } from "../constants/colors";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 const UserLayout = () => {
 	const [openSidebar, setOpenSidebar] = useState(true);

@@ -37,7 +37,7 @@ const Faq = () => {
 
   return (
     <div className="max-w-2xl mx-auto mt-8 mb-8">
-      <h1 className="text-3xl font-semibold mb-4" style={{color:Colors.titleText}}>Frequently Asked Questions</h1>
+      <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-4" style={{color:Colors.titleText}}>Frequently Asked Questions</h1>
       <ul>
         {faqItems.map((item, index) => (
           <li key={index}   onClick={() => toggleItem(index)} className="border-b py-4 bg-gray-300 px-8 py-4 mb-4 rounded cursor-pointer" style={{borderBottomColor:`rgba(${Colors.titleText}, 0.7)`}} >
