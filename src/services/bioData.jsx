@@ -1,4 +1,5 @@
 import axios from "axios";
+import { convertToQuery } from "../utils/query";
 const baseUrl =
 	import.meta.env.VITE_REACT_APP_NODE_ENV === "development"
 		? "http://localhost:5000/api/v1"
@@ -48,9 +49,16 @@ const getAllUpzilla = async (district) => {
 	return filteredUpzillas;
 };
 
-const getALLGeneralInfo = async () => {
-	const generalInfo = await axios.get(baseUrl + "/general-info");
-	return generalInfo;
+const getALLGeneralInfo = async (query) => {
+	console.log(query);
+	const queryString = convertToQuery(query);
+	console.log(
+		"🚀 ~ file: bioData.jsx:55 ~ getALLGeneralInfo ~ queryString:",
+		queryString
+	);
+
+	const generalInfo = await axios.get(baseUrl + `/general-info?${queryString}`);
+	return generalInfo.data;
 };
 
 const getBioData = async (id) => {

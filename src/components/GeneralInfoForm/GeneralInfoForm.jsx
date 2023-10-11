@@ -28,7 +28,7 @@ import { useNavigate } from "react-router-dom";
 const GeneralInfoForm = ({ userForm, setUserForm }) => {
 	const { userInfo, logOut } = useContext(UserContext);
 	const [bioType, setBioType] = useState("");
-	const [status, setStatus] = useState("");
+	const [maritalStatus, setMaritalStatus] = useState("");
 	const [dob, setDob] = useState("");
 	const [height, setHeight] = useState("");
 	const [color, setColor] = useState("");
@@ -59,14 +59,14 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 				height,
 				nationality,
 				screen_color,
-				status,
+				maritalStatus,
 				weight,
 				blood_group,
 			} = generalInfo.data;
 
 			setGender(gender);
 			setBioType(bio_type);
-			setStatus(status);
+			setMaritalStatus(maritalStatus);
 			setBlood(blood_group);
 			setDob(getYearMonthDate(date_of_birth));
 			setNationality(nationality);
@@ -108,12 +108,23 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 		}
 	}, [bioType, gender]);
 
+	console.log(weight);
+	console.log(weight.toLocaleLowerCase());
+	if (weight.toLocaleLowerCase().includes("kg")) {
+		toast.success("Kg বা 'কেজি' বাদ দেন ", {
+			position: "bottom-right",
+			duration: 3000,
+			style: { backgroundColor: "green", color: "#fff" },
+		});
+		return;
+	}
+
 	const submitGeneralFormHandler = async (event) => {
 		event.preventDefault();
 
 		let formData = {
 			bio_type: bioType,
-			status: status,
+			marital_status: maritalStatus,
 			date_of_birth: dob,
 			height: height,
 			screen_color: color,
@@ -221,8 +232,8 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 				<Select
 					title="বৈবাহিক অবস্থা "
 					required
-					value={status}
-					setValue={setStatus}
+					value={maritalStatus}
+					setValue={setMaritalStatus}
 					options={filteredMaritalStatus}
 				/>
 
@@ -275,17 +286,17 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 					options={nationalities}
 				/>
 
-				<div className="flex items-center my-5 justify-between">
+				<div className="flex items-center justify-between my-5">
 					<button
 						type="button"
 						onClick={backButtonHandler}
-						className="bg-gray-700 text-xl  px-5 text-white py-2  rounded-3xl"
+						className="px-5 py-2 text-xl text-white bg-gray-700 rounded-3xl"
 					>
 						Back
 					</button>
 					<button
 						type="submit"
-						className="text-xl  px-5 text-white py-2 rounded-3xl"
+						className="px-5 py-2 text-xl text-white rounded-3xl"
 						style={{
 							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight})`,
 						}}
