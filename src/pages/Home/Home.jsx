@@ -65,7 +65,7 @@ const Home = () => {
 				</p>
 				<p className="ref text-sm md:text-xl lg:text-2xl">(বায়হাকী, শু&rsquo;আবুল ঈমান - ৫৪৮৬)</p>
 			</div>
-  <div className="search-filter mt-4 rounded-2xl bg-white container mx-auto px-4 lg:px-8 lg:p-16 lg:flex lg:items-center lg:justify-between">
+  <div className="search-filter mt-4 rounded-2xl bg-white container mx-auto px-4 p-8 lg:px-8 lg:p-16 lg:flex lg:items-center lg:justify-between">
       {/* Dropdown 1 */}
       <div className="mb-4 lg:mb-0">
         <label className="block text-xl md:text-2xl lg:text-2xl mb-2 lg:inline-block lg:mb-0 lg:mr-4" 	style={{
