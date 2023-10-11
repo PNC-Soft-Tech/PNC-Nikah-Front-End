@@ -74,7 +74,7 @@ const Home = () => {
           আমি খুঁজছি:
         </label>
 				<div className="md:h-2"></div>
-        <select className="block w-full lg:w-auto p-2 border border-gray-300 rounded-xl md:px-8 md:py-4">
+        <select className="block w-full lg:w-auto p-2 border bg-gray-100 border-gray-300 rounded-xl md:px-8 md:py-4">
           <option value="all_bio" selected>সকল</option>
           <option value="male_bio">পাত্রের বায়োডাটা</option>
           <option value="female_bio">পাত্রীর বায়োডাটা</option>
@@ -89,7 +89,7 @@ const Home = () => {
          বৈবাহিক অবস্থা:
         </label>
 					<div className="md:h-2"></div>
-        <select className="block w-full lg:w-auto p-2 border border-gray-300 rounded-xl md:px-8 md:py-4">
+        <select className="block w-full lg:w-auto p-2 bg-gray-100 border border-gray-300 rounded-xl md:px-8 md:py-4">
                 <option value="all_marital_status" selected>সকল</option>
           <option value="unmarried">অবিবাহিত</option>
           <option value="married">বিবাহিত</option>
@@ -107,7 +107,7 @@ const Home = () => {
           স্থায়ী ঠিকানা:
         </label>
 					<div className="md:h-2"></div>
-        <select className="block w-full lg:w-auto p-2 border border-gray-300 rounded-xl md:px-8 md:py-4">
+        <select className="block w-full lg:w-auto p-2 bg-gray-100 border border-gray-300 rounded-xl md:px-8 md:py-4">
              <option value="all_permanent_address" selected>সকল</option>
           <option value="female">Barisal</option>
           <option value="others">Khulna</option>
