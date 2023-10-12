@@ -9,17 +9,27 @@ import {
 	AccordionBody,
 	Button,
 } from "@material-tailwind/react";
-
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import { Colors } from "../../constants/colors";
 import { AiOutlineDelete, AiOutlineSearch } from "react-icons/ai";
+import { useContext } from "react";
+import BioContext from "../../contexts/BioContext";
+import { useSearchParams } from "react-router-dom";
 
-const BioDataFilter = ({ setQuery }) => {
+const BioDataFilter = () => {
+	const { setQuery } = useContext(BioContext);
+	const [searchParams] = useSearchParams();
 	const [open, setOpen] = useState(3);
 	const [bioType, setBioType] = useState("");
 	const [maritalStatus, setMaritalStatus] = useState("");
 	const [value, setValue] = useState(50);
+	console.log("searchParams~", searchParams.get("marital_status"));
+
+	useEffect(() => {
+		setBioType(searchParams.get("bio_type"));
+		setMaritalStatus(searchParams.get("marital_status"));
+	}, [searchParams]);
 
 	useEffect(() => {
 		setQuery((prev) => {
@@ -111,7 +121,7 @@ const BioDataFilter = ({ setQuery }) => {
 							>
 								<option value="">সকল</option>
 								<option value="অবিবাহিত"> অবিবাহিত </option>
-								<option value="">বিবাহিত</option>
+								<option value="বিবাহিত">বিবাহিত</option>
 								<option value="বিবাহিত"> ডিভোর্সড</option>
 								<option value="বিধবা">বিধবা</option>
 								<option value="বিপত্নীক">বিপত্নীক </option>
