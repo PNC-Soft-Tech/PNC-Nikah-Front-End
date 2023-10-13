@@ -24,6 +24,8 @@ import { getDateMonthYear, getYearMonthDate } from "../../utils/date";
 import { getToken } from "../../utils/cookies";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
 import { useNavigate } from "react-router-dom";
+import { convertToBengaliNumerals } from "../../utils/weight";
+import { convertToEnglishDigits } from "../../utils/weight";
 
 const GeneralInfoForm = ({ userForm, setUserForm }) => {
 	const { userInfo, logOut } = useContext(UserContext);
@@ -59,19 +61,19 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 				height,
 				nationality,
 				screen_color,
-				maritalStatus,
+				marital_status,
 				weight,
 				blood_group,
 			} = generalInfo.data;
 
 			setGender(gender);
 			setBioType(bio_type);
-			setMaritalStatus(maritalStatus);
+			setMaritalStatus(marital_status);
 			setBlood(blood_group);
 			setDob(getYearMonthDate(date_of_birth));
 			setNationality(nationality);
 			setHeight(height);
-			setWeight(weight);
+			setWeight(convertToBengaliNumerals(weight.toString()));
 			setColor(screen_color);
 		}
 	}, [generalInfo]);
@@ -108,17 +110,6 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 		}
 	}, [bioType, gender]);
 
-	console.log(weight);
-	console.log(weight.toLocaleLowerCase());
-	if (weight.toLocaleLowerCase().includes("kg")) {
-		toast.success("Kg বা 'কেজি' বাদ দেন ", {
-			position: "bottom-right",
-			duration: 3000,
-			style: { backgroundColor: "green", color: "#fff" },
-		});
-		return;
-	}
-
 	const submitGeneralFormHandler = async (event) => {
 		event.preventDefault();
 
@@ -128,7 +119,7 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 			date_of_birth: dob,
 			height: height,
 			screen_color: color,
-			weight: weight,
+			weight: convertToEnglishDigits(weight.toString()),
 			blood_group: blood,
 			nationality: nationality,
 			gender: gender,
@@ -139,7 +130,6 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 			views_count: 0,
 			purchases_count: 0,
 		};
-
 		if (!getToken()?.token) {
 			alert("Please logout and try again");
 			return;
@@ -194,7 +184,7 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 			setLoading(false);
 			console.log(error);
 			const errorMsg = error?.response?.data?.message || "Something Went wrong";
-			toast.success(errorMsg, {
+			toast.error(errorMsg, {
 				position: "bottom-right",
 				duration: 3000,
 				style: { backgroundColor: "#FF0000", color: "#fff" },
