@@ -208,7 +208,7 @@ const Home = () => {
 				</div>
 
 				{/* Dropdown 3 */}
-				<div className="mb-4 lg:mb-0">
+				<div className="mb-4 lg:max-w-[410px] lg:mb-0">
 					<label
 						className="block text-xl md:text-2xl lg:text-2xl mb-4 lg:inline-block lg:mb-0 lg:mr-4"
 						style={{
@@ -219,7 +219,7 @@ const Home = () => {
 					</label>
 					<div className="md:h-2"></div>
 				
-	   <Select className="px-8 pb-4"
+	   <Select className="px-8 pb-2"
         options={divisionOptions}
         onChange={handleDivisionChange}
         value={selectedDivisions}
