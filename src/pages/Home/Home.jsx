@@ -9,7 +9,7 @@ import { BioDataServices } from "../../services/bioData";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { convertToQuery } from "../../utils/query";
-
+import Select from 'react-select'
 //End Bio grid Import
 
 const Home = () => {
@@ -21,7 +21,15 @@ const Home = () => {
 			return await BioDataServices.getAllDistricts(null);
 		},
 	});
+const	emptyZilla =  [
+	{ value: 'loadingZilla', label: 'loading' },
 
+  ];
+	const zillaOptions = isLoading? emptyZilla: zillasOptions.map((item, index) => ({
+		value: item.value,
+		label: item.label
+	  }));
+	  
 	const submitHandler = (event) => {
 		event.preventDefault();
 		const form = event.target;
@@ -126,7 +134,7 @@ const Home = () => {
 						স্থায়ী ঠিকানা:
 					</label>
 					<div className="md:h-2"></div>
-					<select
+					{/* <select
 						name="zilla"
 						className="block w-full lg:w-auto p-2 bg-gray-100 border border-gray-300 rounded-xl md:px-8 md:py-4"
 					>
@@ -142,7 +150,10 @@ const Home = () => {
 								</option>
 							))
 						)}
-					</select>
+					</select> */}
+	
+<Select className="rounded-xl px-16" name="zilla" options={zillaOptions} />
+					
 				</div>
 
 				{/* Filter Button */}
