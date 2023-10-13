@@ -18,7 +18,7 @@ const PersonalInfo = () => {
                 <td className="px-4 py-2 text-left  w-1/2">
                   ঘরের বাহিরে সাধারণত কি ধরণের পোষাক পরেন?
                 </td>
-                <td className="px-4 py-2 text-left  w-1/2 border-l">
+                <td className="px-4 py-2 text-left  w-1/2 border-l break-all">
                   {personalInfo?.outside_clothings}
                 </td>
               </tr>
@@ -26,7 +26,7 @@ const PersonalInfo = () => {
                 <td className="px-4 py-2 text-left  w-1/2">
                   কবে থেকে নিকাব সহ পর্দা করছেন?
                 </td>
-                <td className="px-4 py-2 text-left  w-1/2 border-l">
+                <td className="px-4 py-2 text-left  w-1/2 border-l break-all">
                   {personalInfo?.porda_with_niqab_from}
                 </td>
               </tr>
@@ -102,7 +102,7 @@ const PersonalInfo = () => {
             <td className="px-4 py-2 text-left  w-1/2">
               মাহরাম/নন-মাহরাম(অনলাইন-অফলাইন) মেনে চলেন কি?
             </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
+            <td className="px-4 py-2 text-left  w-1/2 border-l break-all">
               {personalInfo?.mahram_non_mahram}
             </td>
           </tr>
@@ -110,7 +110,7 @@ const PersonalInfo = () => {
             <td className="px-4 py-2 text-left  w-1/2">
               শুদ্ধভাবে কুরআন তিলওয়াত করতে পারেন?
             </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
+            <td className="px-4 py-2 text-left  w-1/2 border-l break-all">
               {personalInfo?.quran_tilawat}
             </td>
           </tr>
@@ -118,7 +118,7 @@ const PersonalInfo = () => {
             <td className="px-4 py-2 text-left  w-1/2">
               কোন ফিকহ অনুসরণ করেন?
             </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
+            <td className="px-4 py-2 text-left  w-1/2 border-l break-all">
               {personalInfo?.fiqh}
             </td>
           </tr>
@@ -143,7 +143,7 @@ const PersonalInfo = () => {
             <td className="px-4 py-2 text-left  w-1/2">
               আপনার শারীরিক কোনো রোগ আছে?
             </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
+            <td className="px-4 py-2 text-left  w-1/2 border-l break-all">
               {personalInfo?.physical_problem}
             </td>
           </tr>
@@ -167,7 +167,7 @@ const PersonalInfo = () => {
             <td className="px-4 py-2 text-left  w-1/2">
               মাজার সম্পর্কে আপনার ধারণা বা বিশ্বাস কি?
             </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
+            <td className="px-4 py-2 text-left  w-1/2 border-l break-all">
               {personalInfo?.mazar}
             </td>
           </tr>
@@ -175,7 +175,7 @@ const PersonalInfo = () => {
             <td className="px-4 py-2 text-left  w-1/2">
               আপনার পছন্দের অন্তত ৩ টি ইসলামি বই এর নাম লিখুন
             </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
+            <td className="px-4 py-2 text-left  w-1/2 border-l break-all">
               {personalInfo?.islamic_books}
             </td>
           </tr>
@@ -183,7 +183,7 @@ const PersonalInfo = () => {
             <td className="px-4 py-2 text-left  w-1/2">
               আপনার পছন্দের অন্তত ৩ জন আলেমের নাম লিখুন
             </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
+            <td className="px-4 py-2 text-left  w-1/2 border-l break-all">
               {personalInfo?.islamic_scholars}
             </td>
           </tr>
@@ -202,7 +202,7 @@ const PersonalInfo = () => {
             <td className="px-4 py-2 text-left  w-1/2">
               নিজের সম্পর্কে কিছু লিখুন
             </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
+            <td className="px-4 py-2 text-left  w-1/2 border-l break-all">
               <p>{personalInfo?.about_me}</p>
             </td>
           </tr>

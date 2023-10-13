@@ -31,13 +31,13 @@ const ExpectedPartner = () => {
           </tr>
           <tr className="border-b">
             <td className="px-4 py-2 text-left  w-1/2">শিক্ষাগত যোগ্যতা</td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
+            <td className="px-4 py-2 text-left  w-1/2 border-l break-all">
               {expectedLifePartner?.educational_qualifications}
             </td>
           </tr>
           <tr className="border-b">
             <td className="px-4 py-2 text-left  w-1/2">জেলা</td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
+            <td className="px-4 py-2 text-left  w-1/2 border-l break-all">
               {expectedLifePartner?.zilla}
             </td>
           </tr>
@@ -49,7 +49,7 @@ const ExpectedPartner = () => {
           </tr>
           <tr className="border-b">
             <td className="px-4 py-2 text-left  w-1/2">পেশা</td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
+            <td className="px-4 py-2 text-left  w-1/2 border-l break-all">
               {expectedLifePartner?.occupation}
             </td>
           </tr>
@@ -63,7 +63,7 @@ const ExpectedPartner = () => {
             <td className="px-4 py-2 text-left  w-1/2">
               জীবনসঙ্গীর যেসব বৈশিষ্ট্য বা গুণাবলী প্রত্যাশা করেন
             </td>
-            <td className="px-4 py-2 text-left  w-1/2 border-l">
+            <td className="px-4 py-2 text-left  w-1/2 border-l break-all">
               {expectedLifePartner?.expected_characteristics}
             </td>
           </tr>
