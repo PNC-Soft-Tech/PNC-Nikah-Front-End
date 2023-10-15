@@ -8,7 +8,28 @@ import { useNavigate } from "react-router-dom";
 import { ScrollToTop } from "../../constants/ScrolltoTop";
 import { format, parse} from 'date-fns';
 
+function formatHeight(height) {
+  if (height === '') {
+    return ''; // Handle empty input
+  }
 
+  const parts = height.toString().split('.');
+  let feet = parts[0];
+  let inches = parts[1] || '0';
+
+  if (feet === '') {
+    feet = '0';
+  }
+
+  // Define an array to map numeric digits to Bengali digits
+  const bengaliDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+
+  // Convert numeric digits to Bengali digits
+  feet = feet.split('').map(digit => bengaliDigits[digit]).join('');
+  inches = inches.split('').map(digit => bengaliDigits[digit]).join('');
+
+  return `${feet}'${inches}"`;
+}
 
 function formatDate(dateStr) {
   // Parse the input date string (assuming it's in the format "9-1-1998")
@@ -57,7 +78,7 @@ const BioData = ({ biodata }) => {
                 উচ্চতা{" "}
               </td>
               <td className="px-6 py-4 whitespace-nowrap border-b">
-                <span>{biodata.height}</span>
+                <span>{formatHeight(biodata.height)}</span>
               </td>
             </tr>
             <tr>

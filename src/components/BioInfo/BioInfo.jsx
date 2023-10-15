@@ -14,6 +14,31 @@ import { getDateMonthYear } from "../../utils/date";
 //   // Format the parsed date as "9th Jan 1998"
 //   return format(parsedDate, 'do MMM yyyy');
 // }
+
+async function formatHeight(height) {
+  // Simulate an asynchronous operation (e.g., an API call)
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  if (height === '') {
+    return ''; // Handle empty input
+  }
+
+  const parts = height.toString().split('.');
+  let feet = parts[0];
+  let inches = parts[1] || '0';
+
+  if (feet === '') {
+    feet = '0';
+  }
+
+  const bengaliDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+
+  feet = feet.split('').map(digit => bengaliDigits[digit]).join('');
+  inches = inches.split('').map(digit => bengaliDigits[digit]).join('');
+
+  return `${feet}' ${inches}"`;
+}
+
 function BioInfo() {
   const { bio } = useContext(BioContext);
   const generalInfo = bio?.generalInfo || null;
@@ -31,7 +56,7 @@ function BioInfo() {
    
       <div className="text-center">
         <h5 className="text-lg font-semibold">
-          Biodata No. {generalInfo?.user_id}
+          Biodata No. {generalInfo?.gender === "মহিলা" ? "PNCF-" : "PNCM-"}{generalInfo?.user_id}
         </h5>
         <table className="table-auto w-full  mx-auto">
           <thead>
@@ -56,7 +81,7 @@ function BioInfo() {
             </tr>
             <tr>
               <td className="px-4 text-left py-2">উচ্চতা</td>
-              <td className="px-4 text-left py-2">{generalInfo?.height}</td>
+              <td className="px-4 text-left py-2">{ generalInfo?.height}</td>
             </tr>
             <tr>
               <td className="px-4 text-left py-2">গাত্রবর্ণ</td>

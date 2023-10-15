@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
+// /* eslint-disable react/prop-types */
+// /* eslint-disable no-unused-vars */
 import { Card } from "@material-tailwind/react";
 
 import { BioDataTab } from "../BioDataTab/BioDataTab";
