@@ -28,19 +28,100 @@ const MyReports = () => {
                 <tr className="border-b">
                   <td className="px-4 py-2 text-center w-1/7 border-l">1</td>
                   <td className="px-4 py-2 text-center w-1/7 border-l">
-                    শ্যামলা
+                    PNCRID453
                   </td>
                   <td className="px-4 py-2 text-center w-1/7 border-l">
-                    গাত্রবর্ণ
+                  PNCF-2023
                   </td>
                   <td className="px-4 py-2 text-center w-1/7 border-l">
-                    শ্যামলা
+                    Pending
                   </td>
                   <td className="px-4 py-2 text-center w-1/7 border-l">
-                    গাত্রবর্ণ
+                    4th Jan 2023
                   </td>
                   <td className="px-4 py-2 text-center w-1/7 border-l">
-                    শ্যামলা
+                   Nothing
+                  </td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                  <Button  color="green" size="xs" className="mr-2">
+            <FaEye size={12} />
+          </Button>
+          <Button color="red" size="xs">
+            <FaTrash size={12} />
+          </Button>
+                  
+                  </td>
+                </tr>
+                <tr className="border-b">
+                  <td className="px-4 py-2 text-center w-1/7 border-l">2</td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                    PNCRID453
+                  </td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                  PNCF-2023
+                  </td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                    Pending
+                  </td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                    4th Jan 2023
+                  </td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                   Nothing
+                  </td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                  <Button  color="green" size="xs" className="mr-2">
+            <FaEye size={12} />
+          </Button>
+          <Button color="red" size="xs">
+            <FaTrash size={12} />
+          </Button>
+                  
+                  </td>
+                </tr>
+                <tr className="border-b">
+                  <td className="px-4 py-2 text-center w-1/7 border-l">3</td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                    PNCRID453
+                  </td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                  PNCF-2023
+                  </td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                    Pending
+                  </td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                    4th Jan 2023
+                  </td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                   Nothing
+                  </td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                  <Button  color="green" size="xs" className="mr-2">
+            <FaEye size={12} />
+          </Button>
+          <Button color="red" size="xs">
+            <FaTrash size={12} />
+          </Button>
+                  
+                  </td>
+                </tr>
+                <tr className="border-b">
+                  <td className="px-4 py-2 text-center w-1/7 border-l">4</td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                    PNCRID403
+                  </td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                  PNCM-2049
+                  </td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                    Completed
+                  </td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                    14th Jan 2023
+                  </td>
+                  <td className="px-4 py-2 text-center w-1/7 border-l">
+                   Nothing
                   </td>
                   <td className="px-4 py-2 text-center w-1/7 border-l">
                   <Button  color="green" size="xs" className="mr-2">

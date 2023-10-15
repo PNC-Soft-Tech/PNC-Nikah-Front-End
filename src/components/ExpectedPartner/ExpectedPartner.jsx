@@ -35,12 +35,29 @@ const ExpectedPartner = () => {
               {expectedLifePartner?.educational_qualifications}
             </td>
           </tr>
-          <tr className="border-b">
+          <tr className="border-b lg:block sm:hidden">
             <td className="px-4 py-2 text-left  w-1/2">জেলা</td>
             <td className="px-4 py-2 text-left  w-1/2 border-l break-all">
               {expectedLifePartner?.zilla}
             </td>
           </tr>
+
+   {/* mobile version layout change */}
+        {/* Row 1 */}
+  <tr className="lg:hidden border-b">
+    <td colspan="2" className="px-4 py-2 text-left">জেলা</td>
+  </tr>
+
+  {/* Row 2 */}
+  <tr className="lg:hidden border-b">
+    <td colspan="2" className="px-4 py-2 text-center  break-all  border-l">
+      <div className="w-max-contentt">
+        {expectedLifePartner?.zilla}
+      </div>
+    </td>
+   
+  </tr>
+
           <tr className="border-b">
             <td className="px-4 py-2 text-left  w-1/2">বৈবাহিক অবস্থা</td>
             <td className="px-4 py-2 text-left  w-1/2 border-l">
