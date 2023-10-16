@@ -16,6 +16,7 @@ import { AiOutlineDelete, AiOutlineSearch } from "react-icons/ai";
 import { useContext } from "react";
 import BioContext from "../../contexts/BioContext";
 import { useSearchParams } from "react-router-dom";
+import DoubleRangeSlider from "../DoubleRangeSlider/DoubleRangeSlider";
 
 const BioDataFilter = () => {
 	const { setQuery } = useContext(BioContext);
@@ -23,6 +24,14 @@ const BioDataFilter = () => {
 	const [open, setOpen] = useState(3);
 	const [bioType, setBioType] = useState("");
 	const [maritalStatus, setMaritalStatus] = useState("");
+	const [height, setHeight] = useState({
+		min: 5.0,
+		max: 6.0,
+	});
+	const [age, setAge] = useState({
+		min: 20,
+		max: 30,
+	});
 	const [value, setValue] = useState(50);
 	console.log("searchParams~", searchParams.get("marital_status"));
 
@@ -32,13 +41,20 @@ const BioDataFilter = () => {
 	}, [searchParams]);
 
 	useEffect(() => {
-		setQuery((prev) => {
-			return {
-				...prev,
+		let queryObj = {};
+		if (bioType) {
+			queryObj = {
+				...queryObj,
 				bio_type: bioType,
+			};
+		}
+		if (maritalStatus) {
+			queryObj = {
+				...queryObj,
 				marital_status: maritalStatus,
 			};
-		});
+		}
+		setQuery(queryObj);
 	}, [bioType, maritalStatus, setQuery]);
 
 	const handleOpen = (value) => {
@@ -137,28 +153,22 @@ const BioDataFilter = () => {
 							</div>
 						</div>
 					</div>
-
-					<div className="w-64">
-						<label
-							htmlFor="range"
-							className="block my-2 font-bold text-left text-gray-700 stext-sm"
-						>
+					<div className="px-2">
+						<label className="text-left text-gray-500 mt-4 mb-5 font-bold block">
 							বয়স
 						</label>
-						<input
-							type="range"
-							id="range"
-							name="range"
-							value={value}
-							onChange={handleChange}
-							min="10"
-							max="100"
-							step="1"
-							className="block w-full h-2 bg-gray-200 rounded-full outline-none appearance-none"
+						<DoubleRangeSlider value={age} setValue={setAge} />
+					</div>
+					<div className="w-64 px-2 py-2">
+						<DoubleRangeSlider
+							value={height}
+							setValue={setHeight}
+							maxValue={7.0}
+							minValue={4.5}
+							step={0.1}
+							title="উচ্চতা"
+							subtitle="5.1 বোঝায় ৫ ফুট ১ ইঞ্চি "
 						/>
-						<output className="mt-2 text-sm text-gray-700" id="output">
-							{value}
-						</output>
 					</div>
 				</AccordionBody>
 			</Accordion>

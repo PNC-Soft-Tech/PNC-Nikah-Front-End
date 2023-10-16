@@ -117,7 +117,7 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 			bio_type: bioType,
 			marital_status: maritalStatus,
 			date_of_birth: dob,
-			height: height,
+			height: parseFloat(height),
 			screen_color: color,
 			weight: convertToEnglishDigits(weight.toString()),
 			blood_group: blood,

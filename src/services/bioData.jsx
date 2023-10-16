@@ -76,6 +76,13 @@ const createGeneralInfo = async (data, token) => {
 	return generalInfo.data;
 };
 
+const getBioDataStatistics = async (id) => {
+	const bioData = await axios.get(
+		baseUrl + `/bio-choice-data/statistics/${id}`
+	);
+	return bioData.data;
+};
+
 export const BioDataServices = {
 	getALLGeneralInfo,
 	getBioData,
@@ -83,4 +90,5 @@ export const BioDataServices = {
 	getAllDistricts,
 	getAllUpzilla,
 	createGeneralInfo,
+	getBioDataStatistics,
 };

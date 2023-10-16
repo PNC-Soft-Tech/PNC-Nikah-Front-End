@@ -3,13 +3,12 @@ import { Colors } from "../../constants/colors";
 import FeaturedBioDataGrid from "../../components/FeaturedBioDataGrid/FeaturedBioDataGrid";
 import LoadingBioData from "../../components/LoadingBioData/LoadingBioData";
 import HadithSlider from "../../components/HadithSlider/HadithSlider";
-import React,{ useState,useContext,useEffect  } from "react";
+import { useState, useContext, useEffect } from "react";
 import BioContext from "../../contexts/BioContext";
 import { BioDataServices } from "../../services/bioData";
-import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { convertToQuery } from "../../utils/query";
-import Select from 'react-select'
+import Select from "react-select";
 //End Bio grid Import
 
 const Home = () => {
@@ -19,115 +18,135 @@ const Home = () => {
 	const [selectedDistricts, setSelectedDistricts] = useState([]);
 	const [divisionOptions, setDivisionOptions] = useState([]);
 	const [districtOptions, setDistrictOptions] = useState([]);
-  
+
 	useEffect(() => {
-	  // Fetch division options when the component mounts
-	  const fetchDivisionOptions = async () => {
-		const divisions = await BioDataServices.getAllDivisions();
-		if (divisions) {
-		  const allDivisionsOption = { value: 'All Divisions', label: 'All Divisions' };
-		  const formattedDivisionOptions = divisions.map((division) => ({
-			value: division.value,
-			label: division.value,
-		  }));
-		  formattedDivisionOptions.unshift(allDivisionsOption);
-		  setDivisionOptions(formattedDivisionOptions);
-		}
-	  };
-  
-	  fetchDivisionOptions();
+		//! Fetch division options when the component mounts
+		const fetchDivisionOptions = async () => {
+			const divisions = await BioDataServices.getAllDivisions();
+			if (divisions) {
+				const allDivisionsOption = {
+					value: "All Divisions",
+					label: "All Divisions",
+				};
+				const formattedDivisionOptions = divisions.map((division) => ({
+					value: division.value,
+					label: division.value,
+				}));
+				formattedDivisionOptions.unshift(allDivisionsOption);
+				setDivisionOptions(formattedDivisionOptions);
+			}
+		};
+
+		fetchDivisionOptions();
 	}, []);
-  
+
 	useEffect(() => {
-	  // Fetch district options based on selected divisions
-	  const fetchDistrictOptions = async () => {
-		const selectedDivisionValues = selectedDivisions.map((division) => division.value);
-  
-		if (selectedDivisionValues.includes('All Divisions')) {
-		  // If "All Divisions" is selected, set all districts as selected
-		  const allDistricts = await BioDataServices.getAllDistricts(null);
-		  const allDistrictsOption = { value: 'All Districts', label: 'All Districts' };
-		  const formattedAllDistricts = allDistricts.map((district) => ({
-			value: district.value,
-			label: district.label,
-		  }));
-		  formattedAllDistricts.unshift(allDistrictsOption);
-		  setDistrictOptions(formattedAllDistricts);
-		} else if (selectedDivisionValues.length === 0) {
-		  // Clear district options and add "All Districts" as an initial option
-		  const allDistrictsOption = { value: 'All Districts', label: 'All Districts' };
-		  setDistrictOptions([allDistrictsOption]);
-		} else {
-		  // Fetch district options for selected divisions
-		  const districtPromises = selectedDivisionValues.map((divisionValue) => {
-			return BioDataServices.getAllDistricts(divisionValue);
-		  });
-  
-		  Promise.all(districtPromises).then((results) => {
-			const formattedDistrictOptions = results.flatMap((districts, index) => {
-			  return districts.map((district) => ({
-				value: district.value,
-				label: district.label,
-				division: selectedDivisionValues[index],
-			  }));
-			});
-  
-			// Add "All Districts" as an initial option
-			const allDistrictsOption = { value: 'All Districts', label: 'All Districts' };
-			formattedDistrictOptions.unshift(allDistrictsOption);
-  
-			setDistrictOptions(formattedDistrictOptions);
-		  });
-		}
-	  };
-  
-	  fetchDistrictOptions();
+		//! Fetch district options based on selected divisions
+		const fetchDistrictOptions = async () => {
+			const selectedDivisionValues = selectedDivisions.map(
+				(division) => division.value
+			);
+
+			if (selectedDivisionValues.includes("All Divisions")) {
+				// If "All Divisions" is selected, set all districts as selected
+				const allDistricts = await BioDataServices.getAllDistricts(null);
+				const allDistrictsOption = {
+					value: "All Districts",
+					label: "All Districts",
+				};
+				const formattedAllDistricts = allDistricts.map((district) => ({
+					value: district.value,
+					label: district.label,
+				}));
+				formattedAllDistricts.unshift(allDistrictsOption);
+				setDistrictOptions(formattedAllDistricts);
+			} else if (selectedDivisionValues.length === 0) {
+				// Clear district options and add "All Districts" as an initial option
+				const allDistrictsOption = {
+					value: "All Districts",
+					label: "All Districts",
+				};
+				setDistrictOptions([allDistrictsOption]);
+			} else {
+				// Fetch district options for selected divisions
+				const districtPromises = selectedDivisionValues.map((divisionValue) => {
+					return BioDataServices.getAllDistricts(divisionValue);
+				});
+
+				Promise.all(districtPromises).then((results) => {
+					const formattedDistrictOptions = results.flatMap(
+						(districts, index) => {
+							return districts.map((district) => ({
+								value: district.value,
+								label: district.label,
+								division: selectedDivisionValues[index],
+							}));
+						}
+					);
+
+					// Add "All Districts" as an initial option
+					const allDistrictsOption = {
+						value: "All Districts",
+						label: "All Districts",
+					};
+					formattedDistrictOptions.unshift(allDistrictsOption);
+
+					setDistrictOptions(formattedDistrictOptions);
+				});
+			}
+		};
+
+		fetchDistrictOptions();
 	}, [selectedDivisions]);
-  
+
 	const handleDivisionChange = (selectedOptions) => {
-	  setSelectedDivisions(selectedOptions);
-  
-	  if (selectedOptions.some((option) => option.value === 'All Divisions')) {
-		// If "All Divisions" is selected, clear selected districts
-		setSelectedDistricts([]);
-	  }
+		setSelectedDivisions(selectedOptions);
+
+		if (selectedOptions.some((option) => option.value === "All Divisions")) {
+			//! If "All Divisions" is selected, clear selected districts
+			setSelectedDistricts([]);
+		}
 	};
-  
 
 	const submitHandler = (event) => {
-  event.preventDefault();
-  const form = event.target;
-  const marital_status = form.marital_status.value;
-  const bio_type = form.bio_type.value;
+		event.preventDefault();
+		const form = event.target;
+		const marital_status = form.marital_status.value;
+		const bio_type = form.bio_type.value;
 
-  // Handle "All Divisions" and "All Districts" selections
-  const divisionValues = selectedDivisions.map((division) => division.value);
-  let districtValues = selectedDistricts.map((district) => district.value);
+		//! Handle "All Divisions" and "All Districts" selections
+		let divisionValues = selectedDivisions.map((division) => division.value);
+		let districtValues = selectedDistricts.map((district) => district.value);
 
-  if (divisionValues.includes('All Divisions')) {
-    divisionValues.splice(0, divisionValues.length);
-    // If "All Divisions" is selected, set the selected districts to include all districts
-    districtValues = districtOptions
-      .filter((district) => !districtValues.includes(district.value))
-      .map((district) => district.value);
-  }
-  if (districtValues.includes('All Districts')) {
-    districtValues.splice(0, districtValues.length);
-    // Add all districts for selected divisions
-    const selectedDivisionValues = selectedDivisions.map((division) => division.value);
-    const allDistricts = districtOptions
-      .filter((district) => selectedDivisionValues.includes(district.division))
-      .map((district) => district.value);
-    districtValues.push(...allDistricts);
-  }
-
-  const query = convertToQuery({
-    marital_status,
-    bio_type,
-    zilla: districtValues.join(','),
-  });
-		navigate(`/biodatas?${query}`);
-	  };
+		if (divisionValues.includes("All Divisions")) {
+			// divisionValues.splice(0, divisionValues.length);
+			//! If "All Divisions" is selected, set the selected districts to include all districts
+			// districtValues = districtOptions
+			// 	.filter((district) => !districtValues.includes(district.value))
+			// 	.map((district) => district.value);
+			divisionValues = [];
+		}
+		if (districtValues.includes("All Districts")) {
+			districtValues.splice(0, districtValues.length);
+			//! Add all districts for selected divisions
+			const selectedDivisionValues = selectedDivisions.map(
+				(division) => division.value
+			);
+			const allDistricts = districtOptions
+				.filter((district) =>
+					selectedDivisionValues.includes(district.division)
+				)
+				.map((district) => district.value);
+			districtValues.push(...allDistricts);
+		}
+		console.log(districtValues, divisionValues);
+		const query = convertToQuery({
+			marital_status,
+			bio_type,
+			zilla: districtValues.join(","),
+		});
+		// navigate(`/biodatas?${query}`);
+	};
 	// console.log(zillasOptions);
 
 	return (
@@ -218,21 +237,23 @@ const Home = () => {
 						স্থায়ী ঠিকানা:
 					</label>
 					<div className="md:h-2"></div>
-				
-	   <Select className="px-8 pb-2"
-        options={divisionOptions}
-        onChange={handleDivisionChange}
-        value={selectedDivisions}
-        placeholder="Select Division(s)"
-        isMulti
-      />
-      <Select className="px-8 pb-4"
-        options={districtOptions}
-        onChange={setSelectedDistricts}
-        value={selectedDistricts}
-        placeholder="Select District(s)"
-        isMulti
-      />
+
+					<Select
+						className="px-8 pb-2"
+						options={divisionOptions}
+						onChange={handleDivisionChange}
+						value={selectedDivisions}
+						placeholder="Select Division(s)"
+						isMulti
+					/>
+					<Select
+						className="px-8 pb-4"
+						options={districtOptions}
+						onChange={setSelectedDistricts}
+						value={selectedDistricts}
+						placeholder="Select District(s)"
+						isMulti
+					/>
 				</div>
 
 				{/* Filter Button */}
