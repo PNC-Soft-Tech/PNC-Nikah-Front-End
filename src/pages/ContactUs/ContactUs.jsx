@@ -19,7 +19,7 @@ const ContactUs = () => {
 						আমরা শীঘ্রই আপনার সাথে যোগাযোগ করবো ইন শা আল্লাহ।{" "}
 					</p>
 				</div>
-				<div className="max-w-lg mx-auto shadow px-8 py-8 rounded">
+				<div className="max-w-lg mx-auto px-8 py-8">
 					<form>
 						<div className="mb-4">
 							<label
