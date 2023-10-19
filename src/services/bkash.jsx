@@ -9,7 +9,7 @@ export default function BkashCreatePaymentAPICall(amount) {
 	axios
 		.post(baseUrl + "/bkash/create", {
 			amount: amount,
-			callbackURL: "https://pnc-nikah.com/",
+			callbackURL: "https://pnc-nikah.com/pay/",
 		})
 		.then((response) => {
 			console.log("Data was successfully sent.", response);
