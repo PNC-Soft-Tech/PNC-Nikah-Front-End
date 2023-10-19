@@ -9,9 +9,10 @@ import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
 const AfterPay = () => {
 	const [searchParams] = useSearchParams();
 	const navigate = useNavigate();
-	console.log(searchParams);
 	const status = searchParams.get("status");
 	const paymentID = searchParams.get("paymentID");
+
+	console.log(searchParams);
 	console.log(status);
 	console.log(paymentID);
 

@@ -45,7 +45,7 @@ function BioInfo() {
 			className=" text-white p-4 rounded-lg shadow-lg w-full "
 		>
 			<img
-				className="rounded-full h-24 w-24 mx-auto"
+				className="rounded-full py-2 h-24  w-24 mx-auto"
 				src={generalInfo?.gender === "মহিলা" ? female : male}
 				alt="Person"
 			/>
