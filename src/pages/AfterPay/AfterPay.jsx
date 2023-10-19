@@ -28,7 +28,7 @@ const AfterPay = () => {
 					console.log("Success", response?.statusMessage);
 					// window.location.href = `/success?message=${response?.statusMessage}&trxID=${response?.trxID}`;
 					navigate(
-						`/pay/success?message=${response?.statusMessage}&trxID=${response?.trxID}`
+						`/pay/success?message=${response?.statusMessage}&trxID=${response?.trxID}paymentId=${paymentID}`
 					);
 				} else {
 					console.log("Failure", response?.statusMessage);

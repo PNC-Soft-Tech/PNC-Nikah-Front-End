@@ -9,7 +9,7 @@ export const navData = [
 	},
 	{
 		title: "পেমেন্ট প্যাকেজ",
-		path: "/payments",
+		path: "/points-package",
 	},
 	{
 		title: "নির্দেশনা",
