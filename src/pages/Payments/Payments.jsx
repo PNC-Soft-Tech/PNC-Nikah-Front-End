@@ -1,33 +1,16 @@
 // import React from 'react';
-import axios from "axios";
 import { Colors } from "../../constants/colors";
 import { packages } from "./payment.constant";
+import BkashCreatePaymentAPICall from "../../services/bkash";
 
 function Payments() {
 	const buyWithBkashHandler = (value) => {
 		const amount = parseInt(value);
-		if (isNaN(amount)) {
-			return "";
+		if (isNaN(amount) || +amount <= 0) {
+			alert("Please enter a valid amount.");
+		} else {
+			BkashCreatePaymentAPICall(amount);
 		}
-		console.log("Button Clicked !!");
-		// ! create payment
-		axios
-			.post("http://localhost:5000/api/v1/bkash/create", {
-				amount: amount,
-				callbackURL: "https://pnc-nikah.com/pay",
-			})
-			.then((response) => {
-				console.log("Data was successfully sent.", response);
-				console.log(response);
-				if (response?.data?.bkashURL) {
-					window.location.href = response?.data?.bkashURL;
-				} else {
-					window.location.href = "/";
-				}
-			})
-			.catch((error) => {
-				console.log("An error occurred:", error);
-			});
 	};
 	return (
 		<div className="min-h-screen bg-gray-100 p-8">
