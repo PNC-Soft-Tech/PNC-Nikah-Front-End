@@ -1,63 +1,34 @@
 // import React from 'react';
+import axios from "axios";
 import { Colors } from "../../constants/colors";
-const packages = [
-	{
-		name: "বেসিক প্যাকেজ",
-		price: "৩০ টাকা",
-		features: ["৩০ পয়েন্ট", "সর্বোচ্চ ১টি বায়োডাটায় ১ বার বায়োডাটা শেয়ার", ""],
-	},
-	{
-		name: "স্ট্যান্ডার্ড প্যাকেজ",
-		price: "১০০ টাকা",
-		features: ["১০০ পয়েন্ট", "", "", ""],
-	},
-	{
-		name: "প্রিমিয়াম প্যাকেজ",
-		price: "২০০ টাকা",
-		features: ["২০০ পয়েন্ট", "", "", "", ""],
-	},
-	{
-		name: "প্রো প্যাকেজ",
-		price: "৩০০ টাকা",
-		features: [
-			"Feature 1",
-			"Feature 2",
-			"Feature 3",
-			"Feature 4",
-			"Feature 5",
-			"Feature 6",
-		],
-	},
-	{
-		name: "এন্টারপ্রাইজ প্যাকেজ",
-		price: "৫০০ টাকা",
-		features: [
-			"Feature 1",
-			"Feature 2",
-			"Feature 3",
-			"Feature 4",
-			"Feature 5",
-			"Feature 6",
-			"Feature 7",
-		],
-	},
-	{
-		name: "কাস্টম প্যাকেজ",
-		price: "ইনপুট দিন",
-		features: [
-			"Feature 1",
-			"Feature 2",
-			"Feature 3",
-			"Feature 4",
-			"Feature 5",
-			"Feature 6",
-			"Feature 7",
-			"Custom Features",
-		],
-	},
-];
+import { packages } from "./payment.constant";
 
 function Payments() {
+	const buyWithBkashHandler = (value) => {
+		const amount = parseInt(value);
+		if (isNaN(amount)) {
+			return "";
+		}
+		console.log("Button Clicked !!");
+		// ! create payment
+		axios
+			.post("http://localhost:5000/api/v1/bkash/create", {
+				amount: amount,
+				callbackURL: "https://pnc-nikah.com/pay",
+			})
+			.then((response) => {
+				console.log("Data was successfully sent.", response);
+				console.log(response);
+				if (response?.data?.bkashURL) {
+					window.location.href = response?.data?.bkashURL;
+				} else {
+					window.location.href = "/";
+				}
+			})
+			.catch((error) => {
+				console.log("An error occurred:", error);
+			});
+	};
 	return (
 		<div className="min-h-screen bg-gray-100 p-8">
 			<h1
@@ -115,8 +86,9 @@ function Payments() {
 							style={{
 								background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
 							}}
+							onClick={() => buyWithBkashHandler(packageItem.value)}
 						>
-							Buy Now
+							Buy With Bkash
 						</button>
 					</div>
 				))}

@@ -24,6 +24,10 @@ import Faq from "../pages/Faq/Faq";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import BioDisLikes from "../pages/BioDisLIkes/BioDisLikes";
 import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
+import AfterPay from "../pages/AfterPay/AfterPay";
+import PayFail from "../pages/PayFail/PayFail";
+import PaySuccess from "../pages/PaySuccess/PaySuccess";
+import NotFound from "../pages/NotFound/NotFound";
 
 const router = createBrowserRouter([
 	{
@@ -79,7 +83,7 @@ const router = createBrowserRouter([
 				element: <Instructions />,
 			},
 			{
-				path: "/payments",
+				path: "/points-package",
 				element: <Payments />,
 			},
 			{
@@ -97,6 +101,18 @@ const router = createBrowserRouter([
 			{
 				path: "/forgot-password",
 				element: <ForgotPassword />,
+			},
+			{
+				path: "/pay",
+				element: <AfterPay />,
+			},
+			{
+				path: "/pay/fail",
+				element: <PayFail />,
+			},
+			{
+				path: "/pay/success",
+				element: <PaySuccess />,
 			},
 			{
 				path: "/user/account",
@@ -134,6 +150,10 @@ const router = createBrowserRouter([
 				],
 			},
 		],
+	},
+	{
+		path: "*",
+		element: <NotFound />,
 	},
 ]);
 
