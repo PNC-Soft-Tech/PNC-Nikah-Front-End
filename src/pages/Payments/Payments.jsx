@@ -69,7 +69,7 @@ function Payments() {
 							style={{
 								background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
 							}}
-							onClick={() => buyWithBkashHandler(packageItem.value)}
+							onClick={() => buyWithBkashHandler(packageItem.price)}
 						>
 							Buy With Bkash
 						</button>
