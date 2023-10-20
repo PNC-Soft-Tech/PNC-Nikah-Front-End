@@ -12,7 +12,7 @@ import { Colors } from "../../constants/colors";
 import { useQuery } from "@tanstack/react-query";
 import UserContext from "../../contexts/UserContext";
 import { userServices } from "../../services/user";
-import { getToken } from "../../utils/cookies";
+import { getToken, removeToken } from "../../utils/cookies";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
@@ -215,6 +215,7 @@ const PersonalInfoForm = ({ setUserForm, userForm }) => {
 			//! for token error redirect to logout
 			if (errorMsg.includes("You are not authorized")) {
 				await logOut();
+				removeToken();
 				navigate("/");
 			}
 		}

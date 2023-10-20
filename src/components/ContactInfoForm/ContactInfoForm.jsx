@@ -8,7 +8,7 @@ import { userServices } from "../../services/user";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 import { useEffect } from "react";
-import { getToken } from "../../utils/cookies";
+import { getToken, removeToken } from "../../utils/cookies";
 import toast from "react-hot-toast";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
 import { useNavigate } from "react-router-dom";
@@ -128,6 +128,7 @@ const ContactInfoForm = ({ userForm, setUserForm }) => {
 			//! for token error redirect to logout
 			if (errorMsg.includes("You are not authorized")) {
 				await logOut();
+				removeToken();
 				navigate("/");
 			}
 		}
