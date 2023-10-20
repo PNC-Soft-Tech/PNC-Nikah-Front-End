@@ -7,7 +7,7 @@ import Input from "../Input/Input";
 import { Checkbox } from "@material-tailwind/react";
 import { Colors } from "../../constants/colors";
 import UserContext from "../../contexts/UserContext";
-import { getToken } from "../../utils/cookies";
+import { getToken, removeToken } from "../../utils/cookies";
 import { userServices } from "../../services/user";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
@@ -201,6 +201,7 @@ const AddressInfoForm = ({ userForm, setUserForm }) => {
 			//! for token error redirect to logout
 			if (errorMsg.includes("You are not authorized")) {
 				await logOut();
+				removeToken();
 				navigate("/");
 			}
 		}

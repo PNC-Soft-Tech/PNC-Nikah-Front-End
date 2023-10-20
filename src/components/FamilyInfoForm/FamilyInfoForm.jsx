@@ -5,7 +5,7 @@ import Input from "../Input/Input";
 import Select from "../Select/Select";
 import Textarea from "../Textarea/Textarea";
 import UserContext from "../../contexts/UserContext";
-import { getToken } from "../../utils/cookies";
+import { getToken, removeToken } from "../../utils/cookies";
 
 import {
 	financialOptions,
@@ -172,6 +172,7 @@ const FamilyInfoForm = ({ setUserForm, userForm }) => {
 			//! for token error redirect to logout
 			if (errorMsg.includes("You are not authorized")) {
 				await logOut();
+				removeToken();
 				navigate("/");
 			}
 		}

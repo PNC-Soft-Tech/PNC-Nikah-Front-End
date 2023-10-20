@@ -21,7 +21,7 @@ const UserContext = createContext();
 // Create a provider component to wrap your app
 export const UserProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
-	const [loading, setLoading] = useState(false);
+	const [userLoading, setUserLoading] = useState(false);
 	const [tokenInfo, setTokenInfo] = useState(null);
 	const googleProvider = new GoogleAuthProvider();
 
@@ -34,7 +34,7 @@ export const UserProvider = ({ children }) => {
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-			setLoading(false);
+			setUserLoading(false);
 			console.log(currentUser);
 			setUser(currentUser);
 		});
@@ -44,17 +44,17 @@ export const UserProvider = ({ children }) => {
 	}, []);
 
 	const handleGoogleSignIn = () => {
-		setLoading(true);
+		setUserLoading(true);
 		return signInWithPopup(auth, googleProvider);
 	};
 
 	const createUser = (email, password) => {
-		setLoading(true);
+		setUserLoading(true);
 		return createUserWithEmailAndPassword(auth, email, password);
 	};
 
 	const signIn = (email, password) => {
-		setLoading(true);
+		setUserLoading(true);
 		return signInWithEmailAndPassword(auth, email, password);
 	};
 
@@ -71,7 +71,7 @@ export const UserProvider = ({ children }) => {
 	};
 
 	const logOut = () => {
-		setLoading(true);
+		setUserLoading(true);
 		return signOut(auth);
 	};
 
@@ -89,8 +89,8 @@ export const UserProvider = ({ children }) => {
 				signIn,
 				forgotPassword,
 				logOut,
-				loading,
-				setLoading,
+				userLoading,
+				setUserLoading,
 				setUser,
 				userInfo,
 				tokenInfo,

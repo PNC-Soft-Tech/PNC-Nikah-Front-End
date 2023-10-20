@@ -19,7 +19,7 @@ import { FaEdit, FaLongArrowAltUp, FaUserEdit } from "react-icons/fa";
 import { BiSolidDashboard } from "react-icons/bi";
 import navLogo from "../../assets/icons/logo.png";
 import { userServices } from "../../services/user";
-import { getToken } from "../../utils/cookies";
+import { getToken, removeToken } from "../../utils/cookies";
 import { useCallback } from "react";
 
 export default function NavBar() {
@@ -36,6 +36,7 @@ export default function NavBar() {
 	};
 	const logoutHandler = useCallback(async () => {
 		await logOut();
+		removeToken();
 		navigate("/");
 	}, [logOut, navigate]);
 

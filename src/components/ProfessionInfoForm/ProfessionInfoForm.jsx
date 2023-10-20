@@ -10,7 +10,7 @@ import UserContext from "../../contexts/UserContext";
 import { useQuery } from "@tanstack/react-query";
 import { userServices } from "../../services/user";
 import toast from "react-hot-toast";
-import { getToken } from "../../utils/cookies";
+import { getToken, removeToken } from "../../utils/cookies";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
 import { useNavigate } from "react-router-dom";
 
@@ -120,6 +120,7 @@ const ProfessionInfoForm = ({ userForm, setUserForm }) => {
 			//! for token error redirect to logout
 			if (errorMsg.includes("You are not authorized")) {
 				await logOut();
+				removeToken();
 				navigate("/");
 			}
 		}

@@ -21,7 +21,7 @@ import UserContext from "../../contexts/UserContext";
 import toast from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 import { getDateMonthYear, getYearMonthDate } from "../../utils/date";
-import { getToken } from "../../utils/cookies";
+import { getToken, removeToken } from "../../utils/cookies";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
 import { useNavigate } from "react-router-dom";
 import { convertToBengaliNumerals } from "../../utils/weight";
@@ -193,6 +193,7 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 			//! for token error redirect to logout
 			if (errorMsg.includes("You are not authorized")) {
 				await logOut();
+				removeToken();
 				navigate("/");
 			}
 		}
