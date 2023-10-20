@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Colors } from "../../constants/colors"; // Adjust the import path as needed
+import UserContext from "../../contexts/UserContext";
 
 const DashBoard = () => {
+	const { userInfo } = useContext(UserContext);
 	return (
 		<div
 			className="my-dashboard bg-white rounded-lg shadow-md p-4 border-t-2 mt-8 "
@@ -18,12 +21,11 @@ const DashBoard = () => {
 					style={{ borderColor: Colors.titleText }}
 				>
 					<div className="flex items-center justify-center mb-2">
-				
 						<h2
 							className="text-lg font-semibold text-center"
 							style={{ color: Colors.titleText }}
 						>
-							আমার বর্তমান পয়েন্টঃ ২০৩
+							আমার বর্তমান পয়েন্টঃ {userInfo?.data[0]?.points}
 						</h2>
 					</div>
 					<p className="text-gray-700">
@@ -41,7 +43,6 @@ const DashBoard = () => {
 					style={{ borderColor: Colors.titleText }}
 				>
 					<div className="flex items-center justify-center mb-2">
-					
 						<h2
 							className="text-lg font-semibold"
 							style={{ color: Colors.titleText }}
@@ -66,7 +67,6 @@ const DashBoard = () => {
 					style={{ borderColor: Colors.titleText }}
 				>
 					<div className="flex items-center justify-center mb-2">
-				
 						<h2
 							className="text-lg font-semibold"
 							style={{ color: Colors.titleText }}
@@ -90,7 +90,6 @@ const DashBoard = () => {
 					style={{ borderColor: Colors.titleText }}
 				>
 					<div className="flex items-center justify-center mb-2">
-					
 						<h2
 							className="text-lg font-semibold text-center"
 							style={{ color: Colors.titleText }}
@@ -114,7 +113,6 @@ const DashBoard = () => {
 					style={{ borderColor: Colors.titleText }}
 				>
 					<div className="flex items-center justify-center mb-2">
-				
 						<h2
 							className="text-lg font-semibold text-center"
 							style={{ color: Colors.titleText }}
@@ -137,7 +135,6 @@ const DashBoard = () => {
 					style={{ borderColor: Colors.titleText }}
 				>
 					<div className="flex items-center justify-center mb-2">
-					
 						<h2
 							className="text-lg font-semibold"
 							style={{ color: Colors.titleText }}
@@ -159,7 +156,6 @@ const DashBoard = () => {
 					style={{ borderColor: Colors.titleText }}
 				>
 					<div className="flex items-center justify-center mb-2">
-						
 						<h2
 							className="text-lg font-semibold text-center"
 							style={{ color: Colors.titleText }}
@@ -176,7 +172,6 @@ const DashBoard = () => {
 					style={{ borderColor: Colors.titleText }}
 				>
 					<div className="flex items-center justify-center mb-2">
-					
 						<h2
 							className="text-lg font-semibold text-center"
 							style={{ color: Colors.titleText }}
@@ -195,7 +190,6 @@ const DashBoard = () => {
 					style={{ borderColor: Colors.titleText }}
 				>
 					<div className="flex items-center justify-center mb-2">
-				
 						<h2
 							className="text-lg font-semibold text-center"
 							style={{ color: Colors.titleText }}
