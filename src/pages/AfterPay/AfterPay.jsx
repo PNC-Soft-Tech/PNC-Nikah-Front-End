@@ -51,10 +51,11 @@ const AfterPay = () => {
 							savedPaid,
 							getToken().token
 						);
+						console.log(result);
 						if (result?.success) {
-							navigate(
-								`/pay/success?message=${response?.statusMessage}&trxID=${response?.trxID}&paymentId=${paymentID}`
-							);
+							// navigate(
+							// 	`/pay/success?message=${response?.statusMessage}&trxID=${response?.trxID}&paymentId=${paymentID}`
+							// );
 						} else {
 							console.log(result);
 							alert(
@@ -70,7 +71,7 @@ const AfterPay = () => {
 				} else {
 					console.log("Failure", response?.statusMessage);
 					//! window.location.href = `/fail?message=${response?.statusMessage}`;
-					navigate(`/pay/fail?message=${response?.statusMessage}`);
+					// navigate(`/pay/fail?message=${response?.statusMessage}`);
 				}
 			} catch (error) {
 				console.error("An error occurred:", error);

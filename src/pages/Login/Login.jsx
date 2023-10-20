@@ -8,8 +8,6 @@ import { userServices } from "../../services/user";
 import { setToken } from "../../utils/cookies";
 import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
 import toast from "react-hot-toast";
-import { sendPasswordResetEmail } from "firebase/auth";
-import { auth } from "../../firebase/app.jsx";
 
 export function Login() {
 	const [email, setEmail] = useState("");
