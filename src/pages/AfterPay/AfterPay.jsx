@@ -31,26 +31,53 @@ const AfterPay = () => {
 					response = await BkashQueryPaymentAPICall(paymentID);
 				}
 				// ? save payments history into DB
+				let savedPaid = {
+					transaction_id: response?.trxID ? response?.trxID : "transaction_id",
+					payment_id: paymentID || "paymentId",
+					status: response?.transactionStatus || "Incomplete",
+					amount: response?.amount || 0,
+					payment_execute_time: response?.paymentExecuteTime || new Date(),
+					payment_create_time: response?.paymentCreateTime || new Date(),
+					method: "bkash",
+				};
+
+				console.log("savedPaid", savedPaid);
 
 				if (response?.statusCode && response.statusCode === "0000") {
-					let savedPaid = {
-						transaction_id: response?.trxID,
-						payment_id: paymentID,
-						status: response?.transactionStatus,
-						amount: response?.amount,
-						payment_execute_time: response?.paymentExecuteTime,
-						payment_create_time: response?.paymentCreateTime,
-						method: "bkash",
-						response: response,
-					};
-					console.log("savedPaid", savedPaid);
 					console.log("Success", response?.statusMessage);
-					//! window.location.href = `/success?message=${response?.statusMessage}&trxID=${response?.trxID}`;
 					console.log("after pay~", response);
+					//! window.location.href = `/success?message=${response?.statusMessage}&trxID=${response?.trxID}`;
+					try {
+						const result = await paymentServices.createPayments(
+							savedPaid,
+							getToken().token
+						);
+						console.log(result);
+						if (result?.success) {
+							navigate(
+								`/pay/success?message=${response?.statusMessage}&trxID=${response?.trxID}&paymentId=${paymentID}`
+							);
+						} else {
+							console.log(result);
+							alert(
+								"Payment successfully\n but your payment information doesn't save into our database\n please contact us"
+							);
+						}
+					} catch (error) {
+						console.log(error);
+						alert(
+							"Payment successfully\n but your payment information doesn't save into our database\n please contact us"
+						);
+					}
 				} else {
+					const result = await paymentServices.createPayments(
+						savedPaid,
+						getToken().token
+					);
+					console.log(result);
 					console.log("Failure", response?.statusMessage);
 					//! window.location.href = `/fail?message=${response?.statusMessage}`;
-					// navigate(`/pay/fail?message=${response?.statusMessage}`);
+					navigate(`/pay/fail?message=${response?.statusMessage}`);
 				}
 			} catch (error) {
 				console.error("An error occurred:", error);
