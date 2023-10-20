@@ -31,18 +31,19 @@ const AfterPay = () => {
 					response = await BkashQueryPaymentAPICall(paymentID);
 				}
 				// ? save payments history into DB
-				let savedPaid = {
-					transaction_id: response?.trxID,
-					payment_id: paymentID,
-					status: response?.transactionStatus,
-					amount: response?.amount,
-					payment_execute_time: response?.paymentExecuteTime,
-					payment_create_time: response?.paymentCreateTime,
-					method: "bkash",
-				};
-				console.log("savedPaid", savedPaid);
 
 				if (response?.statusCode && response.statusCode === "0000") {
+					let savedPaid = {
+						transaction_id: response?.trxID,
+						payment_id: paymentID,
+						status: response?.transactionStatus,
+						amount: response?.amount,
+						payment_execute_time: response?.paymentExecuteTime,
+						payment_create_time: response?.paymentCreateTime,
+						method: "bkash",
+						response: response,
+					};
+					console.log("savedPaid", savedPaid);
 					console.log("Success", response?.statusMessage);
 					//! window.location.href = `/success?message=${response?.statusMessage}&trxID=${response?.trxID}`;
 					console.log("after pay~", response);
