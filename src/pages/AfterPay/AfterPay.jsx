@@ -40,34 +40,12 @@ const AfterPay = () => {
 					payment_create_time: response?.paymentCreateTime,
 					method: "bkash",
 				};
-				console.log(savedPaid);
+				console.log("savedPaid", savedPaid);
 
 				if (response?.statusCode && response.statusCode === "0000") {
 					console.log("Success", response?.statusMessage);
 					//! window.location.href = `/success?message=${response?.statusMessage}&trxID=${response?.trxID}`;
 					console.log("after pay~", response);
-					try {
-						const result = await paymentServices.createPayments(
-							savedPaid,
-							getToken().token
-						);
-						console.log(result);
-						if (result?.success) {
-							// navigate(
-							// 	`/pay/success?message=${response?.statusMessage}&trxID=${response?.trxID}&paymentId=${paymentID}`
-							// );
-						} else {
-							console.log(result);
-							alert(
-								"Payment successfully\n but your payment information doesnot save into our database\n please contact use"
-							);
-						}
-					} catch (error) {
-						console.log(error);
-						alert(
-							"Payment successfully\n but your payment information doesnot save into our database\n please contact use"
-						);
-					}
 				} else {
 					console.log("Failure", response?.statusMessage);
 					//! window.location.href = `/fail?message=${response?.statusMessage}`;
