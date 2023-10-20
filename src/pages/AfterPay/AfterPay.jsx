@@ -38,9 +38,9 @@ const AfterPay = () => {
 					amount: response?.amount,
 					payment_execute_time: response?.paymentExecuteTime,
 					payment_create_time: response?.paymentCreateTime,
-					user_id: userInfo?.data[0]?.id,
 					method: "bkash",
 				};
+				console.log(savedPaid);
 
 				if (response?.statusCode && response.statusCode === "0000") {
 					console.log("Success", response?.statusMessage);
