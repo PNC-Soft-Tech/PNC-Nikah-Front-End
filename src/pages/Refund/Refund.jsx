@@ -31,13 +31,13 @@ const Refund = () => {
 				);
 				console.log(response);
 				if (response?.refundTrxID) {
-					// window.location.href = `/pay/success?message=${response?.transactionStatus}&trxID=${response?.originalTrxID}&refundTrxID=${response?.refundTrxID}`;
+					//? window.location.href = `/pay/success?message=${response?.transactionStatus}&trxID=${response?.originalTrxID}&refundTrxID=${response?.refundTrxID}`;
 					navigate(
-						`/pay/success?message=${response?.transactionStatus}&trxID=${response?.originalTrxID}&refundTrxID=${response?.refundTrxID}`
+						`/refund/success?message=${response?.transactionStatus}&trxID=${response?.originalTrxID}&refundTrxID=${response?.refundTrxID}`
 					);
 				} else {
-					// window.location.href = `/pay/fail?message=${response?.statusMessage}`;
-					navigate(`/pay/fail?message=${response?.statusMessage}`);
+					//? window.location.href = `/pay/fail?message=${response?.statusMessage}`;
+					navigate(`/refund/fail?message=${response?.statusMessage}`);
 				}
 			} catch (error) {
 				alert("An error occurred during the refund process.");

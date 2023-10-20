@@ -5,16 +5,19 @@ const PaySuccess = () => {
 	const message = searchParams.get("message");
 	const trxID = searchParams.get("trxID");
 	const paymentId = searchParams.get("paymentId");
-	const refundTrxID = searchParams.get("refundTrxID");
-
-	console.log(searchParams);
 
 	return (
 		<div className="p-10">
-			<h1>{message && <p>{message}</p>}</h1>
-			{trxID && <p>Your bKash Transaction ID: {trxID}</p>}
-			{refundTrxID && <p>Your refund transaction ID: {refundTrxID}</p>}
-			<Link to={`/admin/refund/${paymentId}`}>refund money</Link>
+			{message && <h1 className="text-3xl mb-4 text-center">{message}</h1>}
+			{trxID && (
+				<p className="text-center mb-4">Your bKash Transaction ID: {trxID}</p>
+			)}
+			<Link
+				to={`/admin/refund/${paymentId}`}
+				className="block text-center text-blue-500 hover:underline"
+			>
+				refund money
+			</Link>
 		</div>
 	);
 };
