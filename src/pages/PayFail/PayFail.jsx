@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import { useSearchParams } from "react-router-dom";
-import styled from 'styled-components';
-=======
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
->>>>>>> df37e524cc668225b66b643af3f6ddda976d9f72
 
 const Container = styled.div`
   background-color: #fff;
@@ -28,14 +23,6 @@ const Message = styled.p`
 const PayFail = () => {
 	const [searchParams] = useSearchParams();
 	const message = searchParams.get("message");
-<<<<<<< HEAD
-	return(
-		<Container>
-		  <Title>Payment Failed!</Title>
-		  {message && <Message>{message}</Message>}
-		</Container>
-	  );
-=======
 	const navigate = useNavigate();
 	useEffect(() => {
 		const timeout = setTimeout(() => {
@@ -50,7 +37,6 @@ const PayFail = () => {
 			{message && <p className="text-center text-red-900">{message}</p>}
 		</div>
 	);
->>>>>>> df37e524cc668225b66b643af3f6ddda976d9f72
 };
 
 export default PayFail;
