@@ -4,6 +4,7 @@ import UserContext from "../../contexts/UserContext";
 
 const DashBoard = () => {
 	const { userInfo } = useContext(UserContext);
+	//console.log(userInfo);
 	return (
 		<div
 			className="my-dashboard bg-white rounded-lg shadow-md p-4 border-t-2 mt-8 "
