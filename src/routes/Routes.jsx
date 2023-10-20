@@ -29,6 +29,8 @@ import PayFail from "../pages/PayFail/PayFail";
 import PaySuccess from "../pages/PaySuccess/PaySuccess";
 import NotFound from "../pages/NotFound/NotFound";
 import Refund from "../pages/Refund/Refund";
+import RefundSuccess from "../pages/RefundSuccess/RefundSuccess";
+import RefundFail from "../pages/RefundFail/RefundFail";
 
 const router = createBrowserRouter([
 	{
@@ -118,6 +120,14 @@ const router = createBrowserRouter([
 			{
 				path: "/pay/success",
 				element: <PaySuccess />,
+			},
+			{
+				path: "/refund/success",
+				element: <RefundSuccess />,
+			},
+			{
+				path: "/refund/fail",
+				element: <RefundFail />,
 			},
 			{
 				path: "/user/account",

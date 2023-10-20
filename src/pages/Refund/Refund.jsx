@@ -5,8 +5,10 @@ import {
 	BkashRefundPaymentAPICall,
 } from "../../services/bkash";
 import { useState } from "react";
+import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
 
 const Refund = () => {
+	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
 	const [amount, setAmount] = useState(0);
 	const { paymentId } = useParams();
@@ -24,6 +26,7 @@ const Refund = () => {
 			alert("Please enter a valid amount.");
 		} else {
 			try {
+				setLoading(true);
 				const response = await BkashRefundPaymentAPICall(
 					paymentId,
 					data?.trxID,
@@ -31,15 +34,18 @@ const Refund = () => {
 				);
 				console.log(response);
 				if (response?.refundTrxID) {
-					// window.location.href = `/pay/success?message=${response?.transactionStatus}&trxID=${response?.originalTrxID}&refundTrxID=${response?.refundTrxID}`;
+					//? window.location.href = `/pay/success?message=${response?.transactionStatus}&trxID=${response?.originalTrxID}&refundTrxID=${response?.refundTrxID}`;
 					navigate(
-						`/pay/success?message=${response?.transactionStatus}&trxID=${response?.originalTrxID}&refundTrxID=${response?.refundTrxID}`
+						`/refund/success?message=${response?.transactionStatus}&trxID=${response?.originalTrxID}&refundTrxID=${response?.refundTrxID}`
 					);
+					setLoading(false);
 				} else {
-					// window.location.href = `/pay/fail?message=${response?.statusMessage}`;
-					navigate(`/pay/fail?message=${response?.statusMessage}`);
+					//? window.location.href = `/pay/fail?message=${response?.statusMessage}`;
+					setLoading(false);
+					navigate(`/refund/fail?message=${response?.statusMessage}`);
 				}
 			} catch (error) {
+				setLoading(false);
 				alert("An error occurred during the refund process.");
 			}
 		}
@@ -59,9 +65,10 @@ const Refund = () => {
 			</div>
 			<button
 				onClick={refundHandler}
+				disabled={loading}
 				className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
 			>
-				Refund Now
+				{loading ? <LoadingCircle /> : "Refund Now"}
 			</button>
 		</div>
 	);

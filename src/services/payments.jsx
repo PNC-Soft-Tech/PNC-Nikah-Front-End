@@ -14,6 +14,16 @@ const createPayments = async (data, token) => {
 	return response.data;
 };
 
+const getPaymentsByUser = async (token) => {
+	const response = await axios.get(baseUrl + "/payments", {
+		headers: {
+			Authorization: token,
+		},
+	});
+	return response.data;
+};
+
 export const paymentServices = {
 	createPayments,
+	getPaymentsByUser,
 };
