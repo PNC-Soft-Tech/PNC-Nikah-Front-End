@@ -192,7 +192,7 @@ const AddressInfoForm = ({ userForm, setUserForm }) => {
 			setLoading(false);
 			console.log(error);
 			const errorMsg = error?.response?.data?.message || "Something Went wrong";
-			toast.success(errorMsg, {
+			toast.error(errorMsg, {
 				position: "bottom-right",
 				duration: 3000,
 				style: { backgroundColor: "#FF0000", color: "#fff" },

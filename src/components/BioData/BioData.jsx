@@ -3,53 +3,60 @@ import { Button } from "@material-tailwind/react";
 import female from "../../assets/icons/female.svg";
 import male from "../../assets/icons/male.svg";
 import { Colors } from "../../constants/colors";
-import { getDateMonthYear } from "../../utils/date";
+import { formatDate, getDateMonthYear } from "../../utils/date";
 import { useNavigate } from "react-router-dom";
 import { ScrollToTop } from "../../constants/ScrolltoTop";
-import { format, parse } from "date-fns";
-import { FaEye, FaRegHeart } from "react-icons/fa";
-function formatHeight(height) {
-	if (height === "") {
-		return ""; // Handle empty input
-	}
+import { FaEye, FaHeart, FaRegHeart } from "react-icons/fa";
+import { LikesServices } from "../../services/likes";
+import { getToken } from "../../utils/cookies";
+import { Toast } from "../../utils/toast";
+import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
+import UserContext from "../../contexts/UserContext";
 
-	const parts = height.toString().split(".");
-	let feet = parts[0];
-	let inches = parts[1] || "0";
-
-	if (feet === "") {
-		feet = "0";
-	}
-
-	// Define an array to map numeric digits to Bengali digits
-	const bengaliDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
-
-	// Convert numeric digits to Bengali digits
-	feet = feet
-		.split("")
-		.map((digit) => bengaliDigits[digit])
-		.join("");
-	inches = inches
-		.split("")
-		.map((digit) => bengaliDigits[digit])
-		.join("");
-
-	return `${feet}'${inches}"`;
-}
-
-function formatDate(dateStr) {
-	// Parse the input date string (assuming it's in the format "9-1-1998")
-	const parsedDate = parse(dateStr, "d-M-yyyy", new Date());
-
-	// Format the parsed date as "9th Jan 1998"
-	return format(parsedDate, "do MMM yyyy");
-}
 const BioData = ({ biodata }) => {
 	const navigate = useNavigate();
+	const { userInfo } = useContext(UserContext);
+
+	const { data, refetch } = useQuery({
+		queryKey: ["like", "count", biodata.user_id],
+		queryFn: async () => {
+			return LikesServices.getLikes(biodata.user_id);
+		},
+	});
+
+	const { data: userData, refetch: userRefetch } = useQuery({
+		queryKey: ["like", "user", "count", userInfo?.data[0]?.id, biodata.user_id],
+		queryFn: async () => {
+			return LikesServices.getUserLikes(userInfo?.data[0]?.id, biodata.user_id);
+		},
+	});
 
 	const bioDataHandler = () => {
 		navigate(`/biodata/${biodata.user_id}`);
 	};
+
+	// ? FOR GIVING REACTION
+	const likeButtonHandler = async () => {
+		try {
+			const data = await LikesServices.createLikes(
+				{ bio_id: biodata?.user_id },
+				getToken().token
+			);
+			if (data?.success) {
+				await refetch();
+				await userRefetch();
+				Toast.successToast("আপনার রিয়াকশন যুক্ত করা হয়েছে");
+			}
+			console.log(data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	console.log(data);
+	console.log(userInfo?.data[0]?.id, biodata.user_id, userData?.data?.type);
+
 	return (
 		<div className="my-5 hover:shadow-2xl transition-all  duration-300 ease-in rounded-md border-2">
 			<ScrollToTop />
@@ -69,13 +76,22 @@ const BioData = ({ biodata }) => {
 					{biodata?.gender === "মহিলা" ? "PNCF-" : "PNCM-"}
 					{biodata.user_id}
 				</h3>
+				{/* view icons */}
 				<div className="flex absolute top-2 left-2">
 					<FaEye className="w-6 h-6 mr-2" />
 					{biodata?.views}
 				</div>
-				<div className=" absolute bottom-2 left-2 cursor-pointer">
-					<FaRegHeart className="w-6 h-6 text-white" />
-					{/* <FaHeart className="w-6 h-6 text-white" /> */}
+				{/* like icons */}
+				<div
+					onClick={likeButtonHandler}
+					className=" absolute flex items-center bottom-2 left-2 cursor-pointer"
+				>
+					{userData?.data?.type === "like" && biodata ? (
+						<FaHeart className="w-6 h-6 " />
+					) : (
+						<FaRegHeart className="w-6 h-6 text-white" />
+					)}{" "}
+					{data?.count > 0 && <span className="ml-1 ">{data?.count}</span>}
 				</div>
 			</div>
 			<div className="mx-2 mt-4">
