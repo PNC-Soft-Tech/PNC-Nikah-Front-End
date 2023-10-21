@@ -70,21 +70,21 @@ const PaymentHistory = () => {
 											<td className="text-xs">{item?.method}</td>
 											<td className="text-xs">{item?.amount}</td>
 											<td className="text-xs">{formatPurchaseType(item?.reason)}</td>
-											<td className="text-xs">{item?.status}</td>
+											<td className="text-xs">{item?.status}{item?.status}</td>
 											<td className="text-xs">{readableDateTime(item?.trnx_time)}</td>
 											{item && (item.status === 'Completed'  && item.reason === 'bio_purchase') ? (
-  <td>
-<button className="bg-blue-500 hover:bg-blue-700 text-white text-xs py-2 px-4 mb-2 rounded">
-Request Refund
-</button>
+											<td>
+											<button className="bg-blue-500 hover:bg-blue-700 text-white text-xs py-2 px-4 mb-2 rounded">
+											Request Refund
+											</button>
 
-  </td>
-) : (
-	<td><div className="text-xs py-4 px-4 text-red-700">
-	Not Refundable
-  </div></td>
-	
-)}
+											</td>
+											) : (
+											<td><div className="text-xs py-4 px-4 text-red-700">
+												Not Refundable
+											</div></td>
+												
+											)}
 
 										</tr>
 									);
