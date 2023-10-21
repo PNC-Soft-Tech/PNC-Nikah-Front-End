@@ -11,6 +11,7 @@ import DashBoard from "../pages/DashBoard/DashBoard";
 import BioLikes from "../pages/BioLikes/BioLikes";
 import MyReports from "../pages/MyReports/MyReports";
 import MyPurchases from "../pages/MyPurchases/MyPurchases";
+import PyamentAndRefund from "../pages/PyamentAndRefund/PyamentAndRefund";
 import SendForm from "../pages/SendForm/SendForm";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import Reports from "../pages/Reports/Reports";
@@ -29,8 +30,6 @@ import PayFail from "../pages/PayFail/PayFail";
 import PaySuccess from "../pages/PaySuccess/PaySuccess";
 import NotFound from "../pages/NotFound/NotFound";
 import Refund from "../pages/Refund/Refund";
-import RefundSuccess from "../pages/RefundSuccess/RefundSuccess";
-import RefundFail from "../pages/RefundFail/RefundFail";
 
 const router = createBrowserRouter([
 	{
@@ -122,14 +121,6 @@ const router = createBrowserRouter([
 				element: <PaySuccess />,
 			},
 			{
-				path: "/refund/success",
-				element: <RefundSuccess />,
-			},
-			{
-				path: "/refund/fail",
-				element: <RefundFail />,
-			},
-			{
 				path: "/user/account",
 				element: <UserLayout />,
 				children: [
@@ -153,6 +144,10 @@ const router = createBrowserRouter([
 					{
 						path: "/user/account/purchases",
 						element: <MyPurchases />,
+					},
+					{
+						path: "/user/account/payment-and-refund",
+						element: <PyamentAndRefund />,
 					},
 					{
 						path: "/user/account/myreports",
