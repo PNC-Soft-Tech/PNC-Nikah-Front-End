@@ -19,9 +19,9 @@ const BioData = ({ biodata }) => {
 	const { userInfo } = useContext(UserContext);
 
 	const { data, refetch } = useQuery({
-		queryKey: ["like", "count", biodata.user_id],
+		queryKey: ["like", "count", biodata?.user_id],
 		queryFn: async () => {
-			return LikesServices.getLikes(biodata.user_id);
+			return LikesServices.getLikes(biodata?.user_id);
 		},
 	});
 
@@ -59,7 +59,7 @@ const BioData = ({ biodata }) => {
 		}
 	};
 
-	console.log(data);
+	console.log("like count", data);
 	console.log(userInfo?.data[0]?.id, biodata.user_id, userData?.data?.type);
 
 	return (

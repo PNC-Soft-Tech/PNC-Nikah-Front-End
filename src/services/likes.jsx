@@ -15,8 +15,8 @@ const createLikes = async (data, token) => {
 	return response.data;
 };
 const getLikes = async (bio_id) => {
-	if (bio_id) {
-		return;
+	if (!bio_id) {
+		return null;
 	}
 	const response = await axios.get(`${baseUrl}/favorites/bio-data/${bio_id}`);
 	return response.data;
