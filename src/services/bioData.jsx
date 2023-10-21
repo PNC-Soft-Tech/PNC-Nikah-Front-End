@@ -77,6 +77,9 @@ const createGeneralInfo = async (data, token) => {
 };
 
 const getBioDataStatistics = async (id) => {
+	if (!id) {
+		return null;
+	}
 	const bioData = await axios.get(
 		baseUrl + `/bio-choice-data/statistics/${id}`
 	);

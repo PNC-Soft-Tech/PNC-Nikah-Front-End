@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { Colors } from "../../constants/colors";
 import BioContext from "../../contexts/BioContext";

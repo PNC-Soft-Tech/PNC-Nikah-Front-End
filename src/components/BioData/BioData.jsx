@@ -38,6 +38,11 @@ const BioData = ({ biodata }) => {
 
 	// ? FOR GIVING REACTION
 	const likeButtonHandler = async () => {
+		if (!userInfo?.data[0]?.id) {
+			Toast.errorToast("Please,Login First");
+			return;
+		}
+
 		try {
 			const data = await LikesServices.createLikes(
 				{ bio_id: biodata?.user_id },
