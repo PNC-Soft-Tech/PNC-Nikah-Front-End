@@ -135,44 +135,52 @@ const MyPurchases = () => {
 							<table className="table-auto w-full">
 								<thead>
 									<tr className="border-b border-t">
-										<th className="px-4 py-2 text-center w-1/9">SL</th>
-										<th className="px-4 py-2 text-center w-1/9">বায়োডাটা নং</th>
-										<th className="px-4 py-2 text-center w-1/9">জন্ম তারিখ</th>
-										<th className="px-4 py-2 text-center w-1/9">ঠিকানা</th>
-										<th className="px-4 py-2 text-center w-1/9">
+										<th className="px-4 py-2 text-center w-1/11">SL</th>
+										<th className="px-4 py-2 text-center w-1/11">বায়োডাটা নং</th>
+										<th className="px-4 py-2 text-center w-1/11">জন্ম তারিখ</th>
+										<th className="px-4 py-2 text-center w-1/11">ঠিকানা</th>
+										<th className="px-4 py-2 text-center w-1/11">যোগাযোগের নাম্বার</th>
+										<th className="px-4 py-2 text-center w-1/11">সম্পর্ক</th>
+										<th className="px-4 py-2 text-center w-1/11">
 											টোটাল পেয়েছে
 										</th>
-										<th className="px-4 py-2 text-center w-1/9">
+										<th className="px-4 py-2 text-center w-1/11">
 											অ্যাপ্রুভাল রেট
 										</th>
-										<th className="px-4 py-2 text-center w-1/9">রিজেকশন রেট</th>
-										<th className="px-4 py-2 text-center w-1/9">
+										<th className="px-4 py-2 text-center w-1/11">রিজেকশন রেট</th>
+										<th className="px-4 py-2 text-center w-1/11">
 											পেইন্ডিং সংখ্যা
 										</th>
-										<th className="px-4 py-2 text-center w-1/9">অপশন</th>
+										<th className="px-4 py-2 text-center w-1/11">অপশন</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr className="border-b">
-										<td className="px-4 py-2 text-center w-1/9 border-l">1</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/11 border-l">1</td>
+										<td className="px-4 py-2 text-center w-1/11 border-l">
 											2345
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/11 border-l">
 											Jan 1998
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
-											Barisal City Corporation,Barisal
+										<td className="px-4 py-2 text-center w-1/11 border-l">
+											Barisal City Corporation
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">23</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/11 border-l">
+											01734556963
+										</td>
+										<td className="px-4 py-2 text-center w-1/11 border-l">
+											Father
+										</td>
+										<td className="px-4 py-2 text-center w-1/11 border-l">23</td>
+										<td className="px-4 py-2 text-center w-1/11 border-l">
 											56%
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/11 border-l">
 											44%
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">2</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/11 border-l">2</td>
+										<td className="px-4 py-2 text-center w-1/11 border-l">
 											<Button color="green" size="xs" className="mr-2">
 												<FaEye size={12} />
 											</Button>
@@ -182,25 +190,31 @@ const MyPurchases = () => {
 										</td>
 									</tr>
 									<tr className="border-b">
-										<td className="px-4 py-2 text-center w-1/9 border-l">2</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
-											345
+										<td className="px-4 py-2 text-center w-1/11 border-l">1</td>
+										<td className="px-4 py-2 text-center w-1/11 border-l">
+											2345
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
-											Aug 1998
+										<td className="px-4 py-2 text-center w-1/11 border-l">
+											Jan 1998
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
-											Dhaka North City Corporation,Dhaka
+										<td className="px-4 py-2 text-center w-1/11 border-l">
+											Barisal City Corporation
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">39</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
-											66%
+										<td className="px-4 py-2 text-center w-1/11 border-l">
+											01734556963
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
-											34%
+										<td className="px-4 py-2 text-center w-1/11 border-l">
+											Father
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">7</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/11 border-l">23</td>
+										<td className="px-4 py-2 text-center w-1/11 border-l">
+											56%
+										</td>
+										<td className="px-4 py-2 text-center w-1/11 border-l">
+											44%
+										</td>
+										<td className="px-4 py-2 text-center w-1/11 border-l">2</td>
+										<td className="px-4 py-2 text-center w-1/11 border-l">
 											<Button color="green" size="xs" className="mr-2">
 												<FaEye size={12} />
 											</Button>
@@ -210,25 +224,31 @@ const MyPurchases = () => {
 										</td>
 									</tr>
 									<tr className="border-b">
-										<td className="px-4 py-2 text-center w-1/9 border-l">3</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
-											321
+										<td className="px-4 py-2 text-center w-1/11 border-l">1</td>
+										<td className="px-4 py-2 text-center w-1/11 border-l">
+											2345
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
-											Jan 1988
+										<td className="px-4 py-2 text-center w-1/11 border-l">
+											Jan 1998
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
-											Sylhet City Corporation,Sylhet
+										<td className="px-4 py-2 text-center w-1/11 border-l">
+											Barisal City Corporation
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">45</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
-											86%
+										<td className="px-4 py-2 text-center w-1/11 border-l">
+											01734556963
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
-											14%
+										<td className="px-4 py-2 text-center w-1/11 border-l">
+											Father
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">0</td>
-										<td className="px-4 py-2 text-center flex w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/11 border-l">23</td>
+										<td className="px-4 py-2 text-center w-1/11 border-l">
+											56%
+										</td>
+										<td className="px-4 py-2 text-center w-1/11 border-l">
+											44%
+										</td>
+										<td className="px-4 py-2 text-center w-1/11 border-l">2</td>
+										<td className="px-4 py-2 text-center w-1/11 border-l">
 											<Button color="green" size="xs" className="mr-2">
 												<FaEye size={12} />
 											</Button>
@@ -237,6 +257,7 @@ const MyPurchases = () => {
 											</Button> */}
 										</td>
 									</tr>
+								
 								</tbody>
 							</table>
 						</div>
