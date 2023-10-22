@@ -14,14 +14,17 @@ const PaySuccess = () => {
 	const message = searchParams.get("message");
 	const paymentId = searchParams.get("paymentId");
 	const trxId = searchParams.get("trxID");
+	const status = searchParams.get("status");
+	const payment_create_time = searchParams.get("payment_create_time");
+	const amount = searchParams.get("amount");
 	const navigate = useNavigate();
 
-	const { data: response = null } = useQuery({
-		queryKey: ["pay,refund", paymentId],
-		queryFn: async () => {
-			return await BkashQueryPaymentAPICall(paymentId);
-		},
-	});
+	// const { data: response = null } = useQuery({
+	// 	queryKey: ["pay,refund", paymentId],
+	// 	queryFn: async () => {
+	// 		return await BkashQueryPaymentAPICall(paymentId);
+	// 	},
+	// });
 
 	useEffect(() => {
 		if (showMessage & !loading) {
@@ -41,9 +44,9 @@ const PaySuccess = () => {
 			let savedPaid = {
 				transaction_id: trxId,
 				payment_id: paymentId,
-				status: response?.transactionStatus,
-				amount: response?.amount,
-				payment_create_time: response?.paymentCreateTime || new Date(),
+				status,
+				amount,
+				payment_create_time: payment_create_time || new Date(),
 				method: "bkash",
 			};
 			try {
@@ -68,10 +71,10 @@ const PaySuccess = () => {
 			}
 		};
 
-		if (response?.paymentID) {
+		if (paymentId) {
 			saveInfoToDb();
 		}
-	}, [navigate, paymentId, response, trxId]);
+	}, [amount, navigate, paymentId, payment_create_time, status, trxId]);
 
 	return (
 		<div className="sm:mx-auto mx-3 my-10 rounded-md border-green-500 p-10 flex flex-col items-center justify-center w-full sm:w-1/2 bg-green-300">

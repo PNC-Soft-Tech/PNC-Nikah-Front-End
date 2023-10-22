@@ -4,7 +4,7 @@ import "./favorite.css";
 import { Button } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
 import { FaEye, FaTrash } from "react-icons/fa";
-import { LikesServices } from "../../services/likes";
+import { LikesServices } from "../../services/favorites";
 import { getToken } from "../../utils/cookies";
 import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
 import { formatDate, getDateMonthYear } from "../../utils/date";
@@ -110,7 +110,10 @@ const Favorite = () => {
 						<h5 className="card-title text-center text-2xl mt-3">
 							আমার বায়োডাটা যারা পছন্দের তালিকায় রেখেছেঃ
 						</h5>
-						<h6 className="text-xs pb-4">এটি প্রিমিয়াম ফিচার! এই তথ্য দেখতে হলে আপনাকে ৫০ পয়েন্ট খরচ করতে হবে!!!</h6>
+						<h6 className="text-xs pb-4">
+							এটি প্রিমিয়াম ফিচার! এই তথ্য দেখতে হলে আপনাকে ৫০ পয়েন্ট খরচ করতে
+							হবে!!!
+						</h6>
 						<div className="overflow-x-auto">
 							<table className="table-auto w-full">
 								<thead>

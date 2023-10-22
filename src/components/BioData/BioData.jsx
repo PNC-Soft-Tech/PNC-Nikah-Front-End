@@ -6,13 +6,14 @@ import { Colors } from "../../constants/colors";
 import { formatDate, getDateMonthYear } from "../../utils/date";
 import { useNavigate } from "react-router-dom";
 import { ScrollToTop } from "../../constants/ScrolltoTop";
-import { FaEye, FaHeart, FaRegHeart } from "react-icons/fa";
-import { LikesServices } from "../../services/likes";
+import { FaBan, FaEye, FaHeart, FaRegHeart } from "react-icons/fa";
+import { LikesServices } from "../../services/favorites";
 import { getToken } from "../../utils/cookies";
 import { Toast } from "../../utils/toast";
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
+import { DisLikesServices } from "../../services/unfavorites";
 
 const BioData = ({ biodata }) => {
 	const navigate = useNavigate();
@@ -31,13 +32,44 @@ const BioData = ({ biodata }) => {
 			return LikesServices.getUserLikes(userInfo?.data[0]?.id, biodata.user_id);
 		},
 	});
+	const { data: userDisLikesData, refetch: userDisLikesRefetch } = useQuery({
+		queryKey: ["dis-like", "user", userInfo?.data[0]?.id, biodata.user_id],
+		queryFn: async () => {
+			return DisLikesServices.getUserDisLikes(
+				userInfo?.data[0]?.id,
+				biodata.user_id
+			);
+		},
+	});
 
 	const bioDataHandler = () => {
 		navigate(`/biodata/${biodata.user_id}`);
 	};
 
-	// ? FOR GIVING REACTION
+	// ? FOR GIVING like REACTION
 	const likeButtonHandler = async () => {
+		if (!userInfo?.data[0]?.id) {
+			Toast.errorToast("Please,Login First");
+			return;
+		}
+
+		try {
+			const data = await LikesServices.createLikes(
+				{ bio_id: biodata?.user_id },
+				getToken().token
+			);
+			if (data?.success) {
+				await refetch();
+				await userRefetch();
+				Toast.successToast("আপনার রিয়াকশন যুক্ত করা হয়েছে");
+			}
+			console.log(data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	// ? FOR GIVING dis-like REACTION
+	const DisLikeButtonHandler = async () => {
 		if (!userInfo?.data[0]?.id) {
 			Toast.errorToast("Please,Login First");
 			return;
@@ -85,6 +117,10 @@ const BioData = ({ biodata }) => {
 				<div className="flex absolute top-2 left-2">
 					<FaEye className="w-6 h-6 mr-2" />
 					{biodata?.views}
+				</div>
+				{/*dislikes icons */}
+				<div className="flex absolute top-2  right-2">
+					<FaBan className="w-6 h-6 text-center mr-2 text-red-700" />
 				</div>
 				{/* like icons */}
 				<div
