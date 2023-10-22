@@ -13,23 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 const LikeItem = ({ item, index }) => {
 	const navigate = useNavigate();
-	const { data } = useQuery({
-		queryKey: ["bio-data", "stat", item?.bio_id],
-		queryFn: async () => {
-			return await BioDataServices.getBioDataStatistics(item?.bio_id);
-		},
-	});
-	const rejected = data?.results?.rejected;
-	const approved = data?.results?.approved;
-	const total = rejected + approved;
-	let approvedRate = 0;
-	let rejectedRate = 0;
-	if (total) {
-		approvedRate = approved / total;
-		approvedRate = approvedRate.toFixed(2);
-		rejectedRate = rejected / total;
-		rejectedRate = rejectedRate.toFixed(2);
-	}
+
 	// console.log("favorite-item", data);
 	const viewButtonHandler = () => {
 		navigate(`/biodata/${item.bio_id}`);
@@ -45,12 +29,16 @@ const LikeItem = ({ item, index }) => {
 				{item?.permanent_address}
 			</td>
 			<td className="px-4 py-2 text-center w-1/9 border-l">
-				{total + data?.results?.pending}
+				{item?.total_count}
 			</td>
-			<td className="px-4 py-2 text-center w-1/9 border-l">{approvedRate}%</td>
-			<td className="px-4 py-2 text-center w-1/9 border-l">{rejectedRate}%</td>
 			<td className="px-4 py-2 text-center w-1/9 border-l">
-				{data?.results?.pending}
+				{item?.approval_rate}%
+			</td>
+			<td className="px-4 py-2 text-center w-1/9 border-l">
+				{item?.rejection_rate}%
+			</td>
+			<td className="px-4 py-2 text-center w-1/9 border-l">
+				{item?.total_pending}
 			</td>
 			<td className="px-4 py-2 text-center w-1/9 border-l">
 				<Button
