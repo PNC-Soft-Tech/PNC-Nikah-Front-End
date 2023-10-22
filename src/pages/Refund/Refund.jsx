@@ -12,6 +12,7 @@ const Refund = () => {
 	const navigate = useNavigate();
 	const [amount, setAmount] = useState(0);
 	const { paymentId } = useParams();
+	const { tnxId } = useParams();
 	// const { data } = useQuery({
 	// 	queryKey: ["pay,refund", paymentId],
 	// 	queryFn: async () => {
@@ -49,7 +50,8 @@ const Refund = () => {
 				const response = await BkashRefundPaymentAPICall(
 					paymentId,
 					// data?.trxID,
-					"AJM9N9FVSX",
+					tnxId,
+					// "AJM9N9FVSX",
 					amount
 				);
 				console.log(response);
