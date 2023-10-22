@@ -104,6 +104,43 @@ const Favorite = () => {
 						</div>
 					</div>
 				</div>
+				<div className="h-8"></div>
+				<div className="col right-sidebar-main my-bio-favs">
+					<div className="my-favs-info border-t-2 w-auto rounded shadow">
+						<h5 className="card-title text-center text-2xl mt-3">
+							আমার বায়োডাটা যারা পছন্দের তালিকায় রেখেছেঃ
+						</h5>
+						<h6 className="text-xs pb-4">এটি প্রিমিয়াম ফিচার! এই তথ্য দেখতে হলে আপনাকে ৫০ পয়েন্ট খরচ করতে হবে!!!</h6>
+						<div className="overflow-x-auto">
+							<table className="table-auto w-full">
+								<thead>
+									<tr className="border-b border-t">
+										<th className="px-4 py-2 text-center w-1/9">SL</th>
+										<th className="px-4 py-2 text-center w-1/9">বায়োডাটা নং</th>
+										<th className="px-4 py-2 text-center w-1/9">জন্ম তারিখ</th>
+										<th className="px-4 py-2 text-center w-1/9">ঠিকানা</th>
+										<th className="px-4 py-2 text-center w-1/9">
+											টোটাল পেয়েছে
+										</th>
+										<th className="px-4 py-2 text-center w-1/9">
+											অ্যাপ্রুভাল রেট
+										</th>
+										<th className="px-4 py-2 text-center w-1/9">রিজেকশন রেট</th>
+										<th className="px-4 py-2 text-center w-1/9">
+											পেইন্ডিং সংখ্যা
+										</th>
+										<th className="px-4 py-2 text-center w-1/9">অপশন</th>
+									</tr>
+								</thead>
+								<tbody>
+									{data?.data?.map((item, index) => {
+										return <LikeItem item={item} index={index} key={index} />;
+									})}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
