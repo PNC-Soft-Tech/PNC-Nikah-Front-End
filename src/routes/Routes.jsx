@@ -112,14 +112,14 @@ const router = createBrowserRouter([
 				path: "/pay/fail",
 				element: <PayFail />,
 			},
-			{
-				path: "/admin/refund/:paymentId/:tnxId",
-				element: <Refund />,
-			},
 			// {
-			// 	path: "/admin/refund/",
+			// 	path: "/admin/refund/:paymentId/:tnxId",
 			// 	element: <Refund />,
 			// },
+			{
+				path: "/admin/refund/",
+				element: <Refund />,
+			},
 			{
 				path: "/pay/success",
 				element: <PaySuccess />,
