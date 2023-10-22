@@ -36,7 +36,7 @@ const PaySuccess = () => {
 		}
 	}, [loading, navigate, showMessage]);
 
-	console.log("bkash-query-api-call", response);
+	// console.log("bkash-query-api-call", response);
 
 	useEffect(() => {
 		const saveInfoToDb = async () => {
