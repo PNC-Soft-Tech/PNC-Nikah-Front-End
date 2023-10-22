@@ -116,6 +116,10 @@ const router = createBrowserRouter([
 				path: "/admin/refund/:paymentId",
 				element: <Refund />,
 			},
+			// {
+			// 	path: "/admin/refund/",
+			// 	element: <Refund />,
+			// },
 			{
 				path: "/pay/success",
 				element: <PaySuccess />,

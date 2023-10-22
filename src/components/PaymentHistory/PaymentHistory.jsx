@@ -70,7 +70,7 @@ const PaymentHistory = () => {
 											<td className="text-xs">{item?.method}</td>
 											<td className="text-xs">{item?.amount}</td>
 											<td className="text-xs">{formatPurchaseType(item?.reason)}</td>
-											<td className="text-xs">{item?.status}{item?.status}</td>
+											<td className="text-xs">{item?.status}</td>
 											<td className="text-xs">{readableDateTime(item?.trnx_time)}</td>
 											{item && (item.status === 'Completed'  && item.reason === 'bio_purchase') ? (
 											<td>
