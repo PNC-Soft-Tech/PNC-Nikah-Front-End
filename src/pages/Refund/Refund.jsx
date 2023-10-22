@@ -12,12 +12,12 @@ const Refund = () => {
 	const navigate = useNavigate();
 	const [amount, setAmount] = useState(0);
 	const { paymentId } = useParams();
-	const { data } = useQuery({
-		queryKey: ["pay,refund", paymentId],
-		queryFn: async () => {
-			return await BkashQueryPaymentAPICall(paymentId);
-		},
-	});
+	// const { data } = useQuery({
+	// 	queryKey: ["pay,refund", paymentId],
+	// 	queryFn: async () => {
+	// 		return await BkashQueryPaymentAPICall(paymentId);
+	// 	},
+	// });
 	// const refundHandler = async (paymentId, trxID, amount) => {
 	// 	try {
 	// 	  setLoading(true);
@@ -38,7 +38,8 @@ const Refund = () => {
 	// 	}
 	//   };
 	const refundHandler = async () => {
-		if (paymentId.trim() === "" || data?.trxID.trim() === "") {
+		// if (paymentId.trim() === "" || data?.trxID.trim() === "") {
+		if (paymentId.trim() === "" ) {
 			alert("All fields are required.");
 		} else if (isNaN(amount) || +amount <= 0) {
 			alert("Please enter a valid amount.");
@@ -47,7 +48,8 @@ const Refund = () => {
 				setLoading(true);
 				const response = await BkashRefundPaymentAPICall(
 					paymentId,
-					data?.trxID,
+					// data?.trxID,
+					"AJM9N9FVSX",
 					amount
 				);
 				console.log(response);
@@ -69,7 +71,7 @@ const Refund = () => {
 		}
 	};
 
-	console.log(data);
+	// console.log(data);
 	// return (
 	// 	<div className="col right-sidebar-main my-favs">
 			
