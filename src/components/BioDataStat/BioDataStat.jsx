@@ -5,7 +5,23 @@ import BioContext from "../../contexts/BioContext";
 import { useQuery } from "@tanstack/react-query";
 import { BioDataServices } from "../../services/bioData";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
-
+import clipboardCopy from 'clipboard-copy';
+import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+const handleCopyLink = async () => {
+	const currentLink = window.location.href;
+    try {
+      await clipboardCopy(currentLink);
+    //   alert('Link copied to clipboard!');
+	toast.success('Link copied to clipboard!', {
+        position: 'bottom-right',
+        autoClose: 2000, // Close after 2 seconds
+      });
+    } catch (error) {
+      console.error('Copy failed: ', error);
+    }
+  };
 const BioDataStat = ({ id }) => {
 	const { bio } = useContext(BioContext);
 	const generalInfo = bio?.generalInfo || null;
@@ -80,12 +96,13 @@ const BioDataStat = ({ id }) => {
 
 			<div className="h-4"></div>
 			<div className="flex justify-center md:mb-0 mb-5">
-				<button
+				<button onClick={handleCopyLink}
 					style={{ backgroundColor: Colors.pncPrimaryColor }}
 					className="copy-biodata-link mx-auto text-white py-3 px-10 rounded-full"
 				>
 					Copy Biodata Link
 				</button>
+				<ToastContainer />
 			</div>
 		</>
 	);
