@@ -72,7 +72,8 @@ const PaymentHistory = () => {
 											<td className="text-xs">{formatPurchaseType(item?.reason)}</td>
 											<td className="text-xs">{item?.status}</td>
 											<td className="text-xs">{readableDateTime(item?.trnx_time)}</td>
-											{item && (item.status === 'Completed'  && item.reason === 'bio_purchase') ? (
+											{/* {(item && (item.status === 'Completed' && item.bio_choice_status === 'Pending'  && item.reason === 'bio_purchase') || (item && item.reason==='buy_points')) ? ( */}
+											{(item && (item.status === 'Completed' && item.reason === 'bio_purchase') || (item && item.reason==='buy_points')) ? (
 											<td>
 											<button className="bg-blue-500 hover:bg-blue-700 text-white text-xs py-2 px-4 mb-2 rounded">
 											Request Refund
