@@ -3,6 +3,35 @@ import { Button } from "@material-tailwind/react";
 import { paymentServices } from "../../services/payments";
 import { getToken } from "../../utils/cookies";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
+import { refundServices } from "../../services/refunds";
+const handleRequestRefund = async (item) => {
+	try {
+	  // Extract the necessary data from the item
+	  const { id, payment_id, transaction_id, amount } = item;
+	  
+	  // Get the user's token (replace 'your-user-token' with the actual token)
+	//   const token = 'your-user-token';
+  
+	  // Make the API request to add a refund request
+	  const response = await refundServices.addRefundRequest({
+		user_id: id, // User ID
+		payment_id, // Payment ID
+		transaction_id, // Transaction ID
+		amount, // Refund amount
+		refund_status: 'requested', // Set to 'requested'
+		refund_req_time: new Date(), // Current time
+	  }, getToken().token);
+  
+	  // Handle the response as needed
+	  console.log(response);
+  
+	  // You might also want to update the component's state or refetch data here
+	} catch (error) {
+	  // Handle any errors
+	  console.error('Error requesting refund:', error);
+	}
+  };
+  
 function formatPurchaseType(purchaseType) {
 	// Split the purchaseType string by underscores and capitalize each word
 	const words = purchaseType.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1));
@@ -75,7 +104,8 @@ const PaymentHistory = () => {
 											{/* {(item && (item.status === 'Completed' && item.bio_choice_status === 'Pending'  && item.reason === 'bio_purchase') || (item && item.reason==='buy_points')) ? ( */}
 											{(item && (item.status === 'Completed' && item.reason === 'bio_purchase') || (item && item.reason==='buy_points')) ? (
 											<td>
-											<button className="bg-blue-500 hover:bg-blue-700 text-white text-xs py-2 px-4 mb-2 rounded">
+											<button onClick={() => handleRequestRefund(item)}
+											 className="bg-blue-500 hover:bg-blue-700 text-white text-xs py-2 px-4 mb-2 rounded">
 											Request Refund
 											</button>
 
