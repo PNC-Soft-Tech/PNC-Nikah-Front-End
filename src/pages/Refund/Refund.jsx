@@ -10,7 +10,6 @@ import { getToken } from "../../utils/cookies";
 import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
 
 const Refund = () => {
-
 	const { data, isLoading } = useQuery({
 		queryKey: ["refund", "history"],
 		queryFn: async () => {
@@ -18,7 +17,7 @@ const Refund = () => {
 		},
 	});
 
-console.log('data----',data);
+	console.log("data----", data);
 
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
@@ -88,77 +87,63 @@ console.log('data----',data);
 	// console.log(data);
 	return (
 		<div className="col right-sidebar-main my-favs">
-			
-				<div className="my-favs-info border-t-2 w-auto rounded shadow">
-					<h5 className="card-title text-center text-2xl my-3">
-						Refund List
-					</h5>
-					<div className="overflow-x-auto">
-						<table className="table-auto w-full">
-							<thead>
-								<tr className="border-b border-t">
-									<th className="px-4 py-2 text-center w-1/8">SL</th>
-									<th>পেমেন্ট আইডি</th>
-									<th className="px-4 py-2 text-center w-1/8">
-										ট্রানজেকশন আইডি
-									</th>
-									<th className="px-4 py-2 text-center w-1/8">মেথড</th>
-									<th className="px-4 py-2 text-center w-1/8">পরিমাণ</th>
-									<th className="px-4 py-2 text-center w-1/8">কারণ</th>
-									<th className="px-4 py-2 text-center w-1/8">স্ট্যাটাস</th>
-									<th className="px-4 py-2 text-center w-1/8">তারিখ</th>
-									<th className="px-4 py-2 text-center w-1/8">একশন</th>
-								</tr>
-							</thead>
-							<tbody>
-								
-								
-										<tr>
-											<td>1</td>
-											<td className="text-xs">TR45t76cbvbdfdf</td>
-											<td className="text-xs">jhj44v3v34h</td>
-											<td className="text-xs">bkash</td>
-											<td className="text-xs">34</td>
-											<td className="text-xs">Bio Purchases</td>
-											<td className="text-xs">Paid</td>
-											<td className="text-xs">13 Oct 2023</td>
-											 
-											<td>
-											<button 
-											// onClick={refundHandler('','','')}
-											 className="bg-blue-500 hover:bg-blue-700 text-white text-xs py-2 px-4 mb-2 rounded">
-											Refund
-											</button>
+			<div className="my-favs-info border-t-2 w-auto rounded shadow">
+				<h5 className="card-title text-center text-2xl my-3">Refund List</h5>
+				<div className="overflow-x-auto">
+					<table className="table-auto w-full">
+						<thead>
+							<tr className="border-b border-t">
+								<th className="px-4 py-2 text-center w-1/8">SL</th>
+								<th>পেমেন্ট আইডি</th>
+								<th className="px-4 py-2 text-center w-1/8">ট্রানজেকশন আইডি</th>
+								<th className="px-4 py-2 text-center w-1/8">মেথড</th>
+								<th className="px-4 py-2 text-center w-1/8">পরিমাণ</th>
+								<th className="px-4 py-2 text-center w-1/8">কারণ</th>
+								<th className="px-4 py-2 text-center w-1/8">স্ট্যাটাস</th>
+								<th className="px-4 py-2 text-center w-1/8">তারিখ</th>
+								<th className="px-4 py-2 text-center w-1/8">একশন</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td className="text-xs">TR45t76cbvbdfdf</td>
+								<td className="text-xs">jhj44v3v34h</td>
+								<td className="text-xs">bkash</td>
+								<td className="text-xs">34</td>
+								<td className="text-xs">Bio Purchases</td>
+								<td className="text-xs">Paid</td>
+								<td className="text-xs">13 Oct 2023</td>
 
-											</td>
-											
+								<td>
+									<button
+										// onClick={refundHandler('','','')}
+										className="bg-blue-500 hover:bg-blue-700 text-white text-xs py-2 px-4 mb-2 rounded"
+									>
+										Refund
+									</button>
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td className="text-xs">TR45t76cbvbdfdf</td>
+								<td className="text-xs">jhj44v3v34h</td>
+								<td className="text-xs">bkash</td>
+								<td className="text-xs">34</td>
+								<td className="text-xs">Bio Purchases</td>
+								<td className="text-xs">Paid</td>
+								<td className="text-xs">13 Oct 2023</td>
 
-										</tr>
-										<tr>
-										<td>2</td>
-											<td className="text-xs">TR45t76cbvbdfdf</td>
-											<td className="text-xs">jhj44v3v34h</td>
-											<td className="text-xs">bkash</td>
-											<td className="text-xs">34</td>
-											<td className="text-xs">Bio Purchases</td>
-											<td className="text-xs">Paid</td>
-											<td className="text-xs">13 Oct 2023</td>
-											 
-											<td>
-											<button  className="bg-blue-500 hover:bg-blue-700 text-white text-xs py-2 px-4 mb-2 rounded">
-											Refund
-											</button>
-
-											</td>
-											
-
-										</tr>
-								
-							</tbody>
-						</table>
-					</div>
+								<td>
+									<button className="bg-blue-500 hover:bg-blue-700 text-white text-xs py-2 px-4 mb-2 rounded">
+										Refund
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-			
+			</div>
 		</div>
 	);
 	// return (

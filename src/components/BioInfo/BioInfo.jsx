@@ -4,6 +4,7 @@ import male from "../../assets/icons/male.svg";
 import { Colors } from "../../constants/colors";
 import BioContext from "../../contexts/BioContext";
 import { getDateMonthYear } from "../../utils/date";
+import { convertHeightToBengali } from "../../utils/height";
 
 // async function formatHeight(height) {
 // 	// Simulate an asynchronous operation (e.g., an API call)
@@ -77,7 +78,9 @@ function BioInfo() {
 						</tr>
 						<tr>
 							<td className="px-4 text-left py-2">উচ্চতা</td>
-							<td className="px-4 text-left py-2">{generalInfo?.height}</td>
+							<td className="px-4 text-left py-2">
+								{convertHeightToBengali(generalInfo?.height)}{" "}
+							</td>
 						</tr>
 						<tr>
 							<td className="px-4 text-left py-2">গাত্রবর্ণ</td>

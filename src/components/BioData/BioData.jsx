@@ -91,9 +91,9 @@ const BioData = ({ biodata }) => {
 		}
 	};
 
-	console.log("like count~", data);
-	console.log("dislikes~", userDisLikesData);
-	console.log(userInfo?.data[0]?.id, biodata.user_id, userData?.data?.type);
+	// console.log("like count~", data);
+	// console.log("dislikes~", userDisLikesData);
+	// console.log(userInfo?.data[0]?.id, biodata.user_id, userData?.data?.type);
 
 	return (
 		<div className="my-5 hover:shadow-2xl transition-all  duration-300 ease-in rounded-md border-2">
@@ -151,7 +151,6 @@ const BioData = ({ biodata }) => {
 								জন্মসন
 							</td>
 							<td className="px-6 py-4 text-sm whitespace-nowrap border-b border-t">
-								{/* {getDateMonthYear(biodata.date_of_birth)} */}
 								{formatDate(getDateMonthYear(biodata.date_of_birth))}
 							</td>
 						</tr>
