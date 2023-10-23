@@ -8,7 +8,6 @@ import { LikesServices } from "../../services/favorites";
 import { getToken } from "../../utils/cookies";
 import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
 import { formatDate, getDateMonthYear } from "../../utils/date";
-import { BioDataServices } from "../../services/bioData";
 import { useNavigate } from "react-router-dom";
 
 const LikeItem = ({ item, index }) => {

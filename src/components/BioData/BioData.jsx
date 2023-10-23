@@ -14,6 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 import { DisLikesServices } from "../../services/unfavorites";
+import { RiProhibitedFill, RiProhibitedLine } from "react-icons/ri";
 
 const BioData = ({ biodata }) => {
 	const navigate = useNavigate();
@@ -76,22 +77,22 @@ const BioData = ({ biodata }) => {
 		}
 
 		try {
-			const data = await LikesServices.createLikes(
+			const data = await DisLikesServices.createDisLikes(
 				{ bio_id: biodata?.user_id },
 				getToken().token
 			);
 			if (data?.success) {
-				await refetch();
-				await userRefetch();
+				await userDisLikesRefetch();
 				Toast.successToast("আপনার রিয়াকশন যুক্ত করা হয়েছে");
 			}
-			console.log(data);
+			// console.log(data);
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
-	console.log("like count", data);
+	console.log("like count~", data);
+	console.log("dislikes~", userDisLikesData);
 	console.log(userInfo?.data[0]?.id, biodata.user_id, userData?.data?.type);
 
 	return (
@@ -119,8 +120,15 @@ const BioData = ({ biodata }) => {
 					{biodata?.views}
 				</div>
 				{/*dislikes icons */}
-				<div className="flex absolute top-2  right-2">
-					<FaBan className="w-6 h-6 text-center mr-2 text-red-700" />
+				<div
+					onClick={DisLikeButtonHandler}
+					className="flex absolute cursor-pointer top-2  right-2"
+				>
+					{userDisLikesData?.data?.type === "ignore" ? (
+						<RiProhibitedFill />
+					) : (
+						<RiProhibitedLine />
+					)}
 				</div>
 				{/* like icons */}
 				<div

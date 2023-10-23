@@ -1,110 +1,154 @@
-import "./UnFavorite.css";
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { Button } from "@material-tailwind/react";
-import { FaEye, FaTrash } from "react-icons/fa";
+import { useQuery } from "@tanstack/react-query";
+import { FaEye } from "react-icons/fa";
+import { DisLikesServices } from "../../services/unfavorites";
+import { getToken } from "../../utils/cookies";
+import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
+import { formatDate, getDateMonthYear } from "../../utils/date";
+import { useNavigate } from "react-router-dom";
+import "./UnFavorite.css";
+const DisLikeItem = ({ item, index }) => {
+	const navigate = useNavigate();
+
+	// console.log("favorite-item", data);
+	const viewButtonHandler = () => {
+		navigate(`/biodata/${item.bio_id}`);
+	};
+	return (
+		<tr className="border-b">
+			<td className="px-4 py-2 text-center w-1/9 border-l">{index}</td>
+			<td className="px-4 py-2 text-center w-1/9 border-l">{item?.bio_id}</td>
+			<td className="px-4 py-2 text-center w-1/9 border-l">
+				{formatDate(getDateMonthYear(item?.date_of_birth))}
+			</td>
+			<td className="px-4 py-2 text-center w-1/9 border-l">
+				{item?.permanent_address}
+			</td>
+			<td className="px-4 py-2 text-center w-1/9 border-l">
+				{item?.total_count}
+			</td>
+			<td className="px-4 py-2 text-center w-1/9 border-l">
+				{item?.approval_rate}%
+			</td>
+			<td className="px-4 py-2 text-center w-1/9 border-l">
+				{item?.rejection_rate}%
+			</td>
+			<td className="px-4 py-2 text-center w-1/9 border-l">
+				{item?.total_pending}
+			</td>
+			<td className="px-4 py-2 text-center w-1/9 border-l">
+				<Button
+					onClick={viewButtonHandler}
+					color="green"
+					size="xs"
+					className="mr-2"
+				>
+					<FaEye size={12} />
+				</Button>
+			</td>
+		</tr>
+	);
+};
+
 const UnFavorite = () => {
-  return (
-    <div className="py-12 mx-auto ">
-      <div className="">
-        {/*<!-- End of Left Sidebar -->*/}
-        <div className="col right-sidebar-main my-favs">
-          <div className="my-unfavs-info border-t-2 w-auto rounded shadow">
-            <h5 className="card-title text-center text-2xl my-3">
-              আমার অপছন্দসমুহ
-            </h5>
-                <div className="overflow-x-auto">
-            <table className="table-auto w-full">
-              <thead>
-                <tr className="border-b border-t">
-                  <th className="px-4 py-2 text-center w-1/9">SL</th>
-                  <th className="px-4 py-2 text-center w-1/9">বায়োডাটা নং</th>
-                  <th className="px-4 py-2 text-center w-1/9">জন্ম তারিখ</th>
-                  <th className="px-4 py-2 text-center w-1/9">ঠিকানা</th>
-                  <th className="px-4 py-2 text-center w-1/9">টোটাল প্রস্তাব পেয়েছে</th>
-                  <th className="px-4 py-2 text-center w-1/9">
-                    অ্যাপ্রুভাল রেট
-                  </th>
-                  <th className="px-4 py-2 text-center w-1/9">রিজেকশন রেট</th>
-                  <th className="px-4 py-2 text-center w-1/9">
-                    পেইন্ডিং সংখ্যা
-                  </th>
-                  <th className="px-4 py-2 text-center w-1/9">অপশন</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b">
-                  <td className="px-4 py-2 text-center w-1/9 border-l">1</td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">2345</td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">
-                    Jan 1998
-                  </td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">
-                    Barisal City Corporation,Barisal
-                  </td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">23</td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">56%</td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">44%</td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">2</td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">
-                  <Button  color="green" size="xs" className="mr-2">
-            <FaEye size={12} />
-          </Button>
-          <Button color="red" size="xs">
-            <FaTrash size={12} />
-          </Button>
-                  </td>
-                </tr>
-                <tr className="border-b">
-                  <td className="px-4 py-2 text-center w-1/9 border-l">2</td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">345</td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">
-                    Aug 1998
-                  </td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">
-                    Dhaka North City Corporation,Dhaka
-                  </td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">39</td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">66%</td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">34%</td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">7</td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">
-                  <Button  color="green" size="xs" className="mr-2">
-            <FaEye size={12} />
-          </Button>
-          <Button color="red" size="xs">
-            <FaTrash size={12} />
-          </Button>
-                  </td>
-                </tr>
-                <tr className="border-b">
-                  <td className="px-4 py-2 text-center w-1/9 border-l">3</td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">321</td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">
-                    Jan 1988
-                  </td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">
-                    Sylhet City Corporation,Sylhet
-                  </td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">45</td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">86%</td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">14%</td>
-                  <td className="px-4 py-2 text-center w-1/9 border-l">0</td>
-                  <td className="px-4 py-2 text-center flex w-1/9 border-l">
-                  <Button  color="green" size="xs" className="mr-2">
-            <FaEye size={12} />
-          </Button>
-          <Button color="red" size="xs">
-            <FaTrash size={12} />
-          </Button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+	const { data, isLoading } = useQuery({
+		queryKey: ["dis-likes", "user", "all"],
+		queryFn: async () => {
+			return await DisLikesServices.getUserDisLikesList(getToken().token);
+		},
+	});
+	if (isLoading) {
+		return <LoadingCircle />;
+	}
+	console.log("likes~", data);
+	return (
+		<div className="py-12 mx-auto ">
+			<div className="">
+				{/*<!-- End of Left Sidebar -->*/}
+				<div className="col right-sidebar-main my-favs">
+					<div className="my-favs-info border-t-2 w-auto rounded shadow">
+						<h5 className="card-title text-center text-2xl my-3">
+							আমার অপছন্দসমুহ
+						</h5>
+						<div className="overflow-x-auto">
+							<table className="table-auto w-full">
+								<thead>
+									<tr className="border-b border-t">
+										<th className="px-4 py-2 text-center w-1/9">SL</th>
+										<th className="px-4 py-2 text-center w-1/9">বায়োডাটা নং</th>
+										<th className="px-4 py-2 text-center w-1/9">জন্ম তারিখ</th>
+										<th className="px-4 py-2 text-center w-1/9">ঠিকানা</th>
+										<th className="px-4 py-2 text-center w-1/9">
+											টোটাল পেয়েছে
+										</th>
+										<th className="px-4 py-2 text-center w-1/9">
+											অ্যাপ্রুভাল রেট
+										</th>
+										<th className="px-4 py-2 text-center w-1/9">রিজেকশন রেট</th>
+										<th className="px-4 py-2 text-center w-1/9">
+											পেইন্ডিং সংখ্যা
+										</th>
+										<th className="px-4 py-2 text-center w-1/9">অপশন</th>
+									</tr>
+								</thead>
+								<tbody>
+									{data?.data?.map((item, index) => {
+										return (
+											<DisLikeItem item={item} index={index} key={index} />
+										);
+									})}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div className="h-8"></div>
+				<div className="col right-sidebar-main my-bio-favs">
+					<div className="my-favs-info border-t-2 w-auto rounded shadow">
+						<h5 className="card-title text-center text-2xl mt-3">
+							আমার বায়োডাটা যারা অপছন্দের তালিকায় রেখেছেঃ
+						</h5>
+						<h6 className="text-xs pb-4">
+							এটি প্রিমিয়াম ফিচার! এই তথ্য দেখতে হলে আপনাকে ৫০ পয়েন্ট খরচ করতে
+							হবে!!!
+						</h6>
+						<div className="overflow-x-auto">
+							<table className="table-auto w-full">
+								<thead>
+									<tr className="border-b border-t">
+										<th className="px-4 py-2 text-center w-1/9">SL</th>
+										<th className="px-4 py-2 text-center w-1/9">বায়োডাটা নং</th>
+										<th className="px-4 py-2 text-center w-1/9">জন্ম তারিখ</th>
+										<th className="px-4 py-2 text-center w-1/9">ঠিকানা</th>
+										<th className="px-4 py-2 text-center w-1/9">
+											টোটাল পেয়েছে
+										</th>
+										<th className="px-4 py-2 text-center w-1/9">
+											অ্যাপ্রুভাল রেট
+										</th>
+										<th className="px-4 py-2 text-center w-1/9">রিজেকশন রেট</th>
+										<th className="px-4 py-2 text-center w-1/9">
+											পেইন্ডিং সংখ্যা
+										</th>
+										<th className="px-4 py-2 text-center w-1/9">অপশন</th>
+									</tr>
+								</thead>
+								<tbody>
+									{data?.data?.map((item, index) => {
+										return (
+											<DisLikeItem item={item} index={index} key={index} />
+										);
+									})}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default UnFavorite;
