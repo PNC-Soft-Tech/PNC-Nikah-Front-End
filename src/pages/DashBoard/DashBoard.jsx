@@ -1,9 +1,42 @@
 import { useContext } from "react";
 import { Colors } from "../../constants/colors"; // Adjust the import path as needed
 import UserContext from "../../contexts/UserContext";
-
+import BioContext from "../../contexts/BioContext";
+import { useQuery } from "@tanstack/react-query";
+import { BioDataServices } from "../../services/bioData";
+import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
 const DashBoard = () => {
 	const { userInfo } = useContext(UserContext);
+//Stats Code 
+const { bio } = useContext(BioContext);
+const generalInfo = bio?.generalInfo || null;
+const { data, isLoading, error } = useQuery({
+	queryKey: ["bio-data", "stat", userInfo?.data[0]?.id],
+	queryFn: async () => {
+		return await BioDataServices.getBioDataStatistics(id);
+	},
+});
+
+console.log("bioStats~", generalInfo);
+console.log("bioStats", data);
+
+const rejected = data?.results?.rejected;
+const pending = data?.results?.pending;
+const approved = data?.results?.approved;
+const total = rejected + approved;
+let approvedRate = 0;
+let rejectedRate = 0;
+if (total) {
+	approvedRate = approved / total;
+	approvedRate = approvedRate.toFixed(2);
+	rejectedRate = rejected / total;
+	rejectedRate = rejectedRate.toFixed(2);
+}
+if (isLoading) {
+	return <LoadingCircle />;
+}
+//end stat code
+
 	//console.log(userInfo);
 	return (
 		<div
@@ -26,7 +59,7 @@ const DashBoard = () => {
 							className="text-lg font-semibold text-center"
 							style={{ color: Colors.titleText }}
 						>
-							আমার বর্তমান পয়েন্টঃ {userInfo?.data[0]?.points}
+							আমার বর্তমান পয়েন্টঃ {userInfo?.data[0]?.points} 
 						</h2>
 					</div>
 					<p className="text-gray-700">
@@ -48,7 +81,7 @@ const DashBoard = () => {
 							className="text-lg font-semibold"
 							style={{ color: Colors.titleText }}
 						>
-							আমার পেন্ডিং প্রস্তাবঃ ২ টি
+							আমার পেন্ডিং প্রস্তাবঃ {data?.results?.pending} {pending} টি
 						</h2>
 					</div>
 					<p className="text-gray-700">
@@ -161,7 +194,7 @@ const DashBoard = () => {
 							className="text-lg font-semibold text-center"
 							style={{ color: Colors.titleText }}
 						>
-							বায়োডাটা ভিজিট সংখ্যা: ৩৪৫
+							বায়োডাটা ভিজিট সংখ্যা: {userInfo?.data[0]?.views}
 						</h2>
 					</div>
 					<p className="text-gray-700">
@@ -177,7 +210,7 @@ const DashBoard = () => {
 							className="text-lg font-semibold text-center"
 							style={{ color: Colors.titleText }}
 						>
-							আমার আপ্রুভাল রেটঃ ৩৭%
+							আমার আপ্রুভাল রেটঃ {approvedRate}
 						</h2>
 					</div>
 					<p className="text-gray-700">
@@ -195,7 +228,7 @@ const DashBoard = () => {
 							className="text-lg font-semibold text-center"
 							style={{ color: Colors.titleText }}
 						>
-							আমার রিজেকশন রেটঃ ৬৩%
+							আমার রিজেকশন রেটঃ {rejectedRate}
 						</h2>
 					</div>
 					<p className="text-gray-700">
