@@ -28,7 +28,7 @@ function readableDateTime(dateString) {
 	return readableDate;
 }
 const PaymentHistory = () => {
-	const { data, isLoading } = useQuery({
+	const { data, isLoading, refetch } = useQuery({
 		queryKey: ["payments", "history"],
 		queryFn: async () => {
 			return await paymentServices.getPaymentsByUser(getToken().token);
@@ -55,7 +55,7 @@ const PaymentHistory = () => {
 			if (response?.success) {
 				Toast.successToast("Your Request is sent to admin");
 			}
-
+			await refetch();
 			// Handle the response as needed
 			console.log(response);
 		} catch (error) {
@@ -132,21 +132,19 @@ const PaymentHistory = () => {
 														</button>
 													)}
 												</td>
-											) : item.status==='requested'? (
+											) : item.status === "requested" ? (
 												<td>
 													<div className="text-xs font-bold py-4 px-4 text-green-700">
 														Refund Processing
 													</div>
 												</td>
-											):
-											(
+											) : (
 												<td>
 													<div className="text-xs py-4 px-4 text-red-700">
 														Not Refundable
 													</div>
 												</td>
-											)
-											}
+											)}
 										</tr>
 									);
 								})}
