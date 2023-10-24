@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home/Home";
 import BioDatas from "../pages/BioDatas/BioDatas";
-import MainLaout from "../Layout/mainLayout";
+import MainLayout from "../Layout/mainLayout";
 import BioData from "../pages/BioData/BioData";
 import { Signup } from "../pages/Signup/Signup";
 import { Login } from "../pages/Login/Login";
@@ -11,7 +11,7 @@ import DashBoard from "../pages/DashBoard/DashBoard";
 import BioLikes from "../pages/BioLikes/BioLikes";
 import MyReports from "../pages/MyReports/MyReports";
 import MyPurchases from "../pages/MyPurchases/MyPurchases";
-import PyamentAndRefund from "../pages/PyamentAndRefund/PyamentAndRefund";
+import PaymentAndRefund from "../pages/PyamentAndRefund/PyamentAndRefund";
 import SendForm from "../pages/SendForm/SendForm";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import Reports from "../pages/Reports/Reports";
@@ -30,11 +30,13 @@ import PayFail from "../pages/PayFail/PayFail";
 import PaySuccess from "../pages/PaySuccess/PaySuccess";
 import NotFound from "../pages/NotFound/NotFound";
 import Refund from "../pages/Refund/Refund";
+import RefundSuccess from "../pages/RefundSuccess/RefundSuccess";
+import RefundFail from "../pages/RefundFail/RefundFail";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
-		element: <MainLaout />,
+		element: <MainLayout />,
 		children: [
 			{
 				path: "/",
@@ -125,6 +127,14 @@ const router = createBrowserRouter([
 				element: <PaySuccess />,
 			},
 			{
+				path: "/refund/success",
+				element: <RefundSuccess />,
+			},
+			{
+				path: "/refund/fail",
+				element: <RefundFail />,
+			},
+			{
 				path: "/user/account",
 				element: <UserLayout />,
 				children: [
@@ -151,7 +161,7 @@ const router = createBrowserRouter([
 					},
 					{
 						path: "/user/account/payment-and-refund",
-						element: <PyamentAndRefund />,
+						element: <PaymentAndRefund />,
 					},
 					{
 						path: "/user/account/myreports",

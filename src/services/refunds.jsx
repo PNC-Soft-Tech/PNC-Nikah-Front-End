@@ -36,25 +36,36 @@ const baseUrl =
 		: "https://nikkahbackend.mclabbu.xyz/api/v1";
 
 const addRefundRequest = async (data, token) => {
-  const response = await axios.post(baseUrl + "/refund/refund-req", data, {
-    headers: {
-      Authorization: token,
-      "Content-Type": "application/json",
-    },
-  });
-  return response.data;
+	const response = await axios.post(baseUrl + "/refund/refund-req", data, {
+		headers: {
+			Authorization: token,
+			"Content-Type": "application/json",
+		},
+	});
+	return response.data;
 };
 
 const getRefundRequest = async (token) => {
-  const response = await axios.get(baseUrl + "/refund/refund-req", {
-    headers: {
-      Authorization: token,
-    },
-  });
-  return response.data;
+	const response = await axios.get(baseUrl + "/refund/refund-req", {
+		headers: {
+			Authorization: token,
+		},
+	});
+	return response.data;
+};
+
+const updateRefundRequest = async (data, token) => {
+	const response = await axios.put(baseUrl + "/refund/refund-req", data, {
+		headers: {
+			Authorization: token,
+			"Content-Type": "application/json",
+		},
+	});
+	return response.data;
 };
 
 export const refundServices = {
-  addRefundRequest: addRefundRequest,
-  getRefundRequest: getRefundRequest,
+	addRefundRequest: addRefundRequest,
+	getRefundRequest: getRefundRequest,
+	updateRefundRequest: updateRefundRequest,
 };

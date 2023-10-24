@@ -7,7 +7,7 @@ const RefundFail = () => {
 	const navigate = useNavigate();
 	useEffect(() => {
 		const timeout = setTimeout(() => {
-			navigate("/user/account/dashboard");
+			navigate("/admin/refund");
 		}, 10000); // 10 seconds timeout
 		return () => clearTimeout(timeout);
 	}, [navigate]);
