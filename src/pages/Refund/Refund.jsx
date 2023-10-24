@@ -13,7 +13,7 @@ const Refund = () => {
 	const navigate = useNavigate();
 	// const { paymentId } = useParams();
 	// const { tnxId } = useParams();
-	const { data, isLoading } = useQuery({
+	const { data, isLoading, refetch } = useQuery({
 		queryKey: ["refund", "history"],
 		queryFn: async () => {
 			return await refundServices.getRefundRequest(getToken().token);
@@ -33,6 +33,7 @@ const Refund = () => {
 			try {
 				setLoading(true);
 				setLoadingPaymentId(paymentId);
+
 				const response = await BkashRefundPaymentAPICall(
 					paymentId,
 					trnxId,
@@ -55,7 +56,7 @@ const Refund = () => {
 					if (savedResponse.success) {
 						console.log(savedResponse);
 					}
-
+					await refetch();
 					Toast.successToast("Refunded successfully");
 					setLoading(false);
 					setLoadingPaymentId("");
@@ -77,7 +78,7 @@ const Refund = () => {
 		}
 	};
 
-	console.log(data);
+	// console.log("refund-data~", data);
 
 	return (
 		<div className="col right-sidebar-main my-favs">

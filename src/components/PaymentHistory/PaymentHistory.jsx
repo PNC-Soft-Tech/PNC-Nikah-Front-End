@@ -28,7 +28,7 @@ function readableDateTime(dateString) {
 	return readableDate;
 }
 const PaymentHistory = () => {
-	const { data, isLoading } = useQuery({
+	const { data, isLoading, refetch } = useQuery({
 		queryKey: ["payments", "history"],
 		queryFn: async () => {
 			return await paymentServices.getPaymentsByUser(getToken().token);
@@ -55,7 +55,7 @@ const PaymentHistory = () => {
 			if (response?.success) {
 				Toast.successToast("Your Request is sent to admin");
 			}
-
+			await refetch();
 			// Handle the response as needed
 			console.log(response);
 		} catch (error) {
@@ -114,28 +114,37 @@ const PaymentHistory = () => {
 												item.reason === "bio_purchase") ||
 											(item && item.reason === "buy_points") ? (
 												<td>
-													<button
-														onClick={() => handleRequestRefund(item)}
-														className="bg-blue-500 hover:bg-blue-700 text-white text-xs py-2 px-4 mb-2 rounded"
-													>
-														Request Refund
-													</button>
+													{item?.refund_status === "pending" ? (
+														<button
+															onClick={() => handleRequestRefund(item)}
+															className="bg-blue-500 hover:bg-blue-700 text-white text-xs py-2 px-4 mb-2 rounded"
+														>
+															Request Refund
+														</button>
+													) : (
+														<button
+															className="bg-gray-300 hover:bg-gray-400 text-gray-800 text-xs py-2 px-4 mb-2 rounded"
+															disabled
+															style={{ cursor: "not-allowed" }}
+															aria-label={item?.refund_status}
+														>
+															{item?.refund_status}
+														</button>
+													)}
 												</td>
-											) : item.status==='requested'? (
+											) : item.status === "requested" ? (
 												<td>
 													<div className="text-xs font-bold py-4 px-4 text-green-700">
 														Refund Processing
 													</div>
 												</td>
-											):
-											(
+											) : (
 												<td>
 													<div className="text-xs py-4 px-4 text-red-700">
 														Not Refundable
 													</div>
 												</td>
-											)
-											}
+											)}
 										</tr>
 									);
 								})}
