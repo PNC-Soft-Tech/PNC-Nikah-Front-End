@@ -79,17 +79,17 @@ const PaymentHistory = () => {
 						<table className="table-auto w-full">
 							<thead>
 								<tr className="border-b border-t">
-									<th className="px-4 py-2 text-center w-1/8">SL</th>
-									<th>পেমেন্ট আইডি</th>
-									<th className="px-4 py-2 text-center w-1/8">
+									<th className="px-4 py-2 text-center w-1/7">SL</th>
+									{/* <th>পেমেন্ট আইডি</th> */}
+									<th className="px-4 py-2 text-center w-1/7">
 										ট্রানজেকশন আইডি
 									</th>
-									<th className="px-4 py-2 text-center w-1/8">মেথড</th>
-									<th className="px-4 py-2 text-center w-1/8">পরিমাণ</th>
-									<th className="px-4 py-2 text-center w-1/8">কারণ</th>
-									<th className="px-4 py-2 text-center w-1/8">স্ট্যাটাস</th>
-									<th className="px-4 py-2 text-center w-1/8">তারিখ</th>
-									<th className="px-4 py-2 text-center w-1/8">একশন</th>
+									<th className="px-4 py-2 text-center w-1/7">মেথড</th>
+									<th className="px-4 py-2 text-center w-1/7">পরিমাণ</th>
+									<th className="px-4 py-2 text-center w-1/7">কারণ</th>
+									<th className="px-4 py-2 text-center w-1/7">স্ট্যাটাস</th>
+									<th className="px-4 py-2 text-center w-1/7">তারিখ</th>
+									<th className="px-4 py-2 text-center w-1/7">একশন</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -97,7 +97,7 @@ const PaymentHistory = () => {
 									return (
 										<tr key={index}>
 											<td>{item.id}</td>
-											<td className="text-xs">{item?.payment_id}</td>
+											{/* <td className="text-xs">{item?.payment_id}</td> */}
 											<td className="text-xs">{item?.transaction_id}</td>
 											<td className="text-xs">{item?.method}</td>
 											<td className="text-xs">{item?.amount}</td>
@@ -121,13 +121,21 @@ const PaymentHistory = () => {
 														Request Refund
 													</button>
 												</td>
-											) : (
+											) : item.status==='requested'? (
+												<td>
+													<div className="text-xs font-bold py-4 px-4 text-green-700">
+														Refund Processing
+													</div>
+												</td>
+											):
+											(
 												<td>
 													<div className="text-xs py-4 px-4 text-red-700">
 														Not Refundable
 													</div>
 												</td>
-											)}
+											)
+											}
 										</tr>
 									);
 								})}
