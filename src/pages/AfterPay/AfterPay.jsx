@@ -30,7 +30,13 @@ const AfterPay = () => {
 				if (response?.statusCode && response.statusCode === "0000") {
 					console.log("Success", response?.statusMessage);
 					navigate(
-						`/pay/success?message=${response?.statusMessage}&trxID=${response?.trxID}&paymentId=${paymentID}&amount=${response?.amount}&status=${response?.transactionStatus}&payment_create_time=${response?.paymentCreateTime}`
+						`/pay/success?message=${response?.statusMessage}&trxID=${
+							response?.trxID
+						}&paymentId=${paymentID}&amount=${response?.amount}&status=${
+							response?.transactionStatus
+						}&payment_create_time=${
+							response?.paymentCreateTime || response?.paymentExecuteTime
+						}`
 					);
 				} else {
 					console.log("Failure", response?.statusMessage);
