@@ -66,6 +66,10 @@ if (isLoading) {
 						আপনার একাউন্টে এখন যত্‌পরিমাণ পয়েন্ট জমা রয়েছে
 					</p>
 					<button
+					 onClick={(e) => {
+						e.preventDefault();
+						window.location.href='/points-package';
+						}}
 						className="mt-2 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full"
 						style={{ backgroundColor: Colors.pncPrimaryColor }}
 					>

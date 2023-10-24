@@ -22,8 +22,20 @@ const getPaymentsByUser = async (token) => {
 	});
 	return response.data;
 };
-
+const updatePaymentInfo = async (updatedData, token) => {
+	if (!updatedData || !token) {
+		return null;
+	}
+	const { data } = await axios.put(baseUrl + `/payments`, updatedData, {
+		headers: {
+			Authorization: token,
+			"Content-Type": "application/json",
+		},
+	});
+	return data;
+};
 export const paymentServices = {
 	createPayments,
 	getPaymentsByUser,
+	updatePaymentInfo
 };

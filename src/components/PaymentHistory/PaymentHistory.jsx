@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@material-tailwind/react";
+import { Colors } from "../../constants/colors";
 import { paymentServices } from "../../services/payments";
 import { getToken } from "../../utils/cookies";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
 import { refundServices } from "../../services/refunds";
+import { Toast } from "../../utils/toast";
 const handleRequestRefund = async (item) => {
 	try {
 	  // Extract the necessary data from the item
@@ -21,7 +23,9 @@ const handleRequestRefund = async (item) => {
 		refund_status: 'requested', // Set to 'requested'
 		refund_req_time: new Date(), // Current time
 	  }, getToken().token);
-  
+  if (response){
+	Toast.successToast("We have received your refund request.We will process soon");
+  }
 	  // Handle the response as needed
 	  console.log(response);
   
@@ -49,10 +53,11 @@ function readableDateTime(dateString){
 	  hour: "2-digit",
 	  minute: "2-digit",
 	  second: "2-digit",
-	  timeZoneName: "short"
+	//   timeZoneName: "short"
 	};
   
-	const readableDate = date.toLocaleDateString(undefined, options);
+	// const readableDate = date.toLocaleDateString(undefined, options);
+	const readableDate = new Intl.DateTimeFormat('en-US', options).format(date);
 	return readableDate;
 }
 const PaymentHistory = () => {
@@ -76,25 +81,25 @@ const PaymentHistory = () => {
 						<table className="table-auto w-full">
 							<thead>
 								<tr className="border-b border-t">
-									<th className="px-4 py-2 text-center w-1/8">SL</th>
-									<th>পেমেন্ট আইডি</th>
-									<th className="px-4 py-2 text-center w-1/8">
+									<th className="px-4 py-2 text-center w-1/7">SL</th>
+									{/* <th>পেমেন্ট আইডি</th> */}
+									<th className="px-4 py-2 text-center w-1/7">
 										ট্রানজেকশন আইডি
 									</th>
-									<th className="px-4 py-2 text-center w-1/8">মেথড</th>
-									<th className="px-4 py-2 text-center w-1/8">পরিমাণ</th>
-									<th className="px-4 py-2 text-center w-1/8">কারণ</th>
-									<th className="px-4 py-2 text-center w-1/8">স্ট্যাটাস</th>
-									<th className="px-4 py-2 text-center w-1/8">তারিখ</th>
-									<th className="px-4 py-2 text-center w-1/8">একশন</th>
+									<th className="px-4 py-2 text-center w-1/7">মেথড</th>
+									<th className="px-4 py-2 text-center w-1/7">পরিমাণ</th>
+									<th className="px-4 py-2 text-center w-1/7">কারণ</th>
+									<th className="px-4 py-2 text-center w-1/7">স্ট্যাটাস</th>
+									<th className="px-4 py-2 text-center w-1/7">তারিখ</th>
+									<th className="px-4 py-2 text-center w-1/7">একশন</th>
 								</tr>
 							</thead>
 							<tbody>
 								{data?.data?.map((item, index) => {
 									return (
 										<tr key={index}>
-											<td>{item.id}</td>
-											<td className="text-xs">{item?.payment_id}</td>
+											<td>{index+1}</td>
+											{/* <td className="text-xs">{item?.payment_id}</td> */}
 											<td className="text-xs">{item?.transaction_id}</td>
 											<td className="text-xs">{item?.method}</td>
 											<td className="text-xs">{item?.amount}</td>
@@ -104,10 +109,13 @@ const PaymentHistory = () => {
 											{/* {(item && (item.status === 'Completed' && item.bio_choice_status === 'Pending'  && item.reason === 'bio_purchase') || (item && item.reason==='buy_points')) ? ( */}
 											{(item && (item.status === 'Completed' && item.reason === 'bio_purchase') || (item && item.reason==='buy_points')) ? (
 											<td>
-											<button onClick={() => handleRequestRefund(item)}
+											<button style={{
+								background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
+							}}
+											 onClick={() => handleRequestRefund(item)}
 											 className="bg-blue-500 hover:bg-blue-700 text-white text-xs py-2 px-4 mb-2 rounded">
 											Request Refund
-											</button>
+											 </button>
 
 											</td>
 											) : (
