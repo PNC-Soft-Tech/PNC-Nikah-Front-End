@@ -114,12 +114,23 @@ const PaymentHistory = () => {
 												item.reason === "bio_purchase") ||
 											(item && item.reason === "buy_points") ? (
 												<td>
-													<button
-														onClick={() => handleRequestRefund(item)}
-														className="bg-blue-500 hover:bg-blue-700 text-white text-xs py-2 px-4 mb-2 rounded"
-													>
-														Request Refund
-													</button>
+													{item?.refund_status === "pending" ? (
+														<button
+															onClick={() => handleRequestRefund(item)}
+															className="bg-blue-500 hover:bg-blue-700 text-white text-xs py-2 px-4 mb-2 rounded"
+														>
+															Request Refund
+														</button>
+													) : (
+														<button
+															className="bg-gray-300 hover:bg-gray-400 text-gray-800 text-xs py-2 px-4 mb-2 rounded"
+															disabled
+															style={{ cursor: "not-allowed" }}
+															aria-label={item?.refund_status}
+														>
+															{item?.refund_status}
+														</button>
+													)}
 												</td>
 											) : (
 												<td>
