@@ -130,6 +130,7 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 			views_count: 0,
 			purchases_count: 0,
 		};
+
 		if (!getToken()?.token) {
 			alert("Please logout and try again");
 			return;
@@ -162,7 +163,6 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 				// console.log(data);
 			} else {
 				setLoading(true);
-
 				const data = await BioDataServices.createGeneralInfo(
 					{ ...formData, user_form: userForm },
 					getToken().token

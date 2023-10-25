@@ -15,6 +15,7 @@ import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 import { DisLikesServices } from "../../services/unfavorites";
 import { RiProhibitedFill, RiProhibitedLine } from "react-icons/ri";
+import { convertHeightToBengali } from "../../utils/height";
 
 const BioData = ({ biodata }) => {
 	const navigate = useNavigate();
@@ -159,7 +160,7 @@ const BioData = ({ biodata }) => {
 								উচ্চতা{" "}
 							</td>
 							<td className="px-6 py-4 whitespace-nowrap border-b">
-								<span>{biodata.height}</span>
+								<span>{convertHeightToBengali(biodata?.height)}</span>
 							</td>
 						</tr>
 						<tr>

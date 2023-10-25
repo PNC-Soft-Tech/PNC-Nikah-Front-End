@@ -7,35 +7,35 @@ import { BioDataServices } from "../../services/bioData";
 import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
 const DashBoard = () => {
 	const { userInfo } = useContext(UserContext);
-//Stats Code 
-const { bio } = useContext(BioContext);
-const generalInfo = bio?.generalInfo || null;
-const { data, isLoading, error } = useQuery({
-	queryKey: ["bio-data", "stat", userInfo?.data[0]?.id],
-	queryFn: async () => {
-		return await BioDataServices.getBioDataStatistics(id);
-	},
-});
+	//Stats Code
+	const { bio } = useContext(BioContext);
+	const generalInfo = bio?.generalInfo || null;
+	const { data, isLoading, error } = useQuery({
+		queryKey: ["bio-data", "stat", userInfo?.data[0]?.id],
+		queryFn: async () => {
+			return await BioDataServices.getBioDataStatistics(userInfo?.data[0]?.id);
+		},
+	});
 
-console.log("bioStats~", generalInfo);
-console.log("bioStats", data);
+	console.log("bioStats~", generalInfo);
+	console.log("bioStats", data);
 
-const rejected = data?.results?.rejected;
-const pending = data?.results?.pending;
-const approved = data?.results?.approved;
-const total = rejected + approved;
-let approvedRate = 0;
-let rejectedRate = 0;
-if (total) {
-	approvedRate = approved / total;
-	approvedRate = approvedRate.toFixed(2);
-	rejectedRate = rejected / total;
-	rejectedRate = rejectedRate.toFixed(2);
-}
-if (isLoading) {
-	return <LoadingCircle />;
-}
-//end stat code
+	const rejected = data?.results?.rejected;
+	const pending = data?.results?.pending;
+	const approved = data?.results?.approved;
+	const total = rejected + approved;
+	let approvedRate = 0;
+	let rejectedRate = 0;
+	if (total) {
+		approvedRate = approved / total;
+		approvedRate = approvedRate.toFixed(2);
+		rejectedRate = rejected / total;
+		rejectedRate = rejectedRate.toFixed(2);
+	}
+	if (isLoading) {
+		return <LoadingCircle />;
+	}
+	//end stat code
 
 	//console.log(userInfo);
 	return (
@@ -59,16 +59,16 @@ if (isLoading) {
 							className="text-lg font-semibold text-center"
 							style={{ color: Colors.titleText }}
 						>
-							আমার বর্তমান পয়েন্টঃ {userInfo?.data[0]?.points} 
+							আমার বর্তমান পয়েন্টঃ {userInfo?.data[0]?.points}
 						</h2>
 					</div>
 					<p className="text-gray-700">
 						আপনার একাউন্টে এখন যত্‌পরিমাণ পয়েন্ট জমা রয়েছে
 					</p>
 					<button
-					 onClick={(e) => {
-						e.preventDefault();
-						window.location.href='/points-package';
+						onClick={(e) => {
+							e.preventDefault();
+							window.location.href = "/points-package";
 						}}
 						className="mt-2 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full"
 						style={{ backgroundColor: Colors.pncPrimaryColor }}

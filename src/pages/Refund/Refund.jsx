@@ -24,6 +24,7 @@ const Refund = () => {
 		const amount = item?.refund_amount;
 		const paymentId = item?.payment_id;
 		const trnxId = item?.transaction_id;
+		const user_id = item?.user_id;
 
 		if (paymentId.trim() === "" || trnxId.trim() === "") {
 			alert("All fields are required.");
@@ -49,6 +50,8 @@ const Refund = () => {
 							payment_id: paymentId,
 							refund_transaction_id: response?.refundTrxID,
 							refund_status: "refunded",
+							amount: amount,
+							user_id: user_id,
 						},
 						getToken().token
 					);
