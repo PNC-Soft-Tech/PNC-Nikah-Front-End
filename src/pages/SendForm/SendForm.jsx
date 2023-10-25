@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Colors } from "../../constants/colors";
 import Textarea from "../../components/Textarea/Textarea";
 import { BioChoiceDataServices } from "../../services/bioChoiceData";
@@ -6,9 +6,11 @@ import { getToken } from "../../utils/cookies";
 import { useNavigate, useParams } from "react-router-dom";
 import { Toast } from "../../utils/toast";
 import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
+import UserContext from "../../contexts/UserContext";
 function SendForm() {
 	const { id } = useParams();
 	const navigate = useNavigate();
+	const { userInfoRefetch } = useContext(UserContext);
 	const [opinionOnNikhab, setOpinionOnNikhab] = useState("");
 	const [salatInRain, setSalatInRain] = useState("");
 	const [studyingAtUniversity, setStudyingAtUniversity] = useState("");
@@ -71,6 +73,7 @@ function SendForm() {
 			}
 			setLoading(false);
 			setGoto(true);
+			await userInfoRefetch();
 		} catch (error) {
 			const msg = error?.response?.data?.message || error?.message;
 			Toast.errorToast(msg);

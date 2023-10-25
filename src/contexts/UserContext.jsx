@@ -25,7 +25,7 @@ export const UserProvider = ({ children }) => {
 	const [tokenInfo, setTokenInfo] = useState(null);
 	const googleProvider = new GoogleAuthProvider();
 
-	const { data: userInfo = null } = useQuery({
+	const { data: userInfo = null, refetch: userInfoRefetch } = useQuery({
 		queryKey: ["user-info", user?.email],
 		queryFn: async () => {
 			return await userServices.getUserInfoByEmail(user?.email);
@@ -95,6 +95,7 @@ export const UserProvider = ({ children }) => {
 				userInfo,
 				tokenInfo,
 				setTokenInfo,
+				userInfoRefetch,
 			}}
 		>
 			{children}
