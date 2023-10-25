@@ -59,7 +59,7 @@ const router = createBrowserRouter([
 				element: <Login />,
 			},
 			{
-				path: "/send-form",
+				path: "/send-form/:id",
 				element: <SendForm />,
 			},
 			{

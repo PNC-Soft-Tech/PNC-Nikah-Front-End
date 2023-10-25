@@ -10,7 +10,7 @@ const Select = ({
 	options = [],
 	subtitle,
 }) => {
-	console.log({ options: options });
+	// console.log({ options: options });
 	if (!options) {
 		return <p>select</p>;
 	}

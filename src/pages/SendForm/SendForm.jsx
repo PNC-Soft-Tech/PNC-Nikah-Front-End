@@ -1,66 +1,64 @@
 import { useState } from "react";
 import { Colors } from "../../constants/colors";
+import Textarea from "../../components/Textarea/Textarea";
+import { BioChoiceDataServices } from "../../services/bioChoiceData";
+import { getToken } from "../../utils/cookies";
+import { useParams } from "react-router-dom";
+import { Toast } from "../../utils/toast";
 function SendForm() {
-	const items = [
-		{
-			label:
-				"মেয়েদের চোখ ঢাকা নিকাব পড়াকে অনেকে বাড়াবাড়ি মনে করে। ইসলাম তো সহজ, আপনি এব্যাপারে কি মনে করেন?",
-			gender: "male",
-			htmlFor: "chockhDahaka",
-		},
-		{
-			label:
-				"প্রচন্ড বৃষ্টি হচ্ছে, মসজিদ যদিও কাছে মোটামুটি। হয়ত ছাতাও আছে যাওয়ার। কিন্তু ইসলাম তো সহজ, এখানে তো রুখসত আছে। কিন্তু অনেক অতি উৎসাহী আছে যারা এসব ঝড়-বৃষ্টি উপেক্ষা করেও যায় মসজিদে। এরকম বাড়াবাড়ি যারা করে তাদের ব্যাপারে আপনার মন্তব্য কি??",
-			gender: "male",
-			htmlFor: "mosjidBristi",
-		},
-		{
-			label: "ছেলেদের ইউনিভার্সিটিতে পড়াশুনা করার ব্যাপারে আপনার মতামত কি?",
-			gender: "male",
-			htmlFor: "maleAtUniv",
-		},
-		{
-			label:
-				"অমুক তার ছেলেকে ভার্সিটিতে ভর্তি হতে দিতে চায় না কারন ইসলামী পরিবেশ পাবে না। এরকম বাড়াবাড়ির ব্যাপারে আপনার মতামত কি?",
-			gender: "male",
-			htmlFor: "startingUniv",
-		},
-		{
-			label:
-				"পর্দা করে অনলাইনে হিজাব নিকাবের ব্যাবসা তো হালাল।ভিডিও(মডেলিং) বানিয়ে তা দিয়ে একটা আউটসোর্সিং বা ব্যবসা করতে চাইলে আপনার থেকে কোনো হেল্প পেতে পারি? বা পারমিশন পেতে পারি?",
-			gender: "male",
-			htmlFor: "onlineModeling",
-		},
-		{
-			label:
-				"ছেলেদের ছবি তোলাকে অনেকে অনর্থক মনে করে। আপনি কি বলেন এব্যাপারে??",
-			gender: "male",
-			htmlFor: "malePhotoCapture",
-		},
-		{
-			label:
-				"অনেক দ্বীনদার মেয়ে ভার্সিটিতে পড়াশুনা করতে চায় এজন্য তাদের দ্বিনি পরিবেশ খুঁজে|শুরুতে জেনেশুনে মেয়েদের জন্য ভার্সিটিতে পড়তে চাওয়ার বিষয়ে আপনি কি মনে করেন??",
-			gender: "male",
-			htmlFor: "malePhotoCapture",
-		},
-		{
-			label:
-				"আপনার নিজের বায়োডাটা বিস্তারিত লিখুন(বিশেষ কিছু জানাতে চাইলে তাও লিখুন)",
-			gender: "all",
-			htmlFor: "bioInput",
-		},
-	];
+	const { id } = useParams();
+	const [opinionOnNikhab, setOpinionOnNikhab] = useState("");
+	const [salatInRain, setSalatInRain] = useState("");
+	const [studyingAtUniversity, setStudyingAtUniversity] = useState("");
+	const [startingUniv, setStartingUniv] = useState("");
+	const [onlineModeling, setOnlineModeling] = useState("");
+	const [malePhotoCapture, setMalePhotoCapture] = useState("");
+	const [bioInput, setBioInput] = useState("");
 
-	const [bioValues, setBioValues] = useState({});
-
-	const handleTextareaChange = (event) => {
-		const { name, value } = event.target;
-		setBioValues({ ...bioValues, [name]: value });
+	const formsInfo = {
+		opinionOnNikhab:
+			"মেয়েদের চোখ ঢাকা নিকাব পড়াকে অনেকে বাড়াবাড়ি মনে করে। ইসলাম তো সহজ, আপনি এব্যাপারে কি মনে করেন?",
+		salatInRain:
+			"প্রচন্ড বৃষ্টি হচ্ছে, মসজিদ যদিও কাছে মোটামুটি। হয়ত ছাতাও আছে যাওয়ার। কিন্তু ইসলাম তো সহজ, এখানে তো রুখসত আছে। কিন্তু অনেক অতি উৎসাহী আছে যারা এসব ঝড়-বৃষ্টি উপেক্ষা করেও যায় মসজিদে। এরকম বাড়াবাড়ি যারা করে তাদের ব্যাপারে আপনার মন্তব্য কি?",
+		studyingAtUniversity:
+			"ছেলেদের ইউনিভার্সিটিতে পড়াশুনা করার ব্যাপারে আপনার মতামত কি?",
+		startingUniv:
+			"অমুক তার ছেলেকে ভার্সিটিতে ভর্তি হতে দিতে চায় না কারন ইসলামী পরিবেশ পাবে না। এরকম বাড়াবাড়ির ব্যাপারে আপনার মতামত কি?",
+		onlineModeling:
+			"পর্দা করে অনলাইনে হিজাব নিকাবের ব্যাবসা তো হালাল।ভিডিও(মডেলিং) বানিয়ে তা দিয়ে একটা আউটসোর্সিং বা ব্যবসা করতে চাইলে আপনার থেকে কোনো হেল্প পেতে পারি? বা পারমিশন পেতে পারি?",
+		malePhotoCapture:
+			"অনেক দ্বীনদার মেয়ে ভার্সিটিতে পড়াশুনা করতে চায় এজন্য তাদের দ্বিনি পরিবেশ খুঁজে|শুরুতে জেনেশুনে মেয়েদের জন্য ভার্সিটিতে পড়তে চাওয়ার বিষয়ে আপনি কি মনে করেন?",
+		bioInput:
+			"আপনার নিজের বায়োডাটা বিস্তারিত লিখুন(বিশেষ কিছু জানাতে চাইলে তাও লিখুন)",
 	};
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
-		console.log(bioValues);
+		let text = `${formsInfo["malePhotoCapture"]} == ${malePhotoCapture} `;
+		text += `===${formsInfo["onlineModeling"]}==${onlineModeling}`;
+		text += `===${formsInfo["opinionOnNikhab"]}==${opinionOnNikhab}`;
+		text += `===${formsInfo["salatInRain"]}==${salatInRain}`;
+		text += `===${formsInfo["startingUniv"]}==${startingUniv}`;
+		text += `===${formsInfo["studyingAtUniversity"]}==${studyingAtUniversity}`;
+
+		const bioChoiceData = {
+			bio_details: text,
+			status: "pending",
+			bio_id: id,
+		};
+
+		try {
+			const response = await BioChoiceDataServices.createBioChoiceData(
+				bioChoiceData,
+				getToken()?.token
+			);
+			if (response?.success) {
+				Toast.successToast("আপনার বায়োডাটা পাঠানো হয়েছে");
+			}
+		} catch (error) {
+			const msg = error?.response?.data?.message || error?.message;
+			Toast.errorToast(msg);
+		}
 	};
 
 	return (
@@ -71,7 +69,7 @@ function SendForm() {
 			>
 				নিচের ফর্ম পুরন করে আপনার বায়োডাটা শেয়ার করুন
 			</h2>
-			<h4 className="text-sm font-semibold text-gray-500 mb-4">
+			<h4 className="text-sm font-semibold text-red-800 mb-4">
 				আপনি নিচে যে তথ্য দিবেন তা পাত্র/পাত্রীর সাথে শেয়ার করা হবে ইন শা
 				আল্লাহ| আপনার বায়োডাটার ব্যাপারে সে ফিডব্যাক দিলে আপনাকে মোবাইলে এস এম
 				এস করে জানিয়ে দেওয়া হবে এবং আপনি তা আপনার ড্যাশবোর্ড থেকে দেখতে পারবেন |
@@ -80,25 +78,48 @@ function SendForm() {
 				আল্লাহ্‌
 			</h4>
 			<form onSubmit={handleSubmit}>
-				{items.map((item, index) => (
-					<div key={index} className="mb-4">
-						<label
-							htmlFor={item.htmlFor}
-							className=" text-left text-gray-700 font-bold mb-2"
-						>
-							{item.label}
-						</label>
-						<textarea
-							style={{ borderColor: Colors.titleText }}
-							id={item.htmlFor}
-							name={item.htmlFor}
-							className="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500"
-							rows="4"
-							value={bioValues[item.htmlFor] || ""}
-							onChange={handleTextareaChange}
-						></textarea>
-					</div>
-				))}
+				<Textarea
+					value={opinionOnNikhab}
+					setValue={setOpinionOnNikhab}
+					required={true}
+					title="মেয়েদের চোখ ঢাকা নিকাব পড়াকে অনেকে বাড়াবাড়ি মনে করে। ইসলাম তো সহজ, আপনি এব্যাপারে কি মনে করেন?"
+				/>
+				<Textarea
+					value={salatInRain}
+					setValue={setSalatInRain}
+					required={true}
+					title="প্রচন্ড বৃষ্টি হচ্ছে, মসজিদ যদিও কাছে মোটামুটি। হয়ত ছাতাও আছে যাওয়ার। কিন্তু ইসলাম তো সহজ, এখানে তো রুখসত আছে। কিন্তু অনেক অতি উৎসাহী আছে যারা এসব ঝড়-বৃষ্টি উপেক্ষা করেও যায় মসজিদে। এরকম বাড়াবাড়ি যারা করে তাদের ব্যাপারে আপনার মন্তব্য কি??"
+				/>
+				<Textarea
+					value={studyingAtUniversity}
+					setValue={setStudyingAtUniversity}
+					required={true}
+					title="ছেলেদের ইউনিভার্সিটিতে পড়াশুনা করার ব্যাপারে আপনার মতামত কি?"
+				/>
+				<Textarea
+					value={malePhotoCapture}
+					setValue={setMalePhotoCapture}
+					required={true}
+					title="অনেক দ্বীনদার মেয়ে ভার্সিটিতে পড়াশুনা করতে চায় এজন্য তাদের দ্বিনি পরিবেশ খুঁজে|শুরুতে জেনেশুনে মেয়েদের জন্য ভার্সিটিতে পড়তে চাওয়ার বিষয়ে আপনি কি মনে করেন??"
+				/>
+				<Textarea
+					value={onlineModeling}
+					setValue={setOnlineModeling}
+					required={true}
+					title="পর্দা করে অনলাইনে হিজাব নিকাবের ব্যাবসা তো হালাল।ভিডিও(মডেলিং) বানিয়ে তা দিয়ে একটা আউটসোর্সিং বা ব্যবসা করতে চাইলে আপনার থেকে কোনো হেল্প পেতে পারি? বা পারমিশন পেতে পারি?"
+				/>
+				<Textarea
+					value={startingUniv}
+					setValue={setStartingUniv}
+					required={true}
+					title="অমুক তার ছেলেকে ভার্সিটিতে ভর্তি হতে দিতে চায় না কারন ইসলামী পরিবেশ পাবে না। এরকম বাড়াবাড়ির ব্যাপারে আপনার মতামত কি?"
+				/>
+				<Textarea
+					value={bioInput}
+					setValue={setBioInput}
+					required={true}
+					title="আপনার নিজের বায়োডাটা বিস্তারিত লিখুন(বিশেষ কিছু জানাতে চাইলে তাও লিখুন)"
+				/>
 
 				<div className="mb-4">
 					<button

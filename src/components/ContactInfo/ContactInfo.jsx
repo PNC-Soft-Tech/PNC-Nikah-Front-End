@@ -1,27 +1,39 @@
 import BioContext from "../../contexts/BioContext";
 import { useState } from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Colors } from "../../constants/colors";
+import UserContext from "../../contexts/UserContext";
+import { Toast } from "../../utils/toast";
 const ContactInfo = () => {
 	const [displayText, setDisplayText] = useState(false);
 	const { bio } = useContext(BioContext);
+	const { userInfo } = useContext(UserContext);
 	const contact = bio?.contact || null;
 	const generalInfo = bio?.generalInfo || null;
+	const points = userInfo?.data[0]?.points;
+	const navigate = useNavigate();
 
 	const comHandler = () => {
+		if (!userInfo?.data[0]?.id) {
+			Toast.errorToast("Please,Login first");
+			return;
+		}
+
 		Swal.fire({
 			title: "আপনি কি তথ্য দেখতে চান?",
-			text: "",
+			text: "যোগাযোগ তথ্য দেখতে আপনার ৩০ পয়েন্ট খরচ হবে ",
 			icon: "question",
 			showCancelButton: true,
 			confirmButtonColor: "#3085d6",
 			cancelButtonColor: "#d33",
 			confirmButtonText: "Ok",
 		}).then((result) => {
-			if (result.isConfirmed) {
+			if (result.isConfirmed && points < 30) {
 				setDisplayText(true);
+			} else if (result.isConfirmed) {
+				navigate(`/send-form/${bio?.generalInfo?.user_id}`);
 			}
 		});
 	};
