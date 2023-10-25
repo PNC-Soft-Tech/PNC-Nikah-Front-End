@@ -132,13 +132,15 @@ const PaymentHistory = () => {
 														</button>
 													)}
 												</td>
-											) : item.status === "requested" ? (
-												<td>
-													<div className="text-xs font-bold py-4 px-4 text-green-700">
-														Refund Processing
-													</div>
-												</td>
-											) : (
+											) 
+											// : item.status === "requested" ? (
+											// 	<td>
+											// 		<div className="text-xs font-bold py-4 px-4 text-green-700">
+											// 			Refund Processing
+											// 		</div>
+											// 	</td>
+											// ) 
+											: (
 												<td>
 													<div className="text-xs py-4 px-4 text-red-700">
 														Not Refundable
