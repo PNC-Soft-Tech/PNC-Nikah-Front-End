@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Colors } from "../../constants/colors";
 import Textarea from "../../components/Textarea/Textarea";
 import { BioChoiceDataServices } from "../../services/bioChoiceData";
 import { getToken } from "../../utils/cookies";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Toast } from "../../utils/toast";
+import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
 function SendForm() {
 	const { id } = useParams();
+	const navigate = useNavigate();
 	const [opinionOnNikhab, setOpinionOnNikhab] = useState("");
 	const [salatInRain, setSalatInRain] = useState("");
 	const [studyingAtUniversity, setStudyingAtUniversity] = useState("");
@@ -14,6 +16,17 @@ function SendForm() {
 	const [onlineModeling, setOnlineModeling] = useState("");
 	const [malePhotoCapture, setMalePhotoCapture] = useState("");
 	const [bioInput, setBioInput] = useState("");
+	const [loading, setLoading] = useState(false);
+	const [goTo, setGoto] = useState(false);
+	useEffect(() => {
+		if (goTo & !loading) {
+			const timeout = setTimeout(() => {
+				setGoto(false);
+				navigate("/user/account/dashboard");
+			}, 10000); // 10 seconds timeout
+			return () => clearTimeout(timeout);
+		}
+	}, [goTo, loading, navigate]);
 
 	const formsInfo = {
 		opinionOnNikhab:
@@ -34,12 +47,12 @@ function SendForm() {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		let text = `${formsInfo["malePhotoCapture"]} == ${malePhotoCapture} `;
-		text += `===${formsInfo["onlineModeling"]}==${onlineModeling}`;
-		text += `===${formsInfo["opinionOnNikhab"]}==${opinionOnNikhab}`;
-		text += `===${formsInfo["salatInRain"]}==${salatInRain}`;
-		text += `===${formsInfo["startingUniv"]}==${startingUniv}`;
-		text += `===${formsInfo["studyingAtUniversity"]}==${studyingAtUniversity}`;
+		let text = `malePhotoCapture == ${malePhotoCapture} `;
+		text += `===onlineModeling==${onlineModeling}`;
+		text += `===opinionOnNikhab==${opinionOnNikhab}`;
+		text += `===salatInRain==${salatInRain}`;
+		text += `===startingUniv==${startingUniv}`;
+		text += `===studyingAtUniversity==${studyingAtUniversity}`;
 
 		const bioChoiceData = {
 			bio_details: text,
@@ -48,6 +61,7 @@ function SendForm() {
 		};
 
 		try {
+			setLoading(true);
 			const response = await BioChoiceDataServices.createBioChoiceData(
 				bioChoiceData,
 				getToken()?.token
@@ -55,9 +69,12 @@ function SendForm() {
 			if (response?.success) {
 				Toast.successToast("আপনার বায়োডাটা পাঠানো হয়েছে");
 			}
+			setLoading(false);
+			setGoto(true);
 		} catch (error) {
 			const msg = error?.response?.data?.message || error?.message;
 			Toast.errorToast(msg);
+			setLoading(false);
 		}
 	};
 
@@ -129,7 +146,7 @@ function SendForm() {
 							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
 						}}
 					>
-						আমার বায়োডাটা শেয়ার করুন
+						{loading ? <LoadingCircle /> : "আমার বায়োডাটা শেয়ার করুন"}
 					</button>
 				</div>
 			</form>
