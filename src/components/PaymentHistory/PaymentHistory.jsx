@@ -22,7 +22,7 @@ function readableDateTime(dateString) {
 		hour: "2-digit",
 		minute: "2-digit",
 		second: "2-digit",
-		timeZoneName: "short",
+		// timeZoneName: "short",
 	};
 	const readableDate = date.toLocaleDateString(undefined, options);
 	return readableDate;
