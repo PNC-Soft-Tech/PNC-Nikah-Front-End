@@ -141,7 +141,7 @@ const updateOccupation = async (updatedData, token) => {
 	if (!updatedData || !token) {
 		return null;
 	}
-	const { data } = await axios.put(baseUrl + `/personal-info`, updatedData, {
+	const { data } = await axios.put(baseUrl + `/occupation`, updatedData, {
 		headers: {
 			Authorization: token,
 			"Content-Type": "application/json",
