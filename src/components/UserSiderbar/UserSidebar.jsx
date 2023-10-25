@@ -28,7 +28,7 @@ const UserSidebar = ({ openSidebar }) => {
 					Biodata Status
 				</h2>
 				<p className="text-[20px] text-green self-center  ">
-					{status ? "Complete" : "In-Complete"}
+					{userInfo?.data[0]?.user_status}
 				</p>
 				<button
 					onClick={myBioDataHandler}
@@ -40,7 +40,7 @@ const UserSidebar = ({ openSidebar }) => {
 					My Biodata
 				</button>
 			</div>
-			<div className="mt-6 ">
+			<div className="mt-6 overflow-x-hidden overflow-y-auto">
 				{sidebarDetails.map((data, index) => (
 					<OptionCart
 						key={index}
