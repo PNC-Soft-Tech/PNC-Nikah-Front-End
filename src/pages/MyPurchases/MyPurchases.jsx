@@ -2,7 +2,7 @@ import "./MyPurchases.css";
 import React, { useState } from 'react';
 import { Button } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
-import { FaEye, FaTrash } from "react-icons/fa";
+import { FaEye, FaTrash,FaInfo } from "react-icons/fa";
 import { BioChoiceDataServices } from "../../services/bioChoiceData";
 import { getToken } from "../../utils/cookies";
 import { MdFeedback} from "react-icons/md";
@@ -109,11 +109,13 @@ const MyPurchases = () => {
 													</td>
 													<td className="px-4 py-2 text-center w-1/10 border-l">
 													<div className="flex justify-center items-center cursor-pointer">
-													<MdFeedback onClick={() => setIsFeedbackDialogOpen(true)} color="blue" size={22} /> 
+													<FaInfo onClick={() => setIsFeedbackDialogOpen(true)} color="gray" size={22} /> 
 													</div>
 													</td>
 													<td className="px-4 py-2 text-center w-1/10 border-l">
-														permitted to get contact
+													<div className="flex justify-center items-center cursor-pointer">
+													<MdFeedback onClick={() => setIsFeedbackDialogOpen(true)} color="gray" size={22} /> 
+													</div>
 													</td>
 													<td className="px-4 py-2 text-center w-1/10 border-l">
 													{(item?.approval_rate*1).toFixed(2)}%
