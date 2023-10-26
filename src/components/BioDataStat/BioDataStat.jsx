@@ -78,11 +78,11 @@ const BioDataStat = ({ id }) => {
 						</tr>
 						<tr className="border-b">
 							<td className="px-4 text-left  py-2">Approval Rate</td>
-							<td className="px-4 text-left  py-2">{approvedRate}%</td>
+							<td className="px-4 text-left  py-2">{approvedRate *100}%</td>
 						</tr>
 						<tr>
 							<td className="px-4 text-left  py-2">Rejection Rate</td>
-							<td className="px-4 text-left  py-2">{rejectedRate}%</td>
+							<td className="px-4 text-left  py-2">{rejectedRate *100}%</td>
 						</tr>
 					</tbody>
 				</table>
