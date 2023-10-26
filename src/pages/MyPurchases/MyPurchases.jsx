@@ -1,11 +1,24 @@
 import "./MyPurchases.css";
+import React, { useState } from 'react';
 import { Button } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
 import { FaEye, FaTrash } from "react-icons/fa";
 import { BioChoiceDataServices } from "../../services/bioChoiceData";
 import { getToken } from "../../utils/cookies";
+import { MdFeedback} from "react-icons/md";
+// import { formatDate,readableDateTime } from "../../utils/date";
+import {
+	
+	Dialog,
+	DialogHeader,
+	DialogBody,
+	DialogFooter,
+  } from "@material-tailwind/react";
 import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
 const MyPurchases = () => {
+	
+	const [isFeedbackDialogOpen, setIsFeedbackDialogOpen] = useState(false);
+
 	const {
 		data: bioChoiceFirstStep,
 		isLoading: bioChoiceFirstStepLoading,
@@ -35,6 +48,7 @@ const MyPurchases = () => {
 	console.log(bioChoiceFirstStep);
 
 	return (
+		
 		<div className="py-12 mx-auto ">
 			<div className="">
 				{/*<!-- End of Left Sidebar -->*/}
@@ -94,16 +108,18 @@ const MyPurchases = () => {
 														{item?.status}
 													</td>
 													<td className="px-4 py-2 text-center w-1/10 border-l">
-														Details
+													<div className="flex justify-center items-center cursor-pointer">
+													<MdFeedback onClick={() => setIsFeedbackDialogOpen(true)} color="blue" size={22} /> 
+													</div>
 													</td>
 													<td className="px-4 py-2 text-center w-1/10 border-l">
 														permitted to get contact
 													</td>
 													<td className="px-4 py-2 text-center w-1/10 border-l">
-														{item?.approval_rate}
+													{(item?.approval_rate*1).toFixed(2)}%
 													</td>
 													<td className="px-4 py-2 text-center w-1/10 border-l">
-														{item?.rejection_rate}
+														{(item?.rejection_rate*1).toFixed(2)}%
 													</td>
 													<td className="px-4 py-2 text-center w-1/10 border-l">
 														{item?.pending_count}
@@ -117,6 +133,7 @@ const MyPurchases = () => {
 														</Button>
 													</td>
 												</tr>
+												
 											);
 										})
 									)}
@@ -125,6 +142,26 @@ const MyPurchases = () => {
 						</div>
 					</div>
 				</div>
+				<Dialog
+        size="sm"
+        active={isFeedbackDialogOpen}
+        toggler={() => setIsFeedbackDialogOpen(false)}
+      >
+        <DialogHeader>Feedback</DialogHeader>
+        <DialogBody>
+          {/* Add your feedback content here */}
+          <p>This is the feedback content.</p>
+        </DialogBody>
+        <DialogFooter>
+          <Button
+            color="blue"
+            buttonType="link"
+            onClick={() => setIsFeedbackDialogOpen(false)}
+          >
+            Close
+          </Button>
+        </DialogFooter>
+      </Dialog>
 				<div className="h-5 lg:h-12"></div>
 				<div className="col right-sidebar-main my-favs">
 					<div className="my-favs-info border-t-2 w-auto rounded shadow">
@@ -174,7 +211,7 @@ const MyPurchases = () => {
 											return (
 												<tr key={index} className="border-b">
 													<td className="px-4 py-2 text-center w-1/10 border-l">
-														{index}
+														{index+1}
 													</td>
 													<td className="px-4 py-2 text-center w-1/10 border-l">
 														{item?.bio_id}
@@ -195,10 +232,10 @@ const MyPurchases = () => {
 														{item?.total_count}
 													</td>
 													<td className="px-4 py-2 text-center w-1/10 border-l">
-														{item?.approval_rate}
+														{(item?.approval_rate*1).toFixed(2)}%
 													</td>
 													<td className="px-4 py-2 text-center w-1/10 border-l">
-														{item?.rejection_rate}
+														{(item?.rejection_rate*1).toFixed(2)}%
 													</td>
 													<td className="px-4 py-2 text-center w-1/10 border-l">
 														{item?.pending_count}
