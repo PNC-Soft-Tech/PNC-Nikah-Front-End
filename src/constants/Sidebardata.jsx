@@ -51,6 +51,13 @@ const sidebarDetails = [
     icon: (
       <BiSolidAddToQueue className="h-8 w-8 text-[12px] p-1 bg-gray-100 rounded-md " />
     ),
+    title: "আমার বায়োডাটা অনুরোধসমূহ",
+    path: "/user/account/bio-requests",
+  },
+  {
+    icon: (
+      <BiSolidAddToQueue className="h-8 w-8 text-[12px] p-1 bg-gray-100 rounded-md " />
+    ),
     title: "পেমেন্ট এবং রিফান্ড ",
     path: "/user/account/payment-and-refund",
   },

@@ -11,6 +11,7 @@ import DashBoard from "../pages/DashBoard/DashBoard";
 import BioLikes from "../pages/BioLikes/BioLikes";
 import MyReports from "../pages/MyReports/MyReports";
 import MyPurchases from "../pages/MyPurchases/MyPurchases";
+import BioRequests from "../pages/BioRequests/BioRequests";
 import PaymentAndRefund from "../pages/PyamentAndRefund/PyamentAndRefund";
 import SendForm from "../pages/SendForm/SendForm";
 import AboutUs from "../pages/AboutUs/AboutUs";
@@ -158,6 +159,10 @@ const router = createBrowserRouter([
 					{
 						path: "/user/account/purchases",
 						element: <MyPurchases />,
+					},
+					{
+						path: "/user/account/bio-requests",
+						element: <BioRequests />,
 					},
 					{
 						path: "/user/account/payment-and-refund",
