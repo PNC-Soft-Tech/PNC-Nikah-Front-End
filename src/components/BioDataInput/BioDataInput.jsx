@@ -4,7 +4,7 @@ import { FaTrash } from "react-icons/fa";
 import { Colors } from "../../constants/colors";
 const BioDataInput = () => {
 	return (
-		<div className="flex mt-5 flex-col  w-[20rem]">
+		<div className="flex mt-5 flex-col  lg:w-[20rem] w-full">
 			<div className="mr-8">
 				<Input color="purple" className="py-5 " label="বায়োডাটা নং" />
 			</div>

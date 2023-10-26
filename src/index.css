@@ -55,3 +55,18 @@ vertical-timeline-element-icon {
 .line-design {
 	color: red;
 }
+
+/* for filter design */
+
+@keyframes openFromBottom {
+	0% {
+		height: 0;
+	}
+	100% {
+		height: 100%;
+	}
+}
+
+.filter-open {
+	animation: openFromBottom 1s ease-out;
+}

@@ -66,7 +66,7 @@ const BioDataFilter = () => {
 	};
 
 	return (
-		<List className=" h-[80vh] overflow-auto overflow-x-hidden">
+		<List className=" lg:h-[80vh] h-auto overflow-auto overflow-x-hidden">
 			<Accordion
 				open={open === 3}
 				icon={
@@ -89,7 +89,7 @@ const BioDataFilter = () => {
 					</AccordionHeader>
 				</ListItem>
 				<AccordionBody className="py-1 my-2 ">
-					<div className="w-64">
+					<div className="lg:w-64 w-full">
 						<label
 							htmlFor="select"
 							className="block my-2 text-sm font-bold text-left text-gray-700"
@@ -120,7 +120,7 @@ const BioDataFilter = () => {
 						</div>
 					</div>
 
-					<div className="w-64">
+					<div className="lg:w-64 w-full">
 						<label
 							htmlFor="select"
 							className="block my-2 text-sm font-bold text-left text-gray-700"
@@ -159,7 +159,7 @@ const BioDataFilter = () => {
 						</label>
 						<DoubleRangeSlider value={age} setValue={setAge} />
 					</div>
-					<div className="w-64 px-2 py-2">
+					<div className="lg:w-64 w-full px-2 py-2">
 						<DoubleRangeSlider
 							value={height}
 							setValue={setHeight}
@@ -196,7 +196,7 @@ const BioDataFilter = () => {
 				<AccordionBody className="py-1">
 					<div>
 						<p className="my-2 font-semibold text-left ">স্থায়ী ঠিকানা </p>
-						<div className="w-64">
+						<div className="lg:w-64 w-full">
 							<div className="relative">
 								<select
 									id="select"
@@ -218,7 +218,7 @@ const BioDataFilter = () => {
 								</div>
 							</div>
 						</div>
-						<div className="w-64 my-5">
+						<div className="lg:w-64 w-full my-5">
 							<div className="relative">
 								<select
 									id="select১"
@@ -244,7 +244,7 @@ const BioDataFilter = () => {
 
 					<div>
 						<p className="my-2 font-semibold text-left "> বর্তমান ঠিকানা </p>
-						<div className="w-64">
+						<div className="lg:w-64 w-full">
 							<div className="relative">
 								<select
 									id="select"
@@ -266,7 +266,7 @@ const BioDataFilter = () => {
 								</div>
 							</div>
 						</div>
-						<div className="w-64 my-5">
+						<div className="lg:w-64 w-full my-5">
 							<div className="relative">
 								<select
 									id="select১"
