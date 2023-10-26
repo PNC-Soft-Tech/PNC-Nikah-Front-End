@@ -14,7 +14,49 @@ const createBioChoiceData = async (data, token) => {
 	});
 	return response.data;
 };
+const getBioChoiceDataFirstStep = async (token) => {
+	const response = await axios.get(baseUrl + "/bio-choice-data/first-step", {
+		headers: {
+			Authorization: token,
+		},
+	});
+	return response.data;
+};
+const getBioChoiceDataSecondStep = async (token) => {
+	const response = await axios.get(baseUrl + "/bio-choice-data/second-step", {
+		headers: {
+			Authorization: token,
+		},
+	});
+	return response.data;
+};
+const checkBioChoiceDataSecondStep = async (bioId, token) => {
+	const response = await axios.get(
+		baseUrl + `/bio-choice-data/check-second-step/${bioId}`,
+		{
+			headers: {
+				Authorization: token,
+			},
+		}
+	);
+	return response.data;
+};
+const checkBioChoiceDataFirstStep = async (bioId, token) => {
+	const response = await axios.get(
+		baseUrl + `/bio-choice-data/check-first-step/${bioId}`,
+		{
+			headers: {
+				Authorization: token,
+			},
+		}
+	);
+	return response.data;
+};
 
 export const BioChoiceDataServices = {
 	createBioChoiceData,
+	getBioChoiceDataFirstStep,
+	getBioChoiceDataSecondStep,
+	checkBioChoiceDataSecondStep,
+	checkBioChoiceDataFirstStep,
 };

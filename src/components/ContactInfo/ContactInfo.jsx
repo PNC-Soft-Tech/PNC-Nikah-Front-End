@@ -1,13 +1,14 @@
 import BioContext from "../../contexts/BioContext";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { Colors } from "../../constants/colors";
 import UserContext from "../../contexts/UserContext";
 import { Toast } from "../../utils/toast";
 import BkashCreatePaymentAPICall from "../../services/bkash";
 import { convertToBengaliNumerals } from "../../utils/weight";
+import { getToken } from "../../utils/cookies";
+import { BioChoiceDataServices } from "../../services/bioChoiceData";
 const ContactInfo = () => {
 	const [displayText, setDisplayText] = useState(false);
 	const { bio } = useContext(BioContext);
@@ -48,7 +49,62 @@ const ContactInfo = () => {
 			confirmButtonColor: "#3085d6",
 			cancelButtonColor: "#d33",
 			confirmButtonText: "Ok",
-		}).then((result) => {
+		}).then(async (result) => {
+			if (!result.isConfirmed) {
+				return;
+			}
+
+			try {
+				//? check first step
+				const token = getToken().token;
+				const bioId = generalInfo?.user_id;
+
+				const checkFirst =
+					await BioChoiceDataServices.checkBioChoiceDataFirstStep(bioId, token);
+				const status = checkFirst?.status;
+				if (checkFirst?.count > 0) {
+					if (status === "Approved") {
+						Toast.successToast("আপনার প্রথম পদক্ষেপ সম্পূর্ন হয়েছে।");
+						return;
+					} else if (status === "Rejected") {
+						Toast.successToast(
+							"দুংক্ষিত ,আপনি প্রতাক্ষিত হয়েছেন এই বায়োডাটা  থেকে।"
+						);
+						return;
+					} else {
+						Toast.successToast(
+							"দুংক্ষিত ,আপনি পেন্ডিং  আছেন এই বায়োডাটা  থেকে।"
+						);
+						return;
+					}
+				}
+
+				const checkSecond =
+					await BioChoiceDataServices.checkBioChoiceDataSecondStep(
+						bioId,
+						token
+					);
+
+				if (checkSecond?.count > 0) {
+					const payment_status = checkSecond?.payment_status;
+					const refund_status = checkSecond?.refund_status;
+
+					if (payment_status === "Completed" && refund_status !== "refunded") {
+						Toast.successToast("দুংক্ষিত ,আপনি এই বায়োডাটা ইতিমধ্যে কিনছেন");
+						return;
+					}
+					if (payment_status === "Completed" && refund_status === "refunded") {
+						Toast.successToast(
+							"দুংক্ষিত ,আপনি এই বায়োডাটার ইতিমধ্যে প্রথম পদক্ষেপ  কিনছেন,\n আপনি দ্বিতীয় পদক্ষেপ এর জন্য টাকা পরিশোধ করুন "
+						);
+						return;
+					}
+				}
+			} catch (error) {
+				let msg = error?.response?.data?.message || error?.message;
+				Toast.errorToast(msg);
+			}
+
 			if (result.isConfirmed && points < 30) {
 				setDisplayText(true);
 			} else if (result.isConfirmed) {
@@ -57,7 +113,20 @@ const ContactInfo = () => {
 		});
 	};
 
-	const buyWithBkashHandler = (value, bioId) => {
+	const buyWithBkashHandler = async (value, bioId) => {
+		//? check has token
+		if (!getToken().token) {
+			Toast.errorToast("Please,First logout and then login");
+			return;
+		}
+
+		// ?check login
+		if (!userInfo?.data[0]?.id) {
+			Toast.errorToast("Please,Login first");
+			return;
+		}
+
+		// ? bkash payment api call
 		const amount = parseInt(value);
 		if (isNaN(amount) || +amount <= 0) {
 			alert("Please enter a valid amount.");

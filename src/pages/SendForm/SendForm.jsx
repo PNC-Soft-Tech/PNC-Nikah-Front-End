@@ -58,7 +58,7 @@ function SendForm() {
 
 		const bioChoiceData = {
 			bio_details: text,
-			status: "pending",
+			status: "Pending",
 			bio_id: id,
 		};
 

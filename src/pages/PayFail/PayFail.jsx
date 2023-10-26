@@ -4,7 +4,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 const PayFail = () => {
 	const [searchParams] = useSearchParams();
 	const message = searchParams.get("message");
-	const bioId = searchParams.get("bioId");
+	const bioId = searchParams.get("bioId") || 0;
 	const navigate = useNavigate();
 	useEffect(() => {
 		const timeout = setTimeout(() => {
