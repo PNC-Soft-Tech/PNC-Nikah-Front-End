@@ -37,13 +37,13 @@ const AfterPay = () => {
 							response?.transactionStatus
 						}&payment_create_time=${
 							response?.paymentCreateTime || response?.paymentExecuteTime
-						}${bioId > 0 && `&bioId=${bioId}`}`
+						}${bioId > 0 ? `&bioId=${bioId}` : ""}`
 					);
 				} else {
 					console.log("Failure", response?.statusMessage);
 					navigate(
 						`/pay/fail?message=${response?.statusMessage}${
-							bioId > 0 && `&bioId=${bioId}`
+							bioId > 0 ? `&bioId=${bioId}` : ""
 						}`
 					);
 				}

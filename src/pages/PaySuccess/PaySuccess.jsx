@@ -15,7 +15,7 @@ const PaySuccess = () => {
 	const status = searchParams.get("status");
 	const payment_create_time = searchParams.get("payment_create_time");
 	const amount = searchParams.get("amount");
-	const bioId = searchParams.get("bioId");
+	const bioId = searchParams.get("bioId") || 0;
 
 	const navigate = useNavigate();
 
@@ -48,6 +48,7 @@ const PaySuccess = () => {
 				amount,
 				payment_create_time: payment_create_time || new Date(),
 				method: "bkash",
+				reason: bioId > 0 ? "bio_purchase" : "buy_points",
 			};
 			try {
 				setLoading(true);
@@ -65,15 +66,16 @@ const PaySuccess = () => {
 				setLoading(false);
 				setShowMessage(true);
 			} catch (error) {
+				console.log(error);
 				if (bioId) {
 					navigate(`/biodata/${bioId}`);
 				}
-				// setLoading(false);
-				// setShowMessage(true);
-				// console.log(error);
-				// alert(
-				// 	"Payment successfully\n but your payment information doesn't save into our database\n please contact us"
-				// );
+				setLoading(false);
+				setShowMessage(true);
+				console.log(error);
+				alert(
+					"Payment successfully\n but your payment information doesn't save into our database\n please contact us"
+				);
 			}
 		};
 
