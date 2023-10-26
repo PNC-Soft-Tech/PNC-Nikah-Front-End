@@ -1,19 +1,30 @@
 import BioContext from "../../contexts/BioContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Colors } from "../../constants/colors";
 import UserContext from "../../contexts/UserContext";
 import { Toast } from "../../utils/toast";
+import BkashCreatePaymentAPICall from "../../services/bkash";
+import { convertToBengaliNumerals } from "../../utils/weight";
 const ContactInfo = () => {
 	const [displayText, setDisplayText] = useState(false);
 	const { bio } = useContext(BioContext);
 	const { userInfo } = useContext(UserContext);
 	const contact = bio?.contact || null;
 	const generalInfo = bio?.generalInfo || null;
-	const points = userInfo?.data[0]?.points;
+	const points = Number(userInfo?.data[0]?.points);
+	// console.log({ points });
 	const navigate = useNavigate();
+	useEffect(() => {
+		if (displayText) {
+			const timeout = setTimeout(() => {
+				// setDisplayText(false);
+			}, 10000); // 10 seconds timeout
+			return () => clearTimeout(timeout);
+		}
+	}, [displayText]);
 
 	const comHandler = () => {
 		if (!userInfo?.data[0]?.id) {
@@ -23,7 +34,15 @@ const ContactInfo = () => {
 
 		Swal.fire({
 			title: "আপনি কি তথ্য দেখতে চান?",
-			text: "যোগাযোগ তথ্য দেখতে আপনার ৩০ পয়েন্ট খরচ হবে ",
+			text: `যোগাযোগ তথ্য দেখতে আপনার ৩০ পয়েন্ট খরচ হবে 
+			। ${
+				points >= 30
+					? convertToBengaliNumerals((points - 30).toString()) +
+					  " অবশিষ্ট থাকবে"
+					: "আপনার আরও " +
+					  convertToBengaliNumerals((30 - points).toString()) +
+					  " পয়েন্ট লাগবে"
+			}`,
 			icon: "question",
 			showCancelButton: true,
 			confirmButtonColor: "#3085d6",
@@ -36,6 +55,15 @@ const ContactInfo = () => {
 				navigate(`/send-form/${bio?.generalInfo?.user_id}`);
 			}
 		});
+	};
+
+	const buyWithBkashHandler = (value, bioId) => {
+		const amount = parseInt(value);
+		if (isNaN(amount) || +amount <= 0) {
+			alert("Please enter a valid amount.");
+		} else {
+			BkashCreatePaymentAPICall(amount, bioId);
+		}
 	};
 
 	return (
@@ -98,26 +126,26 @@ const ContactInfo = () => {
 					হবে।
 				</h2>
 				<div className="flex justify-center flex-col items-center ">
-					<button
-						onClick={comHandler}
-						className="contact-bio-btn bg-blue-500 text-white py-2 px-4 mb-5 rounded w-93"
-					>
-						যোগাযোগের তথ্য দেখুন
-					</button>
-
-					{displayText && (
+					{displayText ? (
 						<div className="pb-5">
 							<p className="text-xl mb-2">আপনার একাউন্টে কোনো কানেকশন নেই!</p>
-							<Link
-								to="/points-package"
-								className=""
-								style={{
-									color: Colors.siteGlobal,
-								}}
+							<button
+								className="bg-green-800 px-2 py-2 rounded-md hover:bg-green-900 text-white"
+								onClick={() =>
+									buyWithBkashHandler(30 - points, generalInfo?.user_id)
+								}
 							>
-								পয়েন্ট কিনুন
-							</Link>
+								{convertToBengaliNumerals((30 - points).toString())} পয়েন্ট
+								কিনুন
+							</button>
 						</div>
+					) : (
+						<button
+							onClick={comHandler}
+							className="contact-bio-btn bg-blue-500 text-white py-2 px-4 mb-5 rounded w-93"
+						>
+							যোগাযোগের তথ্য দেখুন
+						</button>
 					)}
 				</div>
 			</div>

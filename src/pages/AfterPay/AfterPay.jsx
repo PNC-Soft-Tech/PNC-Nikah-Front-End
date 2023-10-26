@@ -11,6 +11,7 @@ const AfterPay = () => {
 	const navigate = useNavigate();
 	const status = searchParams.get("status");
 	const paymentID = searchParams.get("paymentID");
+	const bioId = searchParams.get("bioId") || 0;
 
 	// console.log(searchParams);
 	// console.log(status);
@@ -36,11 +37,15 @@ const AfterPay = () => {
 							response?.transactionStatus
 						}&payment_create_time=${
 							response?.paymentCreateTime || response?.paymentExecuteTime
-						}`
+						}${bioId > 0 && `&bioId=${bioId}`}`
 					);
 				} else {
 					console.log("Failure", response?.statusMessage);
-					navigate(`/pay/fail?message=${response?.statusMessage}`);
+					navigate(
+						`/pay/fail?message=${response?.statusMessage}${
+							bioId > 0 && `&bioId=${bioId}`
+						}`
+					);
 				}
 			} catch (error) {
 				console.error("An error occurred:", error);

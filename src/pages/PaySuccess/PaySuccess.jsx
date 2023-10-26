@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { paymentServices } from "../../services/payments";
 import { getToken } from "../../utils/cookies";
-import { useQuery } from "@tanstack/react-query";
-import { BkashQueryPaymentAPICall } from "../../services/bkash";
 import { useState } from "react";
 import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
 
@@ -17,6 +15,8 @@ const PaySuccess = () => {
 	const status = searchParams.get("status");
 	const payment_create_time = searchParams.get("payment_create_time");
 	const amount = searchParams.get("amount");
+	const bioId = searchParams.get("bioId") || 0;
+
 	const navigate = useNavigate();
 
 	// const { data: response = null } = useQuery({
@@ -30,6 +30,7 @@ const PaySuccess = () => {
 		if (showMessage & !loading) {
 			const timeout = setTimeout(() => {
 				setShowMessage(false);
+
 				navigate("/user/account/dashboard");
 			}, 10000); // 10 seconds timeout
 			return () => clearTimeout(timeout);
@@ -59,9 +60,15 @@ const PaySuccess = () => {
 				// if (result?.success) {
 				// 	navigate("/user/account/dashboard");
 				// }
+				if (bioId > 0) {
+					navigate(`/send-form/${bioId}`);
+				}
 				setLoading(false);
 				setShowMessage(true);
 			} catch (error) {
+				if (bioId) {
+					navigate(`/biodata/${bioId}`);
+				}
 				setLoading(false);
 				setShowMessage(true);
 				console.log(error);
@@ -74,7 +81,7 @@ const PaySuccess = () => {
 		if (paymentId) {
 			saveInfoToDb();
 		}
-	}, [amount, navigate, paymentId, payment_create_time, status, trxId]);
+	}, [amount, bioId, navigate, paymentId, payment_create_time, status, trxId]);
 
 	return (
 		<div className="sm:mx-auto mx-3 my-10 rounded-md border-green-500 p-10 flex flex-col items-center justify-center w-full sm:w-1/2 bg-green-300">

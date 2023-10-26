@@ -4,13 +4,17 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 const PayFail = () => {
 	const [searchParams] = useSearchParams();
 	const message = searchParams.get("message");
+	const bioId = searchParams.get("bioId");
 	const navigate = useNavigate();
 	useEffect(() => {
 		const timeout = setTimeout(() => {
+			if (bioId > 0) {
+				navigate(`biodata/${bioId}`);
+			}
 			navigate("/user/account/dashboard");
 		}, 10000); // 10 seconds timeout
 		return () => clearTimeout(timeout);
-	}, [navigate]);
+	}, [bioId, navigate]);
 
 	return (
 		<div className="sm:mx-auto mx-3 my-10 rounded-md border-red-500 p-10 flex flex-col items-center justify-center w-full sm:w-1/2 bg-red-300">

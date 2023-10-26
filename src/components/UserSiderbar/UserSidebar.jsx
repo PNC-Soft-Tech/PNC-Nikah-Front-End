@@ -24,10 +24,10 @@ const UserSidebar = ({ openSidebar }) => {
 				<div className="h-[80px] w-[80px] pt-2  self-center ">
 					<FcBusinessman className="text-[80px] flex self-center  bg-gray-100  border-solid border-[1px] border-gray-300  rounded-full p-1" />
 				</div>
-				<h2 className=" text-[25px] text-[#c9c7c7df] self-center mt-2 ">
+				<h2 className=" text-[20px] text-[#c9c7c7df] self-center mt-2 ">
 					Biodata Status
 				</h2>
-				<p className="text-[20px] text-green self-center  ">
+				<p className="text-[20px] text-green self-center  capitalize ">
 					{userInfo?.data[0]?.user_status}
 				</p>
 				<button

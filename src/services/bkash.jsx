@@ -4,12 +4,15 @@ const baseUrl =
 		? "http://localhost:5000/api/v1"
 		: "https://nikkahbackend.mclabbu.xyz/api/v1";
 
-export default function BkashCreatePaymentAPICall(amount) {
+export default function BkashCreatePaymentAPICall(amount, bioId = 0) {
 	console.log("Button Clicked !!");
+	let url = `https://pnc-nikah.com/pay${bioId > 0 ? `?bioId=${bioId}` : ""}`;
+	// console.log(url, bioId);
+
 	axios
 		.post(baseUrl + "/bkash/create", {
 			amount: amount,
-			callbackURL: "https://pnc-nikah.com/pay/",
+			callbackURL: url,
 		})
 		.then((response) => {
 			console.log("Data was successfully sent.", response);
