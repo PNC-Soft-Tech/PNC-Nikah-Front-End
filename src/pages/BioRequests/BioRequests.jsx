@@ -1,6 +1,6 @@
 import "./BioRequests.css";
 import { Button } from "@material-tailwind/react";
-import { FaEye,FaCheck,FaTimes,FaInfoCircle,FaFeedback} from "react-icons/fa";
+import { FaEye,FaCheck,FaTimes,FaInfoCircle,MdFeedback} from "react-icons/fa";
 import PaymentHistory from "../../components/PaymentHistory/PaymentHistory";
 const MyBioRequests = () => {
 	return (
@@ -50,7 +50,7 @@ const MyBioRequests = () => {
                                         </td>
                                         <td className="px-4 py-2 text-center w-1/7 border-l">
                                         <div className="flex justify-center items-center">
-                                            <FaFeedback color="blue" size={22} />
+                                            <MdFeedback color="blue" size={22} />
                                         </div>
                                         </td>
 									
@@ -84,7 +84,7 @@ const MyBioRequests = () => {
                                         </td>
                                         <td className="px-4 py-2 text-center w-1/7 border-l">
                                         <div className="flex justify-center items-center">
-                                            <FaFeedback color="blue" size={22} />
+                                            <MdFeedback color="blue" size={22} />
                                         </div>
                                         </td>
 										
@@ -118,7 +118,7 @@ const MyBioRequests = () => {
                                         </td>
                                         <td className="px-4 py-2 text-center w-1/7 border-l">
                                         <div className="flex justify-center items-center">
-                                            <FaFeedback color="blue" size={22} />
+                                            <MdFeedback color="blue" size={22} />
                                         </div>
                                         </td>
 										
