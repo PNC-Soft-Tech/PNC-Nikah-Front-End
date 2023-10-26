@@ -1,6 +1,7 @@
 import "./BioRequests.css";
 import { Button } from "@material-tailwind/react";
-import { FaEye,FaCheck,FaTimes,FaInfoCircle,MdFeedback} from "react-icons/fa";
+import { FaEye,FaCheck,FaTimes,FaInfoCircle} from "react-icons/fa";
+import { MdFeedback} from "react-icons/md";
 import PaymentHistory from "../../components/PaymentHistory/PaymentHistory";
 const MyBioRequests = () => {
 	return (
@@ -49,12 +50,13 @@ const MyBioRequests = () => {
                                         </div>
                                         </td>
                                         <td className="px-4 py-2 text-center w-1/7 border-l">
-                                        <div className="flex justify-center items-center">
+                                        <div className="flex justify-center items-center cursor-pointer">
                                             <MdFeedback color="blue" size={22} />
                                         </div>
                                         </td>
 									
 										<td className="px-4 py-2 text-center w-1/7 border-l">
+                                        <div className="flex justify-center items-center">
                                         <Button color="blue" size="xs" className="mr-2">
 												<FaEye size={12} />
 											</Button>
@@ -64,6 +66,7 @@ const MyBioRequests = () => {
 											<Button color="red" size="xs">
                                             <FaTimes size={12} />
                                             </Button>
+                                            </div>
 										</td>
 									</tr>
 									<tr className="border-b">
@@ -83,12 +86,13 @@ const MyBioRequests = () => {
                                         </div>
                                         </td>
                                         <td className="px-4 py-2 text-center w-1/7 border-l">
-                                        <div className="flex justify-center items-center">
+                                        <div className="flex justify-center items-center cursor-pointer">
                                             <MdFeedback color="blue" size={22} />
                                         </div>
                                         </td>
 										
 										<td className="px-4 py-2 text-center w-1/7 border-l">
+                                        <div className="flex justify-center items-center">
                                         <Button color="blue" size="xs" className="mr-2">
 												<FaEye size={12} />
 											</Button>
@@ -98,6 +102,7 @@ const MyBioRequests = () => {
 											<Button color="red" size="xs">
                                             <FaTimes size={12} />
                                             </Button>
+                                            </div>
 										</td>
 									</tr>
 									<tr className="border-b">
@@ -117,12 +122,13 @@ const MyBioRequests = () => {
                                         </div>
                                         </td>
                                         <td className="px-4 py-2 text-center w-1/7 border-l">
-                                        <div className="flex justify-center items-center">
+                                        <div className="flex justify-center items-center cursor-pointer">
                                             <MdFeedback color="blue" size={22} />
                                         </div>
                                         </td>
 										
 										<td className="px-4 py-2 text-center flex w-1/7 border-l">
+                                        <div className="flex justify-center items-center">
                                         <Button color="blue" size="xs" className="mr-2">
 												<FaEye size={12} />
 											</Button>
@@ -132,6 +138,7 @@ const MyBioRequests = () => {
 											<Button color="red" size="xs">
                                             <FaTimes size={12} />
                                             </Button>
+                                            </div>
 										</td>
 									</tr>
 								</tbody>
