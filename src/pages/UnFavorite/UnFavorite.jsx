@@ -18,7 +18,7 @@ const DisLikeItem = ({ item, index }) => {
 	};
 	return (
 		<tr className="border-b">
-			<td className="px-4 py-2 text-center w-1/9 border-l">{index}</td>
+			<td className="px-4 py-2 text-center w-1/9 border-l">{index +1}</td>
 			<td className="px-4 py-2 text-center w-1/9 border-l">{item?.bio_id}</td>
 			<td className="px-4 py-2 text-center w-1/9 border-l">
 				{formatDate(getDateMonthYear(item?.date_of_birth))}

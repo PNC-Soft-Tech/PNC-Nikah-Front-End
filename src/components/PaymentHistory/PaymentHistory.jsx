@@ -96,7 +96,7 @@ const PaymentHistory = () => {
 								{data?.data?.map((item, index) => {
 									return (
 										<tr key={index}>
-											<td>{item.id}</td>
+											<td>{index+1}</td>
 											{/* <td className="text-xs">{item?.payment_id}</td> */}
 											<td className="text-xs">{item?.transaction_id}</td>
 											<td className="text-xs">{item?.method}</td>
