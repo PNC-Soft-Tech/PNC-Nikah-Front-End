@@ -17,44 +17,48 @@ const MyPurchases = () => {
 							<table className="table-auto w-full">
 								<thead>
 									<tr className="border-b border-t">
-										<th className="px-4 py-2 text-center w-1/9">SL</th>
-										<th className="px-4 py-2 text-center w-1/9">বায়োডাটা নং</th>
-										<th className="px-4 py-2 text-center w-1/9">অ্যাড্রেস</th>
-										<th className="px-4 py-2 text-center w-1/9">স্ট্যাটাস</th>
-										<th className="px-4 py-2 text-center w-1/9">
+										<th className="px-4 py-2 text-center w-1/10">SL</th>
+										<th className="px-4 py-2 text-center w-1/10">বায়োডাটা নং</th>
+										<th className="px-4 py-2 text-center w-1/10">অ্যাড্রেস</th>
+										<th className="px-4 py-2 text-center w-1/10">স্ট্যাটাস</th>
+										<th className="px-4 py-2 text-center w-1/10">
+										Bio Details
+										</th>
+										<th className="px-4 py-2 text-center w-1/10">
 										ফিডব্যাক
 										</th>
-										<th className="px-4 py-2 text-center w-1/9">
+										<th className="px-4 py-2 text-center w-1/10">
 											অ্যাপ্রুভাল রেট
 										</th>
-										<th className="px-4 py-2 text-center w-1/9">রিজেকশন রেট</th>
-										<th className="px-4 py-2 text-center w-1/9">
+										<th className="px-4 py-2 text-center w-1/10">রিজেকশন রেট</th>
+										<th className="px-4 py-2 text-center w-1/10">
 											পেইন্ডিং সংখ্যা
 										</th>
-										<th className="px-4 py-2 text-center w-1/9">অপশন</th>
+										<th className="px-4 py-2 text-center w-1/10">অপশন</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr className="border-b">
-										<td className="px-4 py-2 text-center w-1/9 border-l">1</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">1</td>
+										<td className="px-4 py-2 text-center w-1/10 border-l">
 											2345
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">
 										Barisal City Corporation,Barisal
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">
 											Pending
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">--</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">--</td>
+										<td className="px-4 py-2 text-center w-1/10 border-l">Details</td>
+										<td className="px-4 py-2 text-center w-1/10 border-l">
 											56%
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">
 											44%
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">2</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">2</td>
+										<td className="px-4 py-2 text-center w-1/10 border-l">
 											<Button color="green" size="xs" className="mr-2">
 												<FaEye size={12} />
 											</Button>
@@ -64,25 +68,28 @@ const MyPurchases = () => {
 										</td>
 									</tr>
 									<tr className="border-b">
-										<td className="px-4 py-2 text-center w-1/9 border-l">2</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">2</td>
+										<td className="px-4 py-2 text-center w-1/10 border-l">
 											345
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">
 										Dhaka North City Corporation,Dhaka
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">
 											Approved
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">permitted to get contact</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">
+											Details
+										</td>
+										<td className="px-4 py-2 text-center w-1/10 border-l">permitted to get contact</td>
+										<td className="px-4 py-2 text-center w-1/10 border-l">
 											66%
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">
 											34%
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">7</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">7</td>
+										<td className="px-4 py-2 text-center w-1/10 border-l">
 											<Button color="green" size="xs" className="mr-2">
 												<FaEye size={12} />
 											</Button>
@@ -92,25 +99,28 @@ const MyPurchases = () => {
 										</td>
 									</tr>
 									<tr className="border-b">
-										<td className="px-4 py-2 text-center w-1/9 border-l">3</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">3</td>
+										<td className="px-4 py-2 text-center w-1/10 border-l">
 											321
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">
 										Sylhet City Corporation,Sylhet
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">
 											Rejected
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">Not Interested</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">
+											Details
+										</td>
+										<td className="px-4 py-2 text-center w-1/10 border-l">Not Interested</td>
+										<td className="px-4 py-2 text-center w-1/10 border-l">
 											86%
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">
 											14%
 										</td>
-										<td className="px-4 py-2 text-center w-1/9 border-l">0</td>
-										<td className="px-4 py-2 text-center flex w-1/9 border-l">
+										<td className="px-4 py-2 text-center w-1/10 border-l">0</td>
+										<td className="px-4 py-2 text-center flex w-1/10 border-l">
 											<Button color="green" size="xs" className="mr-2">
 												<FaEye size={12} />
 											</Button>
