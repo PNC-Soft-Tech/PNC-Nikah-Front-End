@@ -15,7 +15,7 @@ const PaySuccess = () => {
 	const status = searchParams.get("status");
 	const payment_create_time = searchParams.get("payment_create_time");
 	const amount = searchParams.get("amount");
-	const bioId = searchParams.get("bioId") || 0;
+	const bioId = searchParams.get("bioId");
 
 	const navigate = useNavigate();
 
@@ -30,7 +30,6 @@ const PaySuccess = () => {
 		if (showMessage & !loading) {
 			const timeout = setTimeout(() => {
 				setShowMessage(false);
-
 				navigate("/user/account/dashboard");
 			}, 10000); // 10 seconds timeout
 			return () => clearTimeout(timeout);
@@ -69,12 +68,12 @@ const PaySuccess = () => {
 				if (bioId) {
 					navigate(`/biodata/${bioId}`);
 				}
-				setLoading(false);
-				setShowMessage(true);
-				console.log(error);
-				alert(
-					"Payment successfully\n but your payment information doesn't save into our database\n please contact us"
-				);
+				// setLoading(false);
+				// setShowMessage(true);
+				// console.log(error);
+				// alert(
+				// 	"Payment successfully\n but your payment information doesn't save into our database\n please contact us"
+				// );
 			}
 		};
 

@@ -11,7 +11,7 @@ const AfterPay = () => {
 	const navigate = useNavigate();
 	const status = searchParams.get("status");
 	const paymentID = searchParams.get("paymentID");
-	const bioId = searchParams.get("bioId") || 0;
+	const bioId = searchParams.get("bioId");
 
 	// console.log(searchParams);
 	// console.log(status);
@@ -57,7 +57,7 @@ const AfterPay = () => {
 		} else {
 			navigate("/pay/fail");
 		}
-	}, [status, paymentID, navigate]);
+	}, [status, paymentID, navigate, bioId]);
 
 	return (
 		<div className="my-10">
