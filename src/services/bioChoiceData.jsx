@@ -52,6 +52,14 @@ const checkBioChoiceDataFirstStep = async (bioId, token) => {
 	);
 	return response.data;
 };
+const getBioChoiceShare = async (token) => {
+	const response = await axios.get(baseUrl + `/bio-choice-data/bio-share`, {
+		headers: {
+			Authorization: token,
+		},
+	});
+	return response.data;
+};
 
 export const BioChoiceDataServices = {
 	createBioChoiceData,
@@ -59,4 +67,5 @@ export const BioChoiceDataServices = {
 	getBioChoiceDataSecondStep,
 	checkBioChoiceDataSecondStep,
 	checkBioChoiceDataFirstStep,
+	getBioChoiceShare,
 };

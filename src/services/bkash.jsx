@@ -8,7 +8,6 @@ export default function BkashCreatePaymentAPICall(amount, bioId = 0) {
 	console.log("Button Clicked !!");
 	let url = `https://pnc-nikah.com/pay${bioId > 0 ? `?bioId=${bioId}` : ""}`;
 	// console.log(url, bioId);
-
 	axios
 		.post(baseUrl + "/bkash/create", {
 			amount: amount,
@@ -16,7 +15,7 @@ export default function BkashCreatePaymentAPICall(amount, bioId = 0) {
 		})
 		.then((response) => {
 			console.log("Data was successfully sent.", response);
-			console.log(response);
+			// console.log(response);
 			if (response?.data?.bkashURL) {
 				window.location.href = response?.data?.bkashURL;
 			} else {

@@ -72,7 +72,7 @@ const BioData = ({ biodata }) => {
 	};
 	// ? FOR GIVING dis-like REACTION
 	const DisLikeButtonHandler = async () => {
-		if (!userInfo?.data[0]?.id) {
+		if (!userInfo?.data[0]?.id || !getToken().token) {
 			Toast.errorToast("Please,Login First");
 			return;
 		}

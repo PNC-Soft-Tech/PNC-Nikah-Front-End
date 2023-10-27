@@ -21,11 +21,15 @@ const UserContext = createContext();
 // Create a provider component to wrap your app
 export const UserProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
-	const [userLoading, setUserLoading] = useState(false);
+	const [userLoading, setUserLoading] = useState(true);
 	const [tokenInfo, setTokenInfo] = useState(null);
 	const googleProvider = new GoogleAuthProvider();
 
-	const { data: userInfo = null, refetch: userInfoRefetch } = useQuery({
+	const {
+		data: userInfo = null,
+		isLoading: userInfoFetchLoading,
+		refetch: userInfoRefetch,
+	} = useQuery({
 		queryKey: ["user-info", user?.email],
 		queryFn: async () => {
 			return await userServices.getUserInfoByEmail(user?.email);
@@ -96,6 +100,7 @@ export const UserProvider = ({ children }) => {
 				tokenInfo,
 				setTokenInfo,
 				userInfoRefetch,
+				userInfoFetchLoading,
 			}}
 		>
 			{children}

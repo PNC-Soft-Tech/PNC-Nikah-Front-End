@@ -1,7 +1,7 @@
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
 import { FaGoogle } from "react-icons/fa";
 import { Colors } from "../../constants/colors";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import UserContext from "../../contexts/UserContext";
 import { userServices } from "../../services/user";
@@ -14,9 +14,9 @@ export function Login() {
 	const [password, setPassword] = useState("");
 	const { handleGoogleSignIn, signIn } = useContext(UserContext);
 	const [loading, setLoading] = useState(false);
-
+	const location = useLocation();
+	const from = location?.state?.from?.pathname || "/user/account/dashboard";
 	const navigate = useNavigate();
-
 	const googleSignin = async () => {
 		try {
 			// google signin
@@ -62,7 +62,9 @@ export function Login() {
 				setToken({
 					token: response2?.data.token,
 				});
-				navigate("/user/account/dashboard");
+				navigate(from, {
+					replace: true,
+				});
 			}
 		} catch (error) {
 			console.log(error);
@@ -104,7 +106,9 @@ export function Login() {
 				setToken({
 					token: response2?.data.token,
 				});
-				navigate("/user/account/dashboard");
+				navigate(from, {
+					replace: true,
+				});
 			}
 			setLoading(false);
 		} catch (error) {
