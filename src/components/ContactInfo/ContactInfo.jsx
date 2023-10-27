@@ -146,6 +146,10 @@ const ContactInfo = () => {
 			alert("Please enter a valid amount.");
 		} else if (response?.success === true) {
 			BkashCreatePaymentAPICall(amount, bioId);
+		} else {
+			await logOut();
+			removeToken();
+			navigate("/login");
 		}
 	};
 
