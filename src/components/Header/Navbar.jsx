@@ -20,12 +20,13 @@ import { BiSolidDashboard } from "react-icons/bi";
 import navLogo from "../../assets/icons/logo.png";
 import { userServices } from "../../services/user";
 import { getToken, removeToken } from "../../utils/cookies";
-import { useCallback } from "react";
 import { Modal } from "../Modal/Modal";
 import { getGender } from "../../utils/localStorage";
+import { Toast } from "../../utils/toast";
+import { getErrorMessage } from "../../utils/error";
 
 export default function NavBar() {
-	const { user, userInfo, logOut } = useContext(UserContext);
+	const { userInfo, logOut } = useContext(UserContext);
 	const [filteredNavData, setFilteredNavData] = useState(navData);
 	const [isHovered, setIsHovered] = useState(false);
 	const [openNav, setOpenNav] = useState(false);
@@ -34,34 +35,12 @@ export default function NavBar() {
 	// console.log(user);
 	const handleIconHover = () => {
 		setIsHovered(true);
-		console.log("anis");
 	};
-	const logoutHandler = useCallback(async () => {
+	const logoutHandler = async () => {
 		await logOut();
 		removeToken();
 		navigate("/");
-	}, [logOut, navigate]);
-
-	useEffect(() => {
-		const verifyToken = async () => {
-			if (!userInfo?.data[0]?.id) {
-				return;
-			}
-
-			if (!getToken()?.token) {
-				await logoutHandler();
-			}
-
-			try {
-				const response = await userServices.verifyToken(getToken()?.token);
-			} catch (error) {
-				console.log(error);
-				await logoutHandler();
-			}
-		};
-
-		verifyToken();
-	}, [logOut, logoutHandler, navigate, userInfo?.data]);
+	};
 
 	const handleIconLeave = () => {
 		setIsHovered(false);
@@ -117,7 +96,7 @@ export default function NavBar() {
 				)}
 			</div>
 			<div className="hidden lg:block">
-				{!user?.uid ? (
+				{!userInfo?.data[0]?.id ? (
 					<Typography
 						as="li"
 						variant="small"
@@ -274,7 +253,7 @@ export default function NavBar() {
 					</div>
 
 					<div className="block lg:hidden">
-						{!user?.uid ? (
+						{!userInfo?.data[0]?.id ? (
 							<Typography
 								as="li"
 								variant="small"

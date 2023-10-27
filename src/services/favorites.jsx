@@ -23,7 +23,7 @@ const getLikes = async (bio_id) => {
 };
 const getUserLikes = async (user_id, bio_id) => {
 	if (!user_id || !bio_id) {
-		return;
+		return null;
 	}
 	const response = await axios.get(
 		`${baseUrl}/favorites/user-data/${user_id}/${bio_id}`

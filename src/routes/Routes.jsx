@@ -33,6 +33,7 @@ import NotFound from "../pages/NotFound/NotFound";
 import Refund from "../pages/Refund/Refund";
 import RefundSuccess from "../pages/RefundSuccess/RefundSuccess";
 import RefundFail from "../pages/RefundFail/RefundFail";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
 	{
@@ -109,11 +110,19 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/pay",
-				element: <AfterPay />,
+				element: (
+					<PrivateRoute>
+						<AfterPay />
+					</PrivateRoute>
+				),
 			},
 			{
 				path: "/pay/fail",
-				element: <PayFail />,
+				element: (
+					<PrivateRoute>
+						<PayFail />
+					</PrivateRoute>
+				),
 			},
 			// {
 			// 	path: "/admin/refund/:paymentId/:tnxId",
@@ -121,19 +130,35 @@ const router = createBrowserRouter([
 			// },
 			{
 				path: "/admin/refund/",
-				element: <Refund />,
+				element: (
+					<PrivateRoute>
+						<Refund />
+					</PrivateRoute>
+				),
 			},
 			{
 				path: "/pay/success",
-				element: <PaySuccess />,
+				element: (
+					<PrivateRoute>
+						<PaySuccess />
+					</PrivateRoute>
+				),
 			},
 			{
 				path: "/refund/success",
-				element: <RefundSuccess />,
+				element: (
+					<PrivateRoute>
+						<RefundSuccess />
+					</PrivateRoute>
+				),
 			},
 			{
 				path: "/refund/fail",
-				element: <RefundFail />,
+				element: (
+					<PrivateRoute>
+						<RefundFail />
+					</PrivateRoute>
+				),
 			},
 			{
 				path: "/user/account",
@@ -141,36 +166,75 @@ const router = createBrowserRouter([
 				children: [
 					{
 						path: "/user/account/edit-biodata",
-						element: <EditBiodata />,
+						element: (
+							<PrivateRoute>
+								<EditBiodata />
+							</PrivateRoute>
+						),
 					},
 					{
 						path: "/user/account/preview-biodata/:id",
-						element: <BioData />,
+						element: (
+							<PrivateRoute>
+								<BioData />
+							</PrivateRoute>
+						),
 					},
-					{ path: "/user/account/dashboard", element: <DashBoard /> },
+					{
+						path: "/user/account/dashboard",
+						element: (
+							<PrivateRoute>
+								<DashBoard />
+							</PrivateRoute>
+						),
+					},
 					{
 						path: "/user/account/dislikes",
-						element: <BioDisLikes />,
+						element: (
+							<PrivateRoute>
+								<BioDisLikes />
+							</PrivateRoute>
+						),
 					},
 					{
 						path: "/user/account/likes",
-						element: <BioLikes />,
+						element: (
+							<PrivateRoute>
+								<BioLikes />
+							</PrivateRoute>
+						),
 					},
 					{
 						path: "/user/account/purchases",
-						element: <MyPurchases />,
+						element: (
+							<PrivateRoute>
+								<MyPurchases />
+							</PrivateRoute>
+						),
 					},
 					{
 						path: "/user/account/bio-requests",
-						element: <BioRequests />,
+						element: (
+							<PrivateRoute>
+								<BioRequests />
+							</PrivateRoute>
+						),
 					},
 					{
 						path: "/user/account/payment-and-refund",
-						element: <PaymentAndRefund />,
+						element: (
+							<PrivateRoute>
+								<PaymentAndRefund />
+							</PrivateRoute>
+						),
 					},
 					{
 						path: "/user/account/myreports",
-						element: <MyReports />,
+						element: (
+							<PrivateRoute>
+								<MyReports />
+							</PrivateRoute>
+						),
 					},
 					{
 						path: "/user/account/settings",
