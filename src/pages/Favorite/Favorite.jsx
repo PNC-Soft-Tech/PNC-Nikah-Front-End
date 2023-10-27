@@ -31,10 +31,10 @@ const LikeItem = ({ item, index }) => {
 				{item?.total_count}
 			</td>
 			<td className="px-4 py-2 text-center w-1/9 border-l">
-				{item?.approval_rate}%
+				{(item?.approval_rate*1).toFixed(2)}%
 			</td>
 			<td className="px-4 py-2 text-center w-1/9 border-l">
-				{item?.rejection_rate}%
+				{(item?.rejection_rate*1).toFixed(2)}%
 			</td>
 			<td className="px-4 py-2 text-center w-1/9 border-l">
 				{item?.total_pending}

@@ -85,7 +85,7 @@ const DashBoard = () => {
 							className="text-lg font-semibold"
 							style={{ color: Colors.titleText }}
 						>
-							আমার পেন্ডিং প্রস্তাবঃ {data?.results?.pending} {pending} টি
+							আমার পেন্ডিং প্রস্তাবঃ {data?.results?.pending} টি
 						</h2>
 					</div>
 					<p className="text-gray-700">
@@ -214,7 +214,7 @@ const DashBoard = () => {
 							className="text-lg font-semibold text-center"
 							style={{ color: Colors.titleText }}
 						>
-							আমার আপ্রুভাল রেটঃ {approvedRate}
+							আমার আপ্রুভাল রেটঃ {approvedRate *100}%
 						</h2>
 					</div>
 					<p className="text-gray-700">
@@ -232,7 +232,7 @@ const DashBoard = () => {
 							className="text-lg font-semibold text-center"
 							style={{ color: Colors.titleText }}
 						>
-							আমার রিজেকশন রেটঃ {rejectedRate}
+							আমার রিজেকশন রেটঃ {rejectedRate *100}%
 						</h2>
 					</div>
 					<p className="text-gray-700">

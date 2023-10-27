@@ -77,9 +77,15 @@ const MyBioRequests = () => {
 										</td>
 										<td className="px-4 py-2 text-center w-1/7 border-l">
 											<div className="flex justify-center cursor-pointer items-center">
-												<FaInfoCircle color="green" size={22} />
+												<FaInfoCircle color="gray" size={22} />
 											</div>
 										</td>
+										<td className="px-4 py-2 text-center w-1/7 border-l">
+											<div className="flex justify-center items-center cursor-pointer">
+												<MdFeedback color="gray" size={22} />
+											</div>
+										</td>
+
 										<td className="px-4 py-2 text-center w-1/7 border-l">
 											<div className="flex justify-center items-center cursor-pointer">
 												<MdFeedback color="blue" size={22} />
@@ -113,9 +119,15 @@ const MyBioRequests = () => {
 										</td>
 										<td className="px-4 py-2 text-center w-1/7 border-l">
 											<div className="flex justify-center cursor-pointer items-center">
-												<FaInfoCircle color="green" size={22} />
+												<FaInfoCircle color="gray" size={22} />
 											</div>
 										</td>
+										<td className="px-4 py-2 text-center w-1/7 border-l">
+											<div className="flex justify-center items-center cursor-pointer">
+												<MdFeedback color="gray" size={22} />
+											</div>
+										</td>
+
 										<td className="px-4 py-2 text-center w-1/7 border-l">
 											<div className="flex justify-center items-center cursor-pointer">
 												<MdFeedback color="blue" size={22} />
@@ -149,12 +161,12 @@ const MyBioRequests = () => {
 										</td>
 										<td className="px-4 py-2 text-center w-1/7 border-l">
 											<div className="flex justify-center cursor-pointer items-center">
-												<FaInfoCircle color="green" size={22} />
+												<FaInfoCircle color="gray" size={22} />
 											</div>
 										</td>
 										<td className="px-4 py-2 text-center w-1/7 border-l">
 											<div className="flex justify-center items-center cursor-pointer">
-												<MdFeedback color="blue" size={22} />
+												<MdFeedback color="gray" size={22} />
 											</div>
 										</td>
 
@@ -177,9 +189,6 @@ const MyBioRequests = () => {
 						</div>
 					</div>
 				</div>
-
-				{/* <div className="h-5 lg:h-12"></div>
-				<PaymentHistory /> */}
 			</div>
 		</div>
 	);
