@@ -96,7 +96,7 @@ const MyPurchases = () => {
 											return (
 												<tr key={index} className="border-b">
 													<td className="px-4 py-2 text-center w-1/10 border-l">
-														{index}
+														{index+1}
 													</td>
 													<td className="px-4 py-2 text-center w-1/10 border-l">
 														{item?.bio_id}
@@ -179,29 +179,32 @@ const MyPurchases = () => {
 							<table className="table-auto w-full">
 								<thead>
 									<tr className="border-b border-t">
-										<th className="px-4 py-2 text-center w-1/11">SL</th>
-										<th className="px-4 py-2 text-center w-1/11">
+										<th className="px-4 py-2 text-center w-1/12">SL</th>
+										<th className="px-4 py-2 text-center w-1/12">
 											বায়োডাটা নং
 										</th>
-										<th className="px-4 py-2 text-center w-1/11">জন্ম তারিখ</th>
-										<th className="px-4 py-2 text-center w-1/11">ঠিকানা</th>
-										<th className="px-4 py-2 text-center w-1/11">
+										<th className="px-4 py-2 text-center w-1/12">
+											Name
+										</th>
+										<th className="px-4 py-2 text-center w-1/12">জন্ম তারিখ</th>
+										<th className="px-4 py-2 text-center w-1/12">ঠিকানা</th>
+										<th className="px-4 py-2 text-center w-1/12">
 											যোগাযোগের নাম্বার
 										</th>
-										<th className="px-4 py-2 text-center w-1/11">সম্পর্ক</th>
-										<th className="px-4 py-2 text-center w-1/11">
+										<th className="px-4 py-2 text-center w-1/12">সম্পর্ক</th>
+										<th className="px-4 py-2 text-center w-1/12">
 											টোটাল পেয়েছে
 										</th>
-										<th className="px-4 py-2 text-center w-1/11">
+										<th className="px-4 py-2 text-center w-1/12">
 											অ্যাপ্রুভাল রেট
 										</th>
-										<th className="px-4 py-2 text-center w-1/11">
+										<th className="px-4 py-2 text-center w-1/12">
 											রিজেকশন রেট
 										</th>
-										<th className="px-4 py-2 text-center w-1/11">
+										<th className="px-4 py-2 text-center w-1/12">
 											পেইন্ডিং সংখ্যা
 										</th>
-										<th className="px-4 py-2 text-center w-1/11">অপশন</th>
+										<th className="px-4 py-2 text-center w-1/12">অপশন</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -217,6 +220,9 @@ const MyPurchases = () => {
 													</td>
 													<td className="px-4 py-2 text-center w-1/10 border-l">
 														{item?.bio_id}
+													</td>
+													<td className="px-4 py-2 text-center w-1/10 border-l">
+														{item?.full_name}
 													</td>
 													<td className="px-4 py-2 text-center w-1/10 border-l">
 														{item?.date_of_birth}
