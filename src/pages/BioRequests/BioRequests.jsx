@@ -14,7 +14,7 @@ const MyBioRequests = () => {
 			return await BioChoiceDataServices.getBioChoiceShare(getToken().token);
 		},
 	});
-	console.log(data);
+	console.log("bio-share-data~", data);
 	return (
 		<div className="py-12 mx-auto ">
 			<div className="">
@@ -59,131 +59,38 @@ const MyBioRequests = () => {
 														{item?.user_id}
 													</td>
 													<td className="px-4 py-2 text-center w-1/7 border-l">
-														Barisal City Corporation,Barisal
+														{item?.present_address}
 													</td>
 													<td className="px-4 py-2 text-center w-1/7 border-l">
 														{item?.status}
+													</td>
+													<td className="px-4 py-2 text-center w-1/7 border-l">
+														<div className="flex justify-center cursor-pointer items-center">
+															<FaInfoCircle color="gray" size={22} />
+														</div>
+													</td>
+													<td className="px-4 py-2 text-center w-1/7 border-l">
+														<div className="flex justify-center items-center cursor-pointer">
+															<MdFeedback color="gray" size={22} />
+														</div>
+													</td>
+													<td className="px-4 py-2 text-center w-1/7 border-l">
+														<div className="flex justify-center items-center">
+															<Button color="blue" size="xs" className="mr-2">
+																<FaEye size={12} />
+															</Button>
+															<Button color="green" size="xs" className="mr-2">
+																<FaCheck size={12} />
+															</Button>
+															<Button color="red" size="xs">
+																<FaTimes size={12} />
+															</Button>
+														</div>
 													</td>
 												</tr>
 											);
 										})
 									)}
-
-									<tr className="border-b">
-										<td className="px-4 py-2 text-center w-1/7 border-l">1</td>
-
-										<td className="px-4 py-2 text-center w-1/7 border-l">
-											Pending
-										</td>
-										<td className="px-4 py-2 text-center w-1/7 border-l">
-											<div className="flex justify-center cursor-pointer items-center">
-												<FaInfoCircle color="gray" size={22} />
-											</div>
-										</td>
-										<td className="px-4 py-2 text-center w-1/7 border-l">
-											<div className="flex justify-center items-center cursor-pointer">
-												<MdFeedback color="gray" size={22} />
-											</div>
-										</td>
-
-										<td className="px-4 py-2 text-center w-1/7 border-l">
-											<div className="flex justify-center items-center cursor-pointer">
-												<MdFeedback color="blue" size={22} />
-											</div>
-										</td>
-
-										<td className="px-4 py-2 text-center w-1/7 border-l">
-											<div className="flex justify-center items-center">
-												<Button color="blue" size="xs" className="mr-2">
-													<FaEye size={12} />
-												</Button>
-												<Button color="green" size="xs" className="mr-2">
-													<FaCheck size={12} />
-												</Button>
-												<Button color="red" size="xs">
-													<FaTimes size={12} />
-												</Button>
-											</div>
-										</td>
-									</tr>
-									<tr className="border-b">
-										<td className="px-4 py-2 text-center w-1/7 border-l">2</td>
-										<td className="px-4 py-2 text-center w-1/7 border-l">
-											345
-										</td>
-										<td className="px-4 py-2 text-center w-1/7 border-l">
-											Dhaka North City Corporation,Dhaka
-										</td>
-										<td className="px-4 py-2 text-center w-1/7 border-l">
-											Approved
-										</td>
-										<td className="px-4 py-2 text-center w-1/7 border-l">
-											<div className="flex justify-center cursor-pointer items-center">
-												<FaInfoCircle color="gray" size={22} />
-											</div>
-										</td>
-										<td className="px-4 py-2 text-center w-1/7 border-l">
-											<div className="flex justify-center items-center cursor-pointer">
-												<MdFeedback color="gray" size={22} />
-											</div>
-										</td>
-
-										<td className="px-4 py-2 text-center w-1/7 border-l">
-											<div className="flex justify-center items-center cursor-pointer">
-												<MdFeedback color="blue" size={22} />
-											</div>
-										</td>
-
-										<td className="px-4 py-2 text-center w-1/7 border-l">
-											<div className="flex justify-center items-center">
-												<Button color="blue" size="xs" className="mr-2">
-													<FaEye size={12} />
-												</Button>
-												<Button color="green" size="xs" className="mr-2">
-													<FaCheck size={12} />
-												</Button>
-												<Button color="red" size="xs">
-													<FaTimes size={12} />
-												</Button>
-											</div>
-										</td>
-									</tr>
-									<tr className="border-b">
-										<td className="px-4 py-2 text-center w-1/7 border-l">3</td>
-										<td className="px-4 py-2 text-center w-1/7 border-l">
-											321
-										</td>
-										<td className="px-4 py-2 text-center w-1/7 border-l">
-											Sylhet City Corporation,Sylhet
-										</td>
-										<td className="px-4 py-2 text-center w-1/7 border-l">
-											Rejected
-										</td>
-										<td className="px-4 py-2 text-center w-1/7 border-l">
-											<div className="flex justify-center cursor-pointer items-center">
-												<FaInfoCircle color="gray" size={22} />
-											</div>
-										</td>
-										<td className="px-4 py-2 text-center w-1/7 border-l">
-											<div className="flex justify-center items-center cursor-pointer">
-												<MdFeedback color="gray" size={22} />
-											</div>
-										</td>
-
-										<td className="px-4 py-2 text-center flex w-1/7 border-l">
-											<div className="flex justify-center items-center">
-												<Button color="blue" size="xs" className="mr-2">
-													<FaEye size={12} />
-												</Button>
-												<Button color="green" size="xs" className="mr-2">
-													<FaCheck size={12} />
-												</Button>
-												<Button color="red" size="xs">
-													<FaTimes size={12} />
-												</Button>
-											</div>
-										</td>
-									</tr>
 								</tbody>
 							</table>
 						</div>
