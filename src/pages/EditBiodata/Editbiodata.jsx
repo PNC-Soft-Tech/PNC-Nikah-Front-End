@@ -15,9 +15,10 @@ const EditBiodata = () => {
 	const { userInfo } = useContext(UserContext);
 	useEffect(() => {
 		if (userInfo?.data[0]?.last_edited_timeline_index) {
-			setUserForm(userInfo?.data[0]?.last_edited_timeline_index + 1);
+			setUserForm(userInfo?.data[0]?.last_edited_timeline_index);
 		}
 	}, [userInfo?.data]);
+
 	return (
 		<div className="flex flex-col lg:flex-row">
 			<div className="lg:w-[30%] w-full lg:mx-5 mx-0">

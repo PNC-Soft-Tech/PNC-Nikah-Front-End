@@ -35,10 +35,16 @@ const UserSidebar = ({ openSidebar }) => {
 			<div className="flex flex-col ">
 				<div className="h-[80px] w-[80px] pt-2  self-center mb-3 ">
 					<img
-						className="rounded-full py-2 h-24  w-24 mx-auto"
+						className="w-24 h-24 py-2 mx-auto rounded-full"
 						src={gender === "মহিলা" ? female : male}
 						alt="Person"
 					/>
+				</div>
+				<div className="mt-2">
+					<h3 style={{ color: Colors.siteGlobal }} className="font-semibold">
+						{gender === "মহিলা" ? "PNCF-" : "PNCM-"}
+						{userInfo?.data[0]?.id}
+					</h3>
 				</div>
 				<h2 className=" text-[20px] text-[#c9c7c7df] self-center mt-2 ">
 					Biodata Status
@@ -67,7 +73,7 @@ const UserSidebar = ({ openSidebar }) => {
 				))}
 				<div
 					onClick={logOutHandler}
-					className="flex p-5 items-center cursor-pointer hover:bg-gray-300"
+					className="flex items-center p-5 cursor-pointer hover:bg-gray-300"
 				>
 					<FiLogOut className="h-8 w-8 text-[12px] p-1 bg-gray-100 rounded-md " />
 					<span className="ml-2">লগআউট</span>

@@ -8,41 +8,42 @@ import MaritalInfoForm from "../MaritalInfoForm/MaritalInfoForm";
 import OngikarNamaForm from "../OngikarNamaForm/OngikarNamaForm";
 import PersonalInfoForm from "../PersonalInfoForm/PersonalInfoForm";
 import ProfessionInfoForm from "../ProfessionInfoForm/ProfessionInfoForm";
+import ReviewForm from "../ReviewForm/ReviewForm";
 
 // eslint-disable-next-line react/prop-types
 const Form = ({ userForm, setUserForm }) => {
-  return (
-    <>
-      {userForm === 1 ? (
-        <GeneralInfoForm setUserForm={setUserForm} userForm={userForm} />
-      ) : userForm === 2 ? (
-        <div>
-          <AddressInfoForm setUserForm={setUserForm} userForm={userForm} />
-        </div>
-      ) : userForm === 3 ? (
-        <EducationalQualificationForm
-          setUserForm={setUserForm}
-          userForm={userForm}
-        />
-      ) : userForm === 4 ? (
-        <FamilyInfoForm setUserForm={setUserForm} userForm={userForm} />
-      ) : userForm === 5 ? (
-        <PersonalInfoForm setUserForm={setUserForm} userForm={userForm} />
-      ) : userForm === 6 ? (
-        <ProfessionInfoForm setUserForm={setUserForm} userForm={userForm} />
-      ) : userForm === 7 ? (
-        <MaritalInfoForm setUserForm={setUserForm} userForm={userForm} />
-      ) : userForm === 8 ? (
-        <ExpectedPartnerForm setUserForm={setUserForm} userForm={userForm} />
-      ) : userForm === 9 ? (
-        <OngikarNamaForm setUserForm={setUserForm} userForm={userForm} />
-      ) : (
-        userForm === 10 && (
-          <ContactInfoForm setUserForm={setUserForm} userForm={userForm} />
-        )
-      )}
-    </>
-  );
+	return (
+		<>
+			{userForm === 1 ? (
+				<GeneralInfoForm setUserForm={setUserForm} userForm={userForm} />
+			) : userForm === 2 ? (
+				<div>
+					<AddressInfoForm setUserForm={setUserForm} userForm={userForm} />
+				</div>
+			) : userForm === 3 ? (
+				<EducationalQualificationForm
+					setUserForm={setUserForm}
+					userForm={userForm}
+				/>
+			) : userForm === 4 ? (
+				<FamilyInfoForm setUserForm={setUserForm} userForm={userForm} />
+			) : userForm === 5 ? (
+				<PersonalInfoForm setUserForm={setUserForm} userForm={userForm} />
+			) : userForm === 6 ? (
+				<ProfessionInfoForm setUserForm={setUserForm} userForm={userForm} />
+			) : userForm === 7 ? (
+				<MaritalInfoForm setUserForm={setUserForm} userForm={userForm} />
+			) : userForm === 8 ? (
+				<ExpectedPartnerForm setUserForm={setUserForm} userForm={userForm} />
+			) : userForm === 9 ? (
+				<OngikarNamaForm setUserForm={setUserForm} userForm={userForm} />
+			) : userForm === 10 ? (
+				<ContactInfoForm setUserForm={setUserForm} userForm={userForm} />
+			) : (
+				<ReviewForm />
+			)}
+		</>
+	);
 };
 
 export default Form;

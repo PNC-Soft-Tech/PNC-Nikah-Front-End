@@ -59,7 +59,7 @@ const PersonalInfoForm = ({ setUserForm, userForm }) => {
 	});
 
 	const { data: personalInfo = null } = useQuery({
-		queryKey: ["family-info", userInfo?.data[0]?.id],
+		queryKey: ["personal-info", userInfo?.data[0]?.id],
 		queryFn: async () => {
 			return await userServices.getPersonalInfoByUserId(userInfo?.data[0]?.id);
 		},
@@ -159,7 +159,7 @@ const PersonalInfoForm = ({ setUserForm, userForm }) => {
 			return;
 		}
 
-		console.log(personalInfoData);
+		console.log("edit-personal-info-~", personalInfoData);
 
 		try {
 			if (personalInfo?.success === true) {
@@ -438,17 +438,17 @@ const PersonalInfoForm = ({ setUserForm, userForm }) => {
 					setValue={setPhone}
 					required
 				/>
-				<div className="flex items-center my-5 justify-between">
+				<div className="flex items-center justify-between my-5">
 					<button
 						type="button"
 						onClick={backButtonHandler}
-						className="bg-gray-700 text-xl  px-5 text-white py-2  rounded-3xl"
+						className="px-5 py-2 text-xl text-white bg-gray-700 rounded-3xl"
 					>
 						Back
 					</button>
 					<button
 						type="submit"
-						className="text-xl  px-5 text-white py-2 rounded-3xl"
+						className="px-5 py-2 text-xl text-white rounded-3xl"
 						style={{
 							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight})`,
 						}}
