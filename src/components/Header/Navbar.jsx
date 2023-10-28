@@ -18,18 +18,18 @@ import { MdExitToApp } from "react-icons/md";
 import { FaEdit, FaLongArrowAltUp, FaUserEdit } from "react-icons/fa";
 import { BiSolidDashboard } from "react-icons/bi";
 import navLogo from "../../assets/icons/logo.png";
-import { userServices } from "../../services/user";
 import { getToken, removeToken } from "../../utils/cookies";
 import { Modal } from "../Modal/Modal";
 import { getGender } from "../../utils/localStorage";
-import { Toast } from "../../utils/toast";
-import { getErrorMessage } from "../../utils/error";
+import female from "../../assets/icons/female.svg";
+import male from "../../assets/icons/male.svg";
 
 export default function NavBar() {
 	const { userInfo, logOut } = useContext(UserContext);
 	const [filteredNavData, setFilteredNavData] = useState(navData);
 	const [isHovered, setIsHovered] = useState(false);
 	const [openNav, setOpenNav] = useState(false);
+	const gender = getGender();
 
 	const navigate = useNavigate();
 	// console.log(user);
@@ -125,11 +125,20 @@ export default function NavBar() {
 								id="profile-card"
 							>
 								<div className="py-5 text-center">
-									<FaUserLarge className="w-10 h-10 p-2 mx-auto border-2 border-white rounded-full" />
+									{/* <FaUserLarge className="w-10 h-10 p-2 mx-auto border-2 border-white rounded-full" /> */}
+									<div className="">
+										<img
+											className="rounded-full py-2 h-24  w-24 mx-auto"
+											src={gender === "মহিলা" ? female : male}
+											alt="Person"
+										/>
+									</div>
 									<h4 className="py-2 font-bold text-gray-500">
 										Biodata Status
 									</h4>
-									<h6 className="font-bold text-gray-500">Incomplete</h6>
+									<h6 className="font-bold text-gray-700 capitalize ">
+										{userInfo?.data[0]?.user_status}
+									</h6>
 									<Button
 										onClick={myBioDataHandler}
 										className="mt-2 bg-gradient-to-r from-purple-900 to-blue-900 rounded-3xl"

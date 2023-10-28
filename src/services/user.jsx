@@ -326,12 +326,16 @@ const getOngikarNamaByUserId = async (id) => {
 	console.log(data);
 	return data;
 };
-const getContactByUserId = async (id) => {
+const getContactByUserId = async (id, token) => {
 	if (!id) {
 		return null;
 	}
 	console.log(id);
-	const { data } = await axios.get(baseUrl + `/contact/${id}/user-id`);
+	const { data } = await axios.get(baseUrl + `/contact/${id}/user-id`, {
+		headers: {
+			Authorization: token,
+		},
+	});
 	console.log(data);
 	return data;
 };

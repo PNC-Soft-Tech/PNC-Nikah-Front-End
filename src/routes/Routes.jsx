@@ -74,7 +74,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/send-form",
-				element: <SendForm />,
+				element: (
+					<PrivateRoute>
+						<SendForm />
+					</PrivateRoute>
+				),
 			},
 			{
 				path: "/privacy-policy",
@@ -102,7 +106,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/contact-us",
-				element: <ContactUs />,
+				element: (
+					<PrivateRoute>
+						<ContactUs />
+					</PrivateRoute>
+				),
 			},
 			{
 				path: "/forgot-password",

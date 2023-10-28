@@ -14,14 +14,20 @@ import "./BioData.css";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { BioDataServices } from "../../services/bioData";
+import { ContactServices } from "../../services/contact";
+import { UserInfoServices } from "../../services/userInfo";
+import { getToken } from "../../utils/cookies";
 import LoadingBioData from "../../components/LoadingBioData/LoadingBioData";
 import { useContext, useEffect } from "react";
 import BioContext from "../../contexts/BioContext";
+import UserContext from "../../contexts/UserContext";
 import { ScrollToTop } from "../../constants/ScrolltoTop";
 
 const BioData = () => {
 	const { id } = useParams();
 	const { setBio } = useContext(BioContext);
+	const { userInfo } = useContext(UserContext);
+
 	console.log(id);
 	const { isLoading, error, data } = useQuery({
 		queryKey: ["bio-data", id],
@@ -29,6 +35,25 @@ const BioData = () => {
 			return await BioDataServices.getBioData(id);
 		},
 	});
+	const { data: userStatus = null } = useQuery({
+		queryKey: ["bio-data", "status", id],
+		queryFn: async () => {
+			return await UserInfoServices.getUserInfoStatus(id);
+		},
+	});
+	const { data: contact = null, isLoading: contactLoading } = useQuery({
+		queryKey: ["bio-data", "contact", id, userInfo?.data[0].id],
+		queryFn: async () => {
+			return await ContactServices.getContactForBuyer(
+				userInfo?.data[0]?.id,
+				id,
+				getToken().token
+			);
+		},
+	});
+
+	console.log("contact-bio-user~", contact);
+	console.log("user-info-status~", userStatus);
 
 	useEffect(() => {
 		if (data && data?.data) {
@@ -80,7 +105,7 @@ const BioData = () => {
 					<OngikarNama />
 
 					<div className="h-5"></div>
-					<ContactInfo />
+					<ContactInfo contact={contact?.data} status={userStatus?.data} />
 				</div>
 			</div>
 		</div>

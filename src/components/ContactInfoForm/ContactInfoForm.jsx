@@ -38,7 +38,10 @@ const ContactInfoForm = ({ userForm, setUserForm }) => {
 	const { data: contactInfo = null } = useQuery({
 		queryKey: ["contact-info", userInfo?.data[0]?.id],
 		queryFn: async () => {
-			return await userServices.getContactByUserId(userInfo?.data[0]?.id);
+			return await userServices.getContactByUserId(
+				userInfo?.data[0]?.id,
+				getToken().token
+			);
 		},
 	});
 	useEffect(() => {
