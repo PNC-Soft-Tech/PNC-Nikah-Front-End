@@ -75,7 +75,7 @@ const ContactInfoForm = ({ userForm, setUserForm }) => {
 			return;
 		}
 
-		console.log(contactInfoData);
+		// console.log(contactInfoData);
 
 		try {
 			if (contactInfo?.success === true) {
@@ -137,6 +137,7 @@ const ContactInfoForm = ({ userForm, setUserForm }) => {
 		}
 	};
 
+	console.log("contact-info-from-db~", contactInfo);
 	return (
 		<div>
 			<FormTitle title="যোগাযোগ" />
@@ -186,18 +187,18 @@ const ContactInfoForm = ({ userForm, setUserForm }) => {
 					subtitle="অনাকাঙ্ক্ষিত ঘটনা এড়াতে, সম্ভব হলে অভিভাবকের মেইল এড্রেস লিখুন।"
 				/>
 
-				<div className="flex items-center my-5 justify-between">
+				<div className="flex items-center justify-between my-5">
 					<button
 						type="button"
 						onClick={backButtonHandler}
-						className="bg-gray-700 text-xl  px-5 text-white py-2  rounded-3xl"
+						className="px-5 py-2 text-xl text-white bg-gray-700 rounded-3xl"
 					>
 						Back
 					</button>
 					<button
 						disabled={loading}
 						type="submit"
-						className="text-xl  px-5 text-white py-2 rounded-3xl"
+						className="px-5 py-2 text-xl text-white rounded-3xl"
 						style={{
 							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight})`,
 						}}

@@ -14,6 +14,22 @@ const createBioChoiceData = async (data, token) => {
 	});
 	return response.data;
 };
+const updateBioChoiceData = async (id, data, token) => {
+	if (!id || !token) {
+		return null;
+	}
+	const response = await axios.put(
+		baseUrl + `/bio-choice-data/bio-data/${id}`,
+		data,
+		{
+			headers: {
+				Authorization: token,
+				"Content-Type": "application/json",
+			},
+		}
+	);
+	return response.data;
+};
 const getBioChoiceDataFirstStep = async (token) => {
 	const response = await axios.get(baseUrl + "/bio-choice-data/first-step", {
 		headers: {
@@ -68,4 +84,5 @@ export const BioChoiceDataServices = {
 	checkBioChoiceDataSecondStep,
 	checkBioChoiceDataFirstStep,
 	getBioChoiceShare,
+	updateBioChoiceData,
 };

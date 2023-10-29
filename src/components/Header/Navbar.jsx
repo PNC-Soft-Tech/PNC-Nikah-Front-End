@@ -58,7 +58,7 @@ export default function NavBar() {
 	};
 
 	const NavList = () => (
-		<ul className="box-border border-none nav-list-ul py-3 pt-6 pl-[10px] flex flex-col lg:flex-row  justify-between ">
+		<ul className="box-border z-50 border-none nav-list-ul py-3 pt-6 pl-[10px] flex flex-col lg:flex-row  justify-between ">
 			<div className="hidden lg:block">
 				<Link to="/">
 					<img src={navLogo} alt="" />
@@ -128,7 +128,7 @@ export default function NavBar() {
 									{/* <FaUserLarge className="w-10 h-10 p-2 mx-auto border-2 border-white rounded-full" /> */}
 									<div className="">
 										<img
-											className="rounded-full py-2 h-24  w-24 mx-auto"
+											className="w-24 h-24 py-2 mx-auto rounded-full"
 											src={gender === "মহিলা" ? female : male}
 											alt="Person"
 										/>
@@ -210,7 +210,7 @@ export default function NavBar() {
 	return (
 		<>
 			{!getGender() && <Modal />}
-			<Navbar className="w-full bg-gradient-to-r from-[#071952] to-[#071952]  rounded-none justify-between box-border styles.headerColor navigation-bar-custom sticky top-0 ">
+			<Navbar className="w-full z-50 bg-gradient-to-r from-[#071952] to-[#071952]  rounded-none justify-between box-border styles.headerColor navigation-bar-custom sticky top-0 ">
 				<div className="hidden lg:block">
 					<NavList />
 				</div>

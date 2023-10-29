@@ -19,33 +19,28 @@ const LikeItem = ({ item, index }) => {
 	};
 	return (
 		<tr className="border-b">
-			<td className="px-4 py-2 text-center w-1/9 border-l">{index+1}</td>
-			<td className="px-4 py-2 text-center w-1/9 border-l">{item?.bio_id}</td>
-			<td className="px-4 py-2 text-center w-1/9 border-l">
+			<td className="px-4 py-2 text-center border-l w-1/9">{index + 1}</td>
+			<td className="px-4 py-2 text-center border-l w-1/9">{item?.bio_id}</td>
+			<td className="px-4 py-2 text-center border-l w-1/9">
 				{formatDate(getDateMonthYear(item?.date_of_birth))}
 			</td>
-			<td className="px-4 py-2 text-center w-1/9 border-l">
+			<td className="px-4 py-2 text-center border-l w-1/9">
 				{item?.permanent_address}
 			</td>
-			<td className="px-4 py-2 text-center w-1/9 border-l">
+			<td className="px-4 py-2 text-center border-l w-1/9">
 				{item?.total_count}
 			</td>
-			<td className="px-4 py-2 text-center w-1/9 border-l">
-				{(item?.approval_rate*1).toFixed(2)}%
+			<td className="px-4 py-2 text-center border-l w-1/9">
+				{(item?.approval_rate * 1).toFixed(2)}%
 			</td>
-			<td className="px-4 py-2 text-center w-1/9 border-l">
-				{(item?.rejection_rate*1).toFixed(2)}%
+			<td className="px-4 py-2 text-center border-l w-1/9">
+				{(item?.rejection_rate * 1).toFixed(2)}%
 			</td>
-			<td className="px-4 py-2 text-center w-1/9 border-l">
+			<td className="px-4 py-2 text-center border-l w-1/9">
 				{item?.total_pending}
 			</td>
-			<td className="px-4 py-2 text-center w-1/9 border-l">
-				<Button
-					onClick={viewButtonHandler}
-					color="green"
-					size="xs"
-					className="mr-2"
-				>
+			<td className="px-4 py-2 text-center border-l w-1/9">
+				<Button onClick={viewButtonHandler} color="green" className="mr-2">
 					<FaEye size={12} />
 				</Button>
 			</td>
@@ -69,14 +64,14 @@ const Favorite = () => {
 			<div className="">
 				{/*<!-- End of Left Sidebar -->*/}
 				<div className="col right-sidebar-main my-favs">
-					<div className="my-favs-info border-t-2 w-auto rounded shadow">
-						<h5 className="card-title text-center text-2xl my-3">
+					<div className="w-auto border-t-2 rounded shadow my-favs-info">
+						<h5 className="my-3 text-2xl text-center card-title">
 							আমার পছন্দসমুহ
 						</h5>
 						<div className="overflow-x-auto">
-							<table className="table-auto w-full">
+							<table className="w-full table-auto">
 								<thead>
-									<tr className="border-b border-t">
+									<tr className="border-t border-b">
 										<th className="px-4 py-2 text-center w-1/9">SL</th>
 										<th className="px-4 py-2 text-center w-1/9">বায়োডাটা নং</th>
 										<th className="px-4 py-2 text-center w-1/9">জন্ম তারিখ</th>
@@ -105,18 +100,18 @@ const Favorite = () => {
 				</div>
 				<div className="h-8"></div>
 				<div className="col right-sidebar-main my-bio-favs">
-					<div className="my-favs-info border-t-2 w-auto rounded shadow">
-						<h5 className="card-title text-center text-2xl mt-3">
+					<div className="w-auto border-t-2 rounded shadow my-favs-info">
+						<h5 className="mt-3 text-2xl text-center card-title">
 							আমার বায়োডাটা যারা পছন্দের তালিকায় রেখেছেঃ
 						</h5>
-						<h6 className="text-xs pb-4">
+						<h6 className="pb-4 text-xs">
 							এটি প্রিমিয়াম ফিচার! এই তথ্য দেখতে হলে আপনাকে ৫০ পয়েন্ট খরচ করতে
 							হবে!!!
 						</h6>
 						<div className="overflow-x-auto">
-							<table className="table-auto w-full">
+							<table className="w-full table-auto">
 								<thead>
-									<tr className="border-b border-t">
+									<tr className="border-t border-b">
 										<th className="px-4 py-2 text-center w-1/9">SL</th>
 										<th className="px-4 py-2 text-center w-1/9">বায়োডাটা নং</th>
 										<th className="px-4 py-2 text-center w-1/9">জন্ম তারিখ</th>

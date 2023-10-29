@@ -65,8 +65,9 @@ const ContactInfo = ({ contact, status }) => {
 
 				const checkFirst =
 					await BioChoiceDataServices.checkBioChoiceDataFirstStep(bioId, token);
+				console.log("bio-check-first-step~", checkFirst);
 				const status = checkFirst?.status;
-				if (checkFirst?.count > 0) {
+				if (checkFirst?.data?.count > 0) {
 					if (status === "Approved") {
 						Toast.successToast("আপনার প্রথম পদক্ষেপ সম্পূর্ন হয়েছে।");
 						return;
@@ -155,100 +156,98 @@ const ContactInfo = ({ contact, status }) => {
 	};
 
 	return (
-		<div className="single-bio-contact-info rounded shadow">
+		<div className="rounded shadow single-bio-contact-info">
 			{contact && status?.user_status !== "hidden" ? (
 				<>
-					<h5 className="card-title text-center text-2xl my-3">যোগাযোগ</h5>
+					<h5 className="my-3 text-2xl text-center card-title">যোগাযোগ</h5>
 					<div className="paid-contact-info">
-						<table className="table-auto w-full">
+						<table className="w-full table-auto">
 							<thead>
-								<tr className="border-b border-t">
-									<td className="px-4 py-2 text-left  w-1/2">
+								<tr className="border-t border-b">
+									<td className="w-1/2 px-4 py-2 text-left">
 										{" "}
 										{generalInfo?.gender === "মহিলা" ||
 										generalInfo?.bio_type === "পাত্রীর বায়োডাটা"
 											? "পাত্রীর নাম"
 											: "পাত্রের নাম"}{" "}
 									</td>
-									<td className="px-4 py-2 text-left  w-1/2 border-l">
+									<td className="w-1/2 px-4 py-2 text-left border-l">
 										{contact?.full_name}
 									</td>
 								</tr>
 							</thead>
 							<tbody>
 								<tr className="border-b">
-									<td className="px-4 py-2 text-left  w-1/2">
+									<td className="w-1/2 px-4 py-2 text-left">
 										অভিভাবকের মোবাইল নাম্বার
 									</td>
-									<td className="px-4 py-2 text-left  w-1/2 border-l">
+									<td className="w-1/2 px-4 py-2 text-left border-l">
 										{contact?.family_number}
 									</td>
 								</tr>
 								<tr className="border-b">
-									<td className="px-4 py-2 text-left  w-1/2">
+									<td className="w-1/2 px-4 py-2 text-left">
 										অভিভাবকের সাথে সম্পর্ক
 									</td>
-									<td className="px-4 py-2 text-left  border-l">
+									<td className="px-4 py-2 text-left border-l">
 										{contact?.relation}
 									</td>
 								</tr>
 							</tbody>
 						</table>
 						<div className="flex justify-center mt-5">
-							<button className="bio-report-btn bg-red-800 text-white py-2 px-4 rounded w-93">
+							<button className="px-4 py-2 text-white bg-red-800 rounded bio-report-btn w-93">
 								রিপোর্ট করুন
 							</button>
 						</div>
 					</div>
 				</>
-			) : (
-				status === "hidden" && (
-					<div className="pnc-bio-hidden">
-						<h4 className="text-center my-4">
-							এই বায়োডাটাটি হাইড অবস্থায় আছে। অর্থাৎ এই মুহুর্তে তিনি কোনো
-							প্রস্তাব পেতে আগ্রহী নয়। তাই এখন এই বায়োডাটার যোগাযোগ তথ্য দেখা
-							যাবে না।
-						</h4>
-					</div>
-				)
-			)}
-
-			<div className="ask-contact-info">
-				<h4 className="text-center my-4">
-					সতর্কতা - বিয়ের সিদ্ধান্ত নেয়ার পূর্বে স্থানীয়ভাবে খোঁজ নিয়ে
-					বায়োডাটার সমস্ত তথ্য যাচাই করবেন।
-				</h4>
-				<h2 className="text-center text-2xl my-5">
-					এই বায়োডাটার অভিভাবকের যোগাযোগের তথ্য দেখতে আপনার{" "}
-					{convertToBengaliNumerals("30")} টি পয়েন্ট খরচ হবে।
-				</h2>
-				<div className="flex justify-center flex-col items-center ">
-					{displayText ? (
-						<div className="pb-5">
-							<p className="text-xl mb-2">
-								আপনার একাউন্টে কোনো{" "}
-								{convertToBengaliNumerals(points.toString())} পয়েন্ট আছে!
-							</p>
-							<button
-								className="bg-green-800 px-2 py-2 rounded-md hover:bg-green-900 text-white"
-								onClick={() =>
-									buyWithBkashHandler(30 - points, generalInfo?.user_id)
-								}
-							>
-								{convertToBengaliNumerals((30 - points).toString())} পয়েন্ট
-								কিনুন
-							</button>
-						</div>
-					) : (
-						<button
-							onClick={comHandler}
-							className="contact-bio-btn bg-blue-500 text-white py-2 px-4 mb-5 rounded w-93"
-						>
-							যোগাযোগের তথ্য দেখুন
-						</button>
-					)}
+			) : status === "hidden" ? (
+				<div className="pnc-bio-hidden">
+					<h4 className="my-4 text-center">
+						এই বায়োডাটাটি হাইড অবস্থায় আছে। অর্থাৎ এই মুহুর্তে তিনি কোনো
+						প্রস্তাব পেতে আগ্রহী নয়। তাই এখন এই বায়োডাটার যোগাযোগ তথ্য দেখা যাবে
+						না।
+					</h4>
 				</div>
-			</div>
+			) : (
+				<div className="ask-contact-info">
+					<h4 className="my-4 text-center">
+						সতর্কতা - বিয়ের সিদ্ধান্ত নেয়ার পূর্বে স্থানীয়ভাবে খোঁজ নিয়ে
+						বায়োডাটার সমস্ত তথ্য যাচাই করবেন।
+					</h4>
+					<h2 className="my-5 text-2xl text-center">
+						এই বায়োডাটার অভিভাবকের যোগাযোগের তথ্য দেখতে আপনার{" "}
+						{convertToBengaliNumerals("30")} টি পয়েন্ট খরচ হবে।
+					</h2>
+					<div className="flex flex-col items-center justify-center ">
+						{displayText ? (
+							<div className="pb-5">
+								<p className="mb-2 text-xl">
+									আপনার একাউন্টে কোনো{" "}
+									{convertToBengaliNumerals(points.toString())} পয়েন্ট আছে!
+								</p>
+								<button
+									className="px-2 py-2 text-white bg-green-800 rounded-md hover:bg-green-900"
+									onClick={() =>
+										buyWithBkashHandler(30 - points, generalInfo?.user_id)
+									}
+								>
+									{convertToBengaliNumerals((30 - points).toString())} পয়েন্ট
+									কিনুন
+								</button>
+							</div>
+						) : (
+							<button
+								onClick={comHandler}
+								className="px-4 py-2 mb-5 text-white bg-blue-500 rounded contact-bio-btn w-93"
+							>
+								যোগাযোগের তথ্য দেখুন
+							</button>
+						)}
+					</div>
+				</div>
+			)}
 		</div>
 	);
 };

@@ -66,7 +66,7 @@ const ExpectedPartnerForm = ({ userForm, setUserForm }) => {
 		},
 	});
 	const { data: expectedPartnerInfo = null } = useQuery({
-		queryKey: ["contact-info", userInfo?.data[0]?.id],
+		queryKey: ["expected-life-partner-info", userInfo?.data[0]?.id],
 		queryFn: async () => {
 			return await userServices.getExpectedLifePartnerByUserId(
 				userInfo?.data[0]?.id
@@ -194,7 +194,7 @@ const ExpectedPartnerForm = ({ userForm, setUserForm }) => {
 		<div>
 			<FormTitle title="প্রত্যাশিত জীবনসঙ্গী" />
 			<form onSubmit={submitHandler} action="">
-				<label className="text-left text-gray-500 mt-4 mb-5 font-bold block">
+				<label className="block mt-4 mb-5 font-bold text-left text-gray-500">
 					বয়স
 				</label>
 				<DoubleRangeSlider value={age} setValue={setAge} />
@@ -265,17 +265,17 @@ const ExpectedPartnerForm = ({ userForm, setUserForm }) => {
 					title="জীবনসঙ্গীর যেসব বৈশিষ্ট্য বা গুণাবলী প্রত্যাশা করেন"
 					subtitle=" আপনার প্রত্যাশা বিস্তারিত লিখতে পারেন। কোন বিশেষ শর্ত থাকলে উল্লেখ করতে পারেন।"
 				/>
-				<div className="flex items-center my-5 justify-between">
+				<div className="flex items-center justify-between my-5">
 					<button
 						type="button"
 						onClick={backButtonHandler}
-						className="bg-gray-700 text-xl  px-5 text-white py-2  rounded-3xl"
+						className="px-5 py-2 text-xl text-white bg-gray-700 rounded-3xl"
 					>
 						Back
 					</button>
 					<button
 						type="submit"
-						className="text-xl  px-5 text-white py-2 rounded-3xl"
+						className="px-5 py-2 text-xl text-white rounded-3xl"
 						style={{
 							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight})`,
 						}}

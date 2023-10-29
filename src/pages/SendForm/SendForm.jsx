@@ -30,23 +30,6 @@ function SendForm() {
 		}
 	}, [goTo, loading, navigate]);
 
-	const formsInfo = {
-		opinionOnNikhab:
-			"মেয়েদের চোখ ঢাকা নিকাব পড়াকে অনেকে বাড়াবাড়ি মনে করে। ইসলাম তো সহজ, আপনি এব্যাপারে কি মনে করেন?",
-		salatInRain:
-			"প্রচন্ড বৃষ্টি হচ্ছে, মসজিদ যদিও কাছে মোটামুটি। হয়ত ছাতাও আছে যাওয়ার। কিন্তু ইসলাম তো সহজ, এখানে তো রুখসত আছে। কিন্তু অনেক অতি উৎসাহী আছে যারা এসব ঝড়-বৃষ্টি উপেক্ষা করেও যায় মসজিদে। এরকম বাড়াবাড়ি যারা করে তাদের ব্যাপারে আপনার মন্তব্য কি?",
-		studyingAtUniversity:
-			"ছেলেদের ইউনিভার্সিটিতে পড়াশুনা করার ব্যাপারে আপনার মতামত কি?",
-		startingUniv:
-			"অমুক তার ছেলেকে ভার্সিটিতে ভর্তি হতে দিতে চায় না কারন ইসলামী পরিবেশ পাবে না। এরকম বাড়াবাড়ির ব্যাপারে আপনার মতামত কি?",
-		onlineModeling:
-			"পর্দা করে অনলাইনে হিজাব নিকাবের ব্যাবসা তো হালাল।ভিডিও(মডেলিং) বানিয়ে তা দিয়ে একটা আউটসোর্সিং বা ব্যবসা করতে চাইলে আপনার থেকে কোনো হেল্প পেতে পারি? বা পারমিশন পেতে পারি?",
-		malePhotoCapture:
-			"অনেক দ্বীনদার মেয়ে ভার্সিটিতে পড়াশুনা করতে চায় এজন্য তাদের দ্বিনি পরিবেশ খুঁজে|শুরুতে জেনেশুনে মেয়েদের জন্য ভার্সিটিতে পড়তে চাওয়ার বিষয়ে আপনি কি মনে করেন?",
-		bioInput:
-			"আপনার নিজের বায়োডাটা বিস্তারিত লিখুন(বিশেষ কিছু জানাতে চাইলে তাও লিখুন)",
-	};
-
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		let text = `malePhotoCapture == ${malePhotoCapture} `;
@@ -82,14 +65,14 @@ function SendForm() {
 	};
 
 	return (
-		<div className="max-w-screen-md mx-auto bg-white p-6 rounded-lg shadow-md">
+		<div className="max-w-screen-md p-6 mx-auto bg-white rounded-lg shadow-md">
 			<h2
-				className="text-2xl font-semibold mb-4"
+				className="mb-4 text-2xl font-semibold"
 				style={{ color: Colors.titleText }}
 			>
 				নিচের ফর্ম পুরন করে আপনার বায়োডাটা শেয়ার করুন
 			</h2>
-			<h4 className="text-sm font-semibold text-red-800 mb-4">
+			<h4 className="mb-4 text-sm font-semibold text-red-800">
 				আপনি নিচে যে তথ্য দিবেন তা পাত্র/পাত্রীর সাথে শেয়ার করা হবে ইন শা
 				আল্লাহ| আপনার বায়োডাটার ব্যাপারে সে ফিডব্যাক দিলে আপনাকে মোবাইলে এস এম
 				এস করে জানিয়ে দেওয়া হবে এবং আপনি তা আপনার ড্যাশবোর্ড থেকে দেখতে পারবেন |
@@ -144,7 +127,7 @@ function SendForm() {
 				<div className="mb-4">
 					<button
 						type="submit"
-						className="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+						className="px-4 py-2 font-bold text-white rounded hover:bg-blue-700"
 						style={{
 							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight} )`,
 						}}

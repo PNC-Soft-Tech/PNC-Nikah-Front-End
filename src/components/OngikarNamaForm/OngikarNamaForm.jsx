@@ -140,7 +140,7 @@ const OngikarNamaForm = ({ userForm, setUserForm }) => {
 					value={isFamilyKnow}
 					setValue={setIsFamilyKnow}
 					options={conditionOptions}
-					title="OrdhekDeen.com ওয়েবসাইটে বায়োডাটা জমা দিচ্ছেন, তা আপনার অভিভাবক জানেন?"
+					title="pnc-nikah.com ওয়েবসাইটে বায়োডাটা জমা দিচ্ছেন, তা আপনার অভিভাবক জানেন?"
 				/>
 
 				<Select
@@ -156,20 +156,20 @@ const OngikarNamaForm = ({ userForm, setUserForm }) => {
 					value={isAgree}
 					setValue={setIsAgree}
 					options={conditionOptions}
-					title="কোনো মিথ্যা তথ্য প্রদান করলে দুনিয়াবী আইনগত এবং আখিরাতের দায়ভার OrdhekDeen.com কর্তৃপক্ষ নিবে না। আপনি কি সম্মত?"
+					title="কোনো মিথ্যা তথ্য প্রদান করলে দুনিয়াবী আইনগত এবং আখিরাতের দায়ভার pnc-nikah.com কর্তৃপক্ষ নিবে না। আপনি কি সম্মত?"
 				/>
 
-				<div className="flex items-center my-5 justify-between">
+				<div className="flex items-center justify-between my-5">
 					<button
 						type="button"
 						onClick={backButtonHandler}
-						className="bg-gray-700 text-xl  px-5 text-white py-2  rounded-3xl"
+						className="px-5 py-2 text-xl text-white bg-gray-700 rounded-3xl"
 					>
 						Back
 					</button>
 					<button
 						type="submit"
-						className="text-xl  px-5 text-white py-2 rounded-3xl"
+						className="px-5 py-2 text-xl text-white rounded-3xl"
 						style={{
 							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight})`,
 						}}
