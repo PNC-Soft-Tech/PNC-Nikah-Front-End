@@ -173,6 +173,115 @@ const Home = () => {
 					(বায়হাকী, শু&rsquo;আবুল ঈমান - ৫৪৮৬)
 				</p>
 			</div>
+			{/* Advertisement Starts  */}
+			<div
+  style={{
+    background: `linear-gradient(to right, ${Colors.lnLeft}, ${Colors.lnRight})`,
+  }}
+  class="mx-auto my-4 max-w-screen-lg bg-blue-500 py-4 px-8 text-white md:flex md:items-center md:justify-around md:p-16 lg:rounded-xl relative"
+>
+  <div class="mr-10 mb-10 md:mb-0">
+    <h2 class="mb-8 max-w-lg text-3xl font-bold sm:text-3xl">
+      PNC Soft Tech - একটি সফটওয়্যার ডেভেলপমেন্ট কম্পানি
+    </h2>
+    <ul class="flex max-w-xl flex-wrap gap-4">
+      <li class="flex space-x-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="h-6 w-6 text-green-300"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+        <p class="text-gray-100">ব্যক্তিগত ওয়েবসাইট/অ্যাপ</p>
+      </li>
+      <li class="flex space-x-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="h-6 w-6 text-green-300"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+        <p class="text-gray-100">ব্যবসায়ীক ওয়েবসাইট/অ্যাপ</p>
+      </li>
+      <li class="flex space-x-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="h-6 w-6 text-green-300"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+        <p class="text-gray-100">কম্পানির ওয়েবসাইট/অ্যাপ</p>
+      </li>
+      <li class="flex space-x-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="h-6 w-6 text-green-300"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+        <p class="text-gray-100">শিক্ষা প্তিষ্ঠানের ওয়েবসাইট/অ্যাপ</p>
+      </li>
+      <li class="flex space-x-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="h-6 w-6 text-green-300"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+        <p class="text-gray-100">ই-কমার্স ওয়েবসাইট/অ্যাপ</p>
+      </li>
+    </ul>
+  </div>
+  <div class="whitespace-nowrap">
+    <button class="focus:outline-4 rounded-xl bg-emerald-400 px-4 py-3 font-medium text-white shadow-md outline-white transition hover:bg-emerald-500">
+      মেসেজ দিন
+    </button>
+  </div>
+  <a
+    href="https://pncsofttech.xyz"
+    target="_blank"
+    class="absolute bottom-4 right-4 text-white text-sm"
+  >
+    আমাদের ওয়েবসাইট
+  </a>
+  <div class="bg-orange-500 text-white px-2 py-1 text-xs font-bold absolute top-0 right-0 ">
+    <span class="uppercase">Ad</span>
+  </div>
+</div>
+
+
+
+			{/* Advertisement Ends  */}
 			<form
 				onSubmit={submitHandler}
 				className="search-filter mt-4 rounded-2xl bg-white container mx-auto px-4 lg:px-8 lg:p-16 lg:flex lg:items-center lg:justify-between"
