@@ -66,7 +66,7 @@ const ContactInfo = ({ contact, status }) => {
 				const checkFirst =
 					await BioChoiceDataServices.checkBioChoiceDataFirstStep(bioId, token);
 				console.log("bio-check-first-step~", checkFirst);
-				const status = checkFirst?.status;
+				const status = checkFirst?.data?.status;
 				if (checkFirst?.data?.count > 0) {
 					if (status === "Approved") {
 						Toast.successToast("আপনার প্রথম পদক্ষেপ সম্পূর্ন হয়েছে।");
@@ -90,9 +90,9 @@ const ContactInfo = ({ contact, status }) => {
 						token
 					);
 
-				if (checkSecond?.count > 0) {
-					const payment_status = checkSecond?.payment_status;
-					const refund_status = checkSecond?.refund_status;
+				if (checkSecond?.data?.count > 0) {
+					const payment_status = checkSecond?.data?.payment_status;
+					const refund_status = checkSecond?.data?.refund_status;
 
 					if (payment_status === "Completed" && refund_status !== "refunded") {
 						Toast.successToast("দুংক্ষিত ,আপনি এই বায়োডাটা ইতিমধ্যে কিনছেন");

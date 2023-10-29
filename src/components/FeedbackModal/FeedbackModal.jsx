@@ -7,6 +7,7 @@ import { getToken } from "../../utils/cookies";
 import { Toast } from "../../utils/toast";
 import { getErrorMessage } from "../../utils/error";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
+import { Colors } from "../../constants/colors";
 
 export function FeedbackModal({
 	title,
@@ -15,6 +16,7 @@ export function FeedbackModal({
 	id,
 	refetch,
 	feedbackData,
+	purchase,
 }) {
 	const [loading, setLoading] = useState(false);
 	const handleOpen = () => setOpen(!open);
@@ -50,9 +52,23 @@ export function FeedbackModal({
 			<Dialog size="lg" open={open} handler={handleOpen}>
 				<DialogHeader>{title}</DialogHeader>
 				<DialogBody>
-					{feedbackData ? (
+					{feedbackData || purchase ? (
 						<div>
-							<p className="mb-5 text-xl font-semibold">{feedbackData}</p>
+							{feedbackData ? (
+								<p
+									style={{ color: Colors.siteGlobal }}
+									className="mb-5 text-xl font-semibold"
+								>
+									{feedbackData}
+								</p>
+							) : (
+								purchase && (
+									<p className="mb-5 text-xl font-semibold text-red-500">
+										There is no feedback
+									</p>
+								)
+							)}
+
 							<button
 								onClick={handleOpen}
 								className="px-4 py-1 text-white bg-green-800 rounded-md hover:bg-green-600"

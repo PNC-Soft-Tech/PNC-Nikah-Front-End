@@ -1,26 +1,28 @@
 import "./MyPurchases.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
 import { FaEye, FaTrash, FaInfo } from "react-icons/fa";
 import { BioChoiceDataServices } from "../../services/bioChoiceData";
 import { getToken } from "../../utils/cookies";
 import { MdFeedback } from "react-icons/md";
-// import { formatDate,readableDateTime } from "../../utils/date";
-import {
-	Dialog,
-	DialogHeader,
-	DialogBody,
-	DialogFooter,
-} from "@material-tailwind/react";
+import { AiFillQuestionCircle } from "react-icons/ai";
 import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
 import { FeedbackModal } from "../../components/FeedbackModal/FeedbackModal";
 import { BioDetailsModal } from "../../components/BioDetailsModal/BioDetailsModal";
+import { useNavigate } from "react-router-dom";
+import { Colors } from "../../constants/colors";
+import { PayDetailsModal } from "../../components/PayDetailsModal/PayDetailsModal";
+import { useContext } from "react";
+import UserContext from "../../contexts/UserContext";
 const MyPurchases = () => {
+	const { userInfo } = useContext(UserContext);
 	const [isFeedbackDialogOpen, setIsFeedbackDialogOpen] = useState(false);
-	const [open, setOpen] = useState(false);
 	const [bioDetailsModal, setBioDetailsModal] = useState(false);
+	const [payDetailsModal, setPayBioDetailsModal] = useState(false);
 	const [qA, setQa] = useState('"');
+	const [feedback, setFeedback] = useState("");
+	const navigate = useNavigate();
 
 	const {
 		data: bioChoiceFirstStep,
@@ -52,6 +54,20 @@ const MyPurchases = () => {
 		setBioDetailsModal(true);
 	};
 
+	const feedbackDetailsModalHandler = (item) => {
+		setIsFeedbackDialogOpen(true);
+		setFeedback(item);
+	};
+
+	const payButtonHandler = () => {
+		const points = userInfo?.data[0]?.points;
+
+		console.log(points);
+	};
+
+	const viewBioIdHandler = (bioId) => {
+		navigate(`/biodata/${bioId}`);
+	};
 	console.log("bio-choice-second-step~", bioChoiceSecondStep);
 	console.log("bio-choice-first-step~", bioChoiceFirstStep);
 
@@ -130,13 +146,13 @@ const MyPurchases = () => {
 															</div>
 														</td>
 														<td className="px-4 py-2 text-center border-l w-1/10">
-															<div className="flex items-center justify-center cursor-pointer">
-																<FeedbackModal
-																	open={open}
-																	setOpen={setOpen}
-																	text={item?.feedback}
-																	title="Feedback details"
-																/>
+															<div
+																onClick={() =>
+																	feedbackDetailsModalHandler(item?.feedback)
+																}
+																className="flex items-center justify-center cursor-pointer"
+															>
+																<MdFeedback color="gray" size={22} />
 															</div>
 														</td>
 														<td className="px-4 py-2 text-center border-l w-1/10">
@@ -148,12 +164,34 @@ const MyPurchases = () => {
 														<td className="px-4 py-2 text-center border-l w-1/10">
 															{item?.pending_count}
 														</td>
-														<td className="flex px-4 py-2 text-center border-l w-1/10">
-															<Button color="green" size="xs" className="mr-2">
-																<FaEye size={12} />
-															</Button>
-															<Button color="red" size="xs">
-																<FaTrash size={12} />
+														<td className="flex items-center px-4 py-2 text-center border-l w-1/10">
+															{item?.status === "Accepted" && (
+																<>
+																	<Button
+																		onClick={() =>
+																			payButtonHandler(item?.bio_id)
+																		}
+																		size="xs"
+																		className="mr-2"
+																		style={{
+																			background: `linear-gradient(to right,${Colors.lnRight},${Colors.lnLeft} )`,
+																		}}
+																	>
+																		Pay
+																	</Button>
+																	<AiFillQuestionCircle
+																		onClick={() => setPayBioDetailsModal(true)}
+																		className="w-6 h-6 mr-2 text-red-700 cursor-pointer hover:text-red-900"
+																	/>
+																</>
+															)}
+															<Button
+																onClick={() => viewBioIdHandler(item?.bio_id)}
+																color="green"
+																size="xs"
+																className=""
+															>
+																<FaEye />
 															</Button>
 														</td>
 													</tr>
@@ -274,6 +312,20 @@ const MyPurchases = () => {
 					setOpen={setBioDetailsModal}
 					title="Bio Details"
 					text={qA}
+				/>
+			)}
+			{isFeedbackDialogOpen && (
+				<FeedbackModal
+					open={isFeedbackDialogOpen}
+					setOpen={setIsFeedbackDialogOpen}
+					feedbackData={feedback}
+					purchase={true}
+				/>
+			)}
+			{payDetailsModal && (
+				<PayDetailsModal
+					open={payDetailsModal}
+					setOpen={setPayBioDetailsModal}
 				/>
 			)}
 		</>

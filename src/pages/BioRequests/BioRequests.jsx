@@ -37,6 +37,7 @@ const MyBioRequests = () => {
 		try {
 			setLoading(true);
 			setLoadingId(id);
+			setLoadingStatus(status);
 			const response = await BioChoiceDataServices.updateBioChoiceData(
 				id,
 				{
@@ -50,12 +51,13 @@ const MyBioRequests = () => {
 			}
 			setLoadingId(null);
 			setLoading(false);
-			setLoadingStatus(status);
+			setLoadingStatus(null);
 		} catch (error) {
 			setLoadingId(null);
 			const msg = getErrorMessage(error);
 			Toast.errorToast(msg);
 			setLoading(false);
+			setLoadingStatus(null);
 		}
 	};
 
@@ -105,7 +107,9 @@ const MyBioRequests = () => {
 									</thead>
 									<tbody>
 										{isLoading ? (
-											<LoadingCircle />
+											<div className="flex justify-center w-full my-2">
+												<LoadingCircle />
+											</div>
 										) : (
 											data?.data?.length > 0 &&
 											data?.data?.map((item, index) => {
