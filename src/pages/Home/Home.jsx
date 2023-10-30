@@ -145,7 +145,7 @@ const Home = () => {
 			bio_type,
 			zilla: districtValues.join(","),
 		});
-		// navigate(`/biodatas?${query}`);
+		navigate(`/biodatas?${query}`);
 	};
 	// console.log(zillasOptions);
 
@@ -282,6 +282,7 @@ const Home = () => {
 				</div>
 			</div>
 			{/* Advertisement Ends  */}
+
 			<form
 				onSubmit={submitHandler}
 				className="px-4 py-5 mx-auto my-5 bg-white border-2 shadow-sm search-filter rounded-2xl lg:px-8 lg:p-16 lg:flex lg:items-center lg:justify-between"
