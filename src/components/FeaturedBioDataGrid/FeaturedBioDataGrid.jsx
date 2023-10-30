@@ -7,10 +7,10 @@ const FeaturedBioDataGrid = () => {
 	const { bios } = useContext(BioContext);
 
 	return (
-		<div className="w-full mx-5  mt-5">
+		<div className="w-full">
 			<h1
 				style={{ color: Colors.titleText }}
-				className="text-3xl font-semibold text-gray-700 mb-2"
+				className="mb-2 text-3xl font-semibold text-gray-700"
 			>
 				ফিচারড বায়োডাটা সমূহ
 			</h1>
@@ -23,7 +23,7 @@ const FeaturedBioDataGrid = () => {
           <option value="পুরাতন">পুরাতন</option>
         </select>
       </div> */}
-			<div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
+			<div className="grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2">
 				{bios?.length > 0 &&
 					bios.map((biodata, index) => {
 						return <BioData key={index} biodata={biodata} />;
