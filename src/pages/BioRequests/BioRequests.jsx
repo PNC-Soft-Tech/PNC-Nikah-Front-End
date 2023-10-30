@@ -164,7 +164,7 @@ const MyBioRequests = () => {
 																	onClick={() =>
 																		reactionDataHandler(
 																			item?.user_id,
-																			"Accepted"
+																			"Approved"
 																		)
 																	}
 																	color="green"
@@ -173,7 +173,7 @@ const MyBioRequests = () => {
 																>
 																	{loading &&
 																	loadingId === item?.user_id &&
-																	loadingStatus === "Accepted" ? (
+																	loadingStatus === "Approved" ? (
 																		<LoadingCircle />
 																	) : (
 																		<FaCheck size={12} />

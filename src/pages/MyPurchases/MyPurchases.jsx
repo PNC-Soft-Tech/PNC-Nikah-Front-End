@@ -4,7 +4,7 @@ import { Button } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
 import { FaEye, FaTrash, FaInfo } from "react-icons/fa";
 import { BioChoiceDataServices } from "../../services/bioChoiceData";
-import { getToken } from "../../utils/cookies";
+import { getToken, removeToken } from "../../utils/cookies";
 import { MdFeedback } from "react-icons/md";
 import { AiFillQuestionCircle } from "react-icons/ai";
 import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
@@ -15,14 +15,22 @@ import { Colors } from "../../constants/colors";
 import { PayDetailsModal } from "../../components/PayDetailsModal/PayDetailsModal";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
+import Swal from "sweetalert2";
+import { convertToBengaliNumerals } from "../../utils/weight";
+import BkashCreatePaymentAPICall from "../../services/bkash";
+import { userServices } from "../../services/user";
+import { Toast } from "../../utils/toast";
+import { getErrorMessage } from "../../utils/error";
+import { ContactPurchaseDataServices } from "../../services/contactPurchaseData";
 const MyPurchases = () => {
-	const { userInfo } = useContext(UserContext);
+	const { userInfo, logOut } = useContext(UserContext);
 	const [isFeedbackDialogOpen, setIsFeedbackDialogOpen] = useState(false);
 	const [bioDetailsModal, setBioDetailsModal] = useState(false);
 	const [payDetailsModal, setPayBioDetailsModal] = useState(false);
 	const [qA, setQa] = useState('"');
 	const [feedback, setFeedback] = useState("");
 	const navigate = useNavigate();
+	const [loading, setLoading] = useState(false);
 
 	const {
 		data: bioChoiceFirstStep,
@@ -59,10 +67,92 @@ const MyPurchases = () => {
 		setFeedback(item);
 	};
 
-	const payButtonHandler = () => {
+	const payButtonHandler = (bioId) => {
 		const points = userInfo?.data[0]?.points;
+		Swal.fire({
+			title: "আপনি কি তথ্য দেখতে চান?",
+			text: `যোগাযোগ তথ্য দেখতে আপনার আরও ৭০ পয়েন্ট খরচ হবে 
+			। ${
+				points >= 70
+					? convertToBengaliNumerals((points - 70).toString()) +
+					  " অবশিষ্ট থাকবে"
+					: "আপনার আরও " +
+					  convertToBengaliNumerals((70 - points).toString()) +
+					  " পয়েন্ট লাগবে"
+			}`,
+			icon: "question",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Ok",
+		}).then(async (result) => {
+			//! for not confirm
+			if (!result.isConfirmed) {
+				return;
+			}
+			if (points >= 70) {
+				// console.log("clicked button");
+				try {
+					setLoading(true);
+					const data =
+						await ContactPurchaseDataServices.createContactPurchaseData(
+							{
+								user_id: userInfo?.data[0]?.id,
+								bio_id: bioId,
+							},
+							getToken().token
+						);
 
-		console.log(points);
+					if (data.success) {
+						Toast.successToast("আপনার বায়োডাটা ক্রয় সম্পূর্ন  হয়েছে।");
+					}
+					setLoading(false);
+				} catch (error) {
+					setLoading(false);
+					let msg = getErrorMessage(error);
+					Toast.errorToast(msg);
+				}
+			} else {
+				buyWithBkashHandler(70 - points, bioId);
+			}
+		});
+	};
+
+	const buyWithBkashHandler = async (value, bioId) => {
+		let response;
+		// ? verification check
+		try {
+			response = await userServices.verifyToken(getToken()?.token);
+			console.log("navbar-verify-token~", response);
+			const data = response?.data;
+			const user_id = userInfo?.data[0]?.id;
+
+			if (data?.user_id !== user_id) {
+				await logOut();
+				removeToken();
+				Toast.errorToast("You are not authorized");
+				navigate("/login");
+			}
+		} catch (error) {
+			console.error("navbar-verify-token~", error);
+			let msg = getErrorMessage(error);
+			Toast.errorToast(msg);
+			await logOut();
+			removeToken();
+			navigate("/login");
+		}
+
+		// ? bkash payment api call
+		const amount = parseInt(value);
+		if (isNaN(amount) || +amount <= 0) {
+			alert("Please enter a valid amount.");
+		} else if (response?.success === true) {
+			BkashCreatePaymentAPICall(amount, bioId);
+		} else {
+			await logOut();
+			removeToken();
+			navigate("/login");
+		}
 	};
 
 	const viewBioIdHandler = (bioId) => {
@@ -165,7 +255,7 @@ const MyPurchases = () => {
 															{item?.pending_count}
 														</td>
 														<td className="flex items-center px-4 py-2 text-center border-l w-1/10">
-															{item?.status === "Accepted" && (
+															{item?.status === "Approved" && (
 																<>
 																	<Button
 																		onClick={() =>
@@ -177,7 +267,7 @@ const MyPurchases = () => {
 																			background: `linear-gradient(to right,${Colors.lnRight},${Colors.lnLeft} )`,
 																		}}
 																	>
-																		Pay
+																		{loading ? <LoadingCircle /> : "Pay"}
 																	</Button>
 																	<AiFillQuestionCircle
 																		onClick={() => setPayBioDetailsModal(true)}
