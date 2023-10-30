@@ -15,17 +15,14 @@ import "../../assets/styles/nav-bar.css";
 import UserContext from "../../contexts/UserContext";
 import { FaUserLarge } from "react-icons/fa6";
 import { MdExitToApp } from "react-icons/md";
-import { FaEdit, FaLongArrowAltUp, FaUserEdit } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 import { BiSolidDashboard } from "react-icons/bi";
 import navLogo from "../../assets/icons/logo.png";
-import { getToken, removeToken } from "../../utils/cookies";
+import { removeToken } from "../../utils/cookies";
 import { Modal } from "../Modal/Modal";
 import { getGender } from "../../utils/localStorage";
 import female from "../../assets/icons/female.svg";
 import male from "../../assets/icons/male.svg";
-import { getErrorMessage } from "../../utils/error";
-import { Toast } from "../../utils/toast";
-import { userServices } from "../../services/user";
 
 export default function NavBar() {
 	const { userInfo, logOut } = useContext(UserContext);
@@ -40,35 +37,6 @@ export default function NavBar() {
 			() => window.innerWidth >= 960 && setOpenNav(false)
 		);
 	}, []);
-
-	useEffect(() => {
-		const verifyToken = async () => {
-			// ? verification check
-			try {
-				const response = await userServices.verifyToken(getToken()?.token);
-				console.log("navbar-verify-token~", response);
-				const data = response?.data;
-				const user_id = userInfo?.data[0]?.id;
-				if (data?.user_id !== user_id) {
-					await logOut();
-					removeToken();
-					Toast.errorToast("You are not authorized");
-					navigate("/login");
-				}
-			} catch (error) {
-				console.error("navbar-verify-token~", error);
-				let msg = getErrorMessage(error);
-				Toast.errorToast(msg);
-				await logOut();
-				removeToken();
-				navigate("/login");
-			}
-		};
-
-		if (userInfo) {
-			verifyToken();
-		}
-	}, [logOut, navigate, userInfo]);
 
 	// console.log(user);
 	const handleIconHover = () => {
