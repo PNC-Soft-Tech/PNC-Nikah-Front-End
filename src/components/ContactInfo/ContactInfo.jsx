@@ -15,6 +15,7 @@ import { userServices } from "../../services/user";
 import { getErrorMessage } from "../../utils/error";
 const ContactInfo = ({ contact, status }) => {
 	const [displayText, setDisplayText] = useState(false);
+	const [checkMsg, setCheckMsg] = useState("");
 	const { bio } = useContext(BioContext);
 	const { userInfo, logOut } = useContext(UserContext);
 	const generalInfo = bio?.generalInfo || null;
@@ -30,6 +31,66 @@ const ContactInfo = ({ contact, status }) => {
 			return () => clearTimeout(timeout);
 		}
 	}, [displayText]);
+
+	useEffect(() => {
+		const check = async () => {
+			try {
+				//? check first step
+				const token = getToken().token;
+				const bioId = generalInfo?.user_id;
+
+				const checkFirst =
+					await BioChoiceDataServices.checkBioChoiceDataFirstStep(bioId, token);
+				console.log("bio-check-first-step~", checkFirst);
+				const status = checkFirst?.data?.status;
+				let msg = "";
+
+				if (checkFirst?.data?.count > 0) {
+					console.log({ status });
+					if (status === "Approved" || status === "Accepted") {
+						msg = "আপনার প্রথম পদক্ষেপ সম্পূর্ন হয়েছে।";
+						Toast.successToast(msg);
+						setCheckMsg(msg);
+					} else if (status === "Rejected") {
+						msg = "দুংক্ষিত ,আপনি প্রতাক্ষিত হয়েছেন এই বায়োডাটা  থেকে।";
+						Toast.successToast(msg);
+						setCheckMsg(msg);
+					} else if (status === "Pending") {
+						msg = "দুংক্ষিত ,আপনি পেন্ডিং  আছেন এই বায়োডাটা  থেকে।";
+						Toast.successToast(msg);
+						setCheckMsg(msg);
+					}
+				}
+
+				const checkSecond =
+					await BioChoiceDataServices.checkBioChoiceDataSecondStep(
+						bioId,
+						token
+					);
+				console.log("bio-choice-second-step~", checkSecond);
+				if (checkSecond?.data?.count > 0) {
+					const payment_status = checkSecond?.data?.payment_status;
+					const refund_status = checkSecond?.data?.refund_status;
+
+					if (payment_status === "Completed" && refund_status !== "refunded") {
+						msg = "দুংক্ষিত ,আপনি এই বায়োডাটা ইতিমধ্যে কিনছেন";
+						Toast.successToast(msg);
+						setCheckMsg(msg);
+					}
+					if (payment_status === "Completed" && refund_status === "refunded") {
+						msg =
+							"দুংক্ষিত ,আপনি এই বায়োডাটার ইতিমধ্যে প্রথম পদক্ষেপ  কিনছেন,\n আপনি দ্বিতীয় পদক্ষেপ এর জন্য টাকা পরিশোধ করুন ";
+						Toast.successToast(msg);
+						setCheckMsg(msg);
+					}
+				}
+			} catch (error) {
+				let msg = error?.response?.data?.message || error?.message;
+				Toast.errorToast(msg);
+			}
+		};
+		check();
+	}, [generalInfo?.user_id]);
 
 	const comHandler = () => {
 		if (!userInfo?.data[0]?.id) {
@@ -56,58 +117,6 @@ const ContactInfo = ({ contact, status }) => {
 		}).then(async (result) => {
 			if (!result.isConfirmed) {
 				return;
-			}
-
-			try {
-				//? check first step
-				const token = getToken().token;
-				const bioId = generalInfo?.user_id;
-
-				const checkFirst =
-					await BioChoiceDataServices.checkBioChoiceDataFirstStep(bioId, token);
-				console.log("bio-check-first-step~", checkFirst);
-				const status = checkFirst?.data?.status;
-				if (checkFirst?.data?.count > 0) {
-					if (status === "Approved") {
-						Toast.successToast("আপনার প্রথম পদক্ষেপ সম্পূর্ন হয়েছে।");
-						return;
-					} else if (status === "Rejected") {
-						Toast.successToast(
-							"দুংক্ষিত ,আপনি প্রতাক্ষিত হয়েছেন এই বায়োডাটা  থেকে।"
-						);
-						return;
-					} else {
-						Toast.successToast(
-							"দুংক্ষিত ,আপনি পেন্ডিং  আছেন এই বায়োডাটা  থেকে।"
-						);
-						return;
-					}
-				}
-
-				const checkSecond =
-					await BioChoiceDataServices.checkBioChoiceDataSecondStep(
-						bioId,
-						token
-					);
-
-				if (checkSecond?.data?.count > 0) {
-					const payment_status = checkSecond?.data?.payment_status;
-					const refund_status = checkSecond?.data?.refund_status;
-
-					if (payment_status === "Completed" && refund_status !== "refunded") {
-						Toast.successToast("দুংক্ষিত ,আপনি এই বায়োডাটা ইতিমধ্যে কিনছেন");
-						return;
-					}
-					if (payment_status === "Completed" && refund_status === "refunded") {
-						Toast.successToast(
-							"দুংক্ষিত ,আপনি এই বায়োডাটার ইতিমধ্যে প্রথম পদক্ষেপ  কিনছেন,\n আপনি দ্বিতীয় পদক্ষেপ এর জন্য টাকা পরিশোধ করুন "
-						);
-						return;
-					}
-				}
-			} catch (error) {
-				let msg = error?.response?.data?.message || error?.message;
-				Toast.errorToast(msg);
 			}
 
 			if (result.isConfirmed && points < 30) {
@@ -237,6 +246,10 @@ const ContactInfo = ({ contact, status }) => {
 									কিনুন
 								</button>
 							</div>
+						) : checkMsg ? (
+							<p className="px-5 py-3 mb-5 text-green-900 bg-green-500 border-2 border-green-900 rounded-lg">
+								{checkMsg}
+							</p>
 						) : (
 							<button
 								onClick={comHandler}
