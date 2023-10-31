@@ -1,7 +1,6 @@
 @font-face {
-    font-family: 'LiAlinurRuposhi'; /* Unique font name */
-    src: url('./fonts/Li Alinur Ruposhi Unicode Italic.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  
+	font-family: "LiAlinurRuposhi"; /* Unique font name */
+	src: url("./Li Alinur Ruposhi Unicode Italic.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
