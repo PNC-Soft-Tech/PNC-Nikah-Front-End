@@ -9,6 +9,7 @@ import { BioDataServices } from "../../services/bioData";
 import { useNavigate } from "react-router-dom";
 import { convertToQuery } from "../../utils/query";
 import Select from "react-select";
+import '../../fonts/fonts.css';
 //End Bio grid Import
 
 const Home = () => {
@@ -150,26 +151,26 @@ const Home = () => {
 	// console.log(zillasOptions);
 
 	return (
-		<div className="px-10">
-			<div className="pt-6 text-4xl font-bold home-titlee md:text-6xl lg:text-7xl">
-				<h1>বাংলাদেশী ইসলামিক</h1>
-				<h1
-					style={{
+		<div className="px-10" style={{ fontFamily: 'LiAlinurRuposhi, sans-serif' }}>
+			<div className="pt-6 text-3xl font-bold home-titlee md:text-4xl lg:text-5xl">
+				<h1 style={{ fontFamily: 'LiAlinurRuposhi, sans-serif' }}>বাংলাদেশী ইসলামিক</h1>
+				<h1>
+					ম্যাট্রিমনি <span style={{
 						color: Colors.titleText,
-					}}
-				>
-					ম্যাট্রিমনি
+					}} className="font-bold text-4xl">PNC নিকাহ</span>
 				</h1>
 			</div>
 			<div className="mt-4 mb-4 text-3xl home-subtitlee md:text-4xl lg:text-5xl">
-				<h3>নিজ উপজেলায় দ্বীনদার পাত্রপাত্রী খোঁজা এখন সহজ</h3>
+				<h3>আপনার নিজ উপজেলায় দ্বীনদার পাত্রপাত্রী খুঁজুন খুব সহজে</h3>
 			</div>
-			<div className="home-desc">
+			<div className="home-desc border border-gray-300 rounded-xl py-4 md:py-8">
 				<p className="text-xl content md:text-2xl lg:text-3xl">
 					যে ব্যক্তি বিয়ে করলো সে তার অর্ধেক দ্বীন পূর্ণ করে ফেললো। বাকি
 					অর্ধেকের জন্য সে আল্লাহকে ভয় করুক।
 				</p>
-				<p className="text-sm ref md:text-xl lg:text-2xl">
+				<p style={{
+						color: Colors.titleText,
+					}} className="text-sm ref md:text-xl lg:text-2xl">
 					(বায়হাকী, শু&rsquo;আবুল ঈমান - ৫৪৮৬)
 				</p>
 			</div>
@@ -266,7 +267,12 @@ const Home = () => {
 				</div>
 				<div className="whitespace-nowrap">
 					<button className="px-4 py-3 font-medium text-white transition shadow-md focus:outline-4 rounded-xl bg-emerald-400 outline-white hover:bg-emerald-500">
-						মেসেজ দিন
+					<a
+					href="https://wa.me/+8801793278360"
+					target="_blank"
+					rel="noreferrer"
+					className="text-sm text-white"
+				>	মেসেজ দিন </a>
 					</button>
 				</div>
 				<a
