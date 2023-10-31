@@ -43,9 +43,21 @@ const getUserDisLikesList = async (token) => {
 	});
 	return response.data;
 };
+const getUserDisLikesByWhoList = async (token) => {
+	if (!token) {
+		return null;
+	}
+	const response = await axios.get(`${baseUrl}/un-favorites/dislikes-who`, {
+		headers: {
+			Authorization: token,
+		},
+	});
+	return response.data;
+};
 export const DisLikesServices = {
 	createDisLikes,
 	getDisLikes,
 	getUserDisLikes,
 	getUserDisLikesList,
+	getUserDisLikesByWhoList,
 };

@@ -41,9 +41,21 @@ const getUserLikesList = async (token) => {
 	});
 	return response.data;
 };
+const getUserLikesByWhoList = async (token) => {
+	if (!token) {
+		return null;
+	}
+	const response = await axios.get(`${baseUrl}/favorites/likes-who`, {
+		headers: {
+			Authorization: token,
+		},
+	});
+	return response.data;
+};
 export const LikesServices = {
 	createLikes,
 	getLikes,
 	getUserLikes,
 	getUserLikesList,
+	getUserLikesByWhoList,
 };

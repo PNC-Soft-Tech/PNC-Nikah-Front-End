@@ -18,6 +18,7 @@ import toast from "react-hot-toast";
 import { userServices } from "../../services/user";
 import { useNavigate } from "react-router-dom";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
+import { verifyToken } from "../../services/verifyToken";
 
 const FamilyInfoForm = ({ setUserForm, userForm }) => {
 	const [fatherName, setFatherName] = useState("");
@@ -44,6 +45,9 @@ const FamilyInfoForm = ({ setUserForm, userForm }) => {
 			return await userServices.getFamilyInfoByUserId(userInfo?.data[0]?.id);
 		},
 	});
+	useEffect(() => {
+		verifyToken(userInfo?.data[0]?.id, logOut, "family-info-verify-token");
+	}, [logOut, userInfo?.data]);
 
 	const backButtonHandler = () => {
 		if (userForm > 1) {

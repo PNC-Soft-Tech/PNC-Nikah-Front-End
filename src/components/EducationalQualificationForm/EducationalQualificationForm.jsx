@@ -25,6 +25,9 @@ import { getToken, removeToken } from "../../utils/cookies";
 import toast from "react-hot-toast";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
 import { useNavigate } from "react-router-dom";
+import MultipleSelect from "../MultitpleSelect/MultipleSelect";
+import { dataToMultiple, getDataFromMultipleInput } from "../../utils/form";
+import { verifyToken } from "../../services/verifyToken";
 
 const EducationalQualificationForm = ({ setUserForm, userForm }) => {
 	const [eduType, setEduType] = useState("");
@@ -86,6 +89,14 @@ const EducationalQualificationForm = ({ setUserForm, userForm }) => {
 		},
 	});
 
+	useEffect(() => {
+		verifyToken(
+			userInfo?.data[0]?.id,
+			logOut,
+			"educational-qualification-form-verify-token"
+		);
+	}, [logOut, userInfo?.data]);
+
 	console.log(educationalQualification);
 
 	useEffect(() => {
@@ -137,6 +148,7 @@ const EducationalQualificationForm = ({ setUserForm, userForm }) => {
 				takhassus_result,
 				takhassus_sub,
 				takhassus_pass_year,
+				status,
 			} = educationalQualification.data;
 			if (education_medium) {
 				setEduType(education_medium);
@@ -151,7 +163,7 @@ const EducationalQualificationForm = ({ setUserForm, userForm }) => {
 				setSelectedClass(before_ssc);
 			}
 			if (deeni_edu) {
-				setStatus(deeni_edu);
+				setStatus(dataToMultiple(deeni_edu));
 			}
 			if (ssc_year) {
 				setSscPassYear(ssc_year);
@@ -281,6 +293,9 @@ const EducationalQualificationForm = ({ setUserForm, userForm }) => {
 			if (takhassus_sub) {
 				setTakhassusSub(takhassus_sub);
 			}
+			if (status) {
+				setStatus(dataToMultiple(status));
+			}
 		}
 	}, [educationalQualification?.data]);
 
@@ -295,7 +310,7 @@ const EducationalQualificationForm = ({ setUserForm, userForm }) => {
 			education_medium: eduType,
 			highest_edu_level: maxEdu,
 			others_edu: othersEdu,
-			deeni_edu: status,
+			deeni_edu: getDataFromMultipleInput(status),
 		};
 		// জেনারেল  এস.এস.সি'র নিচে
 		if (
@@ -627,7 +642,7 @@ const EducationalQualificationForm = ({ setUserForm, userForm }) => {
 		<div className="mt-5">
 			<h3
 				style={{ color: Colors.titleText }}
-				className="text-2xl font-semibold mb-3"
+				className="mb-3 text-2xl font-semibold"
 			>
 				শিক্ষাগত যোগ্যতা
 			</h3>
@@ -1477,24 +1492,31 @@ const EducationalQualificationForm = ({ setUserForm, userForm }) => {
 					value={othersEdu}
 					setValue={setOthersEdu}
 				/>
-				<Select
+				{/* <Select
 					title="দ্বীনি শিক্ষাগত পদ্ববীসমূহ"
 					value={status}
 					setValue={setStatus}
 					options={deenStatusOptions}
+				/> */}
+				<MultipleSelect
+					title="দ্বীনি শিক্ষাগত পদ্ববীসমূহ"
+					options={deenStatusOptions}
+					value={status}
+					setValue={setStatus}
 				/>
-				<div className="flex items-center my-5 justify-between">
+
+				<div className="flex items-center justify-between my-5">
 					<button
 						type="button"
 						onClick={backButtonHandler}
-						className="bg-gray-700 text-xl  px-5 text-white py-2  rounded-3xl"
+						className="px-5 py-2 text-xl text-white bg-gray-700 rounded-3xl"
 					>
 						Back
 					</button>
 					<button
 						type="submit"
 						disabled={loading}
-						className=" text-xl rounded-3xl  px-5 text-white py-2 "
+						className="px-5 py-2 text-xl text-white rounded-3xl"
 						style={{
 							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight})`,
 						}}

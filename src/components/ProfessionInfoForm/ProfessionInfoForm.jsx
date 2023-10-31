@@ -13,6 +13,9 @@ import toast from "react-hot-toast";
 import { getToken, removeToken } from "../../utils/cookies";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
 import { useNavigate } from "react-router-dom";
+import MultipleSelect from "../MultitpleSelect/MultipleSelect";
+import { dataToMultiple, getDataFromMultipleInput } from "../../utils/form";
+import { verifyToken } from "../../services/verifyToken";
 
 const ProfessionInfoForm = ({ userForm, setUserForm }) => {
 	const [occupation, setOccupation] = useState();
@@ -35,11 +38,20 @@ const ProfessionInfoForm = ({ userForm, setUserForm }) => {
 			);
 		},
 	});
+
+	useEffect(() => {
+		verifyToken(
+			userInfo?.data[0]?.id,
+			logOut,
+			"professional-info-verify-token"
+		);
+	}, [logOut, userInfo?.data]);
+
 	useEffect(() => {
 		if (professionalInfo?.data) {
 			const { occupation, occupation_details, monthly_income } =
 				professionalInfo.data;
-			setOccupation(occupation);
+			setOccupation(dataToMultiple(occupation));
 			setOccupationInfo(occupation_details);
 			setIncome(monthly_income);
 		}
@@ -49,7 +61,7 @@ const ProfessionInfoForm = ({ userForm, setUserForm }) => {
 		e.preventDefault();
 
 		let professionalInfoData = {
-			occupation,
+			occupation: getDataFromMultipleInput(occupation),
 			occupation_details: occupationInfo,
 			monthly_income: income,
 		};
@@ -136,6 +148,13 @@ const ProfessionInfoForm = ({ userForm, setUserForm }) => {
 					setValue={setOccupation}
 					required
 				/>
+				<MultipleSelect
+					title="পেশা"
+					options={occupationOptions}
+					value={occupation}
+					setValue={setOccupation}
+					required
+				/>
 				<Textarea
 					title="পেশার বিস্তারিত বিবরণ"
 					value={occupationInfo}
@@ -150,18 +169,18 @@ const ProfessionInfoForm = ({ userForm, setUserForm }) => {
 					setValue={setIncome}
 				/>
 
-				<div className="flex items-center my-5 justify-between">
+				<div className="flex items-center justify-between my-5">
 					<button
 						type="button"
 						onClick={backButtonHandler}
-						className="bg-gray-700 text-xl  px-5 text-white py-2  rounded-3xl"
+						className="px-5 py-2 text-xl text-white bg-gray-700 rounded-3xl"
 					>
 						Back
 					</button>
 					<button
 						disabled={loading}
 						type="submit"
-						className="text-xl  px-5 text-white py-2 rounded-3xl"
+						className="px-5 py-2 text-xl text-white rounded-3xl"
 						style={{
 							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight})`,
 						}}

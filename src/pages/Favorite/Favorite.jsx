@@ -10,17 +10,19 @@ import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
 import { formatDate, getDateMonthYear } from "../../utils/date";
 import { useNavigate } from "react-router-dom";
 
-const LikeItem = ({ item, index }) => {
+const LikeItem = ({ item, index, favoriteByWho }) => {
 	const navigate = useNavigate();
 
 	// console.log("favorite-item", data);
 	const viewButtonHandler = () => {
-		navigate(`/biodata/${item.bio_id}`);
+		navigate(`/biodata/${favoriteByWho ? item?.user_id : item.bio_id}`);
 	};
 	return (
 		<tr className="border-b">
 			<td className="px-4 py-2 text-center border-l w-1/9">{index + 1}</td>
-			<td className="px-4 py-2 text-center border-l w-1/9">{item?.bio_id}</td>
+			<td className="px-4 py-2 text-center border-l w-1/9">
+				{favoriteByWho ? item?.user_id : item?.bio_id}
+			</td>
 			<td className="px-4 py-2 text-center border-l w-1/9">
 				{formatDate(getDateMonthYear(item?.date_of_birth))}
 			</td>
@@ -55,9 +57,17 @@ const Favorite = () => {
 			return await LikesServices.getUserLikesList(getToken().token);
 		},
 	});
+	const { data: favoritesByWho, isLoading: favoritesByWhoLoading } = useQuery({
+		queryKey: ["likes-who"],
+		queryFn: async () => {
+			return await LikesServices.getUserLikesByWhoList(getToken().token);
+		},
+	});
 	if (isLoading) {
 		return <LoadingCircle />;
 	}
+	console.log("favorites-by-who~", favoritesByWho);
+
 	console.log("likes~", data);
 	return (
 		<div className="py-12 mx-auto ">
@@ -130,9 +140,20 @@ const Favorite = () => {
 									</tr>
 								</thead>
 								<tbody>
-									{data?.data?.map((item, index) => {
-										return <LikeItem item={item} index={index} key={index} />;
-									})}
+									{favoritesByWhoLoading ? (
+										<LoadingCircle />
+									) : (
+										favoritesByWho?.data?.map((item, index) => {
+											return (
+												<LikeItem
+													favoriteByWho={true}
+													item={item}
+													index={index}
+													key={index}
+												/>
+											);
+										})
+									)}
 								</tbody>
 							</table>
 						</div>

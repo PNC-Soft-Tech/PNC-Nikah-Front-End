@@ -12,6 +12,7 @@ import { getToken, removeToken } from "../../utils/cookies";
 import toast from "react-hot-toast";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
 import { useNavigate } from "react-router-dom";
+import { verifyToken } from "../../services/verifyToken";
 
 const ContactInfoForm = ({ userForm, setUserForm }) => {
 	const [fullName, setFullName] = useState("");
@@ -44,6 +45,11 @@ const ContactInfoForm = ({ userForm, setUserForm }) => {
 			);
 		},
 	});
+
+	useEffect(() => {
+		verifyToken(userInfo?.data[0]?.id, logOut, "contact-info-verify-token");
+	}, [logOut, userInfo?.data]);
+
 	useEffect(() => {
 		if (contactInfo?.data) {
 			const { full_name, family_number, relation, bio_receiving_email } =

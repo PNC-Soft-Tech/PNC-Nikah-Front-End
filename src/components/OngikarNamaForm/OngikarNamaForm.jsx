@@ -12,6 +12,7 @@ import toast from "react-hot-toast";
 import { getToken, removeToken } from "../../utils/cookies";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
 import { useNavigate } from "react-router-dom";
+import { verifyToken } from "../../services/verifyToken";
 
 const OngikarNamaForm = ({ userForm, setUserForm }) => {
 	const [isAgree, setIsAgree] = useState("");
@@ -117,6 +118,14 @@ const OngikarNamaForm = ({ userForm, setUserForm }) => {
 			}
 		}
 	};
+
+	useEffect(() => {
+		verifyToken(
+			userInfo?.data[0]?.id,
+			logOut,
+			"ongikar-nama-info-verify-token"
+		);
+	}, [logOut, userInfo?.data]);
 
 	const conditionOptions = [
 		{

@@ -26,6 +26,7 @@ import LoadingCircle from "../LoadingCircle/LoadingCircle";
 import { useNavigate } from "react-router-dom";
 import { convertToBengaliNumerals } from "../../utils/weight";
 import { convertToEnglishDigits } from "../../utils/weight";
+import { verifyToken } from "../../services/verifyToken";
 
 const GeneralInfoForm = ({ userForm, setUserForm }) => {
 	const { userInfo, logOut } = useContext(UserContext);
@@ -50,6 +51,9 @@ const GeneralInfoForm = ({ userForm, setUserForm }) => {
 			return await userServices.getGeneralInfoByUserId(userInfo?.data[0]?.id);
 		},
 	});
+	useEffect(() => {
+		verifyToken(userInfo?.data[0]?.id, logOut, "general-info-verify-token");
+	}, [logOut, userInfo?.data]);
 
 	useEffect(() => {
 		console.log(generalInfo?.data);

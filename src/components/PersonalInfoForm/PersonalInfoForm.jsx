@@ -16,6 +16,9 @@ import { getToken, removeToken } from "../../utils/cookies";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
+import MultipleSelect from "../MultitpleSelect/MultipleSelect";
+import { dataToMultiple, getDataFromMultipleInput } from "../../utils/form";
+import { verifyToken } from "../../services/verifyToken";
 
 const PersonalInfoForm = ({ setUserForm, userForm }) => {
 	const [cloth, setCloth] = useState("");
@@ -64,6 +67,13 @@ const PersonalInfoForm = ({ setUserForm, userForm }) => {
 			return await userServices.getPersonalInfoByUserId(userInfo?.data[0]?.id);
 		},
 	});
+	useEffect(() => {
+		verifyToken(
+			userInfo?.data[0]?.id,
+			logOut,
+			"personal-info-form-verify-token"
+		);
+	}, [logOut, userInfo?.data]);
 	const gender = generalInfo?.data?.gender || "";
 	useEffect(() => {
 		if (personalInfo?.data) {
@@ -105,7 +115,7 @@ const PersonalInfoForm = ({ setUserForm, userForm }) => {
 			setIsMahram(mahram_non_mahram);
 			setFiqh(fiqh);
 			setMazar(mazar);
-			setPersonalCategory(my_categories);
+			setPersonalCategory(dataToMultiple(my_categories));
 			setScholars(islamic_scholars);
 			setBooks(islamic_books);
 			setAboutMe(about_me);
@@ -140,7 +150,7 @@ const PersonalInfoForm = ({ setUserForm, userForm }) => {
 			mazar: mazar,
 			islamic_books: books,
 			islamic_scholars: scholars,
-			my_categories: personalCategory,
+			my_categories: getDataFromMultipleInput(personalCategory),
 			about_me: aboutMe,
 			my_phone: phone,
 			from_when_nikhab: fromWhenNikhab,
@@ -396,12 +406,21 @@ const PersonalInfoForm = ({ setUserForm, userForm }) => {
 					setValue={setScholars}
 					required
 				/>
-				<Select
+
+				{/* <Select
+					title="আপনার ক্ষেত্রে প্রযোজ্য হয় এমন ক্যাটাগরি সিলেক্ট করুন। (অন্যথায় ঘরটি ফাঁকা রাখুন) "
+					options={personalCategoryOptions}
+					value={personalCategory}
+					setValue={setPersonalCategory}
+				/> */}
+
+				<MultipleSelect
 					title="আপনার ক্ষেত্রে প্রযোজ্য হয় এমন ক্যাটাগরি সিলেক্ট করুন। (অন্যথায় ঘরটি ফাঁকা রাখুন) "
 					options={personalCategoryOptions}
 					value={personalCategory}
 					setValue={setPersonalCategory}
 				/>
+
 				{personalCategory === "নওমুসলিম" && (
 					<Textarea
 						title="আপনার ইসলাম গ্রহণের সময় ও ঘটনা উল্লেখ করুন"

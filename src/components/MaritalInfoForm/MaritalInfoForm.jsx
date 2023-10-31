@@ -11,6 +11,7 @@ import { getToken, removeToken } from "../../utils/cookies";
 import toast from "react-hot-toast";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
 import { useNavigate } from "react-router-dom";
+import { verifyToken } from "../../services/verifyToken";
 
 const MaritalInfoForm = ({ userForm, setUserForm }) => {
 	const [wifeDeadInfo, setWifeDeadInfo] = useState("");
@@ -45,7 +46,9 @@ const MaritalInfoForm = ({ userForm, setUserForm }) => {
 			return await userServices.getMaritalInfoByUserId(userInfo?.data[0]?.id);
 		},
 	});
-
+	useEffect(() => {
+		verifyToken(userInfo?.data[0]?.id, logOut, "marital-info-verify-token");
+	}, [logOut, userInfo?.data]);
 	const backButtonHandler = () => {
 		if (userForm > 1) {
 			setUserForm((prev) => prev - 1);
@@ -317,17 +320,17 @@ const MaritalInfoForm = ({ userForm, setUserForm }) => {
 					required
 				/>
 
-				<div className="flex items-center my-5 justify-between">
+				<div className="flex items-center justify-between my-5">
 					<button
 						type="button"
 						onClick={backButtonHandler}
-						className="bg-gray-700 text-xl  px-5 text-white py-2  rounded-3xl"
+						className="px-5 py-2 text-xl text-white bg-gray-700 rounded-3xl"
 					>
 						Back
 					</button>
 					<button
 						type="submit"
-						className="text-xl  px-5 text-white py-2 rounded-3xl"
+						className="px-5 py-2 text-xl text-white rounded-3xl"
 						style={{
 							background: `linear-gradient(to right,${Colors.lnLeft},${Colors.lnRight})`,
 						}}

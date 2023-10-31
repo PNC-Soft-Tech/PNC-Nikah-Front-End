@@ -31,6 +31,7 @@ import { getToken, removeToken } from "../../utils/cookies";
 import toast from "react-hot-toast";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
 import { useNavigate } from "react-router-dom";
+import { verifyToken } from "../../services/verifyToken";
 
 const ExpectedPartnerForm = ({ userForm, setUserForm }) => {
 	const [zilla, setZilla] = useState([]);
@@ -65,6 +66,13 @@ const ExpectedPartnerForm = ({ userForm, setUserForm }) => {
 			return await BioDataServices.getAllDistricts("");
 		},
 	});
+	useEffect(() => {
+		verifyToken(
+			userInfo?.data[0]?.id,
+			logOut,
+			"expected-partner-info-verify-token"
+		);
+	}, [logOut, userInfo?.data]);
 	const { data: expectedPartnerInfo = null } = useQuery({
 		queryKey: ["expected-life-partner-info", userInfo?.data[0]?.id],
 		queryFn: async () => {
