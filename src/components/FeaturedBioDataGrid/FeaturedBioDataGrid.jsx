@@ -23,7 +23,7 @@ const FeaturedBioDataGrid = () => {
           <option value="পুরাতন">পুরাতন</option>
         </select>
       </div> */}
-			<div className="grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2">
+			<div className="grid grid-cols-1 gap-4 lg:grid-cols-4 md:grid-cols-4">
 				{bios?.length > 0 &&
 					bios.map((biodata, index) => {
 						return <BioData key={index} biodata={biodata} />;
