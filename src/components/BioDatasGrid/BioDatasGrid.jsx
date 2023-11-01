@@ -5,10 +5,11 @@ import BioContext from "../../contexts/BioContext";
 import BioData from "../BioData/BioData";
 import { Colors } from "../../constants/colors";
 import { FaFilter } from "react-icons/fa";
+import { Pagination } from "../Pagination/Pagination";
 
 const BioDatasGrid = ({ sideBarDisplay, setSideBarDisplay }) => {
 	const { bios } = useContext(BioContext);
-	console.log(bios);
+	console.log("bio-datas-from-db~", bios);
 
 	return (
 		<div className="w-full mx-5 mt-5">
@@ -19,10 +20,10 @@ const BioDatasGrid = ({ sideBarDisplay, setSideBarDisplay }) => {
 				বায়োডাটা সমূহ
 			</h1>
 			<p className="text-gray-500">{bios?.length} টি বায়োডাটা পাওয়া গেছে </p>
-			<div className=" flex text-right items-center justify-between">
+			<div className="flex items-center justify-between text-right ">
 				<div
 					onClick={() => setSideBarDisplay((prev) => !prev)}
-					className="lg:hidden bg-purple-700 px-3 py-1 rounded-md hover:bg-purple-900 text-white text-xl flex items-center ml-right cursor-pointer"
+					className="flex items-center px-3 py-1 text-xl text-white bg-purple-700 rounded-md cursor-pointer lg:hidden hover:bg-purple-900 ml-right"
 				>
 					<FaFilter />
 					<span className="ml-1">Filter</span>
@@ -32,12 +33,13 @@ const BioDatasGrid = ({ sideBarDisplay, setSideBarDisplay }) => {
 					<option value="পুরাতন">পুরাতন</option>
 				</select>
 			</div>
-			<div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
+			<div className="grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2">
 				{bios?.length > 0 &&
 					bios.map((biodata, index) => {
 						return <BioData key={index} biodata={biodata} />;
 					})}
 			</div>
+			<Pagination />
 		</div>
 	);
 };

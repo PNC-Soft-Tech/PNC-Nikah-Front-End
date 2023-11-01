@@ -28,11 +28,16 @@ export const BioProvider = ({ children }) => {
 		bio,
 		setBio,
 		bios: bios?.data,
+		limit: bios?.limit ?? 10,
+		page: bios?.page ?? 1,
+		size: bios?.size,
 		bioLoading,
 		bioError,
 		setQuery,
 	};
-	console.log("Bios~", bios);
+	console.log("Bios-from-db~", bios);
+	console.log("Size-from-db~", bios?.size);
+	console.log("Limit-from-db~", bios?.limit);
 
 	return <BioContext.Provider value={value}>{children}</BioContext.Provider>;
 };
