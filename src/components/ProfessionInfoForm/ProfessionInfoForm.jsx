@@ -141,13 +141,13 @@ const ProfessionInfoForm = ({ userForm, setUserForm }) => {
 		<div>
 			<FormTitle title="পেশাগত তথ্য" />
 			<form onSubmit={submitHandler} action="">
-				<Select
+				{/* <Select
 					title="পেশা "
 					value={occupation}
 					options={occupationOptions}
 					setValue={setOccupation}
 					required
-				/>
+				/> */}
 				<MultipleSelect
 					title="পেশা"
 					options={occupationOptions}

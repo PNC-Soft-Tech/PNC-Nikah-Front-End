@@ -1504,6 +1504,7 @@ const EducationalQualificationForm = ({ setUserForm, userForm }) => {
 					value={status}
 					setValue={setStatus}
 				/>
+			
 
 				<div className="flex items-center justify-between my-5">
 					<button
