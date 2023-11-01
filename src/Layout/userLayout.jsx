@@ -8,13 +8,13 @@ const UserLayout = () => {
 	const [openSidebar, setOpenSidebar] = useState(true);
 
 	return (
-		<div className="relative flex flex-row w-full overflow-hidden">
+		<div className="relative flex flex-row w-full ">
 			<div
 				className={`   ${
 					openSidebar
 						? "lg:w-[22%] w-[60%] "
 						: "transform w-0  -translate-x-full"
-				} transition-transform z-30 lg:z-0  duration-500 ease-in-out lg:relative absolute`}
+				} transition-transform z-30 lg:z-1  duration-500 ease-in-out lg:relative absolute`}
 			>
 				<UserSidebar
 					openSidebar={openSidebar}
