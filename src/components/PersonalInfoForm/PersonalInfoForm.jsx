@@ -46,6 +46,7 @@ const PersonalInfoForm = ({ setUserForm, userForm }) => {
 	const [loading, setLoading] = useState(false);
 	const [isNeshaDrobbo, setIsNeshaDrobbo] = useState("");
 	const [isBeard, setIsBeard] = useState("");
+	const [aboutMiladQiyam, setAboutMiladQiyam] = useState("");
 	const navigate = useNavigate();
 
 	const backButtonHandler = () => {
@@ -102,6 +103,7 @@ const PersonalInfoForm = ({ setUserForm, userForm }) => {
 				isNeshaDrobbo,
 				from_when_nikhab,
 				about_reverted_islam,
+				about_milad_qiyam,
 			} = personalInfo.data;
 			setCloth(outside_clothings);
 			setIsBeard(isBeard);
@@ -127,6 +129,7 @@ const PersonalInfoForm = ({ setUserForm, userForm }) => {
 			setIsNeshaDrobbo(isNeshaDrobbo);
 			setFromWhenNikhab(from_when_nikhab);
 			setAcceptIslam(about_reverted_islam);
+			setAboutMiladQiyam(about_milad_qiyam);
 		}
 	}, [personalInfo]);
 	const submitHandler = async (e) => {
@@ -157,6 +160,7 @@ const PersonalInfoForm = ({ setUserForm, userForm }) => {
 			isNeshaDrobbo,
 			isBeard: isBeard,
 			about_reverted_islam: acceptIslam,
+			about_milad_qiyam: aboutMiladQiyam,
 		};
 
 		if (!getToken()?.token) {
@@ -231,7 +235,7 @@ const PersonalInfoForm = ({ setUserForm, userForm }) => {
 		}
 	};
 
-	console.log(personalInfo);
+	// console.log(personalInfo);
 
 	return (
 		<div className="mt-5">
@@ -429,6 +433,12 @@ const PersonalInfoForm = ({ setUserForm, userForm }) => {
 						required
 					/>
 				)}
+				<Textarea
+					title="মিলাদ ও কিয়াম সম্পর্কে আপনার ধারনা কি?"
+					value={aboutMiladQiyam}
+					required
+					setValue={setAboutMiladQiyam}
+				/>
 				<Textarea
 					title="নিজের সম্পর্কে কিছু লিখুন "
 					value={aboutMe}
