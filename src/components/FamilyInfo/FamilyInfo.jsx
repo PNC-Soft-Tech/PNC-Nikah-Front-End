@@ -23,12 +23,12 @@ const FamilyInfo = () => {
 					)}
 				</thead>
 				<tbody>
-					<tr className="border-b">
+					{/* <tr className="border-b">
 						<td className="w-1/2 px-4 py-2 text-left">পিতার নাম </td>
 						<td className="w-1/2 px-4 py-2 text-left border-l">
 							{familyStatus?.father_name}
 						</td>
-					</tr>
+					</tr> */}
 					<tr className="border-b">
 						<td className="w-1/2 px-4 py-2 text-left">পিতার পেশার বিবরণ</td>
 						<td className="w-1/2 px-4 py-2 text-left border-l">
@@ -41,12 +41,12 @@ const FamilyInfo = () => {
 							{familyStatus?.isMotherAlive}
 						</td>
 					</tr>
-					<tr className="border-b">
+					{/* <tr className="border-b">
 						<td className="w-1/2 px-4 py-2 text-left">মাতার নাম </td>
 						<td className="w-1/2 px-4 py-2 text-left border-l">
 							{familyStatus?.mother_name}
 						</td>
-					</tr>
+					</tr> */}
 					<tr className="border-b">
 						<td className="w-1/2 px-4 py-2 text-left">মাতার পেশার বিবরণ</td>
 						<td className="w-1/2 px-4 py-2 text-left border-l">
