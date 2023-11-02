@@ -10,6 +10,21 @@ export function getDateMonthYear(dateString) {
 	return `${day}-${month}-${year}`;
 }
 
+export function readableDateTime(dateString) {
+	const date = new Date(dateString);
+	const options = {
+		year: "numeric",
+		month: "long",
+		day: "numeric",
+		hour: "2-digit",
+		minute: "2-digit",
+		second: "2-digit",
+		timeZoneName: "short",
+	};
+	const readableDate = date.toLocaleDateString(undefined, options);
+	return readableDate;
+}
+
 export function getYearMonthDate(dateString) {
 	const date = new Date(dateString);
 
