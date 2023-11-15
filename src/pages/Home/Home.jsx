@@ -151,9 +151,9 @@ const Home = () => {
 	// console.log(zillasOptions);
 
 	return (
-		<div className="px-10" style={{ fontFamily: 'LiAlinurRuposhi, sans-serif' }}>
+		<div className="px-10" >
 			<div className="pt-6 text-3xl font-bold home-titlee md:text-4xl lg:text-5xl">
-				<h1 style={{ fontFamily: 'LiAlinurRuposhi, sans-serif' }}>বাংলাদেশী ইসলামিক</h1>
+				<h1 >বাংলাদেশী ইসলামিক</h1>
 				<h1>
 					ম্যাট্রিমনি <span style={{
 						color: Colors.titleText,
