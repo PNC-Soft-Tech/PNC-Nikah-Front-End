@@ -32,10 +32,13 @@ export default function NavBar() {
 	const gender = getGender();
 	const navigate = useNavigate();
 	useEffect(() => {
-		window.addEventListener(
-			"resize",
-			() => window.innerWidth >= 960 && setOpenNav(false)
-		);
+		window.addEventListener("resize", () => {
+			if (window.innerWidth >= 960) {
+				setOpenNav(false);
+			} else {
+				setIsHovered(false);
+			}
+		});
 	}, []);
 
 	// console.log(user);

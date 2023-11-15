@@ -103,7 +103,7 @@
 
 .navigation-bar-custom .mobile-nav-open {
 	height: auto !important;
-	overflow-y: auto !important;
+	overflow: hidden !important;
 }
 
 .navigation-bar-custom .mini-profile-container {

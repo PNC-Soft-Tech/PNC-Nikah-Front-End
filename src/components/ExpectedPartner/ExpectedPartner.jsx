@@ -51,7 +51,7 @@ const ExpectedPartner = () => {
 					</tr>
 
 					{/* Row 2 */}
-					<tr className="border-b lg:hidden">
+					<tr className="w-full border-b lg:hidden">
 						<td
 							colSpan="2"
 							className="px-4 py-2 text-center break-all border-l"

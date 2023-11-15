@@ -436,7 +436,6 @@ const PersonalInfoForm = ({ setUserForm, userForm }) => {
 				<Textarea
 					title="মিলাদ ও কিয়াম সম্পর্কে আপনার ধারনা কি?"
 					value={aboutMiladQiyam}
-					required
 					setValue={setAboutMiladQiyam}
 				/>
 				<Textarea
