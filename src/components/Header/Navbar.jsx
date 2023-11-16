@@ -41,7 +41,7 @@ export default function NavBar() {
 		});
 	}, []);
 
-	// console.log(user);
+	// console.log("login-user~", user);
 	const handleIconHover = () => {
 		setIsHovered(true);
 	};
