@@ -6,6 +6,9 @@ const baseUrl =
 		: "https://server.pnc-nikah.com/api/v1";
 
 const createBioChoiceData = async (data, token) => {
+	if (!token) {
+		return null;
+	}
 	const response = await axios.post(baseUrl + "/bio-choice-data", data, {
 		headers: {
 			Authorization: token,
@@ -31,6 +34,9 @@ const updateBioChoiceData = async (id, data, token) => {
 	return response.data;
 };
 const getBioChoiceDataFirstStep = async (token) => {
+	if (!token) {
+		return null;
+	}
 	const response = await axios.get(baseUrl + "/bio-choice-data/first-step", {
 		headers: {
 			Authorization: token,
@@ -39,6 +45,9 @@ const getBioChoiceDataFirstStep = async (token) => {
 	return response.data;
 };
 const getBioChoiceDataSecondStep = async (token) => {
+	if (!token) {
+		return null;
+	}
 	const response = await axios.get(baseUrl + "/bio-choice-data/second-step", {
 		headers: {
 			Authorization: token,
@@ -47,6 +56,9 @@ const getBioChoiceDataSecondStep = async (token) => {
 	return response.data;
 };
 const checkBioChoiceDataSecondStep = async (bioId, token) => {
+	if (!bioId || !token) {
+		return null;
+	}
 	const response = await axios.get(
 		baseUrl + `/bio-choice-data/check-second-step/${bioId}`,
 		{
@@ -58,6 +70,9 @@ const checkBioChoiceDataSecondStep = async (bioId, token) => {
 	return response.data;
 };
 const checkBioChoiceDataFirstStep = async (bioId, token) => {
+	if (!bioId || !token) {
+		return null;
+	}
 	const response = await axios.get(
 		baseUrl + `/bio-choice-data/check-first-step/${bioId}`,
 		{
@@ -69,6 +84,9 @@ const checkBioChoiceDataFirstStep = async (bioId, token) => {
 	return response.data;
 };
 const getBioChoiceShare = async (token) => {
+	if (!token) {
+		return null;
+	}
 	const response = await axios.get(baseUrl + `/bio-choice-data/bio-share`, {
 		headers: {
 			Authorization: token,

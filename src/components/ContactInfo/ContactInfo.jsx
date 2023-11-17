@@ -38,6 +38,10 @@ const ContactInfo = ({ contact, status }) => {
 				//? check first step
 				const token = getToken().token;
 				const bioId = generalInfo?.user_id;
+				if (!token || !bioId) {
+					Toast.errorToast("Please,Login to view more");
+					return;
+				}
 
 				const checkFirst =
 					await BioChoiceDataServices.checkBioChoiceDataFirstStep(bioId, token);

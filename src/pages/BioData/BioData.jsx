@@ -22,6 +22,7 @@ import { useContext, useEffect } from "react";
 import BioContext from "../../contexts/BioContext";
 import UserContext from "../../contexts/UserContext";
 import { ScrollToTop } from "../../constants/ScrolltoTop";
+import LoadingCircle from "../../components/LoadingCircle/LoadingCircle";
 
 const BioData = () => {
 	const { id } = useParams();
@@ -100,12 +101,16 @@ const BioData = () => {
 					<div className="h-5"></div>
 
 					<ExpectedPartner />
-					{/*<!-- End of Expected Lifepartner  -->*/}
+					{/*<!-- End of Expected Life Partner  -->*/}
 					<div className="h-5"></div>
 					<OngikarNama />
 
 					<div className="h-5"></div>
-					<ContactInfo contact={contact?.data} status={userStatus?.data} />
+					{contactLoading ? (
+						<LoadingCircle />
+					) : (
+						<ContactInfo contact={contact?.data} status={userStatus?.data} />
+					)}
 				</div>
 			</div>
 		</div>
