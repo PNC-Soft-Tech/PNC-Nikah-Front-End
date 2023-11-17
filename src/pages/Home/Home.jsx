@@ -402,7 +402,7 @@ const Home = () => {
 			</div>
 
 			<h2 className="my-4 text-xl text-center text-blue-700 md:text-2xl lg:text-4xl">
-				sina বিয়ে সম্পর্কিত কুরআনের কিছু আয়াত ও কিছু হাদিসঃ
+				বিয়ে সম্পর্কিত কুরআনের কিছু আয়াত ও কিছু হাদিসঃ
 			</h2>
 
 			<HadithSlider />
