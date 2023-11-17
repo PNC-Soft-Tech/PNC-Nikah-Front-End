@@ -106,11 +106,8 @@ const BioData = () => {
 					<OngikarNama />
 
 					<div className="h-5"></div>
-					{contactLoading ? (
-						<LoadingCircle />
-					) : (
-						<ContactInfo contact={contact?.data} status={userStatus?.data} />
-					)}
+
+					<ContactInfo contact={contact?.data} status={userStatus?.data} />
 				</div>
 			</div>
 		</div>

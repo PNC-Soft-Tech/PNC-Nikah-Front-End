@@ -36,7 +36,7 @@ const ContactInfo = ({ contact, status }) => {
 		const check = async () => {
 			try {
 				//? check first step
-				const token = getToken().token;
+				const token = getToken()?.token;
 				const bioId = generalInfo?.user_id;
 				if (!token || !bioId) {
 					Toast.errorToast("Please,Login to view more");
@@ -90,6 +90,7 @@ const ContactInfo = ({ contact, status }) => {
 				}
 			} catch (error) {
 				let msg = error?.response?.data?.message || error?.message;
+				console.log("contact-info-error~", error);
 				Toast.errorToast(msg);
 			}
 		};
