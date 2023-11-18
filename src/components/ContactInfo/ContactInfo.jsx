@@ -39,7 +39,7 @@ const ContactInfo = ({ contact, status }) => {
 				const token = getToken()?.token;
 				const bioId = generalInfo?.user_id;
 				if (!token || !bioId) {
-					Toast.errorToast("Please,Login to view more");
+					// Toast.errorToast("Please,Login to view more");
 					return;
 				}
 

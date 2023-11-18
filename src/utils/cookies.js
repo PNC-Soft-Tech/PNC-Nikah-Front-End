@@ -4,7 +4,7 @@ const setToken = (data) => {
 };
 
 const getToken = () => {
-	let data = Cookies.get("pnc-nikkha-tokenInfo") || null;
+	let data = Cookies.get("pnc-nikkha-tokenInfo");
 	if (data) {
 		data = JSON.parse(data);
 	}

@@ -56,6 +56,7 @@ export default function NavBar() {
 	};
 
 	const myBioDataHandler = () => {
+		setIsHovered(false);
 		navigate(`/user/account/preview-biodata/${userInfo?.data[0]?.id}`);
 	};
 
@@ -149,6 +150,7 @@ export default function NavBar() {
 									</Button>
 								</div>
 								<Link
+									onClick={handleIconLeave}
 									className="flex items-center w-full transition-all duration-300 ease-in-out rounded-md "
 									to={`/user/account/edit-biodata`}
 								>
@@ -157,6 +159,7 @@ export default function NavBar() {
 								</Link>
 
 								<Link
+									onClick={handleIconLeave}
 									className="flex items-center w-full transition-all duration-300 ease-in-out rounded-md "
 									to={`/user/account/dashboard`}
 								>
@@ -165,6 +168,7 @@ export default function NavBar() {
 								</Link>
 
 								<Link
+									onClick={handleIconLeave}
 									className="flex items-center w-full transition-all duration-300 ease-in-out rounded-md "
 									to={`/user/account/likes`}
 								>
@@ -173,6 +177,7 @@ export default function NavBar() {
 								</Link>
 
 								<Link
+									onClick={handleIconLeave}
 									className="flex items-center w-full transition-all duration-300 ease-in-out rounded-md "
 									to={`/user/account/dislikes`}
 								>
@@ -180,6 +185,7 @@ export default function NavBar() {
 									<span>অপছন্দের তালিকা </span>
 								</Link>
 								<Link
+									onClick={handleIconLeave}
 									className="flex items-center w-full transition-all duration-300 ease-in-out rounded-md "
 									to={`/user/account/settings`}
 								>
@@ -187,6 +193,7 @@ export default function NavBar() {
 									<span>সেটিংস </span>
 								</Link>
 								<Link
+									onClick={handleIconLeave}
 									className="flex items-center w-full transition-all duration-300 ease-in-out rounded-md "
 									to={`/user/account/reports`}
 								>
