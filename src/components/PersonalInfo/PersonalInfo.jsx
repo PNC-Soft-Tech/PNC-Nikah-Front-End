@@ -194,9 +194,7 @@ const PersonalInfo = () => {
 							কোনো নেশাদ্রব্য পান করেন?
 						</td>
 						<td className="w-1/2 px-4 py-2 text-left border-l">
-							{personalInfo?.isNeshaDrobbo === true
-								? "না,আলহামদুলিল্লাহ"
-								: "হ্যাঁ "}
+							{personalInfo?.isNeshaDrobbo}
 						</td>
 					</tr>
 
